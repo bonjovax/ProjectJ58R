@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BF2D8D89-6F5C-47ED-8A86-275E2913D829}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>nPOSProj</RootNamespace>
+    <AssemblyName>nPOS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>nPOS.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="barcodelib">
+      <HintPath>..\..\..\..\..\..\lib\barcodelib.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.PointOfService, Version=1.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files (x86)\Microsoft Point Of Service\SDK\Microsoft.PointOfService.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conf\BIR.cs" />
+    <Compile Include="Conf\Crypto.cs" />
+    <Compile Include="Conf\dbs.cs" />
+    <Compile Include="Conf\Drawer.cs" />
+    <Compile Include="Conf\Rgx.cs" />
+    <Compile Include="cstDlgAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cstDlgAlert.Designer.cs">
+      <DependentUpon>cstDlgAlert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\ChangePasswordDAO.cs" />
+    <Compile Include="DAO\ConfigDAO.cs" />
+    <Compile Include="DAO\CustomersDAO.cs" />
+    <Compile Include="DAO\GiftCardDAO.cs" />
+    <Compile Include="DAO\InventoryDAO.cs" />
+    <Compile Include="DAO\ItemsDAO.cs" />
+    <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DAO\PosDAO.cs" />
+    <Compile Include="DAO\PurchaseOrderDAO.cs" />
+    <Compile Include="DAO\ReceivingDAO.cs" />
+    <Compile Include="DAO\ReportingDAO.cs" />
+    <Compile Include="DAO\UserAccountDAO.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePass.Designer.cs">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDlgCheckout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDlgCheckout.Designer.cs">
+      <DependentUpon>frmDlgCheckout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDlgDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDlgDiscount.Designer.cs">
+      <DependentUpon>frmDlgDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDlgEditQty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDlgEditQty.Designer.cs">
+      <DependentUpon>frmDlgEditQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDlgPark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDlgPark.Designer.cs">
+      <DependentUpon>frmDlgPark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDlgRefund.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDlgRefund.Designer.cs">
+      <DependentUpon>frmDlgRefund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDlgSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDlgSearch.Designer.cs">
+      <DependentUpon>frmDlgSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGiftCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGiftCard.Designer.cs">
+      <DependentUpon>frmGiftCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOS.Designer.cs">
+      <DependentUpon>frmPOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptCDrawer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptCDrawer.Designer.cs">
+      <DependentUpon>frmRptCDrawer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptIkits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptIkits.Designer.cs">
+      <DependentUpon>frmRptIkits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptItem.Designer.cs">
+      <DependentUpon>frmRptItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptPO.Designer.cs">
+      <DependentUpon>frmRptPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptSDR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptSDR.Designer.cs">
+      <DependentUpon>frmRptSDR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptSR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptSR.Designer.cs">
+      <DependentUpon>frmRptSR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptKit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptKit.Designer.cs">
+      <DependentUpon>frmRptKit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptStocks.Designer.cs">
+      <DependentUpon>frmRptStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptStocksR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptStocksR.Designer.cs">
+      <DependentUpon>frmRptStocksR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mCashInOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mCashInOut.Designer.cs">
+      <DependentUpon>mCashInOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mCrmBasic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mCrmBasic.Designer.cs">
+      <DependentUpon>mCrmBasic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiCategory.Designer.cs">
+      <DependentUpon>mdiCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiConfiguration.Designer.cs">
+      <DependentUpon>mdiConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiDirectory.Designer.cs">
+      <DependentUpon>mdiDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiFrmCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiFrmCustomers.Designer.cs">
+      <DependentUpon>mdiFrmCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiFrmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiFrmReports.Designer.cs">
+      <DependentUpon>mdiFrmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiInventoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiInventoryReport.Designer.cs">
+      <DependentUpon>mdiInventoryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiItemKits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiItemKits.Designer.cs">
+      <DependentUpon>mdiItemKits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiItems.Designer.cs">
+      <DependentUpon>mdiItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiPayment.Designer.cs">
+      <DependentUpon>mdiPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiPO.Designer.cs">
+      <DependentUpon>mdiPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiReceiving.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiReceiving.Designer.cs">
+      <DependentUpon>mdiReceiving.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiResetPassword.Designer.cs">
+      <DependentUpon>mdiResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiSalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiSalesReport.Designer.cs">
+      <DependentUpon>mdiSalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiStocks.Designer.cs">
+      <DependentUpon>mdiStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiSupplier.Designer.cs">
+      <DependentUpon>mdiSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiUserAcc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiUserAcc.Designer.cs">
+      <DependentUpon>mdiUserAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiFrmInv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiFrmInv.Designer.cs">
+      <DependentUpon>mdiFrmInv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mdiFrmUserAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiFrmUserAccounts.Designer.cs">
+      <DependentUpon>mdiFrmUserAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mEditDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mEditDirectory.Designer.cs">
+      <DependentUpon>mEditDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mEditPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mEditPO.Designer.cs">
+      <DependentUpon>mEditPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mFilter.Designer.cs">
+      <DependentUpon>mFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mFilterDir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mFilterDir.Designer.cs">
+      <DependentUpon>mFilterDir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mKits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mKits.Designer.cs">
+      <DependentUpon>mKits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mNewDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mNewDirectory.Designer.cs">
+      <DependentUpon>mNewDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mPOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mPOrder.Designer.cs">
+      <DependentUpon>mPOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mSearch.Designer.cs">
+      <DependentUpon>mSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="npos_dbDataSet.cs">
+      <DependentUpon>npos_dbDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="npos_dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>npos_dbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptCDrawer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCDrawer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptII.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptII.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptiKits.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptiKits.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptKit.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptKit.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptSDR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSDR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptSR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptStocks.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStocks.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptStocksReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStocksReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VO\ChangePasswordVO.cs" />
+    <Compile Include="VO\ConfigVO.cs" />
+    <Compile Include="VO\CustomersVO.cs" />
+    <Compile Include="VO\GiftCardVO.cs" />
+    <Compile Include="VO\InventoryVO.cs" />
+    <Compile Include="VO\ItemVO.cs" />
+    <Compile Include="VO\PosVO.cs" />
+    <Compile Include="VO\PurchaseOrderVO.cs" />
+    <Compile Include="VO\ReceivingVO.cs" />
+    <Compile Include="VO\ReportingVO.cs" />
+    <Compile Include="VO\UserAccountVO.cs" />
+    <EmbeddedResource Include="cstDlgAlert.resx">
+      <DependentUpon>cstDlgAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePass.resx">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDlgCheckout.resx">
+      <DependentUpon>frmDlgCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDlgDiscount.resx">
+      <DependentUpon>frmDlgDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDlgEditQty.resx">
+      <DependentUpon>frmDlgEditQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDlgPark.resx">
+      <DependentUpon>frmDlgPark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDlgRefund.resx">
+      <DependentUpon>frmDlgRefund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDlgSearch.resx">
+      <DependentUpon>frmDlgSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGiftCard.resx">
+      <DependentUpon>frmGiftCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOS.resx">
+      <DependentUpon>frmPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptCDrawer.resx">
+      <DependentUpon>frmRptCDrawer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptIkits.resx">
+      <DependentUpon>frmRptIkits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptItem.resx">
+      <DependentUpon>frmRptItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptPO.resx">
+      <DependentUpon>frmRptPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptSDR.resx">
+      <DependentUpon>frmRptSDR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptSR.resx">
+      <DependentUpon>frmRptSR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptKit.resx">
+      <DependentUpon>frmRptKit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptStocks.resx">
+      <DependentUpon>frmRptStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptStocksR.resx">
+      <DependentUpon>frmRptStocksR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mCashInOut.resx">
+      <DependentUpon>mCashInOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mCrmBasic.resx">
+      <DependentUpon>mCrmBasic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiCategory.resx">
+      <DependentUpon>mdiCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiConfiguration.resx">
+      <DependentUpon>mdiConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiDirectory.resx">
+      <DependentUpon>mdiDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiFrmCustomers.resx">
+      <DependentUpon>mdiFrmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiFrmReports.resx">
+      <DependentUpon>mdiFrmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiInventoryReport.resx">
+      <DependentUpon>mdiInventoryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiItemKits.resx">
+      <DependentUpon>mdiItemKits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiItems.resx">
+      <DependentUpon>mdiItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiPayment.resx">
+      <DependentUpon>mdiPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiPO.resx">
+      <DependentUpon>mdiPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiReceiving.resx">
+      <DependentUpon>mdiReceiving.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiResetPassword.resx">
+      <DependentUpon>mdiResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiSalesReport.resx">
+      <DependentUpon>mdiSalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiStocks.resx">
+      <DependentUpon>mdiStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiSupplier.resx">
+      <DependentUpon>mdiSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiUserAcc.resx">
+      <DependentUpon>mdiUserAcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiFrmInv.resx">
+      <DependentUpon>mdiFrmInv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiFrmUserAccounts.resx">
+      <DependentUpon>mdiFrmUserAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mEditDirectory.resx">
+      <DependentUpon>mEditDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mEditPO.resx">
+      <DependentUpon>mEditPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mFilter.resx">
+      <DependentUpon>mFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mFilterDir.resx">
+      <DependentUpon>mFilterDir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mKits.resx">
+      <DependentUpon>mKits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mNewDirectory.resx">
+      <DependentUpon>mNewDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mPOrder.resx">
+      <DependentUpon>mPOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mSearch.resx">
+      <DependentUpon>mSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PO.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="rptCDrawer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCDrawer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptII.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptII.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptiKits.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptiKits.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptKit.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptKit.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptSDR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSDR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptSR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptStocks.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStocks.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptStocksReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStocksReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="npos_dbDataSet.xsc">
+      <DependentUpon>npos_dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="npos_dbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>npos_dbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="npos_dbDataSet.xss">
+      <DependentUpon>npos_dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="nPOS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
