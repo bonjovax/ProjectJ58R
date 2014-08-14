@@ -47,6 +47,7 @@
             this.greetings = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -117,11 +118,11 @@
             this.btnGenReports.ForeColor = System.Drawing.Color.White;
             this.btnGenReports.Image = ((System.Drawing.Image)(resources.GetObject("btnGenReports.Image")));
             this.btnGenReports.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGenReports.Location = new System.Drawing.Point(522, 133);
+            this.btnGenReports.Location = new System.Drawing.Point(12, 302);
             this.btnGenReports.Name = "btnGenReports";
             this.btnGenReports.Size = new System.Drawing.Size(164, 162);
             this.btnGenReports.TabIndex = 4;
-            this.btnGenReports.Text = "&Reports (F4)";
+            this.btnGenReports.Text = "&Reports (F5)";
             this.btnGenReports.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGenReports.UseVisualStyleBackColor = false;
             this.btnGenReports.Click += new System.EventHandler(this.btnGenReports_Click);
@@ -139,11 +140,11 @@
             this.btnCustomers.ForeColor = System.Drawing.Color.White;
             this.btnCustomers.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomers.Image")));
             this.btnCustomers.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCustomers.Location = new System.Drawing.Point(182, 133);
+            this.btnCustomers.Location = new System.Drawing.Point(352, 133);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(164, 162);
             this.btnCustomers.TabIndex = 1;
-            this.btnCustomers.Text = "&Customers (F2)";
+            this.btnCustomers.Text = "&Customers (F3)";
             this.btnCustomers.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCustomers.UseVisualStyleBackColor = false;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
@@ -161,11 +162,11 @@
             this.btnInventory.ForeColor = System.Drawing.Color.White;
             this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnInventory.Location = new System.Drawing.Point(352, 133);
+            this.btnInventory.Location = new System.Drawing.Point(522, 133);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(164, 162);
             this.btnInventory.TabIndex = 3;
-            this.btnInventory.Text = "&Inventory (F3)";
+            this.btnInventory.Text = "&Inventory (F4)";
             this.btnInventory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
@@ -183,11 +184,11 @@
             this.btnGC.ForeColor = System.Drawing.Color.White;
             this.btnGC.Image = ((System.Drawing.Image)(resources.GetObject("btnGC.Image")));
             this.btnGC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGC.Location = new System.Drawing.Point(96, 301);
+            this.btnGC.Location = new System.Drawing.Point(182, 301);
             this.btnGC.Name = "btnGC";
             this.btnGC.Size = new System.Drawing.Size(164, 162);
             this.btnGC.TabIndex = 5;
-            this.btnGC.Text = "&Gift Cards (F5)";
+            this.btnGC.Text = "&Gift Cards (F6)";
             this.btnGC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGC.UseVisualStyleBackColor = false;
             this.btnGC.Click += new System.EventHandler(this.btnGC_Click);
@@ -205,11 +206,11 @@
             this.btnUserAccounts.ForeColor = System.Drawing.Color.White;
             this.btnUserAccounts.Image = ((System.Drawing.Image)(resources.GetObject("btnUserAccounts.Image")));
             this.btnUserAccounts.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUserAccounts.Location = new System.Drawing.Point(266, 301);
+            this.btnUserAccounts.Location = new System.Drawing.Point(352, 301);
             this.btnUserAccounts.Name = "btnUserAccounts";
             this.btnUserAccounts.Size = new System.Drawing.Size(164, 162);
             this.btnUserAccounts.TabIndex = 6;
-            this.btnUserAccounts.Text = "&Users (F6)";
+            this.btnUserAccounts.Text = "&Users (F7)";
             this.btnUserAccounts.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUserAccounts.UseVisualStyleBackColor = false;
             this.btnUserAccounts.Click += new System.EventHandler(this.btnUserAccounts_Click);
@@ -227,11 +228,11 @@
             this.btnConfig.ForeColor = System.Drawing.Color.White;
             this.btnConfig.Image = ((System.Drawing.Image)(resources.GetObject("btnConfig.Image")));
             this.btnConfig.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfig.Location = new System.Drawing.Point(436, 301);
+            this.btnConfig.Location = new System.Drawing.Point(522, 301);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(164, 162);
             this.btnConfig.TabIndex = 7;
-            this.btnConfig.Text = "Con&figure (F7)";
+            this.btnConfig.Text = "Con&figure (F8)";
             this.btnConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfig.UseVisualStyleBackColor = false;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
@@ -325,6 +326,27 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnOrder
+            // 
+            this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(13)))));
+            this.btnOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrder.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnOrder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MidnightBlue;
+            this.btnOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
+            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.ForeColor = System.Drawing.Color.White;
+            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
+            this.btnOrder.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnOrder.Location = new System.Drawing.Point(182, 133);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(164, 162);
+            this.btnOrder.TabIndex = 15;
+            this.btnOrder.Text = "&Order (F2)";
+            this.btnOrder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOrder.UseVisualStyleBackColor = false;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -332,6 +354,7 @@
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(701, 561);
             this.ControlBox = false;
+            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.greetings);
             this.Controls.Add(this.lblAdlib);
@@ -382,6 +405,7 @@
         private System.Windows.Forms.Label greetings;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnOrder;
     }
 }
 

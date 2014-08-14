@@ -19,6 +19,7 @@ namespace nPOSProj
         private frmPOS pos = new frmPOS();
         private frmGiftCard gc = new frmGiftCard();
         private mdiFrmReports reports = new mdiFrmReports();
+        private mdiFrmOrder order = new mdiFrmOrder();
         private String userName = frmLogin.User.user_name;
         public frmMenu()
         {
@@ -140,37 +141,43 @@ namespace nPOSProj
                 this.Hide();
                 return true;    // indicate that you handled this keystroke
             }
-            if (keyData == Keys.F2 && btnCustomers.Enabled == true)
+            //if (keyData == Keys.F2 && btnOrder.Enabled == true)
+            //{
+            //    order.Show();
+            //    this.Hide();
+            //    return true;
+            //}
+            if (keyData == Keys.F3 && btnCustomers.Enabled == true)
             {
                 mdicus.Show();
                 this.Hide();
                 return true;
             }
-            if (keyData == Keys.F3 && btnInventory.Enabled == true)
+            if (keyData == Keys.F4 && btnInventory.Enabled == true)
             {
                 mdiInv.Show();
                 this.Hide();
                 return true;
             }
-            if (keyData == Keys.F4 && btnGenReports.Enabled == true)
+            if (keyData == Keys.F5 && btnGenReports.Enabled == true)
             {
                 reports.Show();
                 this.Hide();
                 return true;
             }
-            if (keyData == Keys.F5 && btnGC.Enabled == true)
+            if (keyData == Keys.F6 && btnGC.Enabled == true)
             {
                 gc = new frmGiftCard();
                 gc.ShowDialog();
                 return true;
             }
-            if (keyData == Keys.F6 && btnUserAccounts.Enabled == true)
+            if (keyData == Keys.F7 && btnUserAccounts.Enabled == true)
             {
                 mdiUA.Show();
                 this.Hide();
                 return true;
             }
-            if (keyData == Keys.F7 && btnConfig.Enabled == true)
+            if (keyData == Keys.F8 && btnConfig.Enabled == true)
             {
                 mdiConfig = new mdiConfiguration();
                 mdiConfig.ShowDialog();
@@ -194,6 +201,12 @@ namespace nPOSProj
         private void btnGenReports_Click(object sender, EventArgs e)
         {
             reports.Show();
+            this.Hide();
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            order.Show();
             this.Hide();
         }
     }

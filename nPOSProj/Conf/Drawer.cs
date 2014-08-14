@@ -22,7 +22,6 @@ namespace nPOSProj.Conf
                 sp.Parity = System.IO.Ports.Parity.None;
                 sp.StopBits = System.IO.Ports.StopBits.One;
                 sp.Handshake = System.IO.Ports.Handshake.RequestToSend;
-
                 sp.Write(cashDrawerCmd, 0, cashDrawerCmd.Length);
                 sp.Close();
             }
