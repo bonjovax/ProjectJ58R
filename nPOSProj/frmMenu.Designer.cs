@@ -328,7 +328,7 @@
             // 
             // btnOrder
             // 
-            this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(13)))));
+            this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(83)))), ((int)(((byte)(44)))));
             this.btnOrder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOrder.Enabled = false;
             this.btnOrder.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;

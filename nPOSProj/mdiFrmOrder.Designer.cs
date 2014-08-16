@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiFrmOrder));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsOrder = new System.Windows.Forms.ToolStripButton();
+            this.tsQuotation = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.tsExit = new System.Windows.Forms.ToolStripButton();
             this.tsAbout = new System.Windows.Forms.ToolStripButton();
@@ -40,16 +43,13 @@
             this.tsToday = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tsQuotation = new System.Windows.Forms.ToolStripButton();
-            this.tsOrder = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(13)))));
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(83)))), ((int)(((byte)(44)))));
             this.toolStrip1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -65,6 +65,42 @@
             this.toolStrip1.Size = new System.Drawing.Size(902, 72);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsOrder
+            // 
+            this.tsOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsOrder.ForeColor = System.Drawing.Color.White;
+            this.tsOrder.Image = ((System.Drawing.Image)(resources.GetObject("tsOrder.Image")));
+            this.tsOrder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsOrder.Name = "tsOrder";
+            this.tsOrder.Size = new System.Drawing.Size(52, 69);
+            this.tsOrder.Text = "&Order";
+            this.tsOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsQuotation
+            // 
+            this.tsQuotation.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsQuotation.ForeColor = System.Drawing.Color.White;
+            this.tsQuotation.Image = ((System.Drawing.Image)(resources.GetObject("tsQuotation.Image")));
+            this.tsQuotation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsQuotation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsQuotation.Name = "tsQuotation";
+            this.tsQuotation.Size = new System.Drawing.Size(74, 69);
+            this.tsQuotation.Text = "&Quotation";
+            this.tsQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton1.ForeColor = System.Drawing.Color.White;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(123, 69);
+            this.toolStripButton1.Text = "Quotation &History";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsEmail
             // 
@@ -107,7 +143,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(13)))));
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(83)))), ((int)(((byte)(44)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsOnline,
             this.tsOffline,
@@ -161,42 +197,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // tsQuotation
-            // 
-            this.tsQuotation.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsQuotation.ForeColor = System.Drawing.Color.White;
-            this.tsQuotation.Image = ((System.Drawing.Image)(resources.GetObject("tsQuotation.Image")));
-            this.tsQuotation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsQuotation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsQuotation.Name = "tsQuotation";
-            this.tsQuotation.Size = new System.Drawing.Size(74, 69);
-            this.tsQuotation.Text = "&Quotation";
-            this.tsQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsOrder
-            // 
-            this.tsOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsOrder.ForeColor = System.Drawing.Color.White;
-            this.tsOrder.Image = ((System.Drawing.Image)(resources.GetObject("tsOrder.Image")));
-            this.tsOrder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsOrder.Name = "tsOrder";
-            this.tsOrder.Size = new System.Drawing.Size(52, 69);
-            this.tsOrder.Text = "&Order";
-            this.tsOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.ForeColor = System.Drawing.Color.White;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(123, 69);
-            this.toolStripButton1.Text = "Quotation &History";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // mdiFrmOrder
             // 
