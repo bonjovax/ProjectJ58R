@@ -79,6 +79,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtBoxUUserID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.chkOrder = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -364,6 +365,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.tabPage2.Controls.Add(this.chkOrder);
             this.tabPage2.Controls.Add(this.btnSave);
             this.tabPage2.Controls.Add(this.chkSystemAccess);
             this.tabPage2.Controls.Add(this.chkUserAccounts);
@@ -396,7 +398,7 @@
             this.btnSave.Location = new System.Drawing.Point(443, 82);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(62, 65);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 16;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -418,10 +420,10 @@
             // 
             this.chkUserAccounts.AutoSize = true;
             this.chkUserAccounts.Enabled = false;
-            this.chkUserAccounts.Location = new System.Drawing.Point(200, 66);
+            this.chkUserAccounts.Location = new System.Drawing.Point(199, 92);
             this.chkUserAccounts.Name = "chkUserAccounts";
             this.chkUserAccounts.Size = new System.Drawing.Size(128, 25);
-            this.chkUserAccounts.TabIndex = 13;
+            this.chkUserAccounts.TabIndex = 14;
             this.chkUserAccounts.Text = "User Accounts";
             this.chkUserAccounts.UseVisualStyleBackColor = true;
             this.chkUserAccounts.CheckedChanged += new System.EventHandler(this.chkUserAccounts_CheckedChanged);
@@ -430,10 +432,10 @@
             // 
             this.chkConfiguration.AutoSize = true;
             this.chkConfiguration.Enabled = false;
-            this.chkConfiguration.Location = new System.Drawing.Point(200, 92);
+            this.chkConfiguration.Location = new System.Drawing.Point(331, 18);
             this.chkConfiguration.Name = "chkConfiguration";
             this.chkConfiguration.Size = new System.Drawing.Size(125, 25);
-            this.chkConfiguration.TabIndex = 14;
+            this.chkConfiguration.TabIndex = 15;
             this.chkConfiguration.Text = "Configuration";
             this.chkConfiguration.UseVisualStyleBackColor = true;
             this.chkConfiguration.CheckedChanged += new System.EventHandler(this.chkConfiguration_CheckedChanged);
@@ -442,10 +444,10 @@
             // 
             this.chkGiftCards.AutoSize = true;
             this.chkGiftCards.Enabled = false;
-            this.chkGiftCards.Location = new System.Drawing.Point(200, 41);
+            this.chkGiftCards.Location = new System.Drawing.Point(199, 66);
             this.chkGiftCards.Name = "chkGiftCards";
             this.chkGiftCards.Size = new System.Drawing.Size(98, 25);
-            this.chkGiftCards.TabIndex = 12;
+            this.chkGiftCards.TabIndex = 13;
             this.chkGiftCards.Text = "Gift Cards";
             this.chkGiftCards.UseVisualStyleBackColor = true;
             this.chkGiftCards.CheckedChanged += new System.EventHandler(this.chkGiftCards_CheckedChanged);
@@ -454,10 +456,10 @@
             // 
             this.chkInventory.AutoSize = true;
             this.chkInventory.Enabled = false;
-            this.chkInventory.Location = new System.Drawing.Point(19, 92);
+            this.chkInventory.Location = new System.Drawing.Point(199, 18);
             this.chkInventory.Name = "chkInventory";
             this.chkInventory.Size = new System.Drawing.Size(95, 25);
-            this.chkInventory.TabIndex = 10;
+            this.chkInventory.TabIndex = 11;
             this.chkInventory.Text = "Inventory";
             this.chkInventory.UseVisualStyleBackColor = true;
             this.chkInventory.CheckedChanged += new System.EventHandler(this.chkInventory_CheckedChanged);
@@ -466,10 +468,10 @@
             // 
             this.chkReports.AutoSize = true;
             this.chkReports.Enabled = false;
-            this.chkReports.Location = new System.Drawing.Point(200, 17);
+            this.chkReports.Location = new System.Drawing.Point(199, 41);
             this.chkReports.Name = "chkReports";
             this.chkReports.Size = new System.Drawing.Size(83, 25);
-            this.chkReports.TabIndex = 11;
+            this.chkReports.TabIndex = 12;
             this.chkReports.Text = "Reports";
             this.chkReports.UseVisualStyleBackColor = true;
             this.chkReports.CheckedChanged += new System.EventHandler(this.chkReports_CheckedChanged);
@@ -478,10 +480,10 @@
             // 
             this.chkCustomers.AutoSize = true;
             this.chkCustomers.Enabled = false;
-            this.chkCustomers.Location = new System.Drawing.Point(19, 66);
+            this.chkCustomers.Location = new System.Drawing.Point(19, 92);
             this.chkCustomers.Name = "chkCustomers";
             this.chkCustomers.Size = new System.Drawing.Size(104, 25);
-            this.chkCustomers.TabIndex = 9;
+            this.chkCustomers.TabIndex = 10;
             this.chkCustomers.Text = "Customers";
             this.chkCustomers.UseVisualStyleBackColor = true;
             this.chkCustomers.CheckedChanged += new System.EventHandler(this.chkCustomers_CheckedChanged);
@@ -532,10 +534,10 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDelete.Location = new System.Drawing.Point(329, 90);
+            this.btnDelete.Location = new System.Drawing.Point(334, 88);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(56, 57);
-            this.btnDelete.TabIndex = 61;
+            this.btnDelete.TabIndex = 21;
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -551,10 +553,10 @@
             this.btnUClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUClear.Image = ((System.Drawing.Image)(resources.GetObject("btnUClear.Image")));
             this.btnUClear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUClear.Location = new System.Drawing.Point(388, 90);
+            this.btnUClear.Location = new System.Drawing.Point(391, 88);
             this.btnUClear.Name = "btnUClear";
             this.btnUClear.Size = new System.Drawing.Size(56, 57);
-            this.btnUClear.TabIndex = 20;
+            this.btnUClear.TabIndex = 22;
             this.btnUClear.Text = "Clear";
             this.btnUClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUClear.UseVisualStyleBackColor = false;
@@ -571,10 +573,10 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUpdate.Location = new System.Drawing.Point(446, 90);
+            this.btnUpdate.Location = new System.Drawing.Point(447, 88);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(56, 57);
-            this.btnUpdate.TabIndex = 21;
+            this.btnUpdate.TabIndex = 23;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -588,7 +590,7 @@
             this.txtBoxULastName.MaxLength = 50;
             this.txtBoxULastName.Name = "txtBoxULastName";
             this.txtBoxULastName.Size = new System.Drawing.Size(182, 22);
-            this.txtBoxULastName.TabIndex = 19;
+            this.txtBoxULastName.TabIndex = 20;
             this.txtBoxULastName.TextChanged += new System.EventHandler(this.txtBoxULastName_TextChanged);
             // 
             // label7
@@ -608,7 +610,7 @@
             this.txtBoxUMiddleName.MaxLength = 50;
             this.txtBoxUMiddleName.Name = "txtBoxUMiddleName";
             this.txtBoxUMiddleName.Size = new System.Drawing.Size(182, 22);
-            this.txtBoxUMiddleName.TabIndex = 18;
+            this.txtBoxUMiddleName.TabIndex = 19;
             this.txtBoxUMiddleName.TextChanged += new System.EventHandler(this.txtBoxUMiddleName_TextChanged);
             // 
             // label8
@@ -628,7 +630,7 @@
             this.txtBoxUFirstName.MaxLength = 50;
             this.txtBoxUFirstName.Name = "txtBoxUFirstName";
             this.txtBoxUFirstName.Size = new System.Drawing.Size(182, 22);
-            this.txtBoxUFirstName.TabIndex = 17;
+            this.txtBoxUFirstName.TabIndex = 18;
             this.txtBoxUFirstName.TextChanged += new System.EventHandler(this.txtBoxUFirstName_TextChanged);
             // 
             // label9
@@ -648,7 +650,7 @@
             this.txtBoxUUserName.MaxLength = 20;
             this.txtBoxUUserName.Name = "txtBoxUUserName";
             this.txtBoxUUserName.Size = new System.Drawing.Size(162, 22);
-            this.txtBoxUUserName.TabIndex = 16;
+            this.txtBoxUUserName.TabIndex = 17;
             this.txtBoxUUserName.TextChanged += new System.EventHandler(this.txtBoxUUserName_TextChanged);
             // 
             // label11
@@ -680,6 +682,17 @@
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 27;
             this.label12.Text = "User ID";
+            // 
+            // chkOrder
+            // 
+            this.chkOrder.AutoSize = true;
+            this.chkOrder.Enabled = false;
+            this.chkOrder.Location = new System.Drawing.Point(19, 66);
+            this.chkOrder.Name = "chkOrder";
+            this.chkOrder.Size = new System.Drawing.Size(70, 25);
+            this.chkOrder.TabIndex = 9;
+            this.chkOrder.Text = "Order";
+            this.chkOrder.UseVisualStyleBackColor = true;
             // 
             // mdiUserAcc
             // 
@@ -759,6 +772,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.CheckBox chkOrder;
 
     }
 }

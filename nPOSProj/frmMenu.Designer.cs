@@ -330,6 +330,7 @@
             // 
             this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(13)))));
             this.btnOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrder.Enabled = false;
             this.btnOrder.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
             this.btnOrder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MidnightBlue;
             this.btnOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;

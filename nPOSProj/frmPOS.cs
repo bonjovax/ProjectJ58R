@@ -388,6 +388,10 @@ namespace nPOSProj
             {
                 fm.unlockSales();
             }
+            if (login.hasOrder())
+            {
+                fm.unlockOrder();
+            }
             if (login.hasCustomers())
             {
                 fm.unlockCustomers();

@@ -30,6 +30,10 @@ namespace nPOSProj
         {
             btnSales.Enabled = true;
         }
+        public void unlockOrder()
+        {
+            btnOrder.Enabled = true;
+        }
         public void unlockCustomers()
         {
             btnCustomers.Enabled = true;
@@ -141,12 +145,12 @@ namespace nPOSProj
                 this.Hide();
                 return true;    // indicate that you handled this keystroke
             }
-            //if (keyData == Keys.F2 && btnOrder.Enabled == true)
-            //{
-            //    order.Show();
-            //    this.Hide();
-            //    return true;
-            //}
+            if (keyData == Keys.F2 && btnOrder.Enabled == true)
+            {
+                order.Show();
+                this.Hide();
+                return true;
+            }
             if (keyData == Keys.F3 && btnCustomers.Enabled == true)
             {
                 mdicus.Show();

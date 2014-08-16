@@ -216,13 +216,13 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
-        public void UpdateRestrictions(Int32 can_access, Int32 has_sales, Int32 has_customers, Int32 has_inventory, Int32 has_reports, Int32 has_gc, Int32 has_user_accounts, Int32 has_conf, Int32 user_id)
+        public void UpdateRestrictions(Int32 can_access, Int32 has_sales, Int32 has_order, Int32 has_customers, Int32 has_inventory, Int32 has_reports, Int32 has_gc, Int32 has_user_accounts, Int32 has_conf, Int32 user_id)
         {
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
             String query = "UPDATE user_access_restrictions SET ";
-            query += "can_access = ?can_access, has_sales = ?has_sales, has_customers = ?has_customers, has_inventory = ?has_inventory, has_reports = ?has_reports, has_gc = ?has_gc, has_user_accounts = ?has_user_accounts, has_conf = ?has_conf ";
+            query += "can_access = ?can_access, has_sales = ?has_sales, has_order = ?has_order, has_customers = ?has_customers, has_inventory = ?has_inventory, has_reports = ?has_reports, has_gc = ?has_gc, has_user_accounts = ?has_user_accounts, has_conf = ?has_conf ";
             query += "WHERE user_id = ?user_id";
             try
             {
@@ -230,6 +230,7 @@ namespace nPOSProj.DAO
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 cmd.Parameters.AddWithValue("?can_access", can_access);
                 cmd.Parameters.AddWithValue("?has_sales", has_sales);
+                cmd.Parameters.AddWithValue("?has_order", has_order);
                 cmd.Parameters.AddWithValue("?has_customers", has_customers);
                 cmd.Parameters.AddWithValue("?has_inventory", has_inventory);
                 cmd.Parameters.AddWithValue("?has_reports", has_reports);

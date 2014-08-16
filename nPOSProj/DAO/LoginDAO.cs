@@ -151,6 +151,37 @@ namespace nPOSProj.DAO
             }
             return hasSales;
         }
+        //
+        public bool hasOrder()
+        {
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            bool hasSales = true;
+            String getUserID = getUserIDfromDB();
+            con.Close();
+            con.ConnectionString = dbcon.getConnectionString();
+            String sql = "SELECT has_order FROM user_access_restrictions WHERE user_id = ?user_id";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.Add("?user_id", MySqlDbType.Int32, 3).Value = getUserIDfromDB();
+                cmd.CommandType = CommandType.Text;
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["has_order"].ToString() == "0")
+                        hasSales = false;
+                }
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return hasSales;
+        }
+        //
         public bool hasCustomers()
         {
             con = new MySqlConnection();

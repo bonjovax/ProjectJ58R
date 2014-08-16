@@ -18,6 +18,7 @@ namespace nPOSProj.VO
         //Restrictions
         private Int32 _can_access;
         private Int32 _has_sales;
+        private Int32 _has_order; //New
         private Int32 _has_customers;
         private Int32 _has_inventory;
         private Int32 _has_reports;
@@ -86,6 +87,11 @@ namespace nPOSProj.VO
         {
             get { return _has_sales; }
             set { _has_sales = value; }
+        }
+        public Int32 has_order
+        {
+            get { return _has_order; }
+            set { _has_order = value; }
         }
         public Int32 has_customers
         {
@@ -162,7 +168,7 @@ namespace nPOSProj.VO
         public void SaveRestriction()
         {
             udao = new DAO.UserAccountDAO();
-            udao.UpdateRestrictions(can_access, has_sales, has_customers, has_inventory, has_reports, has_gc, has_user_accounts, has_conf, user_id);
+            udao.UpdateRestrictions(can_access, has_sales, has_order, has_customers, has_inventory, has_reports, has_gc, has_user_accounts, has_conf, user_id);
         }
 
         public void Reset()

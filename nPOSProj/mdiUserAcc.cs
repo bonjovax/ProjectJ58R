@@ -332,7 +332,7 @@ namespace nPOSProj
             try
             {
                 con.Open();
-                String query = "SELECT can_access AS a, has_sales AS b, has_customers AS c, has_inventory AS d, has_reports AS e, has_gc AS f, has_user_accounts AS g, has_conf AS h ";
+                String query = "SELECT can_access AS a, has_sales AS b, has_order AS b1, has_customers AS c, has_inventory AS d, has_reports AS e, has_gc AS f, has_user_accounts AS g, has_conf AS h ";
                 query += "FROM user_access_restrictions ";
                 query += "WHERE user_id = ?grab";
                 MySqlCommand cmd = new MySqlCommand(query, con);
@@ -356,6 +356,16 @@ namespace nPOSProj
                 {
                     chkSales.Checked = false;
                 }
+                //
+                if (rdr["b1"].ToString() == "1")
+                {
+                    chkOrder.Checked = true;
+                }
+                else
+                {
+                    chkOrder.Checked = false;
+                }
+                //
                 if (rdr["c"].ToString() == "1")
                 {
                     chkCustomers.Checked = true;
@@ -417,6 +427,7 @@ namespace nPOSProj
         {
             Int32 can_access = 0;
             Int32 has_sales = 0;
+            Int32 has_order = 0;
             Int32 has_customers = 0;
             Int32 has_inventory = 0;
             Int32 has_reports= 0;
@@ -441,6 +452,14 @@ namespace nPOSProj
                 else
                 {
                     has_sales = 0;
+                }
+                if (chkOrder.Checked)
+                {
+                    has_order = 1;
+                }
+                else
+                {
+                    has_order = 0;
                 }
                 if (chkCustomers.Checked)
                 {
@@ -492,6 +511,7 @@ namespace nPOSProj
                 }
                 uavo.can_access = can_access;
                 uavo.has_sales = has_sales;
+                uavo.has_order = has_order;
                 uavo.has_customers = has_customers;
                 uavo.has_inventory = has_inventory;
                 uavo.has_reports = has_reports;
@@ -552,6 +572,7 @@ namespace nPOSProj
         private void unlockCheckBox() 
         {
             chkSales.Enabled = true;
+            chkOrder.Enabled = true;
             chkCustomers.Enabled = true;
             chkInventory.Enabled = true;
             chkReports.Enabled = true;
