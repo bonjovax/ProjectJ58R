@@ -156,7 +156,6 @@ namespace nPOSProj
         }
         private void PrintReceipt()
         {
-            DrawerPing();
             printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocument1_PrintPage);
             printDocument1.Print();
         }
@@ -435,6 +434,11 @@ namespace nPOSProj
             if (keyData == Keys.F3 && wholsale_select == false && btnWholesale.Enabled == true)
             {
                 gotoWholesale();
+                return true;
+            }
+            if (keyData == Keys.F3 && wholsale_select == true && btnWholesale.Enabled == false)
+            {
+                gotoRetail();
                 return true;
             }
             if (keyData == Keys.F4 && btnVoid.Enabled == true)
@@ -738,7 +742,28 @@ namespace nPOSProj
                     pos.Pos_orno = OrNo;
                     pos.SwitchToWholeSale();
                     btnWholesale.Enabled = false;
+                    btnRetail.Visible = true;
                     wholsale_select = true;
+                }
+            }
+            catch (Exception)
+            {
+                rdDescription.Text = "Error 11: Check Database Server";
+            }
+        }
+
+        private void gotoRetail()
+        {
+            try
+            {
+                DialogResult dr = MessageBox.Show("Do You Wish To Set Your Transaction to Retail?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == System.Windows.Forms.DialogResult.Yes)
+                {
+                    pos.Pos_orno = OrNo;
+                    pos.SwitchToRetail();
+                    btnWholesale.Enabled = true;
+                    btnRetail.Visible = false;
+                    wholsale_select = false;
                 }
             }
             catch (Exception)
@@ -1070,7 +1095,6 @@ namespace nPOSProj
                                     pos.ParkItem();
                                     //
                                     //
-                                    btnWholesale.Enabled = false;
                                     Double total_fin = 0;
                                     Double total_fins = 0;
                                     Double a = 0;
@@ -1854,6 +1878,7 @@ namespace nPOSProj
                     btnSearch.Enabled = false;
                     btnRefund.Enabled = true;
                     btnWholesale.Enabled = false;
+                    btnRetail.Visible = false;
                     btnCancelSale.Enabled = false;
                     btnParkSale.Enabled = true;
                     btnVoid.Enabled = false;
@@ -1876,6 +1901,7 @@ namespace nPOSProj
                     //
                     newFlash();
                     selector = 0; //CASH
+                    DrawerPing(); //Changes in Movement
                     PrintReceipt();
                     reprint = true;
                 }
@@ -1884,6 +1910,7 @@ namespace nPOSProj
                     btnSearch.Enabled = false;
                     btnRefund.Enabled = true;
                     btnWholesale.Enabled = false;
+                    btnRetail.Visible = false;
                     btnCancelSale.Enabled = false;
                     btnParkSale.Enabled = true;
                     btnVoid.Enabled = false;
@@ -1919,6 +1946,7 @@ namespace nPOSProj
                     btnSearch.Enabled = false;
                     btnRefund.Enabled = true;
                     btnWholesale.Enabled = false;
+                    btnRetail.Visible = false;
                     btnCancelSale.Enabled = false;
                     btnParkSale.Enabled = true;
                     btnVoid.Enabled = false;
@@ -1953,6 +1981,7 @@ namespace nPOSProj
                     btnSearch.Enabled = false;
                     btnRefund.Enabled = true;
                     btnWholesale.Enabled = false;
+                    btnRetail.Visible = false;
                     btnCancelSale.Enabled = false;
                     btnParkSale.Enabled = true;
                     btnVoid.Enabled = false;
@@ -1988,6 +2017,7 @@ namespace nPOSProj
                     btnSearch.Enabled = false;
                     btnRefund.Enabled = true;
                     btnWholesale.Enabled = false;
+                    btnRetail.Visible = false;
                     btnCancelSale.Enabled = false;
                     btnParkSale.Enabled = true;
                     btnVoid.Enabled = false;
@@ -2039,7 +2069,11 @@ namespace nPOSProj
                     {
                         orderNo = park.OrderNo;
                         lblSeriesNo.Text = orderNo.ToString();
-                        detectWholesale();
+                        //
+                        wholsale_select = false;
+                        btnWholesale.Enabled = true;
+                        btnRetail.Visible = false;
+                        //
                         loadParkedData();
                         OrNo = park.OrderNo;
                         //
@@ -2220,6 +2254,7 @@ namespace nPOSProj
                             btnSearch.Enabled = false;
                             btnRefund.Enabled = false;
                             btnWholesale.Enabled = false;
+                            btnRetail.Visible = false;
                             btnCancelSale.Enabled = false;
                             btnVoid.Enabled = false;
                             btnEdit.Enabled = false;
@@ -2238,6 +2273,7 @@ namespace nPOSProj
                             rdPrice.Text = "0.00";
                             rdTotal.Text = "0.00";
                             lblTotalAmount.Text = "0.00";
+                            btnParkSale.Enabled = true;
                             //
                         }
                         catch (MySqlException)
@@ -2316,40 +2352,40 @@ namespace nPOSProj
 
         #endregion
 
-        private void detectWholesale()
-        {
-            frmLogin fl = new frmLogin();
-            con.ConnectionString = dbcon.getConnectionString();
-            String query = "SELECT pos_iswholesale AS a FROM pos_store ";
-            query += "WHERE (pos_orno = ?pos_orno) AND (pos_terminal = ?pos_terminal) AND (pos_iswholesale = 1)";
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("?pos_orno", orderNo);
-                cmd.Parameters.AddWithValue("?pos_terminal", fl.tN);
-                cmd.ExecuteScalar();
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    if (rdr["a"].ToString() == "1")
-                    {
-                        wholsale_select = true;
-                        btnWholesale.Enabled = false;
-                    }
-                    else
-                    {
-                        wholsale_select = false;
-                        btnWholesale.Enabled = false;
-                    }
-                }
-                con.Close();
-            }
-            catch (Exception)
-            {
-                rdDescription.Text = "Error 10: Network Connection";
-            }
-        }
+        //private void detectWholesale()
+        //{
+        //    frmLogin fl = new frmLogin();
+        //    con.ConnectionString = dbcon.getConnectionString();
+        //    String query = "SELECT pos_iswholesale AS a FROM pos_store ";
+        //    query += "WHERE (pos_orno = ?pos_orno) AND (pos_terminal = ?pos_terminal) AND (pos_iswholesale = 1)";
+        //    try
+        //    {
+        //        con.Open();
+        //        MySqlCommand cmd = new MySqlCommand(query, con);
+        //        cmd.Parameters.AddWithValue("?pos_orno", orderNo);
+        //        cmd.Parameters.AddWithValue("?pos_terminal", fl.tN);
+        //        cmd.ExecuteScalar();
+        //        MySqlDataReader rdr = cmd.ExecuteReader();
+        //        if (rdr.Read())
+        //        {
+        //            if (rdr["a"].ToString() == "1")
+        //            {
+        //                wholsale_select = true;
+        //                btnWholesale.Enabled = false;
+        //            }
+        //            else
+        //            {
+        //                wholsale_select = false;
+        //                btnWholesale.Enabled = false;
+        //            }
+        //        }
+        //        con.Close();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        rdDescription.Text = "Error 10: Network Connection";
+        //    }
+        //}
         private void loadParkedData()
         {
             frmLogin fl = new frmLogin();
@@ -2441,6 +2477,11 @@ namespace nPOSProj
         private void btnRefund_Click(object sender, EventArgs e)
         {
             gotoRefund();
+        }
+
+        private void btnRetail_Click(object sender, EventArgs e)
+        {
+            gotoRetail();
         }
     }
 }

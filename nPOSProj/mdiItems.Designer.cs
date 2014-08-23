@@ -375,7 +375,7 @@
             this.txtBonxEAN.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBonxEAN.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBonxEAN.Location = new System.Drawing.Point(119, 48);
-            this.txtBonxEAN.MaxLength = 13;
+            this.txtBonxEAN.MaxLength = 25;
             this.txtBonxEAN.Name = "txtBonxEAN";
             this.txtBonxEAN.ReadOnly = true;
             this.txtBonxEAN.Size = new System.Drawing.Size(378, 26);

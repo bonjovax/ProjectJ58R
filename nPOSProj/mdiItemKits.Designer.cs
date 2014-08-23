@@ -353,7 +353,7 @@
             this.txtBoxEAN.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBoxEAN.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxEAN.Location = new System.Drawing.Point(77, 49);
-            this.txtBoxEAN.MaxLength = 13;
+            this.txtBoxEAN.MaxLength = 25;
             this.txtBoxEAN.Name = "txtBoxEAN";
             this.txtBoxEAN.Size = new System.Drawing.Size(232, 26);
             this.txtBoxEAN.TabIndex = 3;

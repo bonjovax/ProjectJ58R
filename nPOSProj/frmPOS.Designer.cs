@@ -81,6 +81,7 @@
             this.lviewPOS = new System.Windows.Forms.ListView();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnRetail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rdDescription
@@ -164,7 +165,7 @@
             this.txtBoxEAN.Font = new System.Drawing.Font("Courier New", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxEAN.ForeColor = System.Drawing.Color.White;
             this.txtBoxEAN.Location = new System.Drawing.Point(0, 201);
-            this.txtBoxEAN.MaxLength = 13;
+            this.txtBoxEAN.MaxLength = 25;
             this.txtBoxEAN.Name = "txtBoxEAN";
             this.txtBoxEAN.ReadOnly = true;
             this.txtBoxEAN.ShortcutsEnabled = false;
@@ -734,6 +735,27 @@
     "- Open Cash Drawer | N - No Sale";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnRetail
+            // 
+            this.btnRetail.BackColor = System.Drawing.Color.Plum;
+            this.btnRetail.FlatAppearance.BorderColor = System.Drawing.Color.Azure;
+            this.btnRetail.FlatAppearance.BorderSize = 0;
+            this.btnRetail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetail.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetail.ForeColor = System.Drawing.Color.Black;
+            this.btnRetail.Image = ((System.Drawing.Image)(resources.GetObject("btnRetail.Image")));
+            this.btnRetail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRetail.Location = new System.Drawing.Point(298, 112);
+            this.btnRetail.Name = "btnRetail";
+            this.btnRetail.Size = new System.Drawing.Size(136, 37);
+            this.btnRetail.TabIndex = 42;
+            this.btnRetail.Text = "(F3) Retail Trans";
+            this.btnRetail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRetail.UseVisualStyleBackColor = false;
+            this.btnRetail.Visible = false;
+            this.btnRetail.Click += new System.EventHandler(this.btnRetail_Click);
+            // 
             // frmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,6 +763,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 748);
             this.ControlBox = false;
+            this.Controls.Add(this.btnRetail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTAXamt);
             this.Controls.Add(this.label12);
@@ -850,5 +873,6 @@
         private System.Windows.Forms.ListView lviewPOS;
         private System.Drawing.Printing.PrintDocument printDocument2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRetail;
     }
 }

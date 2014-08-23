@@ -1432,6 +1432,22 @@
   <metadata name="label2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="btnRetail.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="btnRetail.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAZVJREFUaEPt168vRlEcx/EnCIIgCIIgCIIgCIIoCKIgCKIgCoJgEwRBFAVR8CeI
+        giAIgiCIgiAIAp+3udvZ2cf1zHavr+372V7lPme733Pu+fUMMplMJpPJZOJlU87kVu7kXLZlREJnWi7l
+        /Rs3Mi8hMy6P4govvQgdDZdTcQU7fKVQmRFXaJtlCZM1cUW22ZEwORBXZBumXJiwRboi2xxJmCyIK7IN
+        0y5MRoUDyxXqPMmEhMqivIkruBZq9Mtsyau4okEHWfChMyscVPXXuBa+0r8J64LFTdFjPMh0HKYOi5Or
+        dGNJeF4+W5c5CXG15gbKicoNs5zvOBGmEdmV+ncW+4VMyZ9kRdquz4dCBxhpdifXBs+yIb2G+7wb9Roj
+        T0fdbyV2rN52KEb0SlwhJYqaFHIvrk3pQXrZrVbFFVAr/7QwnVybGpfCzrMv7uU1pk+TYaYRerlis3O4
+        l9f4Uk1YM65NjT/9nWeY+QxO4SasG9emxjroPLzEvbx2LM3htff17CehOvAbvXQgk8lkMplM5jODwQew
+        60i8vmO+2QAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
