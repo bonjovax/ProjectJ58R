@@ -37,6 +37,54 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dtCDR = new System.Windows.Forms.DateTimePicker();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnFinale = new System.Windows.Forms.Button();
+            this.rdFinale = new System.Windows.Forms.TextBox();
+            this.btnCalcCoins = new System.Windows.Forms.Button();
+            this.rdTotalCoins = new System.Windows.Forms.TextBox();
+            this.btnCalcBills = new System.Windows.Forms.Button();
+            this.rdTotalBills = new System.Windows.Forms.TextBox();
+            this.rdTwentyFC = new System.Windows.Forms.TextBox();
+            this.rdOne = new System.Windows.Forms.TextBox();
+            this.rdFive = new System.Windows.Forms.TextBox();
+            this.rdTen = new System.Windows.Forms.TextBox();
+            this.rdTwenty = new System.Windows.Forms.TextBox();
+            this.rdFifty = new System.Windows.Forms.TextBox();
+            this.rdOneH = new System.Windows.Forms.TextBox();
+            this.rdTwoH = new System.Windows.Forms.TextBox();
+            this.rdFiveH = new System.Windows.Forms.TextBox();
+            this.rdThousand = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBoxTwentyFC = new System.Windows.Forms.TextBox();
+            this.txtBoxOne = new System.Windows.Forms.TextBox();
+            this.txtBoxFive = new System.Windows.Forms.TextBox();
+            this.txtBoxTen = new System.Windows.Forms.TextBox();
+            this.txtBoxTwenty = new System.Windows.Forms.TextBox();
+            this.txtBoxFifty = new System.Windows.Forms.TextBox();
+            this.txtBoxOneH = new System.Windows.Forms.TextBox();
+            this.txtBoxTwoH = new System.Windows.Forms.TextBox();
+            this.txtBoxFiveH = new System.Windows.Forms.TextBox();
+            this.txtBoxThousand = new System.Windows.Forms.TextBox();
+            this.lblTwentyFC = new System.Windows.Forms.Label();
+            this.lblOne = new System.Windows.Forms.Label();
+            this.lblFive = new System.Windows.Forms.Label();
+            this.lblTen = new System.Windows.Forms.Label();
+            this.lblTwenty = new System.Windows.Forms.Label();
+            this.lblFifty = new System.Windows.Forms.Label();
+            this.lblOneH = new System.Windows.Forms.Label();
+            this.lblTwoH = new System.Windows.Forms.Label();
+            this.lblFiveH = new System.Windows.Forms.Label();
+            this.lblThousand = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnPrintX = new System.Windows.Forms.Button();
             this.cBTerminalX = new System.Windows.Forms.ComboBox();
@@ -64,58 +112,6 @@
             this.dtSDR = new System.Windows.Forms.DateTimePicker();
             this.printX = new System.Drawing.Printing.PrintDocument();
             this.printZ = new System.Drawing.Printing.PrintDocument();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblThousand = new System.Windows.Forms.Label();
-            this.lblFiveH = new System.Windows.Forms.Label();
-            this.lblTwoH = new System.Windows.Forms.Label();
-            this.lblOneH = new System.Windows.Forms.Label();
-            this.lblFifty = new System.Windows.Forms.Label();
-            this.lblTwenty = new System.Windows.Forms.Label();
-            this.lblTwentyFC = new System.Windows.Forms.Label();
-            this.lblOne = new System.Windows.Forms.Label();
-            this.lblFive = new System.Windows.Forms.Label();
-            this.lblTen = new System.Windows.Forms.Label();
-            this.txtBoxThousand = new System.Windows.Forms.TextBox();
-            this.txtBoxFiveH = new System.Windows.Forms.TextBox();
-            this.txtBoxTwoH = new System.Windows.Forms.TextBox();
-            this.txtBoxOneH = new System.Windows.Forms.TextBox();
-            this.txtBoxFifty = new System.Windows.Forms.TextBox();
-            this.txtBoxTwenty = new System.Windows.Forms.TextBox();
-            this.txtBoxTen = new System.Windows.Forms.TextBox();
-            this.txtBoxFive = new System.Windows.Forms.TextBox();
-            this.txtBoxOne = new System.Windows.Forms.TextBox();
-            this.txtBoxTwentyFC = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.rdThousand = new System.Windows.Forms.TextBox();
-            this.rdFiveH = new System.Windows.Forms.TextBox();
-            this.rdTwoH = new System.Windows.Forms.TextBox();
-            this.rdOneH = new System.Windows.Forms.TextBox();
-            this.rdFifty = new System.Windows.Forms.TextBox();
-            this.rdTwenty = new System.Windows.Forms.TextBox();
-            this.rdTen = new System.Windows.Forms.TextBox();
-            this.rdFive = new System.Windows.Forms.TextBox();
-            this.rdOne = new System.Windows.Forms.TextBox();
-            this.rdTwentyFC = new System.Windows.Forms.TextBox();
-            this.rdTotalBills = new System.Windows.Forms.TextBox();
-            this.btnCalcBills = new System.Windows.Forms.Button();
-            this.btnCalcCoins = new System.Windows.Forms.Button();
-            this.rdTotalCoins = new System.Windows.Forms.TextBox();
-            this.btnFinale = new System.Windows.Forms.Button();
-            this.rdFinale = new System.Windows.Forms.TextBox();
-            this.cBCC = new System.Windows.Forms.ComboBox();
-            this.lblCC = new System.Windows.Forms.Label();
-            this.rdCashDrawerBal = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.printCashCount = new System.Drawing.Printing.PrintDocument();
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -130,9 +126,9 @@
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -232,10 +228,6 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(52)))), ((int)(((byte)(50)))));
-            this.tabPage6.Controls.Add(this.label8);
-            this.tabPage6.Controls.Add(this.rdCashDrawerBal);
-            this.tabPage6.Controls.Add(this.cBCC);
-            this.tabPage6.Controls.Add(this.lblCC);
             this.tabPage6.Controls.Add(this.btnFinale);
             this.tabPage6.Controls.Add(this.rdFinale);
             this.tabPage6.Controls.Add(this.btnCalcCoins);
@@ -290,6 +282,616 @@
             this.tabPage6.Size = new System.Drawing.Size(739, 420);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Cash Counting";
+            // 
+            // btnFinale
+            // 
+            this.btnFinale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(29)))), ((int)(((byte)(71)))));
+            this.btnFinale.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinale.Enabled = false;
+            this.btnFinale.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(52)))), ((int)(((byte)(50)))));
+            this.btnFinale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinale.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinale.ForeColor = System.Drawing.Color.White;
+            this.btnFinale.Image = ((System.Drawing.Image)(resources.GetObject("btnFinale.Image")));
+            this.btnFinale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFinale.Location = new System.Drawing.Point(286, 284);
+            this.btnFinale.Name = "btnFinale";
+            this.btnFinale.Size = new System.Drawing.Size(208, 58);
+            this.btnFinale.TabIndex = 47;
+            this.btnFinale.Text = "Compute Final";
+            this.btnFinale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFinale.UseVisualStyleBackColor = false;
+            this.btnFinale.Click += new System.EventHandler(this.btnFinale_Click);
+            // 
+            // rdFinale
+            // 
+            this.rdFinale.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdFinale.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFinale.Location = new System.Drawing.Point(500, 294);
+            this.rdFinale.MaxLength = 30;
+            this.rdFinale.Name = "rdFinale";
+            this.rdFinale.ReadOnly = true;
+            this.rdFinale.Size = new System.Drawing.Size(179, 39);
+            this.rdFinale.TabIndex = 46;
+            this.rdFinale.Text = "0.00";
+            this.rdFinale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnCalcCoins
+            // 
+            this.btnCalcCoins.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(0)))));
+            this.btnCalcCoins.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCalcCoins.Enabled = false;
+            this.btnCalcCoins.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(52)))), ((int)(((byte)(50)))));
+            this.btnCalcCoins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalcCoins.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcCoins.ForeColor = System.Drawing.Color.White;
+            this.btnCalcCoins.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcCoins.Image")));
+            this.btnCalcCoins.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalcCoins.Location = new System.Drawing.Point(360, 217);
+            this.btnCalcCoins.Name = "btnCalcCoins";
+            this.btnCalcCoins.Size = new System.Drawing.Size(154, 50);
+            this.btnCalcCoins.TabIndex = 45;
+            this.btnCalcCoins.Text = "Calculate";
+            this.btnCalcCoins.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCalcCoins.UseVisualStyleBackColor = false;
+            this.btnCalcCoins.Click += new System.EventHandler(this.btnCalcCoins_Click);
+            // 
+            // rdTotalCoins
+            // 
+            this.rdTotalCoins.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdTotalCoins.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTotalCoins.Location = new System.Drawing.Point(519, 229);
+            this.rdTotalCoins.MaxLength = 30;
+            this.rdTotalCoins.Name = "rdTotalCoins";
+            this.rdTotalCoins.ReadOnly = true;
+            this.rdTotalCoins.Size = new System.Drawing.Size(146, 26);
+            this.rdTotalCoins.TabIndex = 44;
+            this.rdTotalCoins.Text = "0.00";
+            this.rdTotalCoins.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnCalcBills
+            // 
+            this.btnCalcBills.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(0)))));
+            this.btnCalcBills.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCalcBills.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(52)))), ((int)(((byte)(50)))));
+            this.btnCalcBills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalcBills.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcBills.ForeColor = System.Drawing.Color.White;
+            this.btnCalcBills.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcBills.Image")));
+            this.btnCalcBills.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalcBills.Location = new System.Drawing.Point(46, 217);
+            this.btnCalcBills.Name = "btnCalcBills";
+            this.btnCalcBills.Size = new System.Drawing.Size(154, 50);
+            this.btnCalcBills.TabIndex = 43;
+            this.btnCalcBills.Text = "Calculate";
+            this.btnCalcBills.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCalcBills.UseVisualStyleBackColor = false;
+            this.btnCalcBills.Click += new System.EventHandler(this.btnCalcBills_Click);
+            // 
+            // rdTotalBills
+            // 
+            this.rdTotalBills.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdTotalBills.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTotalBills.Location = new System.Drawing.Point(205, 229);
+            this.rdTotalBills.MaxLength = 30;
+            this.rdTotalBills.Name = "rdTotalBills";
+            this.rdTotalBills.ReadOnly = true;
+            this.rdTotalBills.Size = new System.Drawing.Size(146, 26);
+            this.rdTotalBills.TabIndex = 42;
+            this.rdTotalBills.Text = "0.00";
+            this.rdTotalBills.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdTwentyFC
+            // 
+            this.rdTwentyFC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdTwentyFC.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTwentyFC.Location = new System.Drawing.Point(545, 132);
+            this.rdTwentyFC.MaxLength = 30;
+            this.rdTwentyFC.Name = "rdTwentyFC";
+            this.rdTwentyFC.ReadOnly = true;
+            this.rdTwentyFC.Size = new System.Drawing.Size(98, 26);
+            this.rdTwentyFC.TabIndex = 41;
+            this.rdTwentyFC.Text = "0.00";
+            this.rdTwentyFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdOne
+            // 
+            this.rdOne.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdOne.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdOne.Location = new System.Drawing.Point(545, 104);
+            this.rdOne.MaxLength = 30;
+            this.rdOne.Name = "rdOne";
+            this.rdOne.ReadOnly = true;
+            this.rdOne.Size = new System.Drawing.Size(98, 26);
+            this.rdOne.TabIndex = 40;
+            this.rdOne.Text = "0.00";
+            this.rdOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdFive
+            // 
+            this.rdFive.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdFive.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFive.Location = new System.Drawing.Point(545, 76);
+            this.rdFive.MaxLength = 30;
+            this.rdFive.Name = "rdFive";
+            this.rdFive.ReadOnly = true;
+            this.rdFive.Size = new System.Drawing.Size(98, 26);
+            this.rdFive.TabIndex = 39;
+            this.rdFive.Text = "0.00";
+            this.rdFive.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdTen
+            // 
+            this.rdTen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdTen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTen.Location = new System.Drawing.Point(545, 48);
+            this.rdTen.MaxLength = 30;
+            this.rdTen.Name = "rdTen";
+            this.rdTen.ReadOnly = true;
+            this.rdTen.Size = new System.Drawing.Size(98, 26);
+            this.rdTen.TabIndex = 38;
+            this.rdTen.Text = "0.00";
+            this.rdTen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdTwenty
+            // 
+            this.rdTwenty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdTwenty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTwenty.Location = new System.Drawing.Point(231, 188);
+            this.rdTwenty.MaxLength = 30;
+            this.rdTwenty.Name = "rdTwenty";
+            this.rdTwenty.ReadOnly = true;
+            this.rdTwenty.Size = new System.Drawing.Size(98, 26);
+            this.rdTwenty.TabIndex = 37;
+            this.rdTwenty.Text = "0.00";
+            this.rdTwenty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdFifty
+            // 
+            this.rdFifty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdFifty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFifty.Location = new System.Drawing.Point(231, 160);
+            this.rdFifty.MaxLength = 30;
+            this.rdFifty.Name = "rdFifty";
+            this.rdFifty.ReadOnly = true;
+            this.rdFifty.Size = new System.Drawing.Size(98, 26);
+            this.rdFifty.TabIndex = 36;
+            this.rdFifty.Text = "0.00";
+            this.rdFifty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdOneH
+            // 
+            this.rdOneH.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdOneH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdOneH.Location = new System.Drawing.Point(231, 132);
+            this.rdOneH.MaxLength = 30;
+            this.rdOneH.Name = "rdOneH";
+            this.rdOneH.ReadOnly = true;
+            this.rdOneH.Size = new System.Drawing.Size(98, 26);
+            this.rdOneH.TabIndex = 35;
+            this.rdOneH.Text = "0.00";
+            this.rdOneH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdTwoH
+            // 
+            this.rdTwoH.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdTwoH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTwoH.Location = new System.Drawing.Point(231, 104);
+            this.rdTwoH.MaxLength = 30;
+            this.rdTwoH.Name = "rdTwoH";
+            this.rdTwoH.ReadOnly = true;
+            this.rdTwoH.Size = new System.Drawing.Size(98, 26);
+            this.rdTwoH.TabIndex = 34;
+            this.rdTwoH.Text = "0.00";
+            this.rdTwoH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdFiveH
+            // 
+            this.rdFiveH.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdFiveH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFiveH.Location = new System.Drawing.Point(231, 76);
+            this.rdFiveH.MaxLength = 30;
+            this.rdFiveH.Name = "rdFiveH";
+            this.rdFiveH.ReadOnly = true;
+            this.rdFiveH.Size = new System.Drawing.Size(98, 26);
+            this.rdFiveH.TabIndex = 33;
+            this.rdFiveH.Text = "0.00";
+            this.rdFiveH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rdThousand
+            // 
+            this.rdThousand.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdThousand.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdThousand.Location = new System.Drawing.Point(231, 48);
+            this.rdThousand.MaxLength = 30;
+            this.rdThousand.Name = "rdThousand";
+            this.rdThousand.ReadOnly = true;
+            this.rdThousand.Size = new System.Drawing.Size(98, 26);
+            this.rdThousand.TabIndex = 32;
+            this.rdThousand.Text = "0.00";
+            this.rdThousand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(517, 134);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(21, 21);
+            this.label27.TabIndex = 31;
+            this.label27.Text = "=";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(517, 106);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(21, 21);
+            this.label26.TabIndex = 30;
+            this.label26.Text = "=";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(517, 77);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(21, 21);
+            this.label25.TabIndex = 29;
+            this.label25.Text = "=";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(517, 51);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(21, 21);
+            this.label24.TabIndex = 28;
+            this.label24.Text = "=";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(204, 190);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(21, 21);
+            this.label23.TabIndex = 27;
+            this.label23.Text = "=";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(204, 162);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(21, 21);
+            this.label22.TabIndex = 26;
+            this.label22.Text = "=";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(204, 133);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(21, 21);
+            this.label21.TabIndex = 25;
+            this.label21.Text = "=";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(204, 106);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(21, 21);
+            this.label20.TabIndex = 24;
+            this.label20.Text = "=";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(204, 79);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(21, 21);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "=";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(204, 51);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(21, 21);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "=";
+            // 
+            // txtBoxTwentyFC
+            // 
+            this.txtBoxTwentyFC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxTwentyFC.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxTwentyFC.Location = new System.Drawing.Point(424, 132);
+            this.txtBoxTwentyFC.MaxLength = 3;
+            this.txtBoxTwentyFC.Name = "txtBoxTwentyFC";
+            this.txtBoxTwentyFC.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxTwentyFC.TabIndex = 21;
+            this.txtBoxTwentyFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxTwentyFC.TextChanged += new System.EventHandler(this.txtBoxTwentyFC_TextChanged);
+            this.txtBoxTwentyFC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTwentyFC_KeyDown);
+            this.txtBoxTwentyFC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTwentyFC_KeyPress);
+            // 
+            // txtBoxOne
+            // 
+            this.txtBoxOne.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxOne.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxOne.Location = new System.Drawing.Point(424, 104);
+            this.txtBoxOne.MaxLength = 3;
+            this.txtBoxOne.Name = "txtBoxOne";
+            this.txtBoxOne.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxOne.TabIndex = 20;
+            this.txtBoxOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxOne.TextChanged += new System.EventHandler(this.txtBoxOne_TextChanged);
+            this.txtBoxOne.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxOne_KeyDown);
+            this.txtBoxOne.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxOne_KeyPress);
+            // 
+            // txtBoxFive
+            // 
+            this.txtBoxFive.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxFive.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxFive.Location = new System.Drawing.Point(424, 76);
+            this.txtBoxFive.MaxLength = 3;
+            this.txtBoxFive.Name = "txtBoxFive";
+            this.txtBoxFive.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxFive.TabIndex = 19;
+            this.txtBoxFive.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxFive.TextChanged += new System.EventHandler(this.txtBoxFive_TextChanged);
+            this.txtBoxFive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxFive_KeyDown);
+            this.txtBoxFive.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxFive_KeyPress);
+            // 
+            // txtBoxTen
+            // 
+            this.txtBoxTen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxTen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxTen.Location = new System.Drawing.Point(424, 48);
+            this.txtBoxTen.MaxLength = 3;
+            this.txtBoxTen.Name = "txtBoxTen";
+            this.txtBoxTen.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxTen.TabIndex = 18;
+            this.txtBoxTen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxTen.TextChanged += new System.EventHandler(this.txtBoxTen_TextChanged);
+            this.txtBoxTen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTen_KeyDown);
+            this.txtBoxTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTen_KeyPress);
+            // 
+            // txtBoxTwenty
+            // 
+            this.txtBoxTwenty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxTwenty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxTwenty.Location = new System.Drawing.Point(112, 188);
+            this.txtBoxTwenty.MaxLength = 3;
+            this.txtBoxTwenty.Name = "txtBoxTwenty";
+            this.txtBoxTwenty.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxTwenty.TabIndex = 17;
+            this.txtBoxTwenty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxTwenty.TextChanged += new System.EventHandler(this.txtBoxTwenty_TextChanged);
+            this.txtBoxTwenty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTwenty_KeyDown);
+            this.txtBoxTwenty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTwenty_KeyPress);
+            // 
+            // txtBoxFifty
+            // 
+            this.txtBoxFifty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxFifty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxFifty.Location = new System.Drawing.Point(112, 160);
+            this.txtBoxFifty.MaxLength = 3;
+            this.txtBoxFifty.Name = "txtBoxFifty";
+            this.txtBoxFifty.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxFifty.TabIndex = 16;
+            this.txtBoxFifty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxFifty.TextChanged += new System.EventHandler(this.txtBoxFifty_TextChanged);
+            this.txtBoxFifty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxFifty_KeyDown);
+            this.txtBoxFifty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxFifty_KeyPress);
+            // 
+            // txtBoxOneH
+            // 
+            this.txtBoxOneH.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxOneH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxOneH.Location = new System.Drawing.Point(112, 132);
+            this.txtBoxOneH.MaxLength = 3;
+            this.txtBoxOneH.Name = "txtBoxOneH";
+            this.txtBoxOneH.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxOneH.TabIndex = 15;
+            this.txtBoxOneH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxOneH.TextChanged += new System.EventHandler(this.txtBoxOneH_TextChanged);
+            this.txtBoxOneH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxOneH_KeyDown);
+            this.txtBoxOneH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxOneH_KeyPress);
+            // 
+            // txtBoxTwoH
+            // 
+            this.txtBoxTwoH.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxTwoH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxTwoH.Location = new System.Drawing.Point(112, 104);
+            this.txtBoxTwoH.MaxLength = 3;
+            this.txtBoxTwoH.Name = "txtBoxTwoH";
+            this.txtBoxTwoH.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxTwoH.TabIndex = 14;
+            this.txtBoxTwoH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxTwoH.TextChanged += new System.EventHandler(this.txtBoxTwoH_TextChanged);
+            this.txtBoxTwoH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTwoH_KeyDown);
+            this.txtBoxTwoH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTwoH_KeyPress);
+            // 
+            // txtBoxFiveH
+            // 
+            this.txtBoxFiveH.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxFiveH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxFiveH.Location = new System.Drawing.Point(112, 76);
+            this.txtBoxFiveH.MaxLength = 3;
+            this.txtBoxFiveH.Name = "txtBoxFiveH";
+            this.txtBoxFiveH.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxFiveH.TabIndex = 13;
+            this.txtBoxFiveH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxFiveH.TextChanged += new System.EventHandler(this.txtBoxFiveH_TextChanged);
+            this.txtBoxFiveH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxFiveH_KeyDown);
+            this.txtBoxFiveH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxFiveH_KeyPress);
+            // 
+            // txtBoxThousand
+            // 
+            this.txtBoxThousand.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxThousand.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxThousand.Location = new System.Drawing.Point(112, 48);
+            this.txtBoxThousand.MaxLength = 3;
+            this.txtBoxThousand.Name = "txtBoxThousand";
+            this.txtBoxThousand.Size = new System.Drawing.Size(86, 26);
+            this.txtBoxThousand.TabIndex = 12;
+            this.txtBoxThousand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxThousand.TextChanged += new System.EventHandler(this.txtBoxThousand_TextChanged);
+            this.txtBoxThousand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxThousand_KeyDown);
+            this.txtBoxThousand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxThousand_KeyPress);
+            // 
+            // lblTwentyFC
+            // 
+            this.lblTwentyFC.AutoSize = true;
+            this.lblTwentyFC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTwentyFC.ForeColor = System.Drawing.Color.White;
+            this.lblTwentyFC.Location = new System.Drawing.Point(382, 135);
+            this.lblTwentyFC.Name = "lblTwentyFC";
+            this.lblTwentyFC.Size = new System.Drawing.Size(31, 21);
+            this.lblTwentyFC.TabIndex = 11;
+            this.lblTwentyFC.Text = ".25";
+            // 
+            // lblOne
+            // 
+            this.lblOne.AutoSize = true;
+            this.lblOne.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOne.ForeColor = System.Drawing.Color.White;
+            this.lblOne.Location = new System.Drawing.Point(392, 108);
+            this.lblOne.Name = "lblOne";
+            this.lblOne.Size = new System.Drawing.Size(19, 21);
+            this.lblOne.TabIndex = 10;
+            this.lblOne.Text = "1";
+            // 
+            // lblFive
+            // 
+            this.lblFive.AutoSize = true;
+            this.lblFive.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFive.ForeColor = System.Drawing.Color.White;
+            this.lblFive.Location = new System.Drawing.Point(392, 79);
+            this.lblFive.Name = "lblFive";
+            this.lblFive.Size = new System.Drawing.Size(19, 21);
+            this.lblFive.TabIndex = 9;
+            this.lblFive.Text = "5";
+            // 
+            // lblTen
+            // 
+            this.lblTen.AutoSize = true;
+            this.lblTen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTen.ForeColor = System.Drawing.Color.White;
+            this.lblTen.Location = new System.Drawing.Point(382, 52);
+            this.lblTen.Name = "lblTen";
+            this.lblTen.Size = new System.Drawing.Size(28, 21);
+            this.lblTen.TabIndex = 8;
+            this.lblTen.Text = "10";
+            // 
+            // lblTwenty
+            // 
+            this.lblTwenty.AutoSize = true;
+            this.lblTwenty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTwenty.ForeColor = System.Drawing.Color.White;
+            this.lblTwenty.Location = new System.Drawing.Point(62, 190);
+            this.lblTwenty.Name = "lblTwenty";
+            this.lblTwenty.Size = new System.Drawing.Size(28, 21);
+            this.lblTwenty.TabIndex = 7;
+            this.lblTwenty.Text = "20";
+            // 
+            // lblFifty
+            // 
+            this.lblFifty.AutoSize = true;
+            this.lblFifty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFifty.ForeColor = System.Drawing.Color.White;
+            this.lblFifty.Location = new System.Drawing.Point(62, 163);
+            this.lblFifty.Name = "lblFifty";
+            this.lblFifty.Size = new System.Drawing.Size(28, 21);
+            this.lblFifty.TabIndex = 6;
+            this.lblFifty.Text = "50";
+            // 
+            // lblOneH
+            // 
+            this.lblOneH.AutoSize = true;
+            this.lblOneH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOneH.ForeColor = System.Drawing.Color.White;
+            this.lblOneH.Location = new System.Drawing.Point(53, 134);
+            this.lblOneH.Name = "lblOneH";
+            this.lblOneH.Size = new System.Drawing.Size(37, 21);
+            this.lblOneH.TabIndex = 5;
+            this.lblOneH.Text = "100";
+            // 
+            // lblTwoH
+            // 
+            this.lblTwoH.AutoSize = true;
+            this.lblTwoH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTwoH.ForeColor = System.Drawing.Color.White;
+            this.lblTwoH.Location = new System.Drawing.Point(53, 106);
+            this.lblTwoH.Name = "lblTwoH";
+            this.lblTwoH.Size = new System.Drawing.Size(37, 21);
+            this.lblTwoH.TabIndex = 4;
+            this.lblTwoH.Text = "200";
+            // 
+            // lblFiveH
+            // 
+            this.lblFiveH.AutoSize = true;
+            this.lblFiveH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiveH.ForeColor = System.Drawing.Color.White;
+            this.lblFiveH.Location = new System.Drawing.Point(53, 79);
+            this.lblFiveH.Name = "lblFiveH";
+            this.lblFiveH.Size = new System.Drawing.Size(37, 21);
+            this.lblFiveH.TabIndex = 3;
+            this.lblFiveH.Text = "500";
+            // 
+            // lblThousand
+            // 
+            this.lblThousand.AutoSize = true;
+            this.lblThousand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThousand.ForeColor = System.Drawing.Color.White;
+            this.lblThousand.Location = new System.Drawing.Point(41, 51);
+            this.lblThousand.Name = "lblThousand";
+            this.lblThousand.Size = new System.Drawing.Size(49, 21);
+            this.lblThousand.TabIndex = 2;
+            this.lblThousand.Text = "1,000";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(358, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 30);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Coins";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(26, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 30);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Bills";
             // 
             // tabPage1
             // 
@@ -659,667 +1261,6 @@
             this.dtSDR.Size = new System.Drawing.Size(251, 33);
             this.dtSDR.TabIndex = 13;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(26, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 30);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Bills";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(358, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 30);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Coins";
-            // 
-            // lblThousand
-            // 
-            this.lblThousand.AutoSize = true;
-            this.lblThousand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThousand.ForeColor = System.Drawing.Color.White;
-            this.lblThousand.Location = new System.Drawing.Point(41, 51);
-            this.lblThousand.Name = "lblThousand";
-            this.lblThousand.Size = new System.Drawing.Size(49, 21);
-            this.lblThousand.TabIndex = 2;
-            this.lblThousand.Text = "1,000";
-            // 
-            // lblFiveH
-            // 
-            this.lblFiveH.AutoSize = true;
-            this.lblFiveH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiveH.ForeColor = System.Drawing.Color.White;
-            this.lblFiveH.Location = new System.Drawing.Point(53, 79);
-            this.lblFiveH.Name = "lblFiveH";
-            this.lblFiveH.Size = new System.Drawing.Size(37, 21);
-            this.lblFiveH.TabIndex = 3;
-            this.lblFiveH.Text = "500";
-            // 
-            // lblTwoH
-            // 
-            this.lblTwoH.AutoSize = true;
-            this.lblTwoH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTwoH.ForeColor = System.Drawing.Color.White;
-            this.lblTwoH.Location = new System.Drawing.Point(53, 106);
-            this.lblTwoH.Name = "lblTwoH";
-            this.lblTwoH.Size = new System.Drawing.Size(37, 21);
-            this.lblTwoH.TabIndex = 4;
-            this.lblTwoH.Text = "200";
-            // 
-            // lblOneH
-            // 
-            this.lblOneH.AutoSize = true;
-            this.lblOneH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOneH.ForeColor = System.Drawing.Color.White;
-            this.lblOneH.Location = new System.Drawing.Point(53, 134);
-            this.lblOneH.Name = "lblOneH";
-            this.lblOneH.Size = new System.Drawing.Size(37, 21);
-            this.lblOneH.TabIndex = 5;
-            this.lblOneH.Text = "100";
-            // 
-            // lblFifty
-            // 
-            this.lblFifty.AutoSize = true;
-            this.lblFifty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFifty.ForeColor = System.Drawing.Color.White;
-            this.lblFifty.Location = new System.Drawing.Point(62, 163);
-            this.lblFifty.Name = "lblFifty";
-            this.lblFifty.Size = new System.Drawing.Size(28, 21);
-            this.lblFifty.TabIndex = 6;
-            this.lblFifty.Text = "50";
-            // 
-            // lblTwenty
-            // 
-            this.lblTwenty.AutoSize = true;
-            this.lblTwenty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTwenty.ForeColor = System.Drawing.Color.White;
-            this.lblTwenty.Location = new System.Drawing.Point(62, 190);
-            this.lblTwenty.Name = "lblTwenty";
-            this.lblTwenty.Size = new System.Drawing.Size(28, 21);
-            this.lblTwenty.TabIndex = 7;
-            this.lblTwenty.Text = "20";
-            // 
-            // lblTwentyFC
-            // 
-            this.lblTwentyFC.AutoSize = true;
-            this.lblTwentyFC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTwentyFC.ForeColor = System.Drawing.Color.White;
-            this.lblTwentyFC.Location = new System.Drawing.Point(382, 135);
-            this.lblTwentyFC.Name = "lblTwentyFC";
-            this.lblTwentyFC.Size = new System.Drawing.Size(31, 21);
-            this.lblTwentyFC.TabIndex = 11;
-            this.lblTwentyFC.Text = ".25";
-            // 
-            // lblOne
-            // 
-            this.lblOne.AutoSize = true;
-            this.lblOne.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOne.ForeColor = System.Drawing.Color.White;
-            this.lblOne.Location = new System.Drawing.Point(392, 108);
-            this.lblOne.Name = "lblOne";
-            this.lblOne.Size = new System.Drawing.Size(19, 21);
-            this.lblOne.TabIndex = 10;
-            this.lblOne.Text = "1";
-            // 
-            // lblFive
-            // 
-            this.lblFive.AutoSize = true;
-            this.lblFive.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFive.ForeColor = System.Drawing.Color.White;
-            this.lblFive.Location = new System.Drawing.Point(392, 79);
-            this.lblFive.Name = "lblFive";
-            this.lblFive.Size = new System.Drawing.Size(19, 21);
-            this.lblFive.TabIndex = 9;
-            this.lblFive.Text = "5";
-            // 
-            // lblTen
-            // 
-            this.lblTen.AutoSize = true;
-            this.lblTen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTen.ForeColor = System.Drawing.Color.White;
-            this.lblTen.Location = new System.Drawing.Point(382, 52);
-            this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(28, 21);
-            this.lblTen.TabIndex = 8;
-            this.lblTen.Text = "10";
-            // 
-            // txtBoxThousand
-            // 
-            this.txtBoxThousand.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxThousand.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxThousand.Location = new System.Drawing.Point(112, 48);
-            this.txtBoxThousand.MaxLength = 3;
-            this.txtBoxThousand.Name = "txtBoxThousand";
-            this.txtBoxThousand.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxThousand.TabIndex = 12;
-            this.txtBoxThousand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxThousand.TextChanged += new System.EventHandler(this.txtBoxThousand_TextChanged);
-            this.txtBoxThousand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxThousand_KeyDown);
-            this.txtBoxThousand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxThousand_KeyPress);
-            // 
-            // txtBoxFiveH
-            // 
-            this.txtBoxFiveH.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxFiveH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxFiveH.Location = new System.Drawing.Point(112, 76);
-            this.txtBoxFiveH.MaxLength = 3;
-            this.txtBoxFiveH.Name = "txtBoxFiveH";
-            this.txtBoxFiveH.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxFiveH.TabIndex = 13;
-            this.txtBoxFiveH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxFiveH.TextChanged += new System.EventHandler(this.txtBoxFiveH_TextChanged);
-            this.txtBoxFiveH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxFiveH_KeyDown);
-            this.txtBoxFiveH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxFiveH_KeyPress);
-            // 
-            // txtBoxTwoH
-            // 
-            this.txtBoxTwoH.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxTwoH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxTwoH.Location = new System.Drawing.Point(112, 104);
-            this.txtBoxTwoH.MaxLength = 3;
-            this.txtBoxTwoH.Name = "txtBoxTwoH";
-            this.txtBoxTwoH.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxTwoH.TabIndex = 14;
-            this.txtBoxTwoH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxTwoH.TextChanged += new System.EventHandler(this.txtBoxTwoH_TextChanged);
-            this.txtBoxTwoH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTwoH_KeyDown);
-            this.txtBoxTwoH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTwoH_KeyPress);
-            // 
-            // txtBoxOneH
-            // 
-            this.txtBoxOneH.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxOneH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxOneH.Location = new System.Drawing.Point(112, 132);
-            this.txtBoxOneH.MaxLength = 3;
-            this.txtBoxOneH.Name = "txtBoxOneH";
-            this.txtBoxOneH.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxOneH.TabIndex = 15;
-            this.txtBoxOneH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxOneH.TextChanged += new System.EventHandler(this.txtBoxOneH_TextChanged);
-            this.txtBoxOneH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxOneH_KeyDown);
-            this.txtBoxOneH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxOneH_KeyPress);
-            // 
-            // txtBoxFifty
-            // 
-            this.txtBoxFifty.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxFifty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxFifty.Location = new System.Drawing.Point(112, 160);
-            this.txtBoxFifty.MaxLength = 3;
-            this.txtBoxFifty.Name = "txtBoxFifty";
-            this.txtBoxFifty.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxFifty.TabIndex = 16;
-            this.txtBoxFifty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxFifty.TextChanged += new System.EventHandler(this.txtBoxFifty_TextChanged);
-            this.txtBoxFifty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxFifty_KeyDown);
-            this.txtBoxFifty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxFifty_KeyPress);
-            // 
-            // txtBoxTwenty
-            // 
-            this.txtBoxTwenty.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxTwenty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxTwenty.Location = new System.Drawing.Point(112, 188);
-            this.txtBoxTwenty.MaxLength = 3;
-            this.txtBoxTwenty.Name = "txtBoxTwenty";
-            this.txtBoxTwenty.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxTwenty.TabIndex = 17;
-            this.txtBoxTwenty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxTwenty.TextChanged += new System.EventHandler(this.txtBoxTwenty_TextChanged);
-            this.txtBoxTwenty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTwenty_KeyDown);
-            this.txtBoxTwenty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTwenty_KeyPress);
-            // 
-            // txtBoxTen
-            // 
-            this.txtBoxTen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxTen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxTen.Location = new System.Drawing.Point(424, 48);
-            this.txtBoxTen.MaxLength = 3;
-            this.txtBoxTen.Name = "txtBoxTen";
-            this.txtBoxTen.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxTen.TabIndex = 18;
-            this.txtBoxTen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxTen.TextChanged += new System.EventHandler(this.txtBoxTen_TextChanged);
-            this.txtBoxTen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTen_KeyDown);
-            this.txtBoxTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTen_KeyPress);
-            // 
-            // txtBoxFive
-            // 
-            this.txtBoxFive.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxFive.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxFive.Location = new System.Drawing.Point(424, 76);
-            this.txtBoxFive.MaxLength = 3;
-            this.txtBoxFive.Name = "txtBoxFive";
-            this.txtBoxFive.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxFive.TabIndex = 19;
-            this.txtBoxFive.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxFive.TextChanged += new System.EventHandler(this.txtBoxFive_TextChanged);
-            this.txtBoxFive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxFive_KeyDown);
-            this.txtBoxFive.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxFive_KeyPress);
-            // 
-            // txtBoxOne
-            // 
-            this.txtBoxOne.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxOne.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxOne.Location = new System.Drawing.Point(424, 104);
-            this.txtBoxOne.MaxLength = 3;
-            this.txtBoxOne.Name = "txtBoxOne";
-            this.txtBoxOne.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxOne.TabIndex = 20;
-            this.txtBoxOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxOne.TextChanged += new System.EventHandler(this.txtBoxOne_TextChanged);
-            this.txtBoxOne.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxOne_KeyDown);
-            this.txtBoxOne.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxOne_KeyPress);
-            // 
-            // txtBoxTwentyFC
-            // 
-            this.txtBoxTwentyFC.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxTwentyFC.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxTwentyFC.Location = new System.Drawing.Point(424, 132);
-            this.txtBoxTwentyFC.MaxLength = 3;
-            this.txtBoxTwentyFC.Name = "txtBoxTwentyFC";
-            this.txtBoxTwentyFC.Size = new System.Drawing.Size(86, 26);
-            this.txtBoxTwentyFC.TabIndex = 21;
-            this.txtBoxTwentyFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxTwentyFC.TextChanged += new System.EventHandler(this.txtBoxTwentyFC_TextChanged);
-            this.txtBoxTwentyFC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxTwentyFC_KeyDown);
-            this.txtBoxTwentyFC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxTwentyFC_KeyPress);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(204, 51);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(21, 21);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "=";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(204, 79);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(21, 21);
-            this.label15.TabIndex = 23;
-            this.label15.Text = "=";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(204, 106);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(21, 21);
-            this.label20.TabIndex = 24;
-            this.label20.Text = "=";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(204, 133);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(21, 21);
-            this.label21.TabIndex = 25;
-            this.label21.Text = "=";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(204, 162);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(21, 21);
-            this.label22.TabIndex = 26;
-            this.label22.Text = "=";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(204, 190);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(21, 21);
-            this.label23.TabIndex = 27;
-            this.label23.Text = "=";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(517, 51);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(21, 21);
-            this.label24.TabIndex = 28;
-            this.label24.Text = "=";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(517, 77);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(21, 21);
-            this.label25.TabIndex = 29;
-            this.label25.Text = "=";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(517, 106);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(21, 21);
-            this.label26.TabIndex = 30;
-            this.label26.Text = "=";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(517, 134);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(21, 21);
-            this.label27.TabIndex = 31;
-            this.label27.Text = "=";
-            // 
-            // rdThousand
-            // 
-            this.rdThousand.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdThousand.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdThousand.Location = new System.Drawing.Point(231, 48);
-            this.rdThousand.MaxLength = 30;
-            this.rdThousand.Name = "rdThousand";
-            this.rdThousand.ReadOnly = true;
-            this.rdThousand.Size = new System.Drawing.Size(98, 26);
-            this.rdThousand.TabIndex = 32;
-            this.rdThousand.Text = "0.00";
-            this.rdThousand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdFiveH
-            // 
-            this.rdFiveH.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdFiveH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdFiveH.Location = new System.Drawing.Point(231, 76);
-            this.rdFiveH.MaxLength = 30;
-            this.rdFiveH.Name = "rdFiveH";
-            this.rdFiveH.ReadOnly = true;
-            this.rdFiveH.Size = new System.Drawing.Size(98, 26);
-            this.rdFiveH.TabIndex = 33;
-            this.rdFiveH.Text = "0.00";
-            this.rdFiveH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdTwoH
-            // 
-            this.rdTwoH.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdTwoH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTwoH.Location = new System.Drawing.Point(231, 104);
-            this.rdTwoH.MaxLength = 30;
-            this.rdTwoH.Name = "rdTwoH";
-            this.rdTwoH.ReadOnly = true;
-            this.rdTwoH.Size = new System.Drawing.Size(98, 26);
-            this.rdTwoH.TabIndex = 34;
-            this.rdTwoH.Text = "0.00";
-            this.rdTwoH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdOneH
-            // 
-            this.rdOneH.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdOneH.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdOneH.Location = new System.Drawing.Point(231, 132);
-            this.rdOneH.MaxLength = 30;
-            this.rdOneH.Name = "rdOneH";
-            this.rdOneH.ReadOnly = true;
-            this.rdOneH.Size = new System.Drawing.Size(98, 26);
-            this.rdOneH.TabIndex = 35;
-            this.rdOneH.Text = "0.00";
-            this.rdOneH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdFifty
-            // 
-            this.rdFifty.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdFifty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdFifty.Location = new System.Drawing.Point(231, 160);
-            this.rdFifty.MaxLength = 30;
-            this.rdFifty.Name = "rdFifty";
-            this.rdFifty.ReadOnly = true;
-            this.rdFifty.Size = new System.Drawing.Size(98, 26);
-            this.rdFifty.TabIndex = 36;
-            this.rdFifty.Text = "0.00";
-            this.rdFifty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdTwenty
-            // 
-            this.rdTwenty.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdTwenty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTwenty.Location = new System.Drawing.Point(231, 188);
-            this.rdTwenty.MaxLength = 30;
-            this.rdTwenty.Name = "rdTwenty";
-            this.rdTwenty.ReadOnly = true;
-            this.rdTwenty.Size = new System.Drawing.Size(98, 26);
-            this.rdTwenty.TabIndex = 37;
-            this.rdTwenty.Text = "0.00";
-            this.rdTwenty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdTen
-            // 
-            this.rdTen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdTen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTen.Location = new System.Drawing.Point(545, 48);
-            this.rdTen.MaxLength = 30;
-            this.rdTen.Name = "rdTen";
-            this.rdTen.ReadOnly = true;
-            this.rdTen.Size = new System.Drawing.Size(98, 26);
-            this.rdTen.TabIndex = 38;
-            this.rdTen.Text = "0.00";
-            this.rdTen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdFive
-            // 
-            this.rdFive.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdFive.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdFive.Location = new System.Drawing.Point(545, 76);
-            this.rdFive.MaxLength = 30;
-            this.rdFive.Name = "rdFive";
-            this.rdFive.ReadOnly = true;
-            this.rdFive.Size = new System.Drawing.Size(98, 26);
-            this.rdFive.TabIndex = 39;
-            this.rdFive.Text = "0.00";
-            this.rdFive.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdOne
-            // 
-            this.rdOne.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdOne.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdOne.Location = new System.Drawing.Point(545, 104);
-            this.rdOne.MaxLength = 30;
-            this.rdOne.Name = "rdOne";
-            this.rdOne.ReadOnly = true;
-            this.rdOne.Size = new System.Drawing.Size(98, 26);
-            this.rdOne.TabIndex = 40;
-            this.rdOne.Text = "0.00";
-            this.rdOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdTwentyFC
-            // 
-            this.rdTwentyFC.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdTwentyFC.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTwentyFC.Location = new System.Drawing.Point(545, 132);
-            this.rdTwentyFC.MaxLength = 30;
-            this.rdTwentyFC.Name = "rdTwentyFC";
-            this.rdTwentyFC.ReadOnly = true;
-            this.rdTwentyFC.Size = new System.Drawing.Size(98, 26);
-            this.rdTwentyFC.TabIndex = 41;
-            this.rdTwentyFC.Text = "0.00";
-            this.rdTwentyFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rdTotalBills
-            // 
-            this.rdTotalBills.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdTotalBills.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTotalBills.Location = new System.Drawing.Point(205, 229);
-            this.rdTotalBills.MaxLength = 30;
-            this.rdTotalBills.Name = "rdTotalBills";
-            this.rdTotalBills.ReadOnly = true;
-            this.rdTotalBills.Size = new System.Drawing.Size(146, 26);
-            this.rdTotalBills.TabIndex = 42;
-            this.rdTotalBills.Text = "0.00";
-            this.rdTotalBills.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnCalcBills
-            // 
-            this.btnCalcBills.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(0)))));
-            this.btnCalcBills.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCalcBills.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(52)))), ((int)(((byte)(50)))));
-            this.btnCalcBills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalcBills.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcBills.ForeColor = System.Drawing.Color.White;
-            this.btnCalcBills.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcBills.Image")));
-            this.btnCalcBills.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCalcBills.Location = new System.Drawing.Point(46, 217);
-            this.btnCalcBills.Name = "btnCalcBills";
-            this.btnCalcBills.Size = new System.Drawing.Size(154, 50);
-            this.btnCalcBills.TabIndex = 43;
-            this.btnCalcBills.Text = "Calculate";
-            this.btnCalcBills.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCalcBills.UseVisualStyleBackColor = false;
-            this.btnCalcBills.Click += new System.EventHandler(this.btnCalcBills_Click);
-            // 
-            // btnCalcCoins
-            // 
-            this.btnCalcCoins.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(0)))));
-            this.btnCalcCoins.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCalcCoins.Enabled = false;
-            this.btnCalcCoins.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(52)))), ((int)(((byte)(50)))));
-            this.btnCalcCoins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalcCoins.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcCoins.ForeColor = System.Drawing.Color.White;
-            this.btnCalcCoins.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcCoins.Image")));
-            this.btnCalcCoins.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCalcCoins.Location = new System.Drawing.Point(360, 217);
-            this.btnCalcCoins.Name = "btnCalcCoins";
-            this.btnCalcCoins.Size = new System.Drawing.Size(154, 50);
-            this.btnCalcCoins.TabIndex = 45;
-            this.btnCalcCoins.Text = "Calculate";
-            this.btnCalcCoins.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCalcCoins.UseVisualStyleBackColor = false;
-            this.btnCalcCoins.Click += new System.EventHandler(this.btnCalcCoins_Click);
-            // 
-            // rdTotalCoins
-            // 
-            this.rdTotalCoins.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdTotalCoins.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTotalCoins.Location = new System.Drawing.Point(519, 229);
-            this.rdTotalCoins.MaxLength = 30;
-            this.rdTotalCoins.Name = "rdTotalCoins";
-            this.rdTotalCoins.ReadOnly = true;
-            this.rdTotalCoins.Size = new System.Drawing.Size(146, 26);
-            this.rdTotalCoins.TabIndex = 44;
-            this.rdTotalCoins.Text = "0.00";
-            this.rdTotalCoins.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnFinale
-            // 
-            this.btnFinale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(29)))), ((int)(((byte)(71)))));
-            this.btnFinale.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinale.Enabled = false;
-            this.btnFinale.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(52)))), ((int)(((byte)(50)))));
-            this.btnFinale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinale.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinale.ForeColor = System.Drawing.Color.White;
-            this.btnFinale.Image = ((System.Drawing.Image)(resources.GetObject("btnFinale.Image")));
-            this.btnFinale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFinale.Location = new System.Drawing.Point(286, 284);
-            this.btnFinale.Name = "btnFinale";
-            this.btnFinale.Size = new System.Drawing.Size(208, 58);
-            this.btnFinale.TabIndex = 47;
-            this.btnFinale.Text = "Compute Final";
-            this.btnFinale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFinale.UseVisualStyleBackColor = false;
-            this.btnFinale.Click += new System.EventHandler(this.btnFinale_Click);
-            // 
-            // rdFinale
-            // 
-            this.rdFinale.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdFinale.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdFinale.Location = new System.Drawing.Point(500, 294);
-            this.rdFinale.MaxLength = 30;
-            this.rdFinale.Name = "rdFinale";
-            this.rdFinale.ReadOnly = true;
-            this.rdFinale.Size = new System.Drawing.Size(179, 39);
-            this.rdFinale.TabIndex = 46;
-            this.rdFinale.Text = "0.00";
-            this.rdFinale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cBCC
-            // 
-            this.cBCC.BackColor = System.Drawing.Color.Gainsboro;
-            this.cBCC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cBCC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBCC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cBCC.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBCC.FormattingEnabled = true;
-            this.cBCC.Location = new System.Drawing.Point(242, 373);
-            this.cBCC.Name = "cBCC";
-            this.cBCC.Size = new System.Drawing.Size(251, 33);
-            this.cBCC.TabIndex = 49;
-            this.cBCC.Visible = false;
-            this.cBCC.SelectedIndexChanged += new System.EventHandler(this.cBCC_SelectedIndexChanged);
-            // 
-            // lblCC
-            // 
-            this.lblCC.AutoSize = true;
-            this.lblCC.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCC.ForeColor = System.Drawing.Color.White;
-            this.lblCC.Location = new System.Drawing.Point(290, 345);
-            this.lblCC.Name = "lblCC";
-            this.lblCC.Size = new System.Drawing.Size(141, 25);
-            this.lblCC.TabIndex = 48;
-            this.lblCC.Text = "Select Terminal";
-            this.lblCC.Visible = false;
-            // 
-            // rdCashDrawerBal
-            // 
-            this.rdCashDrawerBal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rdCashDrawerBal.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdCashDrawerBal.Location = new System.Drawing.Point(500, 367);
-            this.rdCashDrawerBal.MaxLength = 30;
-            this.rdCashDrawerBal.Name = "rdCashDrawerBal";
-            this.rdCashDrawerBal.ReadOnly = true;
-            this.rdCashDrawerBal.Size = new System.Drawing.Size(179, 39);
-            this.rdCashDrawerBal.TabIndex = 50;
-            this.rdCashDrawerBal.Text = "0.00";
-            this.rdCashDrawerBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(493, 339);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(191, 25);
-            this.label8.TabIndex = 51;
-            this.label8.Text = "Cash Drawer Balance";
-            // 
             // mdiSalesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1436,12 +1377,8 @@
         private System.Windows.Forms.Label lblThousand;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cBCC;
-        private System.Windows.Forms.Label lblCC;
         private System.Windows.Forms.Button btnFinale;
         private System.Windows.Forms.TextBox rdFinale;
-        private System.Windows.Forms.TextBox rdCashDrawerBal;
-        private System.Windows.Forms.Label label8;
         private System.Drawing.Printing.PrintDocument printCashCount;
     }
 }

@@ -224,43 +224,43 @@ namespace nPOSProj
         {
             frmLogin fl = new frmLogin();
             Graphics graphic = e.Graphics;
-            Font font = new Font("Tahoma", 10);
+            Font font = new Font("FontA11", 9.0f);
 
             float fontHeight = font.GetHeight();
-            int startX = 10;
+            int startX = 32;
             int startY = 10;
 
             #region Header
-            graphic.DrawString(compName, new Font("Tahoma", 14), new SolidBrush(Color.Black), startX, startY);
-            graphic.DrawString(address1, new Font("Tahoma", 11), new SolidBrush(Color.Black), 45, 30);
-            graphic.DrawString(address2, new Font("Tahoma", 11), new SolidBrush(Color.Black), 38, 45);
+            graphic.DrawString(compName, new Font("FontA11", 9.0f, FontStyle.Bold), Brushes.Black, startX, startY);
+            graphic.DrawString(address1, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 45, 30);
+            graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 38, 45);
             //graphic.DrawString(contact, new Font("Tahoma", 11), new SolidBrush(Color.Black), 53, 60);
             //graphic.DrawString("Owned & Operated By: " + store_op, new Font("Tahoma", 11), new SolidBrush(Color.Black), 5, 75);
-            graphic.DrawString("Permit No: " + permit_no, new Font("Tahoma", 11), new SolidBrush(Color.Black), 47, 60);
-            graphic.DrawString("TIN: " + TIN + "" + TaxT, new Font("Tahoma", 11), new SolidBrush(Color.Black), 47, 75);
-            graphic.DrawString("Accreditation No: " + bir.AccreditationNo(), new Font("Tahoma", 7), new SolidBrush(Color.Black), 11, 95);
-            graphic.DrawString("Serial No: " + bir.SerialNo(), new Font("Tahoma", 11), new SolidBrush(Color.Black), 61, 105);
-            graphic.DrawString("Machine Code: " + machine_no, new Font("Tahoma", 11), new SolidBrush(Color.Black), 43, 120);
-            graphic.DrawString("-------------------------------------------", new Font("Tahoma", 11), new SolidBrush(Color.Black), 3, 135);
+            graphic.DrawString("Permit No: " + permit_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 60);
+            graphic.DrawString("TIN: " + TIN + "" + TaxT, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 75);
+            graphic.DrawString("Accreditation No: " + bir.AccreditationNo(), new Font("FontA11", 7.8f), new SolidBrush(Color.Black), 4, 92);
+            graphic.DrawString("Serial No: " + bir.SerialNo(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 81, 105);
+            graphic.DrawString("Machine Code: " + machine_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 120);
+            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
             graphic.DrawString(DateTime.Now.ToString("MMM dd, yyyy") + " " + "(" + DateTime.Now.ToString("ddd") + ")", font, new SolidBrush(Color.Black), 5, 150);
             graphic.DrawString(DateTime.Now.ToString("hh:mm tt"), font, new SolidBrush(Color.Black), 175, 150);
             graphic.DrawString("Cash Status: ", font, new SolidBrush(Color.Black), 5, 175);
             graphic.DrawString(CashStatus, font, new SolidBrush(Color.Black), 85, 175);
             //
             graphic.DrawString("Purpose: ", font, new SolidBrush(Color.Black), 5, 190);
-            graphic.DrawString(txtBoxPurpose.Text, font, new SolidBrush(Color.Black), 70, 190);
+            graphic.DrawString(txtBoxPurpose.Text, font, new SolidBrush(Color.Black), 85, 190);
             //
-            graphic.DrawString("Amount ", new Font("Tahoma", 14), new SolidBrush(Color.Black), 5, 205);
-            graphic.DrawString(Convert.ToDouble(txtBoxAmount.Text).ToString("#,###,##0.00"), new Font("Tahoma", 14), new SolidBrush(Color.Black), 125, 205);
+            graphic.DrawString("Amount ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 5, 205);
+            graphic.DrawString(Convert.ToDouble(txtBoxAmount.Text).ToString("#,###,##0.00"), new Font("FontA11", 9.0f, FontStyle.Bold), new SolidBrush(Color.Black), 85, 205);
             //
-            graphic.DrawString("Drawer Bal.", new Font("Tahoma", 14), new SolidBrush(Color.Black), 5, 230);
-            graphic.DrawString(Convert.ToDouble(lblCID.Text).ToString("#,###,##0.00"), new Font("Tahoma", 14), new SolidBrush(Color.Black), 125, 230);
+            graphic.DrawString("Drawer Bal.", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 5, 230);
+            graphic.DrawString(Convert.ToDouble(lblCID.Text).ToString("#,###,##0.00"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 230);
             //
-            graphic.DrawString("-------------------------------------------", new Font("Tahoma", 11), new SolidBrush(Color.Black), 3, 245);
-            graphic.DrawString("CASHIER: ", new Font("Tahoma", 9), new SolidBrush(Color.Black), 3, 260);
-            graphic.DrawString(frmLogin.User.user_name, new Font("Tahoma", 9), new SolidBrush(Color.Black), 60, 260);
-            graphic.DrawString("___________________", new Font("Tahoma", 9), new SolidBrush(Color.Black), 50, 290);
-            graphic.DrawString("Signature", new Font("Tahoma", 9), new SolidBrush(Color.Black), 90, 305);
+            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 245);
+            graphic.DrawString("CASHIER: ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 260);
+            graphic.DrawString(frmLogin.User.user_name, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 60, 260);
+            graphic.DrawString("___________________", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 50, 290);
+            graphic.DrawString("Signature", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 90, 305);
             #endregion
         }
     }
