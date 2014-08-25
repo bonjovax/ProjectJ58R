@@ -646,7 +646,7 @@ namespace nPOSProj
             lblTax.Text = taxDisplay.ToString();
             login = new DAO.LoginDAO();
             login.catchUsername(userName);
-            if (login.hasUser_Accounts())
+            if (login.hasUserConf())
             {
                 adminDrawer = true;
             }
