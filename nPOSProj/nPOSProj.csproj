@@ -274,6 +274,12 @@
     <Compile Include="mdiItems.Designer.cs">
       <DependentUpon>mdiItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="mdiOrdering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiOrdering.Designer.cs">
+      <DependentUpon>mdiOrdering.cs</DependentUpon>
+    </Compile>
     <Compile Include="mdiPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -562,6 +568,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mdiItems.resx">
       <DependentUpon>mdiItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiOrdering.resx">
+      <DependentUpon>mdiOrdering.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mdiPayment.resx">
       <DependentUpon>mdiPayment.cs</DependentUpon>

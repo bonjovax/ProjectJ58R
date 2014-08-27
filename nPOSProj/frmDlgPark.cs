@@ -113,5 +113,19 @@ namespace nPOSProj
                 }
             }
         }
+
+        private void cBoxOrder_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBoxOrder.Checked == true)
+            {
+                dataGridView1.Rows.Clear();
+                dataGridView1.Columns[0].HeaderText = "Order #";
+            }
+            else
+            {
+                getDataTable();
+                dataGridView1.Columns[0].HeaderText = "O.R #";
+            }
+        }
     }
 }

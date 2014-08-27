@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cBoxOrder = new System.Windows.Forms.CheckBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +70,6 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -81,6 +81,17 @@
             this.dataGridView1.TabIndex = 37;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            // 
+            // cBoxOrder
+            // 
+            this.cBoxOrder.AutoSize = true;
+            this.cBoxOrder.Location = new System.Drawing.Point(1014, 346);
+            this.cBoxOrder.Name = "cBoxOrder";
+            this.cBoxOrder.Size = new System.Drawing.Size(89, 20);
+            this.cBoxOrder.TabIndex = 38;
+            this.cBoxOrder.Text = "Order Park";
+            this.cBoxOrder.UseVisualStyleBackColor = true;
+            this.cBoxOrder.CheckedChanged += new System.EventHandler(this.cBoxOrder_CheckedChanged);
             // 
             // Column1
             // 
@@ -148,7 +159,7 @@
             // 
             // Column8
             // 
-            this.Column8.HeaderText = "Sale Type";
+            this.Column8.HeaderText = "Sale Switch";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
@@ -156,7 +167,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 344);
+            this.ClientSize = new System.Drawing.Size(1106, 366);
+            this.Controls.Add(this.cBoxOrder);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -171,12 +183,14 @@
             this.Load += new System.EventHandler(this.frmDlgPark_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox cBoxOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
