@@ -85,7 +85,7 @@
             // cBoxOrder
             // 
             this.cBoxOrder.AutoSize = true;
-            this.cBoxOrder.Location = new System.Drawing.Point(1014, 346);
+            this.cBoxOrder.Location = new System.Drawing.Point(1021, 346);
             this.cBoxOrder.Name = "cBoxOrder";
             this.cBoxOrder.Size = new System.Drawing.Size(89, 20);
             this.cBoxOrder.TabIndex = 38;
