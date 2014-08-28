@@ -47,7 +47,6 @@ namespace nPOSProj
         }
         private Double CellSum()
         {
-            //lblTotal.Text = CellSum().ToString("#,###,##0.00");
             Double sum = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
@@ -56,6 +55,12 @@ namespace nPOSProj
                 sum += d;
             }
             return sum;
+        }
+
+        private void btnAddToOrder_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add("123123123123", "5", "Bilat", 100, 500);
+            lblTotal.Text = CellSum().ToString("#,###,##0.00");
         }
     }
 }
