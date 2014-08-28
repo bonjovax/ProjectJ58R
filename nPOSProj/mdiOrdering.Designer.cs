@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiOrdering));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiOrdering));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ean = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnClearController = new System.Windows.Forms.Button();
             this.btnAddToOrder = new System.Windows.Forms.Button();
@@ -57,11 +64,6 @@
             this.btnF3 = new System.Windows.Forms.Button();
             this.btnF2B = new System.Windows.Forms.Button();
             this.btnF2A = new System.Windows.Forms.Button();
-            this.ean = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -72,6 +74,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Khaki;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkSlateGray;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -85,9 +89,56 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Gainsboro;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(814, 269);
             this.dataGridView1.TabIndex = 21;
+            // 
+            // ean
+            // 
+            this.ean.HeaderText = "EAN";
+            this.ean.Name = "ean";
+            this.ean.ReadOnly = true;
+            this.ean.Width = 165;
+            // 
+            // quantity
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Width = 65;
+            // 
+            // description
+            // 
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            this.description.Width = 302;
+            // 
+            // price
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.price.DefaultCellStyle = dataGridViewCellStyle3;
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Width = 120;
+            // 
+            // total
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.total.DefaultCellStyle = dataGridViewCellStyle4;
+            this.total.HeaderText = "Total";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 120;
             // 
             // groupBox1
             // 
@@ -451,51 +502,6 @@
             this.btnF2A.Text = "(F2) Wholesale";
             this.btnF2A.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnF2A.UseVisualStyleBackColor = false;
-            // 
-            // ean
-            // 
-            this.ean.HeaderText = "EAN";
-            this.ean.Name = "ean";
-            this.ean.ReadOnly = true;
-            this.ean.Width = 165;
-            // 
-            // quantity
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.quantity.HeaderText = "Quantity";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Width = 65;
-            // 
-            // description
-            // 
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            this.description.Width = 302;
-            // 
-            // price
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.price.DefaultCellStyle = dataGridViewCellStyle5;
-            this.price.HeaderText = "Price";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            this.price.Width = 120;
-            // 
-            // total
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.total.DefaultCellStyle = dataGridViewCellStyle6;
-            this.total.HeaderText = "Total";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Width = 120;
             // 
             // lblTotal
             // 
