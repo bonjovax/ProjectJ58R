@@ -45,9 +45,9 @@
             this.btnAddToOrder = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtBoxTotal = new System.Windows.Forms.TextBox();
+            this.rdTotal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBoxPrice = new System.Windows.Forms.TextBox();
+            this.rdPrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtBoxQuantity = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -87,6 +87,7 @@
             this.total});
             this.dataGridView1.Location = new System.Drawing.Point(10, 208);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Gainsboro;
@@ -146,9 +147,9 @@
             this.groupBox1.Controls.Add(this.btnAddToOrder);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtBoxTotal);
+            this.groupBox1.Controls.Add(this.rdTotal);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtBoxPrice);
+            this.groupBox1.Controls.Add(this.rdPrice);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtBoxQuantity);
             this.groupBox1.Controls.Add(this.label5);
@@ -226,19 +227,20 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "x";
             // 
-            // txtBoxTotal
+            // rdTotal
             // 
-            this.txtBoxTotal.BackColor = System.Drawing.Color.Black;
-            this.txtBoxTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxTotal.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxTotal.ForeColor = System.Drawing.Color.Lime;
-            this.txtBoxTotal.Location = new System.Drawing.Point(214, 89);
-            this.txtBoxTotal.MaxLength = 10;
-            this.txtBoxTotal.Name = "txtBoxTotal";
-            this.txtBoxTotal.Size = new System.Drawing.Size(105, 22);
-            this.txtBoxTotal.TabIndex = 9;
-            this.txtBoxTotal.Text = "0.00";
-            this.txtBoxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rdTotal.BackColor = System.Drawing.Color.Black;
+            this.rdTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdTotal.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTotal.ForeColor = System.Drawing.Color.Lime;
+            this.rdTotal.Location = new System.Drawing.Point(214, 89);
+            this.rdTotal.MaxLength = 10;
+            this.rdTotal.Name = "rdTotal";
+            this.rdTotal.ReadOnly = true;
+            this.rdTotal.Size = new System.Drawing.Size(105, 22);
+            this.rdTotal.TabIndex = 9;
+            this.rdTotal.Text = "0.00";
+            this.rdTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -250,19 +252,20 @@
             this.label7.TabIndex = 8;
             this.label7.Text = "Total ";
             // 
-            // txtBoxPrice
+            // rdPrice
             // 
-            this.txtBoxPrice.BackColor = System.Drawing.Color.Black;
-            this.txtBoxPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPrice.ForeColor = System.Drawing.Color.Lime;
-            this.txtBoxPrice.Location = new System.Drawing.Point(100, 89);
-            this.txtBoxPrice.MaxLength = 10;
-            this.txtBoxPrice.Name = "txtBoxPrice";
-            this.txtBoxPrice.Size = new System.Drawing.Size(93, 22);
-            this.txtBoxPrice.TabIndex = 7;
-            this.txtBoxPrice.Text = "0.00";
-            this.txtBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rdPrice.BackColor = System.Drawing.Color.Black;
+            this.rdPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rdPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdPrice.ForeColor = System.Drawing.Color.Lime;
+            this.rdPrice.Location = new System.Drawing.Point(100, 89);
+            this.rdPrice.MaxLength = 10;
+            this.rdPrice.Name = "rdPrice";
+            this.rdPrice.ReadOnly = true;
+            this.rdPrice.Size = new System.Drawing.Size(93, 22);
+            this.rdPrice.TabIndex = 7;
+            this.rdPrice.Text = "0.00";
+            this.rdPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -511,7 +514,7 @@
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(120, 23);
             this.lblTotal.TabIndex = 33;
-            this.lblTotal.Text = "0";
+            this.lblTotal.Text = "0.00";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
@@ -570,9 +573,9 @@
         private System.Windows.Forms.Button btnAddToOrder;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtBoxTotal;
+        private System.Windows.Forms.TextBox rdTotal;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBoxPrice;
+        private System.Windows.Forms.TextBox rdPrice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBoxQuantity;
         private System.Windows.Forms.Label label5;
