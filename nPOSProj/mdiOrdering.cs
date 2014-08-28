@@ -40,5 +40,22 @@ namespace nPOSProj
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private Double CellSum()
+        {
+            //lblTotal.Text = CellSum().ToString("#,###,##0.00");
+            Double sum = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            {
+                Double d = 0;
+                Double.TryParse(dataGridView1.Rows[i].Cells[4].Value.ToString(), out d);
+                sum += d;
+            }
+            return sum;
+        }
     }
 }

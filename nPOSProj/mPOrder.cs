@@ -404,6 +404,7 @@ namespace nPOSProj
                 po.stock_name = txtBoxParticulars.Text;
                 po.supplier_code = txtBoxSupplierCode.Text;
                 txtBoxStockCode.Text = po.askStockCode();
+                po.stock_code = txtBoxStockCode.Text;
                 txtBoxUnitPrice.Text = po.askStockPriceStockName().ToString("#,###,##0.00");
                 txtBoxUOM.Text = po.askUOM_N();
                 txtBoxQty.Focus();

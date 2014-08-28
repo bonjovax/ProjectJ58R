@@ -299,7 +299,7 @@ namespace nPOSProj
                 po.stock_code = txtBoxStockCode.Text;
                 po.supplier_code = txtBoxSupplierCode.Text;
                 txtBoxParticulars.Text = po.askStockName();
-                txtBoxUnitPrice.Text = po.askStockPriceStockCode().ToString("#,###,###.00");
+                txtBoxUnitPrice.Text = po.askStockPriceStockCode().ToString("#,###,##0.00");
                 txtBoxUOM.Text = po.askUOM();
                 txtBoxQty.Focus();
                 txtBoxUQTY.ReadOnly = false;
@@ -328,6 +328,7 @@ namespace nPOSProj
                 po.stock_name = txtBoxParticulars.Text;
                 po.supplier_code = txtBoxSupplierCode.Text;
                 txtBoxStockCode.Text = po.askStockCode();
+                po.stock_code = txtBoxStockCode.Text;
                 txtBoxUnitPrice.Text = po.askStockPriceStockName().ToString("#,###,##0.00");
                 txtBoxUOM.Text = po.askUOM_N();
                 txtBoxQty.Focus();
