@@ -66,6 +66,7 @@
             this.btnF2A = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.cBoxSelect = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +86,7 @@
             this.description,
             this.price,
             this.total});
+            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(10, 208);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.MultiSelect = false;
@@ -143,6 +145,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cBoxSelect);
             this.groupBox1.Controls.Add(this.btnClearController);
             this.groupBox1.Controls.Add(this.btnAddToOrder);
             this.groupBox1.Controls.Add(this.label9);
@@ -170,6 +173,7 @@
             // 
             this.btnClearController.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.btnClearController.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearController.Enabled = false;
             this.btnClearController.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.btnClearController.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateGray;
             this.btnClearController.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateGray;
@@ -190,6 +194,7 @@
             // 
             this.btnAddToOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(169)))), ((int)(((byte)(23)))));
             this.btnAddToOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddToOrder.Enabled = false;
             this.btnAddToOrder.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.btnAddToOrder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateGray;
             this.btnAddToOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateGray;
@@ -284,6 +289,7 @@
             this.txtBoxQuantity.Location = new System.Drawing.Point(22, 89);
             this.txtBoxQuantity.MaxLength = 5;
             this.txtBoxQuantity.Name = "txtBoxQuantity";
+            this.txtBoxQuantity.ReadOnly = true;
             this.txtBoxQuantity.Size = new System.Drawing.Size(58, 22);
             this.txtBoxQuantity.TabIndex = 5;
             this.txtBoxQuantity.Text = "0";
@@ -306,6 +312,7 @@
             this.txtBoxDescription.Location = new System.Drawing.Point(264, 42);
             this.txtBoxDescription.MaxLength = 75;
             this.txtBoxDescription.Name = "txtBoxDescription";
+            this.txtBoxDescription.ReadOnly = true;
             this.txtBoxDescription.Size = new System.Drawing.Size(530, 22);
             this.txtBoxDescription.TabIndex = 3;
             // 
@@ -326,6 +333,7 @@
             this.txtBoxEAN.Location = new System.Drawing.Point(22, 42);
             this.txtBoxEAN.MaxLength = 25;
             this.txtBoxEAN.Name = "txtBoxEAN";
+            this.txtBoxEAN.ReadOnly = true;
             this.txtBoxEAN.Size = new System.Drawing.Size(231, 22);
             this.txtBoxEAN.TabIndex = 1;
             // 
@@ -529,6 +537,19 @@
             this.label11.Text = "Total Amount";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // cBoxSelect
+            // 
+            this.cBoxSelect.AutoSize = true;
+            this.cBoxSelect.Enabled = false;
+            this.cBoxSelect.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxSelect.Location = new System.Drawing.Point(325, 89);
+            this.cBoxSelect.Name = "cBoxSelect";
+            this.cBoxSelect.Size = new System.Drawing.Size(128, 21);
+            this.cBoxSelect.TabIndex = 14;
+            this.cBoxSelect.Text = "Item Kits Selector";
+            this.cBoxSelect.UseVisualStyleBackColor = true;
+            this.cBoxSelect.CheckedChanged += new System.EventHandler(this.cBoxSelect_CheckedChanged);
+            // 
             // mdiOrdering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -599,5 +620,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox cBoxSelect;
     }
 }

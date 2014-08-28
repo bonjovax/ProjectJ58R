@@ -89,6 +89,7 @@
     <Compile Include="DAO\InventoryDAO.cs" />
     <Compile Include="DAO\ItemsDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\PosDAO.cs" />
     <Compile Include="DAO\PurchaseOrderDAO.cs" />
     <Compile Include="DAO\ReceivingDAO.cs" />
@@ -471,6 +472,7 @@
     <Compile Include="VO\GiftCardVO.cs" />
     <Compile Include="VO\InventoryVO.cs" />
     <Compile Include="VO\ItemVO.cs" />
+    <Compile Include="VO\OrderVO.cs" />
     <Compile Include="VO\PosVO.cs" />
     <Compile Include="VO\PurchaseOrderVO.cs" />
     <Compile Include="VO\ReceivingVO.cs" />
