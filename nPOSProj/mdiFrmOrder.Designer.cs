@@ -77,6 +77,7 @@
             this.tsOrder.Size = new System.Drawing.Size(52, 69);
             this.tsOrder.Text = "&Order";
             this.tsOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsOrder.Click += new System.EventHandler(this.tsOrder_Click);
             // 
             // tsQuotation
             // 

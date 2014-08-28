@@ -14,6 +14,7 @@ namespace nPOSProj
     {
         private static String cmd = "mailto:DLG.alfel@gmail.com?subject=Ordering Module Support&cc=jarmonilla892@gmail.com";
         private DAO.LoginDAO login;
+        private mdiOrdering ordering = new mdiOrdering();
         public mdiFrmOrder()
         {
             InitializeComponent();
@@ -43,6 +44,29 @@ namespace nPOSProj
             String Date = DateTime.Now.ToLongDateString();
             String Time = DateTime.Now.ToLongTimeString();
             tsToday.Text = Date + " at " + Time;
+        }
+        private Boolean ActivateThisChild(String formName)
+        {
+            int i;
+            Boolean formSetToMdi = false;
+            for (i = 0; i < this.MdiChildren.Length; i++)
+            // loop for all the mdi children
+            {
+                if (this.MdiChildren[i].Name == formName)
+                // find the Mdi child with the same name as your form
+                {
+                    // if found just activate it
+                    this.MdiChildren[i].Activate();
+                    formSetToMdi = true;
+                }
+            }
+
+            if (i == 0 || formSetToMdi == false)
+                // if the given form not found as mdi child return false.
+                return false;
+
+            else
+                return true;
         }
 
         private void onFormClose()
@@ -95,6 +119,16 @@ namespace nPOSProj
         private void mdiFrmOrder_FormClosing(object sender, FormClosingEventArgs e)
         {
             onFormClose();
+        }
+
+        private void tsOrder_Click(object sender, EventArgs e)
+        {
+            if (ActivateThisChild("mdiOrdering") == false)
+            {
+                ordering = new mdiOrdering();
+                ordering.MdiParent = this;
+                ordering.Show();
+            }
         }
     }
 }
