@@ -83,7 +83,7 @@ namespace nPOSProj
         {
             if (keyData == Keys.F1)
             {
-                MessageBox.Show("Giovanne is Grilled!");
+                gotoNewOrder();
                 return true;
             }
             if (keyData == Keys.Escape)
@@ -103,11 +103,6 @@ namespace nPOSProj
         {
             this.Close();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
         private Double CellSum()
         {
             Double sum = 0;
@@ -119,6 +114,33 @@ namespace nPOSProj
             }
             return sum;
         }
+        private void lockcontrols()
+        {
+            txtBoxEAN.ReadOnly = true;
+            txtBoxDescription.ReadOnly = true;
+            txtBoxQuantity.ReadOnly = true;
+            //
+            cBoxKits.Enabled = false;
+            btnAddToOrder.Enabled = false;
+            btnClearController.Enabled = false;
+            dataGridView1.Enabled = false;
+        }
+        private void unlockcontrols()
+        {
+            txtBoxEAN.ReadOnly = false;
+            txtBoxDescription.ReadOnly = false;
+            txtBoxQuantity.ReadOnly = false;
+            //
+            cBoxKits.Enabled = true;
+            btnAddToOrder.Enabled = true;
+            btnClearController.Enabled = true;
+            dataGridView1.Enabled = true;
+            btnF1.Enabled = false;
+            btnF2A.Enabled = true;
+            btnF3.Enabled = true;
+            btnF4.Enabled = true;
+            txtBoxDescription.Focus();
+        }
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
         {
@@ -128,7 +150,7 @@ namespace nPOSProj
 
         private void btnF1_Click(object sender, EventArgs e)
         {
-            autoCompleteItem();
+            gotoNewOrder();
         }
 
         private void cBoxKits_CheckedChanged(object sender, EventArgs e)
@@ -140,6 +162,30 @@ namespace nPOSProj
             else
             {
                 autoCompleteItem();
+            }
+        }
+
+        private void gotoNewOrder()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to proceed your New Order?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                unlockcontrols();
+                autoCompleteItem();
+            }
+        }
+        private void gotoWholesale()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to Select your Transaction to Wholesale?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+            }
+        }
+        private void gotoRetail()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to Select your Transaction to Retail?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
             }
         }
     }
