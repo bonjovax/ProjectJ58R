@@ -17,6 +17,7 @@ namespace nPOSProj
         AutoCompleteStringCollection collect1 = new AutoCompleteStringCollection();
         private MySqlConnection con = new MySqlConnection();
         private Conf.dbs dbcon = new Conf.dbs();
+        private VO.OrderVO ordervo = new VO.OrderVO();
         public mdiOrdering()
         {
             InitializeComponent();
@@ -172,6 +173,8 @@ namespace nPOSProj
             {
                 unlockcontrols();
                 autoCompleteItem();
+                ordervo.NewOrder();
+                lblON.Text = ordervo.getON().ToString();
             }
         }
         private void gotoWholesale()

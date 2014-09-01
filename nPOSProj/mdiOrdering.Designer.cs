@@ -42,6 +42,7 @@
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cBoxKits = new System.Windows.Forms.CheckBox();
             this.btnClearController = new System.Windows.Forms.Button();
             this.btnAddToOrder = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtBoxEAN = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblON = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnF1 = new System.Windows.Forms.Button();
             this.btnF6 = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@
             this.btnF2A = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.cBoxKits = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -177,6 +177,19 @@
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Input Controller";
+            // 
+            // cBoxKits
+            // 
+            this.cBoxKits.AutoSize = true;
+            this.cBoxKits.Enabled = false;
+            this.cBoxKits.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxKits.Location = new System.Drawing.Point(325, 91);
+            this.cBoxKits.Name = "cBoxKits";
+            this.cBoxKits.Size = new System.Drawing.Size(82, 21);
+            this.cBoxKits.TabIndex = 14;
+            this.cBoxKits.Text = "Kit Select";
+            this.cBoxKits.UseVisualStyleBackColor = true;
+            this.cBoxKits.CheckedChanged += new System.EventHandler(this.cBoxKits_CheckedChanged);
             // 
             // btnClearController
             // 
@@ -356,16 +369,16 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "EAN";
             // 
-            // label2
+            // lblON
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(87, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 23);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "0";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblON.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblON.ForeColor = System.Drawing.Color.Red;
+            this.lblON.Location = new System.Drawing.Point(87, 44);
+            this.lblON.Name = "lblON";
+            this.lblON.Size = new System.Drawing.Size(147, 23);
+            this.lblON.TabIndex = 30;
+            this.lblON.Text = "0";
+            this.lblON.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
@@ -547,19 +560,6 @@
             this.label11.Text = "Total Amount";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cBoxKits
-            // 
-            this.cBoxKits.AutoSize = true;
-            this.cBoxKits.Enabled = false;
-            this.cBoxKits.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxKits.Location = new System.Drawing.Point(325, 91);
-            this.cBoxKits.Name = "cBoxKits";
-            this.cBoxKits.Size = new System.Drawing.Size(82, 21);
-            this.cBoxKits.TabIndex = 14;
-            this.cBoxKits.Text = "Kit Select";
-            this.cBoxKits.UseVisualStyleBackColor = true;
-            this.cBoxKits.CheckedChanged += new System.EventHandler(this.cBoxKits_CheckedChanged);
-            // 
             // mdiOrdering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -569,7 +569,7 @@
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblON);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnF1);
             this.Controls.Add(this.btnF6);
@@ -614,7 +614,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBoxEAN;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblON;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnF1;
         private System.Windows.Forms.Button btnF6;
