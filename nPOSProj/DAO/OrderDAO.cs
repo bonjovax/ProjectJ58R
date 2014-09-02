@@ -130,7 +130,7 @@ namespace nPOSProj.DAO
             con.ConnectionString = db.getConnectionString();
             String query = "SELECT inventory_items.item_retail_price AS x, inventory_items.item_whole_price AS y FROM inventory_items ";
             query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
-            query += "WHERE (inventory_stocks.stock_name = ?stock_name) (inventory_items.is_kit = 0)";
+            query += "WHERE (inventory_stocks.stock_name = ?stock_name) AND (inventory_items.is_kit = 0)";
             try
             {
                 con.Open();
