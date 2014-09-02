@@ -71,5 +71,34 @@ namespace nPOSProj.VO
             Price = orderdao.getPriceByEan(Ean, Wholesale);
             return Price;
         }
+        //
+        public String askEanKit()
+        {
+            String EAN = "";
+            orderdao = new DAO.OrderDAO();
+            EAN = orderdao.getEanKits(Description);
+            return EAN;
+        }
+        public String askKitName()
+        {
+            String Kitname = "";
+            orderdao = new DAO.OrderDAO();
+            Kitname = orderdao.getKitname(Ean);
+            return Kitname;
+        }
+        public Double askPriceByKitName()
+        {
+            Double Price = 0;
+            orderdao = new DAO.OrderDAO();
+            Price = orderdao.getPriceByKitName(Description, Wholesale);
+            return Price;
+        }
+        public Double askPriceByEanKit()
+        {
+            Double Price = 0;
+            orderdao = new DAO.OrderDAO();
+            Price = orderdao.getPriceByEanKit(Ean, Wholesale);
+            return Price;
+        }
     }
 }

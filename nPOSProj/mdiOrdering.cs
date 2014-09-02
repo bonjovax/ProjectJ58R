@@ -156,6 +156,7 @@ namespace nPOSProj
 
         private void cBoxKits_CheckedChanged(object sender, EventArgs e)
         {
+            txtBoxDescription.Focus();
             if (cBoxKits.Checked == true)
             {
                 autoCompleteKits();
@@ -199,12 +200,16 @@ namespace nPOSProj
                 if (cBoxKits.Checked == true)
                 {
                     //To Be Implemented
+                    ordervo.Description = txtBoxDescription.Text;
+                    txtBoxEAN.Text = ordervo.askEanKit();
+                    ordervo.Wholesale = false; //Switch 0
+                    rdPrice.Text = ordervo.askPriceByKitName().ToString("#,###,##0.00");
                 }
                 else
                 {
                     ordervo.Description = txtBoxDescription.Text;
                     txtBoxEAN.Text = ordervo.askEan();
-                    ordervo.Wholesale = false;
+                    ordervo.Wholesale = false; //Switch 1
                     rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
                 }
             }
@@ -217,12 +222,16 @@ namespace nPOSProj
                 if (cBoxKits.Checked == true)
                 {
                     //To Be Implemented
+                    ordervo.Ean = txtBoxEAN.Text;
+                    txtBoxDescription.Text = ordervo.askKitName();
+                    ordervo.Wholesale = false; //Switch 2
+                    rdPrice.Text = ordervo.askPriceByEanKit().ToString("#,###,##0.00");
                 }
                 else
                 {
                     ordervo.Ean = txtBoxEAN.Text;
                     txtBoxDescription.Text = ordervo.askDescription();
-                    ordervo.Wholesale = false;
+                    ordervo.Wholesale = false; //Switch 3
                     rdPrice.Text = ordervo.askPriceByEan().ToString("#,###,##0.00");
                 }
             }
