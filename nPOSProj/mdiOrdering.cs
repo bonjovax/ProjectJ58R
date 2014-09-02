@@ -119,10 +119,8 @@ namespace nPOSProj
         {
             txtBoxEAN.ReadOnly = true;
             txtBoxDescription.ReadOnly = true;
-            txtBoxQuantity.ReadOnly = true;
             //
             cBoxKits.Enabled = false;
-            //btnAddToOrder.Enabled = false;
             btnClearController.Enabled = false;
             dataGridView1.Enabled = false;
         }
@@ -130,10 +128,8 @@ namespace nPOSProj
         {
             txtBoxEAN.ReadOnly = false;
             txtBoxDescription.ReadOnly = false;
-            txtBoxQuantity.ReadOnly = false;
             //
             cBoxKits.Enabled = true;
-            //btnAddToOrder.Enabled = true;
             btnClearController.Enabled = true;
             dataGridView1.Enabled = true;
             btnF1.Enabled = false;
@@ -156,6 +152,11 @@ namespace nPOSProj
 
         private void cBoxKits_CheckedChanged(object sender, EventArgs e)
         {
+            txtBoxQuantity.Text = "0";
+            rdPrice.Text = "0.00";
+            rdTotal.Text = "0.00";
+            txtBoxEAN.Clear();
+            txtBoxDescription.Clear();
             txtBoxDescription.Focus();
             if (cBoxKits.Checked == true)
             {
