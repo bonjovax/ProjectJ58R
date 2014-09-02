@@ -1089,6 +1089,7 @@ namespace nPOSProj
                                     item.SubItems.Add(computerItemQty.ToString("#,###,##0.00"));
                                     item.SubItems.Add(itemTT);
                                     lviewPOS.Items.Add(item);
+                                    lviewPOS.EnsureVisible(lviewPOS.Items.Count - 1);
                                     //Data
                                     pos.Pos_orno = OrNo;
                                     pos.Pos_terminal = fl.tN;

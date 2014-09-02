@@ -122,7 +122,7 @@ namespace nPOSProj
             txtBoxQuantity.ReadOnly = true;
             //
             cBoxKits.Enabled = false;
-            btnAddToOrder.Enabled = false;
+            //btnAddToOrder.Enabled = false;
             btnClearController.Enabled = false;
             dataGridView1.Enabled = false;
         }
@@ -133,7 +133,7 @@ namespace nPOSProj
             txtBoxQuantity.ReadOnly = false;
             //
             cBoxKits.Enabled = true;
-            btnAddToOrder.Enabled = true;
+            //btnAddToOrder.Enabled = true;
             btnClearController.Enabled = true;
             dataGridView1.Enabled = true;
             btnF1.Enabled = false;
@@ -189,6 +189,42 @@ namespace nPOSProj
             DialogResult dlg = MessageBox.Show("Do you wish to Select your Transaction to Retail?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dlg == System.Windows.Forms.DialogResult.Yes)
             {
+            }
+        }
+
+        private void txtBoxDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (cBoxKits.Checked == true)
+                {
+                    //To Be Implemented
+                }
+                else
+                {
+                    ordervo.Description = txtBoxDescription.Text;
+                    txtBoxEAN.Text = ordervo.askEan();
+                    ordervo.Wholesale = false;
+                    rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
+                }
+            }
+        }
+
+        private void txtBoxEAN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (cBoxKits.Checked == true)
+                {
+                    //To Be Implemented
+                }
+                else
+                {
+                    ordervo.Ean = txtBoxEAN.Text;
+                    txtBoxDescription.Text = ordervo.askDescription();
+                    ordervo.Wholesale = false;
+                    rdPrice.Text = ordervo.askPriceByEan().ToString("#,###,##0.00");
+                }
             }
         }
     }
