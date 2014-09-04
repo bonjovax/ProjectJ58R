@@ -126,7 +126,7 @@ namespace nPOSProj.VO
         {
             Int32 qty = 0;
             orderdao = new DAO.OrderDAO();
-            qty = orderdao.getQtyByDescriptionKit(Ean);
+            qty = orderdao.getQtyByEANKit(Ean);
             return qty;
         }
         //

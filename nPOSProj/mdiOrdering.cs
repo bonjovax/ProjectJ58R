@@ -299,5 +299,41 @@ namespace nPOSProj
                 }
             }
         }
+
+        private void txtBoxQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBoxQuantity.Text != "")
+            {
+                Double totalAmt = 0;
+                totalAmt = Convert.ToDouble(txtBoxQuantity.Text) * Convert.ToDouble(rdPrice.Text);
+                rdTotal.Text = totalAmt.ToString("#,###,##0.00");
+            }
+            else
+            {
+                txtBoxQuantity.Text = "0";
+            }
+        }
+
+        private void txtBoxEAN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+            }
+            else
+            {
+                e.Handled = e.KeyChar != (char)Keys.Back;
+            }
+        }
+
+        private void txtBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+            }
+            else
+            {
+                e.Handled = e.KeyChar != (char)Keys.Back;
+            }
+        }
     }
 }
