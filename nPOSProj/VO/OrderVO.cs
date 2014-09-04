@@ -100,5 +100,34 @@ namespace nPOSProj.VO
             Price = orderdao.getPriceByEanKit(Ean, Wholesale);
             return Price;
         }
+        //
+        public Int32 askQtyByDescription()
+        {
+            Int32 qty = 0;
+            orderdao = new DAO.OrderDAO();
+            qty = orderdao.getQtyByDescription(Description);
+            return qty;
+        }
+        public Int32 askQtyByEAN()
+        {
+            Int32 qty = 0;
+            orderdao = new DAO.OrderDAO();
+            qty = orderdao.getQtyByEAN(Ean);
+            return qty;
+        }
+        public Int32 askQtyByKitName()
+        {
+            Int32 qty = 0;
+            orderdao = new DAO.OrderDAO();
+            qty = orderdao.getQtyByDescriptionKit(Description);
+            return qty;
+        }
+        public Int32 askQtyEANKit()
+        {
+            Int32 qty = 0;
+            orderdao = new DAO.OrderDAO();
+            qty = orderdao.getQtyByDescriptionKit(Ean);
+            return qty;
+        }
     }
 }

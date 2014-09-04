@@ -155,6 +155,7 @@ namespace nPOSProj
             txtBoxQuantity.Text = "0";
             rdPrice.Text = "0.00";
             rdTotal.Text = "0.00";
+            rdQtyA.Text = "0";
             txtBoxEAN.Clear();
             txtBoxDescription.Clear();
             txtBoxDescription.Focus();
@@ -205,6 +206,7 @@ namespace nPOSProj
                     txtBoxEAN.Text = ordervo.askEanKit();
                     ordervo.Wholesale = false; //Switch 0
                     rdPrice.Text = ordervo.askPriceByKitName().ToString("#,###,##0.00");
+                    rdQtyA.Text = ordervo.askQtyByKitName().ToString();
                 }
                 else
                 {
@@ -212,6 +214,7 @@ namespace nPOSProj
                     txtBoxEAN.Text = ordervo.askEan();
                     ordervo.Wholesale = false; //Switch 1
                     rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
+                    rdQtyA.Text = ordervo.askQtyByDescription().ToString();
                 }
             }
         }

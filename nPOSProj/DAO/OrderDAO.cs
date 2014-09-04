@@ -304,5 +304,115 @@ namespace nPOSProj.DAO
             }
             return Price;
         }
+        //
+        public Int32 getQtyByDescription(String description)
+        {
+            Int32 qty = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT inventory_items.item_quantity AS qty FROM inventory_items ";
+            query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+            query += "WHERE (inventory_stocks.stock_name = ?stock_name) AND (inventory_items.is_kit = 0)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?stock_name", description);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    qty = Convert.ToInt32(rdr["qty"]);
+                }
+                else
+                    qty = 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return qty;
+        }
+        public Int32 getQtyByEAN(String ean)
+        {
+            Int32 qty = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT item_quantity AS qty FROM inventory_items ";
+            query += "WHERE item_ean = ?item_ean AND is_kit = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?item_ean", ean);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    qty = Convert.ToInt32(rdr["qty"]);
+                }
+                else
+                    qty = 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return qty;
+        }
+        public Int32 getQtyByDescriptionKit(String description)
+        {
+            Int32 qty = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT item_quantity AS qty FROM inventory_items ";
+            query += "WHERE kit_name = ?description AND is_kit = 1";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?description", description);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    qty = Convert.ToInt32(rdr["qty"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return qty;
+        }
+        public Int32 getQtyByEANKit(String ean)
+        {
+            Int32 qty = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT item_quantity AS qty FROM inventory_items ";
+            query += "WHERE item_ean = ?ean AND is_kit = 1";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?ean", ean);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    qty = Convert.ToInt32(rdr["qty"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return qty;
+        }
     }
 }
