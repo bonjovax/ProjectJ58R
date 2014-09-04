@@ -129,5 +129,34 @@ namespace nPOSProj.VO
             qty = orderdao.getQtyByDescriptionKit(Ean);
             return qty;
         }
+        //
+        public Boolean askItemDescription()
+        {
+            Boolean check = false;
+            orderdao = new DAO.OrderDAO();
+            check = orderdao.checkingItemDescription(Description, Ean);
+            return check;
+        }
+        public Boolean askItemEan()
+        {
+            Boolean check = false;
+            orderdao = new DAO.OrderDAO();
+            check = orderdao.checkingItemEan(Ean, Description);
+            return check;
+        }
+        public Boolean askItemDescriptionKit()
+        {
+            Boolean check = false;
+            orderdao = new DAO.OrderDAO();
+            check = orderdao.checkItemDescriptionKit(Description, Ean);
+            return check;
+        }
+        public Boolean askItemEanKit()
+        {
+            Boolean check = false;
+            orderdao = new DAO.OrderDAO();
+            check = orderdao.checkItemDescriptionKit(Description, Ean);
+            return check;
+        }
     }
 }

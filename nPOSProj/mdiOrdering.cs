@@ -159,6 +159,9 @@ namespace nPOSProj
             txtBoxEAN.Clear();
             txtBoxDescription.Clear();
             txtBoxDescription.Focus();
+            txtBoxDescription.ReadOnly = false;
+            txtBoxEAN.ReadOnly = false;
+            txtBoxQuantity.ReadOnly = true;
             if (cBoxKits.Checked == true)
             {
                 autoCompleteKits();
@@ -201,12 +204,22 @@ namespace nPOSProj
             {
                 if (cBoxKits.Checked == true)
                 {
-                    //To Be Implemented
                     ordervo.Description = txtBoxDescription.Text;
                     txtBoxEAN.Text = ordervo.askEanKit();
                     ordervo.Wholesale = false; //Switch 0
                     rdPrice.Text = ordervo.askPriceByKitName().ToString("#,###,##0.00");
                     rdQtyA.Text = ordervo.askQtyByKitName().ToString();
+                    ordervo.Ean = txtBoxEAN.Text;
+                    if (ordervo.askItemDescriptionKit() == true)
+                    {
+                        txtBoxQuantity.ReadOnly = false;
+                        txtBoxQuantity.Focus();
+                    }
+                    else
+                    {
+                        txtBoxQuantity.ReadOnly = true;
+                        txtBoxQuantity.Text = "0";
+                    }
                 }
                 else
                 {
@@ -215,6 +228,21 @@ namespace nPOSProj
                     ordervo.Wholesale = false; //Switch 1
                     rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
                     rdQtyA.Text = ordervo.askQtyByDescription().ToString();
+                    ordervo.Ean = txtBoxEAN.Text;
+                    if (ordervo.askItemDescription() == true)
+                    {
+                        txtBoxEAN.ReadOnly = true;
+                        txtBoxDescription.ReadOnly = true;
+                        txtBoxQuantity.ReadOnly = false;
+                        txtBoxQuantity.Focus();
+                    }
+                    else
+                    {
+                        txtBoxEAN.ReadOnly = false;
+                        txtBoxDescription.ReadOnly = false;
+                        txtBoxQuantity.ReadOnly = true;
+                        txtBoxQuantity.Text = "0";
+                    }
                 }
             }
         }
@@ -225,11 +253,26 @@ namespace nPOSProj
             {
                 if (cBoxKits.Checked == true)
                 {
-                    //To Be Implemented
                     ordervo.Ean = txtBoxEAN.Text;
                     txtBoxDescription.Text = ordervo.askKitName();
                     ordervo.Wholesale = false; //Switch 2
                     rdPrice.Text = ordervo.askPriceByEanKit().ToString("#,###,##0.00");
+                    rdQtyA.Text = ordervo.askQtyEANKit().ToString();
+                    ordervo.Description = txtBoxDescription.Text;
+                    if (ordervo.askItemEanKit() == true)
+                    {
+                        txtBoxDescription.ReadOnly = true;
+                        txtBoxEAN.ReadOnly = true;
+                        txtBoxQuantity.ReadOnly = false;
+                        txtBoxQuantity.Focus();
+                    }
+                    else
+                    {
+                        txtBoxDescription.ReadOnly = false;
+                        txtBoxEAN.ReadOnly = false;
+                        txtBoxQuantity.ReadOnly = true;
+                        txtBoxQuantity.Text = "0";
+                    }
                 }
                 else
                 {
@@ -237,6 +280,22 @@ namespace nPOSProj
                     txtBoxDescription.Text = ordervo.askDescription();
                     ordervo.Wholesale = false; //Switch 3
                     rdPrice.Text = ordervo.askPriceByEan().ToString("#,###,##0.00");
+                    rdQtyA.Text = ordervo.askQtyByEAN().ToString();
+                    ordervo.Description = txtBoxDescription.Text;
+                    if (ordervo.askItemEan() == true)
+                    {
+                        txtBoxDescription.ReadOnly = true;
+                        txtBoxEAN.ReadOnly = true;
+                        txtBoxQuantity.ReadOnly = false;
+                        txtBoxQuantity.Focus();
+                    }
+                    else
+                    {
+                        txtBoxDescription.ReadOnly = false;
+                        txtBoxEAN.ReadOnly = false;
+                        txtBoxQuantity.ReadOnly = true;
+                        txtBoxQuantity.Text = "0";
+                    }
                 }
             }
         }

@@ -414,5 +414,124 @@ namespace nPOSProj.DAO
             }
             return qty;
         }
+        //
+        public Boolean checkingItemDescription(String description, String ean)
+        {
+            Boolean correct = false;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT * FROM inventory_items ";
+            query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+            query += "WHERE (inventory_stocks.stock_name = ?stock_name) AND (inventory_items.item_ean = ?item_ean) AND (inventory_items.is_kit = 0)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?stock_name", description);
+                cmd.Parameters.AddWithValue("?item_ean", ean);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    correct = true;
+                }
+                else
+                    correct = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return correct;
+        }
+        public Boolean checkingItemEan(String ean, String description)
+        {
+            Boolean correct = false;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT * FROM inventory_items ";
+            query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+            query += "WHERE (inventory_items.item_ean = ?item_ean) AND (inventory_stocks.stock_name = ?stock_name) AND (inventory_items.is_kit = 0)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?item_ean", ean);
+                cmd.Parameters.AddWithValue("?stock_name", description);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    correct = true;
+                }
+                else
+                    correct = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return correct;
+        }
+        public Boolean checkItemDescriptionKit(String description, String ean)
+        {
+            Boolean correct = false;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT * FROM inventory_items ";
+            query += "WHERE kit_name = ?description AND item_ean = ?ean AND is_kit = 1";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?description", description);
+                cmd.Parameters.AddWithValue("?ean", ean);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    correct = true;
+                }
+                else
+                    correct = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return correct;
+        }
+        public Boolean checkItemEanKit(String ean, String description)
+        {
+            Boolean correct = false;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT * FROM inventory_items ";
+            query += "WHERE item_ean = ?ean AND kit_name = ?description AND is_kit = 1";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?ean", ean);
+                cmd.Parameters.AddWithValue("?description", description);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    correct = true;
+                }
+                else
+                    correct = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return correct;
+        }
     }
 }
