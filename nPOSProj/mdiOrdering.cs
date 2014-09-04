@@ -134,20 +134,54 @@ namespace nPOSProj
             dataGridView1.Enabled = true;
             btnF1.Enabled = false;
             btnF2A.Enabled = true;
-            btnF3.Enabled = true;
             btnF4.Enabled = true;
             txtBoxDescription.Focus();
         }
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add("123123123123", "5", "Bilat", 100, 500);
-            lblTotal.Text = CellSum().ToString("#,###,##0.00");
+            try
+            {
+                Boolean naa = false;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells[0].Value.ToString() == txtBoxEAN.Text && row.Cells[2].Value.ToString() == txtBoxDescription.Text)
+                    {
+                        row.Cells[1].Value = Convert.ToInt32(txtBoxQuantity.Text) + Convert.ToInt32(row.Cells[1].Value);
+                        naa = true;
+                    }
+                }
+                if (!naa)
+                {
+                    dataGridView1.Rows.Add(txtBoxEAN.Text, txtBoxQuantity.Text, txtBoxDescription.Text, rdPrice.Text, rdTotal.Text);
+                }
+                lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                clearboxes();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void btnF1_Click(object sender, EventArgs e)
         {
             gotoNewOrder();
+        }
+
+        private void clearboxes()
+        {
+            txtBoxQuantity.Text = "0";
+            rdPrice.Text = "0.00";
+            rdTotal.Text = "0.00";
+            rdQtyA.Text = "0";
+            txtBoxEAN.Clear();
+            txtBoxDescription.Clear();
+            txtBoxDescription.Focus();
+            txtBoxDescription.ReadOnly = false;
+            txtBoxEAN.ReadOnly = false;
+            txtBoxQuantity.ReadOnly = true;
+            cBoxKits.Checked = false;
         }
 
         private void cBoxKits_CheckedChanged(object sender, EventArgs e)
@@ -307,6 +341,14 @@ namespace nPOSProj
                 Double totalAmt = 0;
                 totalAmt = Convert.ToDouble(txtBoxQuantity.Text) * Convert.ToDouble(rdPrice.Text);
                 rdTotal.Text = totalAmt.ToString("#,###,##0.00");
+                if (Convert.ToInt32(rdQtyA.Text) >= Convert.ToInt32(txtBoxQuantity.Text) && Convert.ToInt32(txtBoxQuantity.Text) != 0)
+                {
+                    btnAddToOrder.Enabled = true;
+                }
+                else
+                {
+                    btnAddToOrder.Enabled = false;
+                }
             }
             else
             {
@@ -334,6 +376,29 @@ namespace nPOSProj
             {
                 e.Handled = e.KeyChar != (char)Keys.Back;
             }
+        }
+
+        private void btnClearController_Click(object sender, EventArgs e)
+        {
+            clearboxes();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+            }
+            else
+            {
+                btnF3.Enabled = true;
+            }
+        }
+
+        private void btnF3_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
+            lblTotal.Text = CellSum().ToString("#,###,##0.00");
+            btnF3.Enabled = false;
         }
     }
 }
