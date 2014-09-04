@@ -87,6 +87,11 @@ namespace nPOSProj
                 gotoNewOrder();
                 return true;
             }
+            if (keyData == Keys.F3 && btnF3.Enabled == true)
+            {
+                gotoVoid();
+                return true;
+            }
             if (keyData == Keys.Escape)
             {
                 this.Close();
@@ -156,6 +161,7 @@ namespace nPOSProj
                     dataGridView1.Rows.Add(txtBoxEAN.Text, txtBoxQuantity.Text, txtBoxDescription.Text, rdPrice.Text, rdTotal.Text);
                 }
                 lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                checkRowCount();
                 dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
                 clearboxes();
             }
@@ -215,6 +221,7 @@ namespace nPOSProj
                 autoCompleteItem();
                 ordervo.NewOrder();
                 lblON.Text = ordervo.getON().ToString();
+                checkRowCount();
             }
         }
         private void gotoWholesale()
@@ -394,11 +401,42 @@ namespace nPOSProj
             }
         }
 
-        private void btnF3_Click(object sender, EventArgs e)
+        private void checkRowCount()
+        {
+            if (dataGridView1.Rows.Count != 0)
+            {
+                btnF5.Enabled = false;
+                btnF4.Enabled = true;
+            }
+            else
+            {
+                btnF5.Enabled = true;
+                btnF4.Enabled = false;
+            }
+        }
+
+        private void gotoVoid()
         {
             dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
+            checkRowCount();
             lblTotal.Text = CellSum().ToString("#,###,##0.00");
             btnF3.Enabled = false;
+        }
+
+        private void btnF3_Click(object sender, EventArgs e)
+        {
+            gotoVoid();
+        }
+
+        private void txtBoxQuantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (Convert.ToInt32(rdQtyA.Text) >= Convert.ToInt32(txtBoxQuantity.Text) && Convert.ToInt32(txtBoxQuantity.Text) != 0)
+                {
+                    btnAddToOrder.Focus();
+                }
+            }
         }
     }
 }
