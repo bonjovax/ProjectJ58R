@@ -18,6 +18,7 @@ namespace nPOSProj
         private MySqlConnection con = new MySqlConnection();
         private Conf.dbs dbcon = new Conf.dbs();
         private VO.OrderVO ordervo = new VO.OrderVO();
+        private Boolean wholesale = false;
         public mdiOrdering()
         {
             InitializeComponent();
@@ -87,6 +88,15 @@ namespace nPOSProj
                 gotoNewOrder();
                 return true;
             }
+            if (keyData == Keys.F2 && btnF2A.Enabled == true)
+            {
+                gotoWholesale();
+                return true;
+            }
+            if (keyData == Keys.F2 && btnF2A.Enabled == false)
+            {
+                gotoRetail();
+            }
             if (keyData == Keys.F3 && btnF3.Enabled == true)
             {
                 gotoVoid();
@@ -153,6 +163,7 @@ namespace nPOSProj
                     if (row.Cells[0].Value.ToString() == txtBoxEAN.Text && row.Cells[2].Value.ToString() == txtBoxDescription.Text)
                     {
                         row.Cells[1].Value = Convert.ToInt32(txtBoxQuantity.Text) + Convert.ToInt32(row.Cells[1].Value);
+                        row.Cells[4].Value = Convert.ToDouble(rdTotal.Text) + Convert.ToDouble(row.Cells[4].Value);
                         naa = true;
                     }
                 }
@@ -224,20 +235,6 @@ namespace nPOSProj
                 checkRowCount();
             }
         }
-        private void gotoWholesale()
-        {
-            DialogResult dlg = MessageBox.Show("Do you wish to Select your Transaction to Wholesale?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dlg == System.Windows.Forms.DialogResult.Yes)
-            {
-            }
-        }
-        private void gotoRetail()
-        {
-            DialogResult dlg = MessageBox.Show("Do you wish to Select your Transaction to Retail?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dlg == System.Windows.Forms.DialogResult.Yes)
-            {
-            }
-        }
 
         private void txtBoxDescription_KeyDown(object sender, KeyEventArgs e)
         {
@@ -247,7 +244,7 @@ namespace nPOSProj
                 {
                     ordervo.Description = txtBoxDescription.Text;
                     txtBoxEAN.Text = ordervo.askEanKit();
-                    ordervo.Wholesale = false; //Switch 0
+                    ordervo.Wholesale = wholesale; //Switch 0
                     rdPrice.Text = ordervo.askPriceByKitName().ToString("#,###,##0.00");
                     rdQtyA.Text = ordervo.askQtyByKitName().ToString();
                     ordervo.Ean = txtBoxEAN.Text;
@@ -266,7 +263,7 @@ namespace nPOSProj
                 {
                     ordervo.Description = txtBoxDescription.Text;
                     txtBoxEAN.Text = ordervo.askEan();
-                    ordervo.Wholesale = false; //Switch 1
+                    ordervo.Wholesale = wholesale; //Switch 1
                     rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
                     rdQtyA.Text = ordervo.askQtyByDescription().ToString();
                     ordervo.Ean = txtBoxEAN.Text;
@@ -296,7 +293,7 @@ namespace nPOSProj
                 {
                     ordervo.Ean = txtBoxEAN.Text;
                     txtBoxDescription.Text = ordervo.askKitName();
-                    ordervo.Wholesale = false; //Switch 2
+                    ordervo.Wholesale = wholesale; //Switch 2
                     rdPrice.Text = ordervo.askPriceByEanKit().ToString("#,###,##0.00");
                     rdQtyA.Text = ordervo.askQtyEANKit().ToString();
                     ordervo.Description = txtBoxDescription.Text;
@@ -319,7 +316,7 @@ namespace nPOSProj
                 {
                     ordervo.Ean = txtBoxEAN.Text;
                     txtBoxDescription.Text = ordervo.askDescription();
-                    ordervo.Wholesale = false; //Switch 3
+                    ordervo.Wholesale = wholesale; //Switch 3
                     rdPrice.Text = ordervo.askPriceByEan().ToString("#,###,##0.00");
                     rdQtyA.Text = ordervo.askQtyByEAN().ToString();
                     ordervo.Description = txtBoxDescription.Text;
@@ -423,6 +420,30 @@ namespace nPOSProj
             btnF3.Enabled = false;
         }
 
+        private void gotoWholesale()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to select your Transaction to Wholesale?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                clearboxes();
+                wholesale = true;
+                btnF2A.Enabled = false;
+                btnF2B.Visible = true;
+            }
+        }
+
+        private void gotoRetail()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to select your Transaction to Retail?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                clearboxes();
+                wholesale = false;
+                btnF2A.Enabled = true;
+                btnF2B.Visible = false;
+            }
+        }
+
         private void btnF3_Click(object sender, EventArgs e)
         {
             gotoVoid();
@@ -437,6 +458,16 @@ namespace nPOSProj
                     btnAddToOrder.Focus();
                 }
             }
+        }
+
+        private void btnF2A_Click(object sender, EventArgs e)
+        {
+            gotoWholesale();
+        }
+
+        private void btnF2B_Click(object sender, EventArgs e)
+        {
+            gotoRetail();
         }
     }
 }
