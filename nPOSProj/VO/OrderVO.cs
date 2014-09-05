@@ -31,6 +31,7 @@ namespace nPOSProj.VO
         private DAO.OrderDAO orderdao;
         public OrderVO() { }
 
+        #region Ordering Information VO
         public void NewOrder()
         {
             orderdao = new DAO.OrderDAO();
@@ -158,5 +159,6 @@ namespace nPOSProj.VO
             check = orderdao.checkItemDescriptionKit(Description, Ean);
             return check;
         }
+        #endregion
     }
 }

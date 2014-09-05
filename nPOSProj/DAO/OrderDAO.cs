@@ -18,6 +18,7 @@ namespace nPOSProj.DAO
             
         }
 
+        #region Ordering Information DAO
         public void newOrder()
         {
             String user = frmLogin.User.user_name;
@@ -533,5 +534,23 @@ namespace nPOSProj.DAO
             }
             return correct;
         }
+        #endregion
+        #region Ordering Core
+        public void ParkItem_Add(Int32 pos_orderno, String pos_ean, Int32 pos_quantity, Double order_item_amount, Double pos_amt)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "";
+            try
+            {
+                con.Open();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
     }
 }
