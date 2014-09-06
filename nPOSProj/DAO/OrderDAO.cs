@@ -593,12 +593,12 @@ namespace nPOSProj.DAO
             query += "WHERE pos_orderno = ?pos_orderno AND pos_ean = ?pos_ean";
             try
             {
+                con.Open();
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
                 cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
-                con.Open();
             }
             finally
             {
