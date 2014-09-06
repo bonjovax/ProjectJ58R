@@ -541,9 +541,63 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "";
+            String query = "INSERT INTO pos_park (pos_orderno, pos_ean, pos_quantity, order_item_amount, pos_amt) VALUES";
+            query += "(?a, ?b, ?c, ?d, ?e)";
             try
             {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", pos_orderno);
+                cmd.Parameters.AddWithValue("?b", pos_ean);
+                cmd.Parameters.AddWithValue("?c", pos_quantity);
+                cmd.Parameters.AddWithValue("?d", order_item_amount);
+                cmd.Parameters.AddWithValue("?e", pos_amt);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void ParkItem_Update(Int32 pos_orderno, String pos_ean, Int32 pos_quantity, Double order_item_amount, Double pos_amt)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?a, order_item_amount = ?b, pos_amt = pos_amt + ?c ";
+            query += "WHERE pos_orderno = ?pos_orderno AND pos_ean = ?pos_ean";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", pos_quantity);
+                cmd.Parameters.AddWithValue("?b", order_item_amount);
+                cmd.Parameters.AddWithValue("?c", pos_amt);
+                cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
+                cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void ParkItem_Void(Int32 pos_orderno, String pos_ean)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "DELETE FROM pos_park ";
+            query += "WHERE pos_orderno = ?pos_orderno AND pos_ean = ?pos_ean";
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
+                cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
                 con.Open();
             }
             finally
