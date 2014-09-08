@@ -193,6 +193,7 @@ namespace nPOSProj
             }
             catch (Exception)
             {
+                MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -241,13 +242,20 @@ namespace nPOSProj
         private void gotoNewOrder()
         {
             DialogResult dlg = MessageBox.Show("Do you wish to proceed your New Order?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            try
             {
-                unlockcontrols();
-                autoCompleteItem();
-                ordervo.NewOrder();
-                lblON.Text = ordervo.getON().ToString();
-                checkRowCount();
+                if (dlg == System.Windows.Forms.DialogResult.Yes)
+                {
+                    unlockcontrols();
+                    autoCompleteItem();
+                    ordervo.NewOrder();
+                    lblON.Text = ordervo.getON().ToString();
+                    checkRowCount();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -255,47 +263,54 @@ namespace nPOSProj
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (cBoxKits.Checked == true)
+                try
                 {
-                    ordervo.Description = txtBoxDescription.Text;
-                    txtBoxEAN.Text = ordervo.askEanKit();
-                    ordervo.Wholesale = wholesale; //Switch 0
-                    rdPrice.Text = ordervo.askPriceByKitName().ToString("#,###,##0.00");
-                    rdQtyA.Text = ordervo.askQtyByKitName().ToString();
-                    ordervo.Ean = txtBoxEAN.Text;
-                    if (ordervo.askItemDescriptionKit() == true)
+                    if (cBoxKits.Checked == true)
                     {
-                        txtBoxQuantity.ReadOnly = false;
-                        txtBoxQuantity.Focus();
+                        ordervo.Description = txtBoxDescription.Text;
+                        txtBoxEAN.Text = ordervo.askEanKit();
+                        ordervo.Wholesale = wholesale; //Switch 0
+                        rdPrice.Text = ordervo.askPriceByKitName().ToString("#,###,##0.00");
+                        rdQtyA.Text = ordervo.askQtyByKitName().ToString();
+                        ordervo.Ean = txtBoxEAN.Text;
+                        if (ordervo.askItemDescriptionKit() == true)
+                        {
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
                     }
                     else
                     {
-                        txtBoxQuantity.ReadOnly = true;
-                        txtBoxQuantity.Text = "0";
+                        ordervo.Description = txtBoxDescription.Text;
+                        txtBoxEAN.Text = ordervo.askEan();
+                        ordervo.Wholesale = wholesale; //Switch 1
+                        rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
+                        rdQtyA.Text = ordervo.askQtyByDescription().ToString();
+                        ordervo.Ean = txtBoxEAN.Text;
+                        if (ordervo.askItemDescription() == true)
+                        {
+                            txtBoxEAN.ReadOnly = true;
+                            txtBoxDescription.ReadOnly = true;
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxEAN.ReadOnly = false;
+                            txtBoxDescription.ReadOnly = false;
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    ordervo.Description = txtBoxDescription.Text;
-                    txtBoxEAN.Text = ordervo.askEan();
-                    ordervo.Wholesale = wholesale; //Switch 1
-                    rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
-                    rdQtyA.Text = ordervo.askQtyByDescription().ToString();
-                    ordervo.Ean = txtBoxEAN.Text;
-                    if (ordervo.askItemDescription() == true)
-                    {
-                        txtBoxEAN.ReadOnly = true;
-                        txtBoxDescription.ReadOnly = true;
-                        txtBoxQuantity.ReadOnly = false;
-                        txtBoxQuantity.Focus();
-                    }
-                    else
-                    {
-                        txtBoxEAN.ReadOnly = false;
-                        txtBoxDescription.ReadOnly = false;
-                        txtBoxQuantity.ReadOnly = true;
-                        txtBoxQuantity.Text = "0";
-                    }
+                    MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -304,51 +319,58 @@ namespace nPOSProj
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (cBoxKits.Checked == true)
+                try
                 {
-                    ordervo.Ean = txtBoxEAN.Text;
-                    txtBoxDescription.Text = ordervo.askKitName();
-                    ordervo.Wholesale = wholesale; //Switch 2
-                    rdPrice.Text = ordervo.askPriceByEanKit().ToString("#,###,##0.00");
-                    rdQtyA.Text = ordervo.askQtyEANKit().ToString();
-                    ordervo.Description = txtBoxDescription.Text;
-                    if (ordervo.askItemEanKit() == true)
+                    if (cBoxKits.Checked == true)
                     {
-                        txtBoxDescription.ReadOnly = true;
-                        txtBoxEAN.ReadOnly = true;
-                        txtBoxQuantity.ReadOnly = false;
-                        txtBoxQuantity.Focus();
+                        ordervo.Ean = txtBoxEAN.Text;
+                        txtBoxDescription.Text = ordervo.askKitName();
+                        ordervo.Wholesale = wholesale; //Switch 2
+                        rdPrice.Text = ordervo.askPriceByEanKit().ToString("#,###,##0.00");
+                        rdQtyA.Text = ordervo.askQtyEANKit().ToString();
+                        ordervo.Description = txtBoxDescription.Text;
+                        if (ordervo.askItemEanKit() == true)
+                        {
+                            txtBoxDescription.ReadOnly = true;
+                            txtBoxEAN.ReadOnly = true;
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxDescription.ReadOnly = false;
+                            txtBoxEAN.ReadOnly = false;
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
                     }
                     else
                     {
-                        txtBoxDescription.ReadOnly = false;
-                        txtBoxEAN.ReadOnly = false;
-                        txtBoxQuantity.ReadOnly = true;
-                        txtBoxQuantity.Text = "0";
+                        ordervo.Ean = txtBoxEAN.Text;
+                        txtBoxDescription.Text = ordervo.askDescription();
+                        ordervo.Wholesale = wholesale; //Switch 3
+                        rdPrice.Text = ordervo.askPriceByEan().ToString("#,###,##0.00");
+                        rdQtyA.Text = ordervo.askQtyByEAN().ToString();
+                        ordervo.Description = txtBoxDescription.Text;
+                        if (ordervo.askItemEan() == true)
+                        {
+                            txtBoxDescription.ReadOnly = true;
+                            txtBoxEAN.ReadOnly = true;
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxDescription.ReadOnly = false;
+                            txtBoxEAN.ReadOnly = false;
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    ordervo.Ean = txtBoxEAN.Text;
-                    txtBoxDescription.Text = ordervo.askDescription();
-                    ordervo.Wholesale = wholesale; //Switch 3
-                    rdPrice.Text = ordervo.askPriceByEan().ToString("#,###,##0.00");
-                    rdQtyA.Text = ordervo.askQtyByEAN().ToString();
-                    ordervo.Description = txtBoxDescription.Text;
-                    if (ordervo.askItemEan() == true)
-                    {
-                        txtBoxDescription.ReadOnly = true;
-                        txtBoxEAN.ReadOnly = true;
-                        txtBoxQuantity.ReadOnly = false;
-                        txtBoxQuantity.Focus();
-                    }
-                    else
-                    {
-                        txtBoxDescription.ReadOnly = false;
-                        txtBoxEAN.ReadOnly = false;
-                        txtBoxQuantity.ReadOnly = true;
-                        txtBoxQuantity.Text = "0";
-                    }
+                    MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -429,17 +451,24 @@ namespace nPOSProj
 
         private void gotoVoid()
         {
-            ordervo.Pos_qty = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
-            ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
-            ordervo.Ean = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            ordervo.VoidItem();
-            dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
-            checkRowCount();
-            lblTotal.Text = CellSum().ToString("#,###,##0.00");
-            ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
-            ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
-            ordervo.UpdateTotal();
-            btnF3.Enabled = false;
+            try
+            {
+                ordervo.Pos_qty = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+                ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                ordervo.Ean = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                ordervo.VoidItem();
+                dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
+                checkRowCount();
+                lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
+                ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                ordervo.UpdateTotal();
+                btnF3.Enabled = false;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void gotoWholesale()
