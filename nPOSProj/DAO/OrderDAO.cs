@@ -635,6 +635,34 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
+        public void ReturnAndDeleteItems(Int32 order_no, String item_ean, Int32 qty)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE inventory_items SET item_quantity = item_quantity + ?a ";
+            query += "WHERE item_ean = ?item_ean";
+            String query1 = "DELETE FROM pos_park ";
+            query1 += "WHERE pos_orderno = ?order_no AND pos_ean = ?pos_ean";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlCommand cmd1 = new MySqlCommand(query1, con);
+                cmd.Parameters.AddWithValue("?a", qty);
+                cmd.Parameters.AddWithValue("?item_ean", item_ean);
+                cmd1.Parameters.AddWithValue("?order_no", order_no);
+                cmd1.Parameters.AddWithValue("?pos_ean", item_ean);
+                cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
+                cmd.Dispose();
+                cmd1.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
     }
 }

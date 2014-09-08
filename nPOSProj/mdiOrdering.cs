@@ -495,6 +495,18 @@ namespace nPOSProj
             }
         }
 
+        private void gotoCancelTrans()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to Cancel all of your Transaction?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    //MessageBox.Show(row.Cells[0].Value.ToString());
+                }
+            }
+        }
+
         private void btnF3_Click(object sender, EventArgs e)
         {
             gotoVoid();
@@ -519,6 +531,11 @@ namespace nPOSProj
         private void btnF2B_Click(object sender, EventArgs e)
         {
             gotoRetail();
+        }
+
+        private void btnF4_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
