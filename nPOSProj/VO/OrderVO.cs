@@ -62,6 +62,14 @@ namespace nPOSProj.VO
             set { pos_amt = value; }
         }
 
+        private Double order_total_amt;
+
+        public Double Order_total_amt
+        {
+            get { return order_total_amt; }
+            set { order_total_amt = value; }
+        }
+
         public OrderVO() { }
 
         #region Ordering Information VO
@@ -208,6 +216,11 @@ namespace nPOSProj.VO
         {
             orderdao = new DAO.OrderDAO();
             orderdao.ParkItem_Void(Pos_qty, Pos_orderno, Ean);
+        }
+        public void UpdateTotal()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.TotalAmtUpdate(Order_total_amt, Pos_orderno);
         }
         #endregion
     }

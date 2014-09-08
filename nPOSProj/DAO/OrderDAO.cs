@@ -541,8 +541,8 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "INSERT INTO pos_park (pos_orderno, pos_ean, pos_quantity, order_item_amount, pos_amt) VALUES";
-            query += "(?a, ?b, ?c, ?d, ?e)";
+            String query = "INSERT INTO pos_park (pos_orderno, pos_ean, pos_quantity, order_item_amount, pos_amt, pos_parked_date) VALUES";
+            query += "(?a, ?b, ?c, ?d, ?e, ?f)";
             try
             {
                 con.Open();
@@ -552,6 +552,7 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?c", pos_quantity);
                 cmd.Parameters.AddWithValue("?d", order_item_amount);
                 cmd.Parameters.AddWithValue("?e", pos_amt);
+                cmd.Parameters.AddWithValue("?f", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
             }
@@ -565,7 +566,7 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?a, order_item_amount = ?b, pos_amt = pos_amt + ?c ";
+            String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?a, order_item_amount = ?b, pos_amt = pos_amt + ?c, pos_parked_date = ?d ";
             query += "WHERE pos_orderno = ?pos_orderno AND pos_ean = ?pos_ean";
             try
             {
@@ -574,6 +575,7 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?a", pos_quantity);
                 cmd.Parameters.AddWithValue("?b", order_item_amount);
                 cmd.Parameters.AddWithValue("?c", pos_amt);
+                cmd.Parameters.AddWithValue("?d", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
                 cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
                 cmd.ExecuteNonQuery();
@@ -606,6 +608,27 @@ namespace nPOSProj.DAO
                 cmd.Dispose();
                 cmd1.ExecuteNonQuery();
                 cmd1.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void TotalAmtUpdate(Double order_total_amt, Int32 order_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE order_store SET order_total_amt = ?a ";
+            query += "WHERE order_no = ?order_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", order_total_amt);
+                cmd.Parameters.AddWithValue("?order_no", order_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
             }
             finally
             {

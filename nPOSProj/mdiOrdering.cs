@@ -184,6 +184,9 @@ namespace nPOSProj
                     dataGridView1.Rows.Add(txtBoxEAN.Text, txtBoxQuantity.Text, txtBoxDescription.Text, rdPrice.Text, rdTotal.Text);
                 }
                 lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
+                ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                ordervo.UpdateTotal();
                 checkRowCount();
                 dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
                 clearboxes();
@@ -433,6 +436,9 @@ namespace nPOSProj
             dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
             checkRowCount();
             lblTotal.Text = CellSum().ToString("#,###,##0.00");
+            ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
+            ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+            ordervo.UpdateTotal();
             btnF3.Enabled = false;
         }
 
