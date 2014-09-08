@@ -162,6 +162,12 @@ namespace nPOSProj
                 {
                     if (row.Cells[0].Value.ToString() == txtBoxEAN.Text && row.Cells[2].Value.ToString() == txtBoxDescription.Text)
                     {
+                        ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                        ordervo.Ean = txtBoxEAN.Text;
+                        ordervo.Pos_qty = Convert.ToInt32(txtBoxQuantity.Text);
+                        ordervo.Order_item_amount = Convert.ToDouble(rdPrice.Text);
+                        ordervo.Pos_amt = Convert.ToDouble(rdTotal.Text);
+                        ordervo.UpdateSameItem();
                         row.Cells[1].Value = Convert.ToInt32(txtBoxQuantity.Text) + Convert.ToInt32(row.Cells[1].Value);
                         row.Cells[4].Value = Convert.ToDouble(rdTotal.Text) + Convert.ToDouble(row.Cells[4].Value);
                         naa = true;
@@ -169,6 +175,12 @@ namespace nPOSProj
                 }
                 if (!naa)
                 {
+                    ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                    ordervo.Ean = txtBoxEAN.Text;
+                    ordervo.Pos_qty = Convert.ToInt32(txtBoxQuantity.Text);
+                    ordervo.Order_item_amount = Convert.ToDouble(rdPrice.Text);
+                    ordervo.Pos_amt = Convert.ToDouble(rdTotal.Text);
+                    ordervo.Add();
                     dataGridView1.Rows.Add(txtBoxEAN.Text, txtBoxQuantity.Text, txtBoxDescription.Text, rdPrice.Text, rdTotal.Text);
                 }
                 lblTotal.Text = CellSum().ToString("#,###,##0.00");
@@ -414,6 +426,10 @@ namespace nPOSProj
 
         private void gotoVoid()
         {
+            ordervo.Pos_qty = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+            ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+            ordervo.Ean = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            ordervo.VoidItem();
             dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
             checkRowCount();
             lblTotal.Text = CellSum().ToString("#,###,##0.00");

@@ -29,6 +29,39 @@ namespace nPOSProj.VO
             set { wholesale = value; }
         }
         private DAO.OrderDAO orderdao;
+
+        private Int32 pos_orderno;
+
+        public Int32 Pos_orderno
+        {
+            get { return pos_orderno; }
+            set { pos_orderno = value; }
+        }
+
+        private Int32 pos_qty;
+
+        public Int32 Pos_qty
+        {
+            get { return pos_qty; }
+            set { pos_qty = value; }
+        }
+
+        private Double order_item_amount;
+
+        public Double Order_item_amount
+        {
+            get { return order_item_amount; }
+            set { order_item_amount = value; }
+        }
+
+        private Double pos_amt;
+
+        public Double Pos_amt
+        {
+            get { return pos_amt; }
+            set { pos_amt = value; }
+        }
+
         public OrderVO() { }
 
         #region Ordering Information VO
@@ -158,6 +191,23 @@ namespace nPOSProj.VO
             orderdao = new DAO.OrderDAO();
             check = orderdao.checkItemDescriptionKit(Description, Ean);
             return check;
+        }
+        #endregion
+        #region Ordering Core VO
+        public void Add()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.ParkItem_Add(Pos_orderno, Ean, Pos_qty, Order_item_amount, Pos_amt);
+        }
+        public void UpdateSameItem()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.ParkItem_Update(Pos_orderno, Ean, Pos_qty, Order_item_amount, Pos_amt);
+        }
+        public void VoidItem()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.ParkItem_Void(Pos_qty, Pos_orderno, Ean);
         }
         #endregion
     }
