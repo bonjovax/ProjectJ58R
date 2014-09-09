@@ -56,6 +56,7 @@ namespace nPOSProj
         private void mOrderPark_Load(object sender, EventArgs e)
         {
             LoadData();
+            txtBoxOrderNo.Focus();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

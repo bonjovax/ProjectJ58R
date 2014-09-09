@@ -107,6 +107,11 @@ namespace nPOSProj
                 gotoCancelTrans();
                 return true;
             }
+            if (keyData == Keys.F5 && btnF5.Enabled == true)
+            {
+                gotoPark();
+                return true;
+            }
             if (keyData == Keys.Escape)
             {
                 this.Close();
@@ -541,6 +546,22 @@ namespace nPOSProj
             }
         }
 
+        private void gotoPark()
+        {
+            using (mOrderPark park = new mOrderPark())
+            {
+                park.ShowDialog();
+                if (park.Order_no == 0)
+                {
+                    //Wala
+                }
+                else
+                {
+                    lblON.Text = park.Order_no.ToString();
+                }
+            }
+        }
+
         private void btnF3_Click(object sender, EventArgs e)
         {
             gotoVoid();
@@ -574,18 +595,7 @@ namespace nPOSProj
 
         private void btnF5_Click(object sender, EventArgs e)
         {
-            using (mOrderPark park = new mOrderPark())
-            {
-                park.ShowDialog();
-                if (park.Order_no == 0)
-                {
-                    //Wala
-                }
-                else
-                {
-                    MessageBox.Show("Na Click Na Kay " + park.Order_no.ToString());
-                }
-            }
+            gotoPark();
         }
     }
 }
