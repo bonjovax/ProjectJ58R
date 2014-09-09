@@ -831,5 +831,147 @@ namespace nPOSProj.DAO
             return bilat;
         }
         #endregion
+        #region Ordering Park Retrieval DAO
+        public Int32 ParkCount(Int32 order_no)
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS x FROM pos_park ";
+            query += "INNER JOIN inventory_items ON pos_park.pos_ean = inventory_items.item_ean ";
+            query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 0)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?order_no", order_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["x"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        public Int32 ParkCountKit(Int32 order_no)
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS x FROM inventory_items ";
+            query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 1)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?order_no", order_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["x"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        public String[,] ReadPark(Int32 order_no)
+        {
+            Int32 cunt = this.ParkCount(order_no);
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_stocks.stock_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM pos_park ";
+            query += "INNER JOIN inventory_items ON pos_park.pos_ean = inventory_items.item_ean ";
+            query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 0)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?order_no", order_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        public String[,] ReadParkKit(Int32 order_no)
+        {
+            Int32 cunt = this.ParkCountKit(order_no);
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_items.kit_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM inventory_items ";
+            query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 1)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?order_no", order_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        #endregion
     }
 }

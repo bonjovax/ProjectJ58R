@@ -251,5 +251,23 @@ namespace nPOSProj.VO
             return bilat;
         }
         #endregion
+        #region Ordering Park Retrieval VO
+        public String[,] ReadParkItem()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.ParkCount(Pos_orderno);
+            String[,] tablit = new String[5, cunt];
+            tablit = orderdao.ReadPark(Pos_orderno);
+            return tablit;
+        }
+        public String[,] ReadParkItemKit()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.ParkCountKit(Pos_orderno);
+            String[,] tablit = new String[5, cunt];
+            tablit = orderdao.ReadParkKit(Pos_orderno);
+            return tablit;
+        }
+        #endregion
     }
 }
