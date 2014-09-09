@@ -222,6 +222,16 @@ namespace nPOSProj.VO
             orderdao = new DAO.OrderDAO();
             orderdao.TotalAmtUpdate(Order_total_amt, Pos_orderno);
         }
+        public void ReturnAndDeleteTrans()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.ReturnAndDeleteItems(Pos_orderno, Ean, Pos_qty);
+        }
+        public void CancelTrans()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.Cancel(Pos_orderno);
+        }
         #endregion
     }
 }

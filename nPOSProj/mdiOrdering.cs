@@ -102,6 +102,11 @@ namespace nPOSProj
                 gotoVoid();
                 return true;
             }
+            if (keyData == Keys.F4 && btnF4.Enabled == true)
+            {
+                gotoCancelTrans();
+                return true;
+            }
             if (keyData == Keys.Escape)
             {
                 this.Close();
@@ -215,6 +220,15 @@ namespace nPOSProj
             txtBoxEAN.ReadOnly = false;
             txtBoxQuantity.ReadOnly = true;
             cBoxKits.Checked = false;
+        }
+        private void clearboxesTrans()
+        {
+            txtBoxQuantity.Text = "0";
+            rdPrice.Text = "0.00";
+            rdTotal.Text = "0.00";
+            rdQtyA.Text = "0";
+            txtBoxEAN.Clear();
+            txtBoxDescription.Clear();
         }
 
         private void cBoxKits_CheckedChanged(object sender, EventArgs e)
@@ -464,6 +478,7 @@ namespace nPOSProj
                 ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
                 ordervo.UpdateTotal();
                 btnF3.Enabled = false;
+                clearboxes();
             }
             catch (Exception)
             {
@@ -502,8 +517,27 @@ namespace nPOSProj
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    //MessageBox.Show(row.Cells[0].Value.ToString());
+                    ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                    ordervo.Ean = row.Cells[0].Value.ToString();
+                    ordervo.Pos_qty = Convert.ToInt32(row.Cells[1].Value);
+                    ordervo.ReturnAndDeleteTrans();
                 }
+                ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                ordervo.CancelTrans();
+                dataGridView1.Rows.Clear();
+                lockcontrols();
+                clearboxesTrans();
+                //
+                txtBoxQuantity.Text = "0";
+                txtBoxQuantity.ReadOnly = true;
+                //
+                btnF2B.Visible = false;
+                btnF2A.Enabled = false;
+                wholesale = false;
+                btnF4.Enabled = false;
+                btnF1.Enabled = true;
+                lblON.Text = "x";
+                lblTotal.Text = "0.00";
             }
         }
 
@@ -535,7 +569,7 @@ namespace nPOSProj
 
         private void btnF4_Click(object sender, EventArgs e)
         {
-            
+            gotoCancelTrans();
         }
     }
 }

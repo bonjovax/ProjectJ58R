@@ -49,8 +49,7 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "SELECT COUNT(order_trn) AS x FROM order_store ";
-            query += "WHERE order_park = 1 AND is_cancel = 0";
+            String query = "SELECT COUNT(*) AS x FROM order_store";
             try
             {
                 con.Open();
@@ -543,18 +542,25 @@ namespace nPOSProj.DAO
             con.ConnectionString = db.getConnectionString();
             String query = "INSERT INTO pos_park (pos_orderno, pos_ean, pos_quantity, order_item_amount, pos_amt, pos_parked_date) VALUES";
             query += "(?a, ?b, ?c, ?d, ?e, ?f)";
+            String query1 = "UPDATE inventory_items SET item_quantity = item_quantity - ?a ";
+            query1 += "WHERE item_ean = ?item_ean";
             try
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlCommand cmd1 = new MySqlCommand(query1, con);
                 cmd.Parameters.AddWithValue("?a", pos_orderno);
                 cmd.Parameters.AddWithValue("?b", pos_ean);
                 cmd.Parameters.AddWithValue("?c", pos_quantity);
                 cmd.Parameters.AddWithValue("?d", order_item_amount);
                 cmd.Parameters.AddWithValue("?e", pos_amt);
                 cmd.Parameters.AddWithValue("?f", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd1.Parameters.AddWithValue("?a", pos_quantity);
+                cmd1.Parameters.AddWithValue("?item_ean", pos_ean);
                 cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
                 cmd.Dispose();
+                cmd1.Dispose();
             }
             finally
             {
@@ -568,18 +574,25 @@ namespace nPOSProj.DAO
             con.ConnectionString = db.getConnectionString();
             String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?a, order_item_amount = ?b, pos_amt = pos_amt + ?c, pos_parked_date = ?d ";
             query += "WHERE pos_orderno = ?pos_orderno AND pos_ean = ?pos_ean";
+            String query1 = "UPDATE inventory_items SET item_quantity = item_quantity - ?a ";
+            query1 += "WHERE item_ean = ?item_ean";
             try
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlCommand cmd1 = new MySqlCommand(query1, con);
                 cmd.Parameters.AddWithValue("?a", pos_quantity);
                 cmd.Parameters.AddWithValue("?b", order_item_amount);
                 cmd.Parameters.AddWithValue("?c", pos_amt);
                 cmd.Parameters.AddWithValue("?d", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
                 cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
+                cmd1.Parameters.AddWithValue("?a", pos_quantity);
+                cmd1.Parameters.AddWithValue("?item_ean", pos_ean);
                 cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
                 cmd.Dispose();
+                cmd1.Dispose();
             }
             finally
             {
@@ -657,6 +670,26 @@ namespace nPOSProj.DAO
                 cmd1.ExecuteNonQuery();
                 cmd.Dispose();
                 cmd1.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void Cancel(Int32 order_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE order_store SET order_total_amt = 0, order_park = 0, is_cancel = 1 ";
+            query += "WHERE order_no = ?order_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?order_no", order_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
             }
             finally
             {
