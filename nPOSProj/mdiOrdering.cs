@@ -571,5 +571,21 @@ namespace nPOSProj
         {
             gotoCancelTrans();
         }
+
+        private void btnF5_Click(object sender, EventArgs e)
+        {
+            using (mOrderPark park = new mOrderPark())
+            {
+                park.ShowDialog();
+                if (park.Order_no == 0)
+                {
+                    //Wala
+                }
+                else
+                {
+                    MessageBox.Show("Na Click Na Kay " + park.Order_no.ToString());
+                }
+            }
+        }
     }
 }

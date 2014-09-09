@@ -233,5 +233,23 @@ namespace nPOSProj.VO
             orderdao.Cancel(Pos_orderno);
         }
         #endregion
+        #region Ordering Retrieve Data VO
+        public String[,] ReadParkedOrder()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.OrderParkCount();
+            String[,] bilat = new String[5, cunt];
+            bilat = orderdao.ReadOrderPark();
+            return bilat;
+        }
+        public String[,] ReadParkedOrderSearch()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.OrderParkCountSearch(Pos_orderno);
+            String[,] bilat = new String[5, cunt];
+            bilat = orderdao.ReadOrderParkSearch(Pos_orderno);
+            return bilat;
+        }
+        #endregion
     }
 }

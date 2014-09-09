@@ -697,5 +697,139 @@ namespace nPOSProj.DAO
             }
         }
         #endregion
+        #region Ordering Retrieval DAO
+        public Int32 OrderParkCount()
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS x FROM order_store ";
+            query += "WHERE order_park = 1 AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["x"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        public Int32 OrderParkCountSearch(Int32 od)
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS x FROM order_store ";
+            query += "WHERE order_no = ?od AND order_park = 1 AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?od", od);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["x"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        public String[,] ReadOrderPark()
+        {
+            Int32 cunt = this.OrderParkCount();
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT order_no AS a, order_date AS b, order_time AS c, order_total_amt AS d, order_user AS e FROM order_store ";
+            query += "WHERE order_park = 1 AND is_cancel = 0 ORDER BY order_no ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        public String[,] ReadOrderParkSearch(Int32 od)
+        {
+            Int32 cunt = this.OrderParkCount();
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT order_no AS a, order_date AS b, order_time AS c, order_total_amt AS d, order_user AS e FROM order_store ";
+            query += "WHERE order_no = ?od AND order_park = 1 AND is_cancel = 0 ORDER BY order_no ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?od", od);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        #endregion
     }
 }
