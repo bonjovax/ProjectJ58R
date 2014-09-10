@@ -29,5 +29,9 @@ namespace nPOSProj
         {
             this.Close();
         }
+
+        private void btnF1_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
