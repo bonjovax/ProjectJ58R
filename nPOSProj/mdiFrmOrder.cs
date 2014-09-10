@@ -15,6 +15,7 @@ namespace nPOSProj
         private static String cmd = "mailto:DLG.alfel@gmail.com?subject=Ordering Module Support&cc=jarmonilla892@gmail.com";
         private DAO.LoginDAO login;
         private mdiOrdering ordering = new mdiOrdering();
+        private mdiQuotation quotation = new mdiQuotation();
         public mdiFrmOrder()
         {
             InitializeComponent();
@@ -128,6 +129,16 @@ namespace nPOSProj
                 ordering = new mdiOrdering();
                 ordering.MdiParent = this;
                 ordering.Show();
+            }
+        }
+
+        private void tsQuotation_Click(object sender, EventArgs e)
+        {
+            if (ActivateThisChild("mdiQuotation") == false)
+            {
+                quotation = new mdiQuotation();
+                quotation.MdiParent = this;
+                quotation.Show();
             }
         }
     }

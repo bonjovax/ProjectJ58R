@@ -90,6 +90,7 @@
             this.tsQuotation.Size = new System.Drawing.Size(74, 69);
             this.tsQuotation.Text = "&Quotation";
             this.tsQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsQuotation.Click += new System.EventHandler(this.tsQuotation_Click);
             // 
             // toolStripButton1
             // 
