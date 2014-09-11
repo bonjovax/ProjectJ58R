@@ -128,6 +128,7 @@ namespace nPOSProj
                     ordervo.Company = txtBoxCompany.Text;
                     txtBoxAddress.Text = ordervo.askAddress();
                     Custcode = ordervo.askCustomerCode();
+                    txtBoxAddress.Focus();
                 }
             }
             catch (Exception)
