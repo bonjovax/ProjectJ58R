@@ -133,6 +133,8 @@ namespace nPOSProj
                     rdCustomerCode.Text = newquote.Custcode;
                     rdCompany.Text = newquote.Company;
                     rdAddress.Text = newquote.Address;
+                    unlockcontrols();
+                    autoCompleteItem();
                 }
             }
         }
