@@ -973,5 +973,151 @@ namespace nPOSProj.DAO
             return bilat;
         }
         #endregion
+        #region Quotation Core
+        public Int32 QuoteParkCount()
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS y FROM quotation_store ";
+            query += "WHERE quote_park = 1 AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["y"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        public Int32 QuoteCompanyCount()
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS z FROM crm_customer";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["z"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        public String[,] ReadCompanyNameQuote()
+        {
+            Int32 cunt = this.QuoteCompanyCount();
+            String[,] bilat = new String[1, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT crm_companyname AS a FROM crm_customer";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        public String getCustomerCode(String company)
+        {
+            String custocode;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT crm_custcode AS a FROM crm_customer ";
+            query += "WHERE crm_companyname = ?crm_companyname";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?crm_companyname", company);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    custocode = rdr["a"].ToString();
+                }
+                else
+                    custocode = "WALKIN";
+            }
+            finally
+            {
+                con.Close();
+            }
+            return custocode;
+        }
+        public String getAddress(String company)
+        {
+            String address;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT crm_address AS a, crm_city AS b, crm_state_province AS c, crm_zip_code AS d FROM crm_customer ";
+            query += "WHERE crm_companyname = ?crm_companyname";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?crm_companyname", company);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    address = rdr["a"].ToString() + ", " + rdr["b"].ToString() + ", " + rdr["c"].ToString() + " " + rdr["d"].ToString();
+                }
+                else
+                    address = "";
+            }
+            finally
+            {
+                con.Close();
+            }
+            return address;
+        }
+        #endregion
     }
 }

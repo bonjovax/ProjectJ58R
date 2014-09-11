@@ -58,6 +58,15 @@ namespace nPOSProj.VO
             set { order_total_amt = value; }
         }
         #endregion
+        #region Quotation Accessors Core
+        private String company;
+
+        public String Company
+        {
+            get { return company; }
+            set { company = value; }
+        }
+        #endregion
 
         public OrderVO() { }
 
@@ -259,6 +268,29 @@ namespace nPOSProj.VO
         }
         #endregion
         // Quotation
-
+        #region Quotation Core VO
+        public String[,] ReadCompanySearchQuotex()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.QuoteCompanyCount();
+            String[,] tablit = new String[1, cunt];
+            tablit = orderdao.ReadCompanyNameQuote();
+            return tablit;
+        }
+        public String askCustomerCode()
+        {
+            String custcode;
+            orderdao = new DAO.OrderDAO();
+            custcode = orderdao.getCustomerCode(Company);
+            return custcode;
+        }
+        public String askAddress()
+        {
+            String address;
+            orderdao = new DAO.OrderDAO();
+            address = orderdao.getAddress(Company);
+            return address;
+        }
+        #endregion
     }
 }

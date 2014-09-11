@@ -27,6 +27,11 @@ namespace nPOSProj
                 this.Close();
                 return true;
             }
+            if (keyData == Keys.F1 && btnF1.Enabled == true)
+            {
+                gotoNewQuote();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
         private void autoCompleteItem()
@@ -118,6 +123,19 @@ namespace nPOSProj
                 btnF4.Enabled = false;
             }
         }
+        private void gotoNewQuote()
+        {
+            using (mQuoteNew newquote = new mQuoteNew())
+            {
+                newquote.ShowDialog();
+                if (newquote.NewQuote != false)
+                {
+                    rdCustomerCode.Text = newquote.Custcode;
+                    rdCompany.Text = newquote.Company;
+                    rdAddress.Text = newquote.Address;
+                }
+            }
+        }
         private void btnESC_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -125,6 +143,7 @@ namespace nPOSProj
 
         private void btnF1_Click(object sender, EventArgs e)
         {
+            gotoNewQuote();
         }
     }
 }
