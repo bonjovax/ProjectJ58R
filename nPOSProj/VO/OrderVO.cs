@@ -258,5 +258,7 @@ namespace nPOSProj.VO
             return tablit;
         }
         #endregion
+        // Quotation
+
     }
 }
