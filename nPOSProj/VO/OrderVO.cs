@@ -7,68 +7,57 @@ namespace nPOSProj.VO
 {
     class OrderVO
     {
+        #region Order Class Accessors Core
         private String description;
-
         public String Description
         {
             get { return description; }
             set { description = value; }
         }
         private String ean;
-
         public String Ean
         {
             get { return ean; }
             set { ean = value; }
         }
         private Boolean wholesale;
-
         public Boolean Wholesale
         {
             get { return wholesale; }
             set { wholesale = value; }
         }
         private DAO.OrderDAO orderdao;
-
         private Int32 pos_orderno;
-
         public Int32 Pos_orderno
         {
             get { return pos_orderno; }
             set { pos_orderno = value; }
         }
-
         private Int32 pos_qty;
-
         public Int32 Pos_qty
         {
             get { return pos_qty; }
             set { pos_qty = value; }
         }
-
         private Double order_item_amount;
-
         public Double Order_item_amount
         {
             get { return order_item_amount; }
             set { order_item_amount = value; }
         }
-
         private Double pos_amt;
-
         public Double Pos_amt
         {
             get { return pos_amt; }
             set { pos_amt = value; }
         }
-
         private Double order_total_amt;
-
         public Double Order_total_amt
         {
             get { return order_total_amt; }
             set { order_total_amt = value; }
         }
+        #endregion
 
         public OrderVO() { }
 
