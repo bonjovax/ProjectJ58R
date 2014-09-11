@@ -223,7 +223,7 @@
             // 
             this.lblON.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblON.ForeColor = System.Drawing.Color.Red;
-            this.lblON.Location = new System.Drawing.Point(87, 44);
+            this.lblON.Location = new System.Drawing.Point(89, 44);
             this.lblON.Name = "lblON";
             this.lblON.Size = new System.Drawing.Size(147, 23);
             this.lblON.TabIndex = 37;
