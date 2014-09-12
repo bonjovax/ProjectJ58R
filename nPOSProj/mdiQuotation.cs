@@ -16,6 +16,7 @@ namespace nPOSProj
         AutoCompleteStringCollection collect1 = new AutoCompleteStringCollection();
         private MySqlConnection con = new MySqlConnection();
         private Conf.dbs dbcon = new Conf.dbs();
+        private VO.OrderVO ordervo = new VO.OrderVO();
         public mdiQuotation()
         {
             InitializeComponent();
@@ -135,6 +136,8 @@ namespace nPOSProj
                     rdAddress.Text = newquote.Address;
                     unlockcontrols();
                     autoCompleteItem();
+                    lblQN.Text = ordervo.getQN().ToString();
+                    checkRowCount();
                 }
             }
         }

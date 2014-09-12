@@ -95,6 +95,10 @@ namespace nPOSProj
                 Company = txtBoxCompany.Text;
                 Address = txtBoxAddress.Text;
                 NewQuote = true;
+                ordervo.Quote_custcode = Custcode;
+                ordervo.Quote_customer = Company;
+                ordervo.Quote_address = Address;
+                ordervo.NewQuotation();
                 this.Close();
             }
         }

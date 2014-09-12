@@ -66,6 +66,30 @@ namespace nPOSProj.VO
             get { return company; }
             set { company = value; }
         }
+
+        private String quote_custcode;
+
+        public String Quote_custcode
+        {
+            get { return quote_custcode; }
+            set { quote_custcode = value; }
+        }
+
+        private String quote_customer;
+
+        public String Quote_customer
+        {
+            get { return quote_customer; }
+            set { quote_customer = value; }
+        }
+
+        private String quote_address;
+
+        public String Quote_address
+        {
+            get { return quote_address; }
+            set { quote_address = value; }
+        }
         #endregion
 
         public OrderVO() { }
@@ -290,6 +314,19 @@ namespace nPOSProj.VO
             orderdao = new DAO.OrderDAO();
             address = orderdao.getAddress(Company);
             return address;
+        }
+        //
+        public Int32 getQN()
+        {
+            Int32 qn = 0;
+            orderdao = new DAO.OrderDAO();
+            qn = orderdao.askQuoteNo();
+            return qn;
+        }
+        public void NewQuotation()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.newQuote(Quote_custcode, Quote_customer, Quote_address);
         }
         #endregion
     }

@@ -1119,5 +1119,58 @@ namespace nPOSProj.DAO
             return address;
         }
         #endregion
+        #region Quotation Data
+        public Int32 askQuoteNo()
+        {
+            Int32 quoteNo = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS x FROM quotation_store";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    quoteNo = Convert.ToInt32(rdr["x"].ToString());
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return quoteNo;
+        }
+        public void newQuote(String quote_custcode, String quote_customer, String quote_address)
+        {
+            String user = frmLogin.User.user_name;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "INSERT INTO quotation_store (quote_no, quote_date, quote_time, quote_user, quote_custcode, quote_customer, quote_address) VALUES";
+            query += "(?quote_no, ?quote_date, ?quote_time, ?quote_user, ?quote_custcode, ?quote_customer, ?quote_address)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", this.askQuoteNo() + 1);
+                cmd.Parameters.AddWithValue("?quote_date", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("?quote_time", DateTime.Now.ToString("HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?quote_user", user);
+                cmd.Parameters.AddWithValue("?quote_custcode", quote_custcode);
+                cmd.Parameters.AddWithValue("?quote_customer", quote_customer);
+                cmd.Parameters.AddWithValue("?quote_address", quote_address);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
     }
 }
