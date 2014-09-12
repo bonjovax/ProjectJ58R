@@ -90,6 +90,20 @@ namespace nPOSProj.VO
             get { return quote_address; }
             set { quote_address = value; }
         }
+        private Int32 quotation_no;
+
+        public Int32 Quotation_no
+        {
+            get { return quotation_no; }
+            set { quotation_no = value; }
+        }
+        private Double quote_total;
+
+        public Double Quote_total
+        {
+            get { return quote_total; }
+            set { quote_total = value; }
+        }
         #endregion
 
         public OrderVO() { }
@@ -254,6 +268,11 @@ namespace nPOSProj.VO
             orderdao = new DAO.OrderDAO();
             orderdao.Cancel(Pos_orderno);
         }
+        public void UpdateTotalQuote()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.TotalAmtUpdateQuote(Order_total_amt, Quotation_no);
+        }
         #endregion
         #region Ordering Retrieve Data VO
         public String[,] ReadParkedOrder()
@@ -327,6 +346,28 @@ namespace nPOSProj.VO
         {
             orderdao = new DAO.OrderDAO();
             orderdao.newQuote(Quote_custcode, Quote_customer, Quote_address);
+        }
+        #endregion
+        #region Quotation Entry VO
+        public void addQuote()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.addItemQuote(Quotation_no, Ean, Pos_qty, Order_item_amount, Quote_total);
+        }
+        public void updateQuote()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.updateItemQuote(Quotation_no, Ean, Pos_qty, Order_item_amount, Quote_total);
+        }
+        public void voidQuote()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.voidItemQuote(Quotation_no, Ean);
+        }
+        public void cancelQ()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.cancelQuote(Quotation_no);
         }
         #endregion
     }

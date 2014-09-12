@@ -19,6 +19,7 @@ namespace nPOSProj
         private Conf.dbs dbcon = new Conf.dbs();
         private VO.OrderVO ordervo = new VO.OrderVO();
         private Boolean wholesale = false;
+        private Boolean start = false;
         public mdiOrdering()
         {
             InitializeComponent();
@@ -122,12 +123,12 @@ namespace nPOSProj
                 gotoNewOrder();
                 return true;
             }
-            if (keyData == Keys.F2 && btnF2A.Enabled == true)
+            if (keyData == Keys.F2 && start == true && wholesale == false)
             {
                 gotoWholesale();
                 return true;
             }
-            if (keyData == Keys.F2 && btnF2A.Enabled == false)
+            if (keyData == Keys.F2 && start == true && wholesale == true)
             {
                 gotoRetail();
             }
@@ -304,6 +305,7 @@ namespace nPOSProj
                     ordervo.NewOrder();
                     lblON.Text = ordervo.getON().ToString();
                     checkRowCount();
+                    start = true;
                 }
             }
             catch (Exception)
@@ -510,7 +512,7 @@ namespace nPOSProj
                 ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
                 ordervo.Ean = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                 ordervo.VoidItem();
-                dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
+                dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
                 checkRowCount();
                 lblTotal.Text = CellSum().ToString("#,###,##0.00");
                 ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
@@ -551,33 +553,41 @@ namespace nPOSProj
 
         private void gotoCancelTrans()
         {
-            DialogResult dlg = MessageBox.Show("Do you wish to Cancel all of your Transaction?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            try
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                DialogResult dlg = MessageBox.Show("Do you wish to Cancel all of your Transaction?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dlg == System.Windows.Forms.DialogResult.Yes)
                 {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
+                        ordervo.Ean = row.Cells[0].Value.ToString();
+                        ordervo.Pos_qty = Convert.ToInt32(row.Cells[1].Value);
+                        ordervo.ReturnAndDeleteTrans();
+                    }
                     ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
-                    ordervo.Ean = row.Cells[0].Value.ToString();
-                    ordervo.Pos_qty = Convert.ToInt32(row.Cells[1].Value);
-                    ordervo.ReturnAndDeleteTrans();
+                    ordervo.CancelTrans();
+                    dataGridView1.Rows.Clear();
+                    //
+                    lockcontrols();
+                    clearboxesTrans();
+                    //
+                    txtBoxQuantity.Text = "0";
+                    txtBoxQuantity.ReadOnly = true;
+                    //
+                    btnF2B.Visible = false;
+                    btnF2A.Enabled = false;
+                    wholesale = false;
+                    btnF4.Enabled = false;
+                    btnF5.Enabled = true;
+                    btnF1.Enabled = true;
+                    lblON.Text = "x";
+                    lblTotal.Text = "0.00";
                 }
-                ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
-                ordervo.CancelTrans();
-                dataGridView1.Rows.Clear();
-                lockcontrols();
-                clearboxesTrans();
-                //
-                txtBoxQuantity.Text = "0";
-                txtBoxQuantity.ReadOnly = true;
-                //
-                btnF2B.Visible = false;
-                btnF2A.Enabled = false;
-                wholesale = false;
-                btnF4.Enabled = false;
-                btnF5.Enabled = true;
-                btnF1.Enabled = true;
-                lblON.Text = "x";
-                lblTotal.Text = "0.00";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

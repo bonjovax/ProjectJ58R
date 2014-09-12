@@ -1171,6 +1171,128 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
+        public void addItemQuote(Int32 quote_no, String quote_ean, Int32 quote_qty, Double quote_item_price, Double quote_total)
+        {
+            String user = frmLogin.User.user_name;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "INSERT INTO quotation_park (quote_no, quote_park_date, quote_park_time, quote_ean, quote_qty, quote_item_price, quote_total, quote_by) VALUES";
+            query += "(?a, ?b, ?c, ?d, ?e, ?f, ?g, ?h)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", quote_no);
+                cmd.Parameters.AddWithValue("?b", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("?c", DateTime.Now.ToString("HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?d", quote_ean);
+                cmd.Parameters.AddWithValue("?e", quote_qty);
+                cmd.Parameters.AddWithValue("?f", quote_item_price);
+                cmd.Parameters.AddWithValue("?g", quote_total);
+                cmd.Parameters.AddWithValue("?h", user);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void updateItemQuote(Int32 quote_no, String quote_ean, Int32 quote_qty, Double quote_item_price, Double quote_total)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String user = frmLogin.User.user_name;
+            String query = "UPDATE quotation_park SET quote_qty = quote_qty + ?a, quote_item_price = ?b, quote_total = quote_total + ?c, quote_by = ?d ";
+            query += "WHERE quote_no = ?quote_no AND quote_ean = ?quote_ean";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", quote_qty);
+                cmd.Parameters.AddWithValue("?b", quote_item_price);
+                cmd.Parameters.AddWithValue("?c", quote_total);
+                cmd.Parameters.AddWithValue("?d", user);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.Parameters.AddWithValue("?quote_ean", quote_ean);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void voidItemQuote(Int32 quote_no, String quote_ean)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "DELETE FROM quotation_park ";
+            query += "WHERE quote_ean = ?a AND quote_no = ?b";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", quote_ean);
+                cmd.Parameters.AddWithValue("?b", quote_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void TotalAmtUpdateQuote(Double quote_total_amt, Int32 quote_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE quotation_store SET quote_total_amt = ?a ";
+            query += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", quote_total_amt);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void cancelQuote(Int32 quote_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "DELETE FROM quotation_park ";
+            query += "WHERE quote_no = ?quote_no";
+            String query1 = "UPDATE quotation_store SET quote_total_amt = 0, quote_park = 0, is_cancel = 1 ";
+            query1 += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlCommand cmd1 = new MySqlCommand(query1, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd1.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
+                cmd.Dispose();
+                cmd1.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
     }
 }

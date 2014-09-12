@@ -17,6 +17,8 @@ namespace nPOSProj
         private MySqlConnection con = new MySqlConnection();
         private Conf.dbs dbcon = new Conf.dbs();
         private VO.OrderVO ordervo = new VO.OrderVO();
+        private Boolean wholesale = false;
+        private Boolean start = false;
         public mdiQuotation()
         {
             InitializeComponent();
@@ -33,7 +35,38 @@ namespace nPOSProj
                 gotoNewQuote();
                 return true;
             }
+            if (keyData == Keys.F2 && start == true && wholesale == false)
+            {
+                gotoWholesale();
+                return true;
+            }
+            if (keyData == Keys.F2 && start == true && wholesale == true)
+            {
+                gotoRetail();
+                return true;
+            }
+            if (keyData == Keys.F3 && btnF3.Enabled == true)
+            {
+                gotoVoid();
+                return true;
+            }
+            if (keyData == Keys.F4 && btnF4.Enabled == true)
+            {
+                gotoCancelQuote();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private Double CellSum()
+        {
+            Double sum = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            {
+                Double d = 0;
+                Double.TryParse(dataGridView1.Rows[i].Cells[4].Value.ToString(), out d);
+                sum += d;
+            }
+            return sum;
         }
         private void autoCompleteItem()
         {
@@ -124,6 +157,31 @@ namespace nPOSProj
                 btnF4.Enabled = false;
             }
         }
+        private void clearboxes()
+        {
+            txtBoxQuantity.Text = "0";
+            rdPrice.Text = "0.00";
+            rdTotal.Text = "0.00";
+            txtBoxEAN.Clear();
+            txtBoxDescription.Clear();
+            txtBoxDescription.Focus();
+            txtBoxDescription.ReadOnly = false;
+            txtBoxEAN.ReadOnly = false;
+            txtBoxQuantity.ReadOnly = true;
+            cBoxKits.Checked = false;
+        }
+        private void clearboxesTrans()
+        {
+            txtBoxQuantity.Text = "0";
+            rdPrice.Text = "0.00";
+            rdTotal.Text = "0.00";
+            txtBoxEAN.Clear();
+            txtBoxDescription.Clear();
+            rdCustomerCode.Clear();
+            rdCompany.Clear();
+            rdAddress.Clear();
+        }
+
         private void gotoNewQuote()
         {
             using (mQuoteNew newquote = new mQuoteNew())
@@ -138,7 +196,85 @@ namespace nPOSProj
                     autoCompleteItem();
                     lblQN.Text = ordervo.getQN().ToString();
                     checkRowCount();
+                    start = true;
                 }
+            }
+        }
+        private void gotoWholesale()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to select your Transaction to Wholesale?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                clearboxes();
+                wholesale = true;
+                btnF2A.Enabled = false;
+                btnF2B.Visible = true;
+            }
+        }
+
+        private void gotoRetail()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to select your Transaction to Retail?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                clearboxes();
+                wholesale = false;
+                btnF2A.Enabled = true;
+                btnF2B.Visible = false;
+            }
+        }
+        private void gotoVoid()
+        {
+            try
+            {
+                ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                ordervo.Ean = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                ordervo.voidQuote();
+                dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+                checkRowCount();
+                lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
+                ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                ordervo.UpdateTotalQuote();
+                btnF3.Enabled = false;
+                clearboxes();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void gotoCancelQuote()
+        {
+            try
+            {
+                DialogResult dlg = MessageBox.Show("Do you wish to Cancel all of your Quotation?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dlg == System.Windows.Forms.DialogResult.Yes)
+                {
+                    ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                    ordervo.cancelQ();
+                    dataGridView1.Rows.Clear();
+                    //
+                    lockcontrols();
+                    clearboxesTrans();
+                    //
+                    txtBoxQuantity.Text = "0";
+                    txtBoxQuantity.ReadOnly = true;
+                    //
+                    btnF2B.Visible = false;
+                    btnF2A.Enabled = false;
+                    wholesale = false;
+                    btnF4.Enabled = false;
+                    btnF5.Enabled = true;
+                    btnF1.Enabled = true;
+                    lblQN.Text = "x";
+                    lblTotal.Text = "0.00";
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnESC_Click(object sender, EventArgs e)
@@ -149,6 +285,269 @@ namespace nPOSProj
         private void btnF1_Click(object sender, EventArgs e)
         {
             gotoNewQuote();
+        }
+
+        private void txtBoxDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    if (cBoxKits.Checked == true)
+                    {
+                        ordervo.Description = txtBoxDescription.Text;
+                        txtBoxEAN.Text = ordervo.askEanKit();
+                        ordervo.Wholesale = wholesale; //Switch 0
+                        rdPrice.Text = ordervo.askPriceByKitName().ToString("#,###,##0.00");
+                        ordervo.Ean = txtBoxEAN.Text;
+                        if (ordervo.askItemDescriptionKit() == true)
+                        {
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
+                    }
+                    else
+                    {
+                        ordervo.Description = txtBoxDescription.Text;
+                        txtBoxEAN.Text = ordervo.askEan();
+                        ordervo.Wholesale = wholesale; //Switch 1
+                        rdPrice.Text = ordervo.askPriceByName().ToString("#,###,##0.00");
+                        ordervo.Ean = txtBoxEAN.Text;
+                        if (ordervo.askItemDescription() == true)
+                        {
+                            txtBoxEAN.ReadOnly = true;
+                            txtBoxDescription.ReadOnly = true;
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxEAN.ReadOnly = false;
+                            txtBoxDescription.ReadOnly = false;
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnF2A_Click(object sender, EventArgs e)
+        {
+            gotoWholesale();
+        }
+
+        private void btnF2B_Click(object sender, EventArgs e)
+        {
+            gotoRetail();
+        }
+
+        private void cBoxKits_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBoxQuantity.Text = "0";
+            rdPrice.Text = "0.00";
+            rdTotal.Text = "0.00";
+            txtBoxEAN.Clear();
+            txtBoxDescription.Clear();
+            txtBoxDescription.Focus();
+            txtBoxDescription.ReadOnly = false;
+            txtBoxEAN.ReadOnly = false;
+            txtBoxQuantity.ReadOnly = true;
+            if (cBoxKits.Checked == true)
+            {
+                autoCompleteKits();
+            }
+            else
+            {
+                autoCompleteItem();
+            }
+        }
+
+        private void txtBoxEAN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+            }
+            else
+            {
+                e.Handled = e.KeyChar != (char)Keys.Back;
+            }
+        }
+
+        private void txtBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+            }
+            else
+            {
+                e.Handled = e.KeyChar != (char)Keys.Back;
+            }
+        }
+
+        private void txtBoxEAN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    if (cBoxKits.Checked == true)
+                    {
+                        ordervo.Ean = txtBoxEAN.Text;
+                        txtBoxDescription.Text = ordervo.askKitName();
+                        ordervo.Wholesale = wholesale; //Switch 2
+                        rdPrice.Text = ordervo.askPriceByEanKit().ToString("#,###,##0.00");
+                        ordervo.Description = txtBoxDescription.Text;
+                        if (ordervo.askItemEanKit() == true)
+                        {
+                            txtBoxDescription.ReadOnly = true;
+                            txtBoxEAN.ReadOnly = true;
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxDescription.ReadOnly = false;
+                            txtBoxEAN.ReadOnly = false;
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
+                    }
+                    else
+                    {
+                        ordervo.Ean = txtBoxEAN.Text;
+                        txtBoxDescription.Text = ordervo.askDescription();
+                        ordervo.Wholesale = wholesale; //Switch 3
+                        rdPrice.Text = ordervo.askPriceByEan().ToString("#,###,##0.00");
+                        ordervo.Description = txtBoxDescription.Text;
+                        if (ordervo.askItemEan() == true)
+                        {
+                            txtBoxDescription.ReadOnly = true;
+                            txtBoxEAN.ReadOnly = true;
+                            txtBoxQuantity.ReadOnly = false;
+                            txtBoxQuantity.Focus();
+                        }
+                        else
+                        {
+                            txtBoxDescription.ReadOnly = false;
+                            txtBoxEAN.ReadOnly = false;
+                            txtBoxQuantity.ReadOnly = true;
+                            txtBoxQuantity.Text = "0";
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnClearController_Click(object sender, EventArgs e)
+        {
+            clearboxes();
+        }
+
+        private void txtBoxQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBoxQuantity.Text != "")
+            {
+                Double totalAmt = 0;
+                totalAmt = Convert.ToDouble(txtBoxQuantity.Text) * Convert.ToDouble(rdPrice.Text);
+                rdTotal.Text = totalAmt.ToString("#,###,##0.00");
+                if (txtBoxQuantity.Text != "0" && rdTotal.Text != "0.00")
+                {
+                    btnAddToQuote.Enabled = true;
+                }
+                else
+                    btnAddToQuote.Enabled = false;
+            }
+            else
+            {
+                txtBoxQuantity.Text = "0";
+            }
+        }
+
+        private void txtBoxQuantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnAddToQuote.Focus();
+            }
+        }
+
+        private void btnAddToQuote_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Boolean naa = false;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells[0].Value.ToString() == txtBoxEAN.Text && row.Cells[2].Value.ToString() == txtBoxDescription.Text)
+                    {
+                        ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                        ordervo.Ean = txtBoxEAN.Text;
+                        ordervo.Pos_qty = Convert.ToInt32(txtBoxQuantity.Text);
+                        ordervo.Order_item_amount = Convert.ToDouble(rdPrice.Text);
+                        ordervo.Quote_total = Convert.ToDouble(rdTotal.Text);
+                        ordervo.updateQuote();
+                        row.Cells[1].Value = Convert.ToInt32(txtBoxQuantity.Text) + Convert.ToInt32(row.Cells[1].Value);
+                        row.Cells[4].Value = Convert.ToDouble(rdTotal.Text) + Convert.ToDouble(row.Cells[4].Value);
+                        naa = true;
+                    }
+                }
+                if (!naa)
+                {
+                    ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                    ordervo.Ean = txtBoxEAN.Text;
+                    ordervo.Pos_qty = Convert.ToInt32(txtBoxQuantity.Text);
+                    ordervo.Order_item_amount = Convert.ToDouble(rdPrice.Text);
+                    ordervo.Quote_total = Convert.ToDouble(rdTotal.Text);
+                    ordervo.addQuote();
+                    dataGridView1.Rows.Add(txtBoxEAN.Text, txtBoxQuantity.Text, txtBoxDescription.Text, rdPrice.Text, rdTotal.Text);
+                }
+                lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
+                ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                ordervo.UpdateTotalQuote();
+                checkRowCount();
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                clearboxes();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnF3_Click(object sender, EventArgs e)
+        {
+            gotoVoid();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+            }
+            else
+            {
+                btnF3.Enabled = true;
+            }
+        }
+
+        private void btnF4_Click(object sender, EventArgs e)
+        {
+            gotoCancelQuote();
         }
     }
 }
