@@ -414,6 +414,12 @@
     <Compile Include="mQuoteNew.Designer.cs">
       <DependentUpon>mQuoteNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="mQuotePark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mQuotePark.Designer.cs">
+      <DependentUpon>mQuotePark.cs</DependentUpon>
+    </Compile>
     <Compile Include="mSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -658,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mQuoteNew.resx">
       <DependentUpon>mQuoteNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mQuotePark.resx">
+      <DependentUpon>mQuotePark.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mSearch.resx">
       <DependentUpon>mSearch.cs</DependentUpon>
