@@ -370,5 +370,15 @@ namespace nPOSProj.VO
             orderdao.cancelQuote(Quotation_no);
         }
         #endregion
+        #region Quotation Data Retrieveal VO
+        public String[,] ReadParkedQuote()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.QuoteParkCount();
+            String[,] talib = new String[5, cunt];
+            talib = orderdao.ReadQuotePark();
+            return talib;
+        }
+        #endregion
     }
 }

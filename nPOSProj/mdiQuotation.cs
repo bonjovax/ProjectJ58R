@@ -55,6 +55,11 @@ namespace nPOSProj
                 gotoCancelQuote();
                 return true;
             }
+            if (keyData == Keys.F5 && btnF5.Enabled == true)
+            {
+                gotoQuotePark();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
         private Double CellSum()
@@ -275,6 +280,13 @@ namespace nPOSProj
             catch (Exception)
             {
                 MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void gotoQuotePark()
+        {
+            using (mQuotePark park = new mQuotePark())
+            {
+                park.ShowDialog();
             }
         }
         private void btnESC_Click(object sender, EventArgs e)
@@ -548,6 +560,11 @@ namespace nPOSProj
         private void btnF4_Click(object sender, EventArgs e)
         {
             gotoCancelQuote();
+        }
+
+        private void btnF5_Click(object sender, EventArgs e)
+        {
+            gotoQuotePark();
         }
     }
 }

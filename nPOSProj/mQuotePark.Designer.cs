@@ -77,7 +77,7 @@
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(869, 352);
+            this.dataGridView1.Size = new System.Drawing.Size(866, 352);
             this.dataGridView1.TabIndex = 2;
             // 
             // Column1
@@ -134,7 +134,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(543, 358);
+            this.label1.Location = new System.Drawing.Point(541, 358);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 3;
@@ -144,7 +144,7 @@
             // 
             this.txtBoxQuotationNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBoxQuotationNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxQuotationNo.Location = new System.Drawing.Point(646, 355);
+            this.txtBoxQuotationNo.Location = new System.Drawing.Point(644, 355);
             this.txtBoxQuotationNo.MaxLength = 20;
             this.txtBoxQuotationNo.Name = "txtBoxQuotationNo";
             this.txtBoxQuotationNo.Size = new System.Drawing.Size(215, 26);
@@ -157,7 +157,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(863, 383);
+            this.ClientSize = new System.Drawing.Size(864, 385);
             this.ControlBox = false;
             this.Controls.Add(this.txtBoxQuotationNo);
             this.Controls.Add(this.label1);
@@ -170,6 +170,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Parked Quote";
+            this.Load += new System.EventHandler(this.mQuotePark_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

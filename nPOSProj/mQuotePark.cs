@@ -11,9 +11,42 @@ namespace nPOSProj
 {
     public partial class mQuotePark : Form
     {
+        private VO.OrderVO order = new VO.OrderVO();
         public mQuotePark()
         {
             InitializeComponent();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void LoadData()
+        {
+            order = new VO.OrderVO();
+            String[,] grabData = order.ReadParkedQuote();
+            try
+            {
+                dataGridView1.Rows.Clear();
+                for (int o = 0; o < grabData.GetLength(1); o++)
+                {
+                    dataGridView1.Rows.Add(grabData[0, o].ToString(), Convert.ToDateTime(grabData[1, o].ToString()).ToString("MM/dd/yyyy"), Convert.ToDateTime(grabData[2, o].ToString()).ToString("hh:mm:ss tt"), Convert.ToDouble(grabData[3, o].ToString()).ToString("#,###,##0.00"), grabData[4, o].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void mQuotePark_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

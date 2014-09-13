@@ -1293,6 +1293,44 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
+        //
+
+        public String[,] ReadQuotePark()
+        {
+            Int32 cunt = this.QuoteParkCount();
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quote_no AS a, quote_date AS b, quote_time AS c, quote_total_amt AS d, quote_user AS e FROM quotation_store ";
+            query += "WHERE quote_park = 1 AND is_cancel = 0 ORDER BY quote_no ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
         #endregion
     }
 }
