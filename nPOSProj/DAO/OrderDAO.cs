@@ -1294,7 +1294,6 @@ namespace nPOSProj.DAO
             }
         }
         //
-
         public String[,] ReadQuotePark()
         {
             Int32 cunt = this.QuoteParkCount();

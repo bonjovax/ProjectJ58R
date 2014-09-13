@@ -287,6 +287,22 @@ namespace nPOSProj
             using (mQuotePark park = new mQuotePark())
             {
                 park.ShowDialog();
+                if (park.Quotation_no == 0)
+                {
+                    //Wala
+                }
+                else
+                {
+                    lblQN.Text = park.Quotation_no.ToString();
+                    dataGridView1.Rows.Clear();
+                    //1 Data Load
+                    //2 Data Load Kit
+                    lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                    clearboxes();
+                    unlockcontrols();
+                    autoCompleteItem();
+                    checkRowCount();
+                }
             }
         }
         private void btnESC_Click(object sender, EventArgs e)

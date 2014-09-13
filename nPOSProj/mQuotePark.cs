@@ -12,6 +12,13 @@ namespace nPOSProj
     public partial class mQuotePark : Form
     {
         private VO.OrderVO order = new VO.OrderVO();
+        private Int32 quotation_no;
+
+        public Int32 Quotation_no
+        {
+            get { return quotation_no; }
+            set { quotation_no = value; }
+        }
         public mQuotePark()
         {
             InitializeComponent();
@@ -47,6 +54,12 @@ namespace nPOSProj
         private void mQuotePark_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Quotation_no = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+            this.Close();
         }
     }
 }
