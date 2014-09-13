@@ -36,13 +36,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBoxQuotationNo = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBoxQuotationNo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,29 +79,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(869, 352);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(546, 361);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Quotation No";
-            // 
-            // txtBoxQuotationNo
-            // 
-            this.txtBoxQuotationNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxQuotationNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxQuotationNo.Location = new System.Drawing.Point(649, 358);
-            this.txtBoxQuotationNo.MaxLength = 20;
-            this.txtBoxQuotationNo.Name = "txtBoxQuotationNo";
-            this.txtBoxQuotationNo.Size = new System.Drawing.Size(215, 26);
-            this.txtBoxQuotationNo.TabIndex = 4;
-            this.txtBoxQuotationNo.Tag = "";
-            this.txtBoxQuotationNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Column1
             // 
@@ -152,12 +129,35 @@
             this.Column5.ReadOnly = true;
             this.Column5.Width = 130;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(543, 358);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Quotation No";
+            // 
+            // txtBoxQuotationNo
+            // 
+            this.txtBoxQuotationNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxQuotationNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxQuotationNo.Location = new System.Drawing.Point(646, 355);
+            this.txtBoxQuotationNo.MaxLength = 20;
+            this.txtBoxQuotationNo.Name = "txtBoxQuotationNo";
+            this.txtBoxQuotationNo.Size = new System.Drawing.Size(215, 26);
+            this.txtBoxQuotationNo.TabIndex = 4;
+            this.txtBoxQuotationNo.Tag = "";
+            this.txtBoxQuotationNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // mQuotePark
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(867, 387);
+            this.ClientSize = new System.Drawing.Size(863, 383);
             this.ControlBox = false;
             this.Controls.Add(this.txtBoxQuotationNo);
             this.Controls.Add(this.label1);
