@@ -152,13 +152,14 @@
             this.txtBoxQuotationNo.TabIndex = 4;
             this.txtBoxQuotationNo.Tag = "";
             this.txtBoxQuotationNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxQuotationNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxQuotationNo_KeyPress);
             // 
             // mQuotePark
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(864, 385);
+            this.ClientSize = new System.Drawing.Size(864, 386);
             this.ControlBox = false;
             this.Controls.Add(this.txtBoxQuotationNo);
             this.Controls.Add(this.label1);

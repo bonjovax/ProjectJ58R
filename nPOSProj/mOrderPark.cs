@@ -88,5 +88,16 @@ namespace nPOSProj
                 
             }
         }
+
+        private void txtBoxOrderNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+            }
+            else
+            {
+                e.Handled = e.KeyChar != (char)Keys.Back;
+            }
+        }
     }
 }

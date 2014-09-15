@@ -61,5 +61,16 @@ namespace nPOSProj
             Quotation_no = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
             this.Close();
         }
+
+        private void txtBoxQuotationNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+            }
+            else
+            {
+                e.Handled = e.KeyChar != (char)Keys.Back;
+            }
+        }
     }
 }
