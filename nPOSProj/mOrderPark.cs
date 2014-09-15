@@ -32,6 +32,16 @@ namespace nPOSProj
                 this.Close();
                 return true;
             }
+            if (keyData == Keys.F1)
+            {
+                dataGridView1.Focus();
+                return true;
+            }
+            if (keyData == Keys.F2)
+            {
+                txtBoxOrderNo.Focus();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -97,6 +107,15 @@ namespace nPOSProj
             else
             {
                 e.Handled = e.KeyChar != (char)Keys.Back;
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Order_no = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                this.Close();
             }
         }
     }

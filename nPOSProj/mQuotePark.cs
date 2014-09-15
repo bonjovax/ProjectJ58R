@@ -30,6 +30,16 @@ namespace nPOSProj
                 this.Close();
                 return true;
             }
+            if (keyData == Keys.F1)
+            {
+                dataGridView1.Focus();
+                return true;
+            }
+            if (keyData == Keys.F2)
+            {
+                txtBoxQuotationNo.Focus();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -54,6 +64,7 @@ namespace nPOSProj
         private void mQuotePark_Load(object sender, EventArgs e)
         {
             LoadData();
+            txtBoxQuotationNo.Focus();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -95,6 +106,15 @@ namespace nPOSProj
             }
             else
                 LoadData();
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Quotation_no = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                this.Close();
+            }
         }
     }
 }

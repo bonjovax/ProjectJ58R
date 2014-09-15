@@ -147,6 +147,10 @@ namespace nPOSProj
                 gotoPark();
                 return true;
             }
+            if (keyData == Keys.F6 && btnDone.Enabled == true)
+            {
+                gotoDone();
+            }
             if (keyData == Keys.Escape)
             {
                 this.Close();
@@ -306,6 +310,7 @@ namespace nPOSProj
                     lblON.Text = ordervo.getON().ToString();
                     checkRowCount();
                     start = true;
+                    btnDone.Enabled = true;
                 }
             }
             catch (Exception)
@@ -583,11 +588,37 @@ namespace nPOSProj
                     btnF1.Enabled = true;
                     lblON.Text = "x";
                     lblTotal.Text = "0.00";
+                    btnDone.Enabled = false;
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gotoDone()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to Proceed?", "Proceed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                dataGridView1.Rows.Clear();
+                //
+                lockcontrols();
+                clearboxesTrans();
+                //
+                txtBoxQuantity.Text = "0";
+                txtBoxQuantity.ReadOnly = true;
+                //
+                btnF2B.Visible = false;
+                btnF2A.Enabled = false;
+                wholesale = false;
+                btnF4.Enabled = false;
+                btnF5.Enabled = true;
+                btnF1.Enabled = true;
+                btnDone.Enabled = false;
+                lblON.Text = "0";
+                lblTotal.Text = "0.00";
             }
         }
 
@@ -611,6 +642,7 @@ namespace nPOSProj
                     unlockcontrols();
                     autoCompleteItem();
                     checkRowCount();
+                    btnDone.Enabled = true;
                 }
             }
         }
@@ -649,6 +681,11 @@ namespace nPOSProj
         private void btnF5_Click(object sender, EventArgs e)
         {
             gotoPark();
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            gotoDone();
         }
     }
 }

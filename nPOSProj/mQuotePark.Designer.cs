@@ -80,6 +80,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(866, 352);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // Column1
             // 
@@ -149,7 +150,7 @@
             this.txtBoxQuotationNo.MaxLength = 20;
             this.txtBoxQuotationNo.Name = "txtBoxQuotationNo";
             this.txtBoxQuotationNo.Size = new System.Drawing.Size(215, 26);
-            this.txtBoxQuotationNo.TabIndex = 4;
+            this.txtBoxQuotationNo.TabIndex = 1;
             this.txtBoxQuotationNo.Tag = "";
             this.txtBoxQuotationNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBoxQuotationNo.TextChanged += new System.EventHandler(this.txtBoxQuotationNo_TextChanged);

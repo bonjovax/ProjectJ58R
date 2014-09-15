@@ -76,6 +76,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.rdCustomerCode = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.btnDone = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -683,6 +684,28 @@
             this.label16.TabIndex = 26;
             this.label16.Text = "Customer Code";
             // 
+            // btnDone
+            // 
+            this.btnDone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDone.Enabled = false;
+            this.btnDone.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.btnDone.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnDone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDone.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDone.ForeColor = System.Drawing.Color.White;
+            this.btnDone.Image = ((System.Drawing.Image)(resources.GetObject("btnDone.Image")));
+            this.btnDone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDone.Location = new System.Drawing.Point(178, 564);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(108, 34);
+            this.btnDone.TabIndex = 35;
+            this.btnDone.Text = "(F7) Done";
+            this.btnDone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDone.UseVisualStyleBackColor = false;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
             // mdiQuotation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -690,6 +713,7 @@
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(834, 597);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDone);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnF6);
             this.Controls.Add(this.lblTotal);
@@ -763,5 +787,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox rdAddress;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnDone;
     }
 }
