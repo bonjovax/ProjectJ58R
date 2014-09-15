@@ -300,6 +300,12 @@
     <Compile Include="mdiQuotation.Designer.cs">
       <DependentUpon>mdiQuotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="mdiQuotationHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiQuotationHistory.Designer.cs">
+      <DependentUpon>mdiQuotationHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="mdiReceiving.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -607,6 +613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mdiQuotation.resx">
       <DependentUpon>mdiQuotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiQuotationHistory.resx">
+      <DependentUpon>mdiQuotationHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mdiReceiving.resx">
       <DependentUpon>mdiReceiving.cs</DependentUpon>
