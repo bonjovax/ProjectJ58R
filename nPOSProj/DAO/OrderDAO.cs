@@ -1003,6 +1003,37 @@ namespace nPOSProj.DAO
             }
             return cunt;
         }
+        //
+        public Int32 QuoteParkCountSearch(Int32 quote_no)
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS y FROM quotation_store ";
+            query += "WHERE quote_no LIKE ?quote_no AND quote_park = 1 AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no + "%");
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["y"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
         public Int32 QuoteCompanyCount()
         {
             Int32 cunt = 0;
@@ -1307,6 +1338,191 @@ namespace nPOSProj.DAO
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        //
+        public String[,] ReadQuoteParkSearch(Int32 quote_no)
+        {
+            Int32 cunt = this.QuoteParkCountSearch(quote_no);
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quote_no AS a, quote_date AS b, quote_time AS c, quote_total_amt AS d, quote_user AS e FROM quotation_store ";
+            query += "WHERE quote_no LIKE ?quote_no AND quote_park = 1 AND is_cancel = 0 ORDER BY quote_no ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no + "%");
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        //
+        public Int32 QuoteLoadItemCount(Int32 quote_no)
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS zozo FROM inventory_items ";
+            query += "INNER JOIN quotation_park ON inventory_items.item_ean = quotation_park.quote_ean ";
+            query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) ";
+            query += "ORDER BY quotation_park.quote_park_trn";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["zozo"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        public Int32 QuoteLoadItemKitCount(Int32 quote_no)
+        {
+            Int32 cunt = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS xoxo FROM quotation_park ";
+            query += "INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) ";
+            query += "ORDER BY quotation_park.quote_park_trn ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cunt = Convert.ToInt32(rdr["xoxo"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cunt;
+        }
+        //
+        public String[,] QuoteLoadItem(Int32 quote_no)
+        {
+            Int32 cunt = this.QuoteLoadItemCount(quote_no);
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_stocks.stock_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM inventory_items ";
+            query += "INNER JOIN quotation_park ON inventory_items.item_ean = quotation_park.quote_ean ";
+            query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) ";
+            query += "ORDER BY quotation_park.quote_park_trn";
+
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        public String[,] QuoteLoadItemKits(Int32 quote_no)
+        {
+            Int32 cunt = this.QuoteLoadItemKitCount(quote_no);
+            String[,] bilat = new String[5, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_items.kit_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM quotation_park ";
+            query += "INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) ";
+            query += "ORDER BY quotation_park.quote_park_trn ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
                 cmd.ExecuteScalar();
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 Int32 cunts = 0;

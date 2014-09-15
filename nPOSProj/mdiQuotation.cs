@@ -294,9 +294,11 @@ namespace nPOSProj
                 else
                 {
                     lblQN.Text = park.Quotation_no.ToString();
-                    dataGridView1.Rows.Clear();
+                    //dataGridView1.Rows.Clear();
                     //1 Data Load
+                    this.LoadQuoteDataItem(park.Quotation_no);
                     //2 Data Load Kit
+                    this.LoadQuoteDataItemKit(park.Quotation_no);
                     lblTotal.Text = CellSum().ToString("#,###,##0.00");
                     clearboxes();
                     unlockcontrols();
@@ -477,6 +479,41 @@ namespace nPOSProj
                 {
                     MessageBox.Show("Please Check Database Server Connection", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void LoadQuoteDataItem(Int32 Quotation_no)
+        {
+            ordervo = new VO.OrderVO();
+            ordervo.Quotation_no = Quotation_no;
+            String[,] grabData = ordervo.ReadItemQuote();
+            try
+            {
+                for (int o = 0; o < grabData.GetLength(1); o++)
+                {
+                    dataGridView1.Rows.Add(grabData[0, o].ToString(), grabData[1, o].ToString(), grabData[2, o].ToString(), Convert.ToDouble(grabData[3, o].ToString()).ToString("#,###,##0.00"), Convert.ToDouble(grabData[4, o].ToString()).ToString("#,###,##0.00"));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadQuoteDataItemKit(Int32 Quotation_no)
+        {
+            ordervo = new VO.OrderVO();
+            ordervo.Quotation_no = Quotation_no;
+            String[,] grabData = ordervo.ReadItemKitsQuote();
+            try
+            {
+                for (int o = 0; o < grabData.GetLength(1); o++)
+                {
+                    dataGridView1.Rows.Add(grabData[0, o].ToString(), grabData[1, o].ToString(), grabData[2, o].ToString(), Convert.ToDouble(grabData[3, o].ToString()).ToString("#,###,##0.00"), Convert.ToDouble(grabData[4, o].ToString()).ToString("#,###,##0.00"));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

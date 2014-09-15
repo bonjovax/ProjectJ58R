@@ -379,6 +379,32 @@ namespace nPOSProj.VO
             talib = orderdao.ReadQuotePark();
             return talib;
         }
+        public String[,] ReadParkQuoteSearch()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.QuoteParkCountSearch(Quotation_no);
+            String[,] talib = new String[5, cunt];
+            talib = orderdao.ReadQuoteParkSearch(Quotation_no);
+            return talib;
+        }
+        #endregion
+        #region Quotation Item Retrieval VO
+        public String[,] ReadItemQuote()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.QuoteLoadItemCount(Quotation_no);
+            String[,] talib = new String[5, cunt];
+            talib = orderdao.QuoteLoadItem(Quotation_no);
+            return talib;
+        }
+        public String[,] ReadItemKitsQuote()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.QuoteLoadItemCount(Quotation_no);
+            String[,] bilat = new String[5, cunt];
+            bilat = orderdao.QuoteLoadItemKits(Quotation_no);
+            return bilat;
+        }
         #endregion
     }
 }
