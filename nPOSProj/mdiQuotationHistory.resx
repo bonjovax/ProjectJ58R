@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="dataGridView1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -141,21 +138,6 @@
   <metadata name="Column7.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="label3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dateTimePicker1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="txtBoxQuotation.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="btnDone.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnDone.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -171,7 +153,18 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="btnRequote.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAetJREFUaEPtlyFTAlEQgAkEgsFgMBAMBALRYDAQCUSDwWAgGgxEA53gDzAYjAaC
+        wWgwEAhGg4FoMBCMzIDfvltGHA4H7vbudGa/mZ335vnu213kuHclx3Ecx3H+MrPZrEFczefzXhaB+4Ko
+        ajpbRE6STMA9JK6ZShNdxrKmtQPxW8hmCM4PhqamyJYopS00cKruMvMW47kE8xPGSkhsBUJTKHLKsCNu
+        5g/R6jesjRnsvkoIHyO1DVKgqn/7cA50S3pIeEiMVJya3BvIEi02Dm8gF7TYOGwb4Ht7hDT2Kbpt4LpU
+        bW43sTwhzcj9Jibhu0pNyL0BFZpRxH9AnpypwfNJPBN9VefWwL1KE6GFn6nuB7olDtMGatIEMU4YHVVJ
+        wXtS3FKs45hY7LE93CWFRu6ksiRw7UA1xUERfa1na7h2pJrioA45+299KOSaCVFTTbFQSJXY+LnC3inR
+        0suTId0TchMn/jnlWik6/LIwNjd1sa8bikiDFK++VOB5YVi8iXWi1fWw5zYUkBZEJg8yQT4M1Yr3RpdX
+        4G9PDDavlZHSlJ56KxQ6jJa+Ye2VYTcktwCh6WFOwNkWN9P9ZT/zCUM9JLYCoZzjTaFQOV401F9nPtAI
+        a+YgbpNo5eUkTeCMPR85juM4jvO/KJW+AGkK94FfJ6ltAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>
