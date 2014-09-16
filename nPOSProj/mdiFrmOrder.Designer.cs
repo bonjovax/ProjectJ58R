@@ -33,7 +33,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsOrder = new System.Windows.Forms.ToolStripButton();
             this.tsQuotation = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsHistory = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.tsExit = new System.Windows.Forms.ToolStripButton();
             this.tsAbout = new System.Windows.Forms.ToolStripButton();
@@ -55,7 +55,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsOrder,
             this.tsQuotation,
-            this.toolStripButton1,
+            this.tsHistory,
             this.tsEmail,
             this.tsExit,
             this.tsAbout});
@@ -92,17 +92,18 @@
             this.tsQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsQuotation.Click += new System.EventHandler(this.tsQuotation_Click);
             // 
-            // toolStripButton1
+            // tsHistory
             // 
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.ForeColor = System.Drawing.Color.White;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(123, 69);
-            this.toolStripButton1.Text = "Quotation &History";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsHistory.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsHistory.ForeColor = System.Drawing.Color.White;
+            this.tsHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsHistory.Image")));
+            this.tsHistory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsHistory.Name = "tsHistory";
+            this.tsHistory.Size = new System.Drawing.Size(123, 69);
+            this.tsHistory.Text = "Quotation &History";
+            this.tsHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsHistory.Click += new System.EventHandler(this.tsHistory_Click);
             // 
             // tsEmail
             // 
@@ -243,6 +244,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripButton tsQuotation;
         private System.Windows.Forms.ToolStripButton tsOrder;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsHistory;
     }
 }

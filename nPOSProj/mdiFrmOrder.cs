@@ -16,6 +16,7 @@ namespace nPOSProj
         private DAO.LoginDAO login;
         private mdiOrdering ordering = new mdiOrdering();
         private mdiQuotation quotation = new mdiQuotation();
+        private mdiQuotationHistory history = new mdiQuotationHistory();
         public mdiFrmOrder()
         {
             InitializeComponent();
@@ -139,6 +140,16 @@ namespace nPOSProj
                 quotation = new mdiQuotation();
                 quotation.MdiParent = this;
                 quotation.Show();
+            }
+        }
+
+        private void tsHistory_Click(object sender, EventArgs e)
+        {
+            if (ActivateThisChild("mdiQuotationHistory") == false)
+            {
+                history = new mdiQuotationHistory();
+                history.MdiParent = this;
+                history.Show();
             }
         }
     }

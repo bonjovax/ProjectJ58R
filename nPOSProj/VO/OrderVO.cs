@@ -310,6 +310,15 @@ namespace nPOSProj.VO
             return tablit;
         }
         #endregion
+        #region History Value
+        private String targetdate;
+
+        public String Targetdate
+        {
+            get { return targetdate; }
+            set { targetdate = value; }
+        }
+        #endregion
         // Quotation
         #region Quotation Core VO
         public String[,] ReadCompanySearchQuotex()
@@ -404,6 +413,24 @@ namespace nPOSProj.VO
             String[,] bilat = new String[5, cunt];
             bilat = orderdao.QuoteLoadItemKits(Quotation_no);
             return bilat;
+        }
+        #endregion
+        #region Quote History Display VO
+        public String[,] ReadQuoteHistoryDateVO()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.countByDate(Targetdate);
+            String[,] grab = new String[7, cunt];
+            grab = orderdao.ReadQuoteHistoryDate(Targetdate);
+            return grab;
+        }
+        public String[,] ReadQuoteHistoryQuoteVO()
+        {
+            orderdao = new DAO.OrderDAO();
+            Int32 cunt = orderdao.countByQuoteNo(Quotation_no);
+            String[,] grab = new String[7, cunt];
+            grab = orderdao.ReadQuoteHistoryQuote_no(Quotation_no);
+            return grab;
         }
         #endregion
     }

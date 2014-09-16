@@ -1547,5 +1547,146 @@ namespace nPOSProj.DAO
             return bilat;
         }
         #endregion
+        #region Quotation History
+        public Int32 countByDate(String date)
+        {
+            Int32 count = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS a FROM quotation_store ";
+            query += "WHERE quote_date = ?date AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?date", Convert.ToDateTime(date).ToString("yyyy-MM-dd"));
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    count = Convert.ToInt32(rdr["a"].ToString());
+                }
+            }
+            catch (Exception x)
+            {
+                Console.WriteLine(x);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return count;
+        }
+        public Int32 countByQuoteNo(Int32 quote_no)
+        {
+            Int32 count = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT COUNT(*) AS b FROM quotation_store ";
+            query += "WHERE quote_no LIKE ?quote_no AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no + "%");
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    count = Convert.ToInt32(rdr["b"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return count;
+        }
+        //
+        public String[,] ReadQuoteHistoryDate(String date)
+        {
+            Int32 cunt = this.countByDate(date);
+            String[,] bilat = new String[7, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quote_no AS a, quote_date AS b, quote_time AS c, quote_customer AS d, quote_address AS e, quote_total_amt AS f, quote_user AS g FROM quotation_store ";
+            query += "WHERE quote_date = ?date AND is_cancel = 0 ORDER BY quote_no ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?date", date);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    bilat[5, cunts] = rdr["f"].ToString();
+                    bilat[6, cunts] = rdr["g"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        public String[,] ReadQuoteHistoryQuote_no(Int32 quote_no)
+        {
+            Int32 cunt = this.countByQuoteNo(quote_no);
+            String[,] bilat = new String[7, cunt];
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quote_no AS a, quote_date AS b, quote_time AS c, quote_customer AS d, quote_address AS e, quote_total_amt AS f, quote_user AS g FROM quotation_store ";
+            query += "WHERE quote_no LIKE ?quote_no AND is_cancel = 0 ORDER BY quote_no ASC";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no + "%");
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 cunts = 0;
+                while (rdr.Read())
+                {
+                    bilat[0, cunts] = rdr["a"].ToString();
+                    bilat[1, cunts] = rdr["b"].ToString();
+                    bilat[2, cunts] = rdr["c"].ToString();
+                    bilat[3, cunts] = rdr["d"].ToString();
+                    bilat[4, cunts] = rdr["e"].ToString();
+                    bilat[5, cunts] = rdr["f"].ToString();
+                    bilat[6, cunts] = rdr["g"].ToString();
+                    cunts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return bilat;
+        }
+        #endregion
     }
 }
