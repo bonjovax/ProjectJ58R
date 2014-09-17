@@ -66,6 +66,11 @@ namespace nPOSProj
                 gotoDone();
                 return true;
             }
+            if (keyData == Keys.F8 && btnSendToOrder.Enabled == true)
+            {
+                gotoSendItem();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
         private Double CellSum()
