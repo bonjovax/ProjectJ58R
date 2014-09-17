@@ -8,6 +8,12 @@ namespace nPOSProj.VO
     class OrderVO
     {
         #region Order Class Accessors Core
+        private Int32 order_no;
+        public Int32 Order_no
+        {
+            get { return order_no; }
+            set { order_no = value; }
+        }
         private String description;
         public String Description
         {
@@ -459,6 +465,24 @@ namespace nPOSProj.VO
         {
             orderdao = new DAO.OrderDAO();
             return orderdao.getOrderN(Quotation_no);
+        }
+        #endregion
+        #region Send Quotation to Order
+        public void SendQuotationToOrder()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.sendQuoteOrder(Order_no, Quotation_no, Ean, Pos_qty, Order_item_amount, Pos_amt);
+            this.updateOrderTotalAmt();
+        }
+        private void updateOrderTotalAmt()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.updateTotalAmt(Order_no);
+        }
+        public void quoteDone()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.TriggerQuoteDone(Quotation_no);
         }
         #endregion
     }

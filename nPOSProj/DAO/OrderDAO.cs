@@ -1714,19 +1714,110 @@ namespace nPOSProj.DAO
         }
         #endregion
         #region Send to Order Module
-        public void sendQuoteOrder(String ean, Int32 qty)
+        public Double SumOrderTotal(Int32 pos_orderno)
         {
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "";
+            String query = "SELECT SUM(pos_amt) AS xxx FROM pos_park ";
+            query += "WHERE pos_orderno = ?pos_orderno";
+            Double Total = 0;
             try
             {
                 con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    Total = Convert.ToDouble(rdr["xxx"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return Total;
+        }
+        public void sendQuoteOrder(Int32 order_no, Int32 quote_no, String ean, Int32 qty, Double order_item_amount, Double pos_amt)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE inventory_items SET item_quantity = item_quantity - ?a ";
+            query += "WHERE item_ean = ?item_ean";
+            String query1 = "INSERT INTO pos_park (pos_orderno, pos_parked_date, pos_ean, pos_quantity, order_item_amount, pos_amt) VALUES";
+            query1 += "(?a, ?b, ?c, ?d, ?e, ?f)";
+            String query3 = "UPDATE quotation_park SET is_send = 1 ";
+            query3 += "WHERE quote_no = ?quote_no AND quote_ean = ?quote_ean";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlCommand cmd1 = new MySqlCommand(query1, con);
+                MySqlCommand cmd3 = new MySqlCommand(query3, con);
+                cmd.Parameters.AddWithValue("?a", qty);
+                cmd.Parameters.AddWithValue("?item_ean", ean);
+                cmd1.Parameters.AddWithValue("?a", order_no);
+                cmd1.Parameters.AddWithValue("?b", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd1.Parameters.AddWithValue("?c", ean);
+                cmd1.Parameters.AddWithValue("?d", qty);
+                cmd1.Parameters.AddWithValue("?e", order_item_amount);
+                cmd1.Parameters.AddWithValue("?f", pos_amt);
+                cmd3.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd3.Parameters.AddWithValue("?quote_ean", ean);
+                cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
+                cmd3.ExecuteNonQuery();
+                cmd.Dispose();
+                cmd1.Dispose();
+                cmd3.Dispose();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void updateTotalAmt(Int32 order_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE order_store SET order_total_amt = ?a ";
+            query += "WHERE order_no = ?order_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", this.SumOrderTotal(order_no));
+                cmd.Parameters.AddWithValue("?order_no", order_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void TriggerQuoteDone(Int32 quote_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE quotation_store SET quote_park = 0 ";
+            query += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
             }
             finally
             {

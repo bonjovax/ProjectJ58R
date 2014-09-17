@@ -168,6 +168,37 @@ namespace nPOSProj
                 btnF4.Enabled = false;
             }
         }
+        private void checkItemPriorToEnd()
+        {
+            if (dataGridView1.Rows.Count != 0)
+            {
+                //Padayon Lang :)
+            }
+            else
+            {
+                ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                ordervo.quoteDone();
+                //
+                //
+                lockcontrols();
+                clearboxesTrans();
+                //
+                txtBoxQuantity.Text = "0";
+                txtBoxQuantity.ReadOnly = true;
+                //
+                btnF2B.Visible = false;
+                btnF2A.Enabled = false;
+                wholesale = false;
+                btnF4.Enabled = false;
+                btnF5.Enabled = true;
+                btnF1.Enabled = true;
+                btnDone.Enabled = false;
+                lblQN.Text = "0";
+                lblTotal.Text = "0.00";
+                rdQty.Text = "0";
+                btnSendToOrder.Enabled = false;
+            }
+        }
         private void clearboxes()
         {
             txtBoxQuantity.Text = "0";
@@ -356,6 +387,30 @@ namespace nPOSProj
                     btnSendToOrder.Enabled = false;
                     rdQty.Text = "0";
                 }
+            }
+        }
+        private void gotoSendItem()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to proceed?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                ordervo.Order_no = order_no;
+                ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                ordervo.Ean = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                ordervo.Pos_qty = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+                ordervo.Order_item_amount = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[3].Value);
+                ordervo.Pos_amt = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[4].Value);
+                ordervo.SendQuotationToOrder();
+                dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]); // Remove Something on the Datagrid
+                //
+                lblTotal.Text = CellSum().ToString("#,###,##0.00");
+                ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
+                ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                ordervo.UpdateTotalQuote();
+                btnSendToOrder.Enabled = false;
+                rdQty.Text = "0";
+                this.checkItemPriorToEnd();
+                dataGridView1.Focus();
             }
         }
         private void btnESC_Click(object sender, EventArgs e)
@@ -687,7 +742,7 @@ namespace nPOSProj
 
         private void btnSendToOrder_Click(object sender, EventArgs e)
         {
-
+            gotoSendItem();
         }
 
         private void btnLink_Click(object sender, EventArgs e)
