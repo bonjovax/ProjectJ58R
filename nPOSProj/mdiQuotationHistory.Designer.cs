@@ -48,7 +48,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.txtBoxQuotation = new System.Windows.Forms.TextBox();
             this.btnDone = new System.Windows.Forms.Button();
-            this.btnRequote = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +86,7 @@
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1286, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(1287, 320);
             this.dataGridView1.TabIndex = 20;
             // 
             // Column1
@@ -208,35 +207,13 @@
             this.btnDone.UseVisualStyleBackColor = false;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
-            // btnRequote
-            // 
-            this.btnRequote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnRequote.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRequote.Enabled = false;
-            this.btnRequote.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(83)))), ((int)(((byte)(44)))));
-            this.btnRequote.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(83)))), ((int)(((byte)(44)))));
-            this.btnRequote.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(83)))), ((int)(((byte)(44)))));
-            this.btnRequote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRequote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequote.ForeColor = System.Drawing.Color.White;
-            this.btnRequote.Image = ((System.Drawing.Image)(resources.GetObject("btnRequote.Image")));
-            this.btnRequote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequote.Location = new System.Drawing.Point(991, 327);
-            this.btnRequote.Name = "btnRequote";
-            this.btnRequote.Size = new System.Drawing.Size(152, 49);
-            this.btnRequote.TabIndex = 36;
-            this.btnRequote.Text = "(R) Re-Quote";
-            this.btnRequote.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRequote.UseVisualStyleBackColor = false;
-            // 
             // mdiQuotationHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(83)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(1286, 377);
+            this.ClientSize = new System.Drawing.Size(1287, 382);
             this.ControlBox = false;
-            this.Controls.Add(this.btnRequote);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.txtBoxQuotation);
             this.Controls.Add(this.dateTimePicker1);
@@ -272,6 +249,5 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox txtBoxQuotation;
         private System.Windows.Forms.Button btnDone;
-        private System.Windows.Forms.Button btnRequote;
     }
 }

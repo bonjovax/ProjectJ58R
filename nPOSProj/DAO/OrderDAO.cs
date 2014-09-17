@@ -17,7 +17,6 @@ namespace nPOSProj.DAO
         {
             
         }
-
         #region Ordering Information DAO
         public void newOrder()
         {

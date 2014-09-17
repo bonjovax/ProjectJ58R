@@ -66,6 +66,23 @@ namespace nPOSProj
             }
         }
 
+        private void RequoteNew()
+        {
+            String custcode = "";
+            DialogResult dlg = MessageBox.Show("Do you wish to Re-Quote this Quotation?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                ordervo = new VO.OrderVO();
+                ordervo.Company = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                custcode = ordervo.askCustomerCode();
+                //
+                ordervo.Quote_custcode = custcode;
+                ordervo.Quote_customer = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                ordervo.Quote_customer = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                ordervo.NewQuotation();
+            }
+        }
+
         private void mdiQuotationHistory_Load(object sender, EventArgs e)
         {
             presetDate = DateTime.Now.ToString("yyyy-MM-dd");
