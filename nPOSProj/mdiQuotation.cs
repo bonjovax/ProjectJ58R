@@ -19,6 +19,7 @@ namespace nPOSProj
         private VO.OrderVO ordervo = new VO.OrderVO();
         private Boolean wholesale = false;
         private Boolean start = false;
+        private Int32 order_no = 0;
         public mdiQuotation()
         {
             InitializeComponent();
@@ -208,6 +209,9 @@ namespace nPOSProj
                     checkRowCount();
                     start = true;
                     btnDone.Enabled = true;
+                    btnSendToOrder.Enabled = false;
+                    rdQty.Text = "0";
+                    btnLink.Enabled = true;
                 }
             }
         }
@@ -245,6 +249,8 @@ namespace nPOSProj
                 btnDone.Enabled = false;
                 lblQN.Text = "0";
                 lblTotal.Text = "0.00";
+                rdQty.Text = "0";
+                btnSendToOrder.Enabled = false;
             }
         }
 
@@ -273,6 +279,8 @@ namespace nPOSProj
                 ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
                 ordervo.UpdateTotalQuote();
                 btnF3.Enabled = false;
+                btnSendToOrder.Enabled = false;
+                rdQty.Text = "0";
                 clearboxes();
             }
             catch (Exception)
@@ -306,7 +314,8 @@ namespace nPOSProj
                     lblQN.Text = "x";
                     lblTotal.Text = "0.00";
                     btnDone.Enabled = false;
-
+                    rdQty.Text = "0";
+                    btnSendToOrder.Enabled = false;
                 }
             }
             catch (Exception)
@@ -326,17 +335,26 @@ namespace nPOSProj
                 else
                 {
                     lblQN.Text = park.Quotation_no.ToString();
+                    ordervo.Quotation_no = park.Quotation_no;
                     //dataGridView1.Rows.Clear();
                     //1 Data Load
                     this.LoadQuoteDataItem(park.Quotation_no);
                     //2 Data Load Kit
                     this.LoadQuoteDataItemKit(park.Quotation_no);
+                    //
+                    order_no = ordervo.getOrderNo();
+                    if (ordervo.checkFlag() != true)
+                    {
+                        btnLink.Enabled = true;
+                    }
                     lblTotal.Text = CellSum().ToString("#,###,##0.00");
                     clearboxes();
                     unlockcontrols();
                     autoCompleteItem();
                     checkRowCount();
                     btnDone.Enabled = true;
+                    btnSendToOrder.Enabled = false;
+                    rdQty.Text = "0";
                 }
             }
         }
@@ -639,7 +657,16 @@ namespace nPOSProj
             }
             else
             {
+                ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
                 btnF3.Enabled = true;
+                ordervo.Ean = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                rdQty.Text = ordervo.askQty().ToString();
+                if (Convert.ToInt32(rdQty.Text) >= Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value) && ordervo.checkFlag() != false)
+                {
+                    btnSendToOrder.Enabled = true;
+                }
+                else
+                    btnSendToOrder.Enabled = false;
             }
         }
 
@@ -656,6 +683,25 @@ namespace nPOSProj
         private void btnDone_Click(object sender, EventArgs e)
         {
             gotoDone();
+        }
+
+        private void btnSendToOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLink_Click(object sender, EventArgs e)
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to Linked to Orders?", "Link", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            {
+                if (dlg == System.Windows.Forms.DialogResult.Yes)
+                {
+                    ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
+                    ordervo.Linked();
+                    order_no = ordervo.getOrderNo();
+                    btnLink.Enabled = false;
+                }
+            }
         }
     }
 }

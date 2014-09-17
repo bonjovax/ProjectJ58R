@@ -207,6 +207,13 @@ namespace nPOSProj.VO
             qty = orderdao.getQtyByEANKit(Ean);
             return qty;
         }
+        public Int32 askQty()
+        {
+            Int32 qty = 0;
+            orderdao = new DAO.OrderDAO();
+            qty = orderdao.getQty(Ean);
+            return qty;
+        }
         //
         public Boolean askItemDescription()
         {
@@ -431,6 +438,27 @@ namespace nPOSProj.VO
             String[,] grab = new String[7, cunt];
             grab = orderdao.ReadQuoteHistoryQuote_no(Quotation_no);
             return grab;
+        }
+        #endregion
+        //
+        #region Linking Quotation to Order
+        public void Linked()
+        {
+            Int32 on = 0;
+            orderdao = new DAO.OrderDAO();
+            orderdao.newOrderLinked(Quotation_no);
+            on = orderdao.getOrderN(Quotation_no);
+            orderdao.LinkedQuote(on, Quotation_no);
+        }
+        public Boolean checkFlag()
+        {
+            orderdao = new DAO.OrderDAO();
+            return orderdao.checkIfLinked(Quotation_no);
+        }
+        public Int32 getOrderNo()
+        {
+            orderdao = new DAO.OrderDAO();
+            return orderdao.getOrderN(Quotation_no);
         }
         #endregion
     }

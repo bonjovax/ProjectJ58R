@@ -413,6 +413,32 @@ namespace nPOSProj.DAO
             }
             return qty;
         }
+        public Int32 getQty(String ean)
+        {
+            Int32 qty = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT item_quantity AS qty FROM inventory_items ";
+            query += "WHERE item_ean = ?ean";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?ean", ean);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    qty = Convert.ToInt32(rdr["qty"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return qty;
+        }
         //
         public Boolean checkingItemDescription(String description, String ean)
         {
@@ -1408,7 +1434,7 @@ namespace nPOSProj.DAO
             String query = "SELECT COUNT(*) AS zozo FROM inventory_items ";
             query += "INNER JOIN quotation_park ON inventory_items.item_ean = quotation_park.quote_ean ";
             query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
-            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) AND (quotation_park.is_send = 0) ";
             query += "ORDER BY quotation_park.quote_park_trn";
             try
             {
@@ -1440,7 +1466,7 @@ namespace nPOSProj.DAO
             con.ConnectionString = db.getConnectionString();
             String query = "SELECT COUNT(*) AS xoxo FROM quotation_park ";
             query += "INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean ";
-            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) AND (quotation_park.is_send = 0) ";
             query += "ORDER BY quotation_park.quote_park_trn ASC";
             try
             {
@@ -1475,7 +1501,7 @@ namespace nPOSProj.DAO
             String query = "SELECT quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_stocks.stock_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM inventory_items ";
             query += "INNER JOIN quotation_park ON inventory_items.item_ean = quotation_park.quote_ean ";
             query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
-            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) AND (quotation_park.is_send = 0) ";
             query += "ORDER BY quotation_park.quote_park_trn";
 
             try
@@ -1515,7 +1541,7 @@ namespace nPOSProj.DAO
             con.ConnectionString = db.getConnectionString();
             String query = "SELECT quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_items.kit_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM quotation_park ";
             query += "INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean ";
-            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) AND (quotation_park.is_send = 0) ";
             query += "ORDER BY quotation_park.quote_park_trn ASC";
             try
             {
@@ -1685,6 +1711,129 @@ namespace nPOSProj.DAO
                 con.Close();
             }
             return bilat;
+        }
+        #endregion
+        #region Send to Order Module
+        public void sendQuoteOrder(String ean, Int32 qty)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "";
+            try
+            {
+                con.Open();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
+        #region Linked Quote to Order
+        public void newOrderLinked(Int32 quote_no)
+        {
+            String user = frmLogin.User.user_name;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "INSERT INTO order_store (order_no, order_date, order_time, order_user, quote_no) VALUES";
+            query += "(?orderno, ?date, ?time, ?user, ?qn)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?orderno", this.askOrderNo() + 1);
+                cmd.Parameters.AddWithValue("?date", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("?time", DateTime.Now.ToString("HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?user", user);
+                cmd.Parameters.AddWithValue("?qn", quote_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public Int32 getOrderN(Int32 quote_no)
+        {
+            Int32 on = 0;
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT order_no AS a FROM order_store ";
+            query += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    on = Convert.ToInt32(rdr["a"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return on;
+        }
+        public void LinkedQuote(Int32 order_no, Int32 quote_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE quotation_store SET order_no = ?a, is_linked = 1 ";
+            query += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", order_no);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public Boolean checkIfLinked(Int32 quote_no)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT * FROM quotation_store ";
+            query += "WHERE is_linked = 1 AND quote_no = ?qn";
+            Boolean found = false;
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?qn", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    found = true;
+                }
+                else
+                    found = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return found;
         }
         #endregion
     }
