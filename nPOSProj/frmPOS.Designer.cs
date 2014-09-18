@@ -177,6 +177,7 @@
             // btnCancelSale
             // 
             this.btnCancelSale.BackColor = System.Drawing.Color.LightCoral;
+            this.btnCancelSale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelSale.Enabled = false;
             this.btnCancelSale.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
             this.btnCancelSale.FlatAppearance.BorderSize = 0;
@@ -197,6 +198,7 @@
             // btnParkSale
             // 
             this.btnParkSale.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnParkSale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnParkSale.FlatAppearance.BorderColor = System.Drawing.Color.PaleGreen;
             this.btnParkSale.FlatAppearance.BorderSize = 0;
             this.btnParkSale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -216,6 +218,7 @@
             // btnCheckout
             // 
             this.btnCheckout.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnCheckout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCheckout.Enabled = false;
             this.btnCheckout.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
             this.btnCheckout.FlatAppearance.BorderSize = 0;
@@ -236,6 +239,7 @@
             // btnVoid
             // 
             this.btnVoid.BackColor = System.Drawing.Color.PowderBlue;
+            this.btnVoid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVoid.Enabled = false;
             this.btnVoid.FlatAppearance.BorderColor = System.Drawing.Color.Azure;
             this.btnVoid.FlatAppearance.BorderSize = 0;
@@ -256,6 +260,7 @@
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.Enabled = false;
             this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.LightCyan;
             this.btnEdit.FlatAppearance.BorderSize = 0;
@@ -401,6 +406,7 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Crimson;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MistyRose;
@@ -501,6 +507,7 @@
             // btnDiscount
             // 
             this.btnDiscount.BackColor = System.Drawing.Color.Tomato;
+            this.btnDiscount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDiscount.Enabled = false;
             this.btnDiscount.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
             this.btnDiscount.FlatAppearance.BorderSize = 0;
@@ -533,6 +540,7 @@
             // btnRefund
             // 
             this.btnRefund.BackColor = System.Drawing.Color.Moccasin;
+            this.btnRefund.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefund.FlatAppearance.BorderColor = System.Drawing.Color.Moccasin;
             this.btnRefund.FlatAppearance.BorderSize = 0;
             this.btnRefund.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
@@ -551,6 +559,7 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Enabled = false;
             this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
             this.btnSearch.FlatAppearance.BorderSize = 0;
@@ -738,6 +747,7 @@
             // btnRetail
             // 
             this.btnRetail.BackColor = System.Drawing.Color.Plum;
+            this.btnRetail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRetail.FlatAppearance.BorderColor = System.Drawing.Color.Azure;
             this.btnRetail.FlatAppearance.BorderSize = 0;
             this.btnRetail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
