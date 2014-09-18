@@ -653,7 +653,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "mdiOrdering";
-            this.Text = "Order";
+            this.Text = resources.GetString("$this.Text");
             this.Load += new System.EventHandler(this.mdiOrdering_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
