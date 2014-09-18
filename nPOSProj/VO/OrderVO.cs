@@ -63,6 +63,54 @@ namespace nPOSProj.VO
             get { return order_total_amt; }
             set { order_total_amt = value; }
         }
+        private Int32 pos_orno;
+        public Int32 Pos_orno
+        {
+            get { return pos_orno; }
+            set { pos_orno = value; }
+        }
+        private String pos_terminal;
+        public String Pos_terminal
+        {
+            get { return pos_terminal; }
+            set { pos_terminal = value; }
+        }
+        private Double pos_vatable;
+        public Double Pos_vatable
+        {
+            get { return pos_vatable; }
+            set { pos_vatable = value; }
+        }
+        private Double pos_vex;
+        public Double Pos_vex
+        {
+            get { return pos_vex; }
+            set { pos_vex = value; }
+        }
+        private Double pos_vatz;
+        public Double Pos_vatz
+        {
+            get { return pos_vatz; }
+            set { pos_vatz = value; }
+        }
+        private Double pos_tax_perc;
+        public Double Pos_tax_perc
+        {
+            get { return pos_tax_perc; }
+            set { pos_tax_perc = value; }
+        }
+        private Double pos_tax_amt;
+        public Double Pos_tax_amt
+        {
+            get { return pos_tax_amt; }
+            set { pos_tax_amt = value; }
+        }
+        private Double pos_total_amt;
+        public Double Pos_total_amt
+        {
+            get { return pos_total_amt; }
+            set { pos_total_amt = value; }
+        }
         #endregion
         #region Quotation Accessors Core
         private String company;
@@ -483,6 +531,18 @@ namespace nPOSProj.VO
         {
             orderdao = new DAO.OrderDAO();
             orderdao.TriggerQuoteDone(Quotation_no);
+        }
+        #endregion
+        #region Quote to Order VO
+        public void OrderToPOS()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.TransferOrderToPOS(Pos_orno, Pos_orderno);
+        }
+        public void OrderPOSDone()
+        {
+            orderdao = new DAO.OrderDAO();
+            orderdao.TriggerOrderPOSDone(Pos_vatable, Pos_vex, Pos_vatz, Pos_tax_perc, Pos_tax_amt, Pos_total_amt, Pos_orno, Pos_terminal);
         }
         #endregion
     }

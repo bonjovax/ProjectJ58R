@@ -2068,6 +2068,7 @@ namespace nPOSProj
 
         private void gotoPark()
         {
+            frmLogin fl = new frmLogin();
             try
             {
                 using (frmDlgPark park = new frmDlgPark())
@@ -2218,6 +2219,154 @@ namespace nPOSProj
                     if (park.Order_Selected == true)
                     {
                         //New Code
+                        orderNo = park.OrderNo;
+                        lblSeriesNo.Text = orderNo.ToString();
+                        //
+                        wholsale_select = false;
+                        btnWholesale.Enabled = true;
+                        btnRetail.Visible = false;
+                        //
+                        loadParkedData();
+                        OrNo = park.OrderNo;
+                        //
+                        proceed.Visible = false;
+                        proceeds = true; //important
+                        //
+                        txtBoxQty.ReadOnly = false;
+                        txtBoxQty.Text = "1";
+                        txtBoxEAN.ReadOnly = false;
+                        rdDescription.Clear();
+                        rdDescription.Text = "Ready";
+                        lblChangeDue.Text = "0.00";
+                        //
+                        btnSearch.Enabled = true;
+                        btnRefund.Enabled = false;
+                        btnCancelSale.Enabled = true;
+                        //
+                        Double total_fin = 0;
+                        Double total_fins = 0;
+                        Double a = 0;
+                        Double b = 0; //To Data Tax Amount
+                        Double vATable = 0;
+                        Double v1 = 0;
+                        Double v2 = 0;
+                        Double v3 = 1.12;
+                        Double vExempt = 0;
+                        Double vZero = 0;
+
+                        foreach (ListViewItem lv in lviewPOS.Items)
+                        {
+                            total_fin += Double.Parse(lv.SubItems[5].Text);
+                            total_fins += Double.Parse(lv.SubItems[5].Text);
+                            if (lv.SubItems[6].Text == "V")
+                            {
+                                if (all_items_tax == 1) //If All Items are Taxable
+                                {
+                                    itemTT = lv.SubItems[6].Text;
+                                    v1 += Double.Parse(lv.SubItems[5].Text);
+                                    v2 = (v1 / v3) * taxP;
+                                    vATable = v1;
+                                }
+                                else //Otherwise
+                                {
+                                    itemTT = lv.SubItems[6].Text;
+                                    v1 += Double.Parse(lv.SubItems[5].Text);
+                                }
+                            }
+                            if (lv.SubItems[6].Text == "E")
+                            {
+                                vExempt += Double.Parse(lv.SubItems[5].Text);
+                            }
+                            if (lv.SubItems[6].Text == "Z")
+                            {
+                                vZero += Double.Parse(lv.SubItems[5].Text);
+                            }
+                        }
+                        if (all_items_tax == 1) //If All Items are Taxable
+                        {
+                            if (TaxT == "V")
+                            {
+                                lblVatable.Text = vATable.ToString("#,###,##0.00");
+                                lblVATe.Text = vExempt.ToString("###,###,##0.00");
+                                lblVATz.Text = vZero.ToString("###,###,##0.00");
+                            }
+                            else
+                            {
+                                vATable = 0;
+                                vExempt = 0;
+                                vZero = 0;
+                            }
+                            lblTotalAmount.Text = total_fin.ToString("###,###,##0.00");
+                            if (itemTT == "V")
+                            {
+                                if (TaxT == "V")
+                                {
+                                    //Tax
+                                    a = (v1 / v3) * taxP;
+                                    //Please Add Condition if Sale is VAT
+                                    lblTAXamt.Text = v2.ToString("#,###,##0.00");
+                                    b = v1;
+                                    lblVatable.Text = b.ToString("#,###,##0.00");
+                                }
+                                else
+                                {
+                                    a = 0;
+                                    v2 = 0;
+                                    b = 0;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            if (TaxT == "V")
+                            {
+                                lblVatable.Text = v1.ToString("#,###,##0.00");
+                                lblVATe.Text = vExempt.ToString("###,###,##0.00");
+                                lblVATz.Text = vZero.ToString("###,###,##0.00");
+                            }
+                            if (itemTT == "V")
+                            {
+                                if (TaxT == "V")
+                                {
+                                    a = (v1 / v3) * taxP;
+                                    lblTAXamt.Text = a.ToString("###,###,##0.00");
+                                }
+                                else
+                                {
+                                    a = 0;
+                                }
+                            }
+                            a = (v1 / v3) * taxP;
+                            totalVar = v1 + vExempt + vZero + a;
+                            lblTotalAmount.Text = totalVar.ToString("###,###,##0.00");
+                        }
+                        pos.Pos_tax_perc = taxP;
+                        if (lviewPOS.Items.Count != 0)
+                        {
+                            btnCancelSale.Enabled = true;
+                            btnCheckout.Enabled = true;
+                            btnParkSale.Enabled = false;
+                            nosale = false;
+                        }
+                        else
+                        {
+                            btnCancelSale.Enabled = false;
+                            btnCheckout.Enabled = false;
+                            btnParkSale.Enabled = true;
+                            nosale = true;
+                        }
+                        VO.OrderVO order = new VO.OrderVO();
+                        order.Pos_vatable = Convert.ToDouble(lblVatable.Text);
+                        order.Pos_vex = Convert.ToDouble(lblVATe.Text);
+                        order.Pos_vatz = Convert.ToDouble(lblVATz.Text);
+                        order.Pos_tax_perc = taxP;
+                        order.Pos_tax_amt = Convert.ToDouble(lblTAXamt.Text);
+                        order.Pos_total_amt = Convert.ToDouble(lblTotalAmount.Text);
+                        order.Pos_orno = OrNo;
+                        order.Pos_terminal = fl.tN;
+                        order.OrderPOSDone();
+                        txtBoxEAN.Focus();
                     }
                 }
             }

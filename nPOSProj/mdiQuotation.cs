@@ -202,6 +202,7 @@ namespace nPOSProj
                 lblTotal.Text = "0.00";
                 rdQty.Text = "0";
                 btnSendToOrder.Enabled = false;
+                btnF3.Enabled = false;
             }
         }
         private void clearboxes()

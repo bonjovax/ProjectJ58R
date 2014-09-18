@@ -16,7 +16,14 @@ namespace nPOSProj
         private MySqlConnection con = new MySqlConnection();
         private bool selected = false;
         private VO.OrderVO order;
+        private VO.PosVO pos = new VO.PosVO();
         private String types = "";
+
+        public static String terminalNo;
+        public String tN
+        {
+            get { return terminalNo; }
+        }
 
         public bool Selected
         {
@@ -122,6 +129,10 @@ namespace nPOSProj
                             DateTime dates = DateTime.Parse(dataTable.Rows[i][5].ToString());
                             dataGridView1.Rows.Add(dataTable.Rows[i][0], dataTable.Rows[i][1], dataTable.Rows[i][2], dataTable.Rows[i][3], dataTable.Rows[i][4], dates.ToString("hh:mm:ss tt"), dataTable.Rows[i][6], types);
                         }
+                        if (dataGridView1.Rows.Count != 0)
+                        {
+                            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                        }
                     }
                     catch (MySqlException ex)
                     {
@@ -141,6 +152,10 @@ namespace nPOSProj
                 for (int o = 0; o < grabData.GetLength(1); o++)
                 {
                     dataGridView2.Rows.Add(grabData[0, o].ToString(), Convert.ToDateTime(grabData[1, o].ToString()).ToString("MM/dd/yyyy"), Convert.ToDateTime(grabData[2, o].ToString()).ToString("hh:mm:ss tt"), Convert.ToDouble(grabData[3, o].ToString()).ToString("#,###,##0.00"), grabData[4, o].ToString());
+                }
+                if (dataGridView2.Rows.Count != 0)
+                {
+                    dataGridView2.FirstDisplayedScrollingRowIndex = dataGridView2.Rows.Count - 1;
                 }
             }
             catch (Exception)
@@ -200,6 +215,45 @@ namespace nPOSProj
                 dataGridView1.Visible = true;
                 dataGridView2.Visible = false;
                 getDataTable();
+            }
+        }
+
+        private void gotoSelectOrder()
+        {
+            DialogResult dlg = MessageBox.Show("Do you wish to Continue?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            {
+                Int32 orno = 0;
+                frmLogin lg = new frmLogin();
+                String userName = frmLogin.User.user_name;
+                pos.Pos_terminal = lg.tN;
+                pos.Pos_orno = pos.GetOrNo();
+                orno = pos.GetOrNo();
+                pos.Pos_date = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+                pos.Pos_time = Convert.ToDateTime(DateTime.Now.ToString("HH:mm:ss"));
+                pos.Pos_user = userName;
+                pos.BeginTransaction();
+                //
+                order.Pos_orno = orno;
+                order.Pos_orderno = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells[0].Value);
+                order.OrderToPOS();
+                //
+                OrderNo = orno;
+                Order_Selected = true;
+                this.Close();
+            }
+        }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            gotoSelectOrder();
+        }
+
+        private void dataGridView2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                gotoSelectOrder();
             }
         }
     }

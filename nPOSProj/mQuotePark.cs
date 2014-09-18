@@ -54,6 +54,10 @@ namespace nPOSProj
                 {
                     dataGridView1.Rows.Add(grabData[0, o].ToString(), Convert.ToDateTime(grabData[1, o].ToString()).ToString("MM/dd/yyyy"), Convert.ToDateTime(grabData[2, o].ToString()).ToString("hh:mm:ss tt"), Convert.ToDouble(grabData[3, o].ToString()).ToString("#,###,##0.00"), grabData[4, o].ToString());
                 }
+                if (dataGridView1.Rows.Count != 0)
+                {
+                    dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                }
             }
             catch (Exception)
             {

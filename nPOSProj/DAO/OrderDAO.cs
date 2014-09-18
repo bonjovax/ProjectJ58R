@@ -1927,5 +1927,63 @@ namespace nPOSProj.DAO
             return found;
         }
         #endregion
+        #region Order Park Retrieval and Linked to POS
+        public void TransferOrderToPOS(Int32 pos_orno, Int32 pos_orderno)
+        {
+            frmLogin fl = new frmLogin();
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE pos_park SET pos_orno = ?pos_orno, pos_terminal = ?pos_terminal ";
+            query += "WHERE pos_orderno = ?pos_orderno";
+            String query1 = "UPDATE order_store SET order_park = 0 ";
+            query1 += "WHERE order_no = ?order_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlCommand cmd1 = new MySqlCommand(query1, con);
+                cmd.Parameters.AddWithValue("?pos_orno", pos_orno);
+                cmd.Parameters.AddWithValue("?pos_terminal", fl.tN);
+                cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
+                cmd1.Parameters.AddWithValue("?order_no", pos_orderno);
+                cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
+                cmd.Dispose();
+                cmd1.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void TriggerOrderPOSDone(Double pos_vatable, Double pos_vex, Double pos_vatz, Double pos_tax_perc, Double pos_tax_amt, Double pos_total_amt, Int32 pos_orno, String pos_terminal)
+        {
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "UPDATE pos_store SET pos_vatable = ?a, pos_vex = ?b, pos_vatz = ?c, pos_tax_perc = ?d, pos_tax_amt = ?e, pos_total_amt = ?f ";
+            query += "WHERE pos_orno = ?pos_orno AND pos_terminal = ?pos_terminal";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", pos_vatable);
+                cmd.Parameters.AddWithValue("?b", pos_vex);
+                cmd.Parameters.AddWithValue("?c", pos_vatz);
+                cmd.Parameters.AddWithValue("?d", pos_tax_perc);
+                cmd.Parameters.AddWithValue("?e", pos_tax_amt);
+                cmd.Parameters.AddWithValue("?f", pos_total_amt);
+                cmd.Parameters.AddWithValue("?pos_orno", pos_orno);
+                cmd.Parameters.AddWithValue("?pos_terminal", pos_terminal);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
     }
 }
