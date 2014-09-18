@@ -46,6 +46,50 @@ namespace nPOSProj
             InitializeComponent();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            if (keyData == Keys.F1)
+            {
+                if (cBoxOrder.Checked != true)
+                {
+                    cBoxOrder.Checked = true;
+                }
+                else
+                    cBoxOrder.Checked = false;
+                if (cBoxOrder.Checked == true)
+                {
+                    this.Text = "Order Park Retrieval";
+                    dataGridView1.Visible = false;
+                    dataGridView2.Visible = true;
+                    LoadDataOrder();
+                }
+                else
+                {
+                    this.Text = "Park Sale Retrieval";
+                    dataGridView1.Visible = true;
+                    dataGridView2.Visible = false;
+                    getDataTable();
+                }
+                return true;
+            }
+            if (keyData == Keys.F2 && cBoxOrder.Checked == true)
+            {
+                dataGridView2.Focus();
+                return true;
+            }
+            if (keyData == Keys.F2 && cBoxOrder.Checked == false)
+            {
+                dataGridView1.Focus();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void getDataTable()
         {
             frmLogin fs = new frmLogin();
