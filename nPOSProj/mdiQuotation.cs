@@ -166,11 +166,13 @@ namespace nPOSProj
             {
                 btnF5.Enabled = false;
                 btnF4.Enabled = true;
+                btnF6.Enabled = true;
             }
             else
             {
                 btnF5.Enabled = true;
                 btnF4.Enabled = false;
+                btnF6.Enabled = false;
             }
         }
         private void checkItemPriorToEnd()
