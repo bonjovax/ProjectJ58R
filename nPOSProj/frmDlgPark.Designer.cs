@@ -73,6 +73,7 @@
             this.Column6,
             this.Column7,
             this.Column8});
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,6 +167,7 @@
             // cBoxOrder
             // 
             this.cBoxOrder.AutoSize = true;
+            this.cBoxOrder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cBoxOrder.Location = new System.Drawing.Point(962, 346);
             this.cBoxOrder.Name = "cBoxOrder";
             this.cBoxOrder.Size = new System.Drawing.Size(143, 20);
@@ -186,6 +188,7 @@
             this.Column10,
             this.dataGridViewTextBoxColumn4,
             this.Column11});
+            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
