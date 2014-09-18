@@ -2212,8 +2212,12 @@ namespace nPOSProj
                             btnParkSale.Enabled = true;
                             nosale = true;
                         }
-
                         txtBoxEAN.Focus();
+                    }
+                    //
+                    if (park.Order_Selected == true)
+                    {
+                        //New Code
                     }
                 }
             }

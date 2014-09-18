@@ -15,12 +15,21 @@ namespace nPOSProj
         private Conf.dbs dbcon = new Conf.dbs();
         private MySqlConnection con = new MySqlConnection();
         private bool selected = false;
+        private VO.OrderVO order;
         private String types = "";
 
         public bool Selected
         {
             get { return selected; }
             set { selected = value; }
+        }
+
+        private bool order_Selected;
+
+        public bool Order_Selected
+        {
+            get { return order_Selected; }
+            set { order_Selected = value; }
         }
 
         private Int32 orderNo;
@@ -78,6 +87,24 @@ namespace nPOSProj
             } // end using
         }
 
+        private void LoadDataOrder()
+        {
+            order = new VO.OrderVO();
+            String[,] grabData = order.ReadParkedOrder();
+            try
+            {
+                dataGridView2.Rows.Clear();
+                for (int o = 0; o < grabData.GetLength(1); o++)
+                {
+                    dataGridView2.Rows.Add(grabData[0, o].ToString(), Convert.ToDateTime(grabData[1, o].ToString()).ToString("MM/dd/yyyy"), Convert.ToDateTime(grabData[2, o].ToString()).ToString("hh:mm:ss tt"), Convert.ToDouble(grabData[3, o].ToString()).ToString("#,###,##0.00"), grabData[4, o].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void frmDlgPark_Load(object sender, EventArgs e)
         {
             Selected = false;
@@ -118,13 +145,17 @@ namespace nPOSProj
         {
             if (cBoxOrder.Checked == true)
             {
-                dataGridView1.Rows.Clear();
-                dataGridView1.Columns[0].HeaderText = "Order #";
+                this.Text = "Order Park Retrieval";
+                dataGridView1.Visible = false;
+                dataGridView2.Visible = true;
+                LoadDataOrder();
             }
             else
             {
+                this.Text = "Park Sale Retrieval";
+                dataGridView1.Visible = true;
+                dataGridView2.Visible = false;
                 getDataTable();
-                dataGridView1.Columns[0].HeaderText = "O.R #";
             }
         }
     }
