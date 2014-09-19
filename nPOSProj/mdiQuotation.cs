@@ -437,6 +437,7 @@ namespace nPOSProj
                 ordervo.Quotation_no = Convert.ToInt32(lblQN.Text);
                 ordervo.UpdateTotalQuote();
                 btnSendToOrder.Enabled = false;
+                btnF3.Enabled = false;
                 rdQty.Text = "0";
                 this.checkItemPriorToEnd();
                 dataGridView1.Focus();
@@ -705,6 +706,9 @@ namespace nPOSProj
                 checkRowCount();
                 dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
                 clearboxes();
+                btnF3.Enabled = false;
+                btnSendToOrder.Enabled = false;
+                rdQty.Text = "0";
             }
             catch (Exception)
             {

@@ -208,6 +208,7 @@ namespace nPOSProj
                 dataGridView1.Visible = false;
                 dataGridView2.Visible = true;
                 LoadDataOrder();
+                dataGridView2.Focus();
             }
             else
             {
@@ -215,6 +216,7 @@ namespace nPOSProj
                 dataGridView1.Visible = true;
                 dataGridView2.Visible = false;
                 getDataTable();
+                dataGridView1.Focus();
             }
         }
 
