@@ -619,7 +619,6 @@ namespace nPOSProj
                     lblON.Text = park.Order_no.ToString();
                     dataGridView1.Rows.Clear();
                     this.LoadDataItem(park.Order_no);
-                    //this.LoadDataItemKit(park.Order_no);
                     lblTotal.Text = CellSum().ToString("#,###,##0.00");
                     clearboxes();
                     unlockcontrols();
