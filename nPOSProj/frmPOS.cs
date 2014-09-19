@@ -226,19 +226,15 @@ namespace nPOSProj
 
             using (MySqlConnection con = new MySqlConnection(dbcon.getConnectionString()))
             {
-                String query = "SELECT inventory_stocks.stock_name, pos_park.pos_amt, pos_park.pos_quantity, inventory_items.item_retail_price, inventory_items.item_whole_price, inventory_items.item_tax_type ";
-                query += "FROM inventory_items ";
-                query += "INNER JOIN ";
-                query += "inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
-                query += "INNER JOIN ";
-                query += "pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
+                String query = "SELECT a, b, c, d, e, f FROM (SELECT pos_park.trn AS aaa, inventory_stocks.stock_name AS a, pos_park.pos_amt AS b, pos_park.pos_quantity AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, inventory_items.item_tax_type AS f FROM inventory_items ";
+                query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+                query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
                 query += "WHERE (pos_park.pos_orno = ?pos_orno) AND (pos_park.pos_terminal = ?pos_terminal) ";
                 query += "UNION ALL ";
-                query += "SELECT inventory_items.kit_name, pos_park.pos_amt, pos_park.pos_quantity, inventory_items.item_retail_price, inventory_items.item_whole_price, inventory_items.item_tax_type ";
-                query += "FROM inventory_items ";
-                query += "INNER JOIN ";
-                query += "pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
-                query += "WHERE (pos_park.pos_orno = ?pos_orno) AND (pos_park.pos_terminal = ?pos_terminal) AND (inventory_items.is_kit = 1)";
+                query += "SELECT pos_park.trn AS aaa, inventory_items.kit_name AS a, pos_park.pos_amt AS b, pos_park.pos_quantity AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, inventory_items.item_tax_type  AS f FROM inventory_items ";
+                query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
+                query += "WHERE (pos_park.pos_orno = ?pos_orno) AND (pos_park.pos_terminal = ?pos_terminal) AND (inventory_items.is_kit = 1)) receipt ";
+                query += "ORDER BY aaa";
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, con))
                 {
                     try
