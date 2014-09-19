@@ -2,13 +2,15 @@
 <xs:schema id="npos_dbDataSet" targetNamespace="http://tempuri.org/npos_dbDataSet.xsd" xmlns:mstns="http://tempuri.org/npos_dbDataSet.xsd" xmlns="http://tempuri.org/npos_dbDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="4" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="6" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString1" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString2" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString3" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString3 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString3" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString4" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString4 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString4" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="nposr_dbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="nposr_dbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.nposr_dbConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="nposr_dbConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="nposr_dbConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.nposr_dbConnectionString1" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="inventory_supplierTableAdapter" GeneratorDataComponentClassName="inventory_supplierTableAdapter" Name="inventory_supplier" UserDataComponentName="inventory_supplierTableAdapter">
@@ -1397,6 +1399,71 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="quotation_storeTableAdapter" GeneratorDataComponentClassName="quotation_storeTableAdapter" Name="quotation_store" UserDataComponentName="quotation_storeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="npos_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        quotation_store.quote_trn, quotation_store.quote_no, quotation_store.quote_date, quotation_store.quote_time, quotation_store.quote_user, quotation_store.quote_total_amt, quotation_store.quote_custcode, 
+                         quotation_store.quote_customer, quotation_store.quote_address, quotation_store.quote_park, quotation_store.is_cancel, quotation_store.is_linked, quotation_store.order_no, user_information.first_name, 
+                         user_information.middle_name, user_information.last_name
+FROM            user_account INNER JOIN
+                         user_information ON user_account.user_id = user_information.user_id INNER JOIN
+                         quotation_store ON user_account.user_name = quotation_store.quote_user</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="quote_trn" DataSetColumn="quote_trn" />
+              <Mapping SourceColumn="quote_no" DataSetColumn="quote_no" />
+              <Mapping SourceColumn="quote_date" DataSetColumn="quote_date" />
+              <Mapping SourceColumn="quote_time" DataSetColumn="quote_time" />
+              <Mapping SourceColumn="quote_user" DataSetColumn="quote_user" />
+              <Mapping SourceColumn="quote_total_amt" DataSetColumn="quote_total_amt" />
+              <Mapping SourceColumn="quote_custcode" DataSetColumn="quote_custcode" />
+              <Mapping SourceColumn="quote_customer" DataSetColumn="quote_customer" />
+              <Mapping SourceColumn="quote_address" DataSetColumn="quote_address" />
+              <Mapping SourceColumn="quote_park" DataSetColumn="quote_park" />
+              <Mapping SourceColumn="is_cancel" DataSetColumn="is_cancel" />
+              <Mapping SourceColumn="is_linked" DataSetColumn="is_linked" />
+              <Mapping SourceColumn="order_no" DataSetColumn="order_no" />
+              <Mapping SourceColumn="first_name" DataSetColumn="first_name" />
+              <Mapping SourceColumn="middle_name" DataSetColumn="middle_name" />
+              <Mapping SourceColumn="last_name" DataSetColumn="last_name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="quotation_parkTableAdapter" GeneratorDataComponentClassName="quotation_parkTableAdapter" Name="quotation_park" UserDataComponentName="quotation_parkTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="nposr_dbConnectionString1 (Settings)" DbObjectName="SELECT quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d FROM quotation_park INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code UNION ALL SELECT quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d FROM quotation_park quotation_park_1 INNER JOIN inventory_items inventory_items_1 ON quotation_park_1.quote_ean = inventory_items_1.item_ean WHERE (inventory_items_1.is_kit = 1)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        a, b, c, d
+FROM            (SELECT        quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d
+                          FROM            quotation_park INNER JOIN
+                                                    inventory_items ON quotation_park.quote_ean = inventory_items.item_ean INNER JOIN
+                                                    inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code
+                          UNION ALL
+                          SELECT        quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d
+                          FROM            quotation_park quotation_park_1 INNER JOIN
+                                                   inventory_items inventory_items_1 ON quotation_park_1.quote_ean = inventory_items_1.item_ean
+                          WHERE        (inventory_items_1.is_kit = 1)) quotation
+ORDER BY aaa</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="a" DataSetColumn="a" />
+              <Mapping SourceColumn="b" DataSetColumn="b" />
+              <Mapping SourceColumn="c" DataSetColumn="c" />
+              <Mapping SourceColumn="d" DataSetColumn="d" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1405,7 +1472,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
   <xs:element name="npos_dbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="npos_dbDataSet" msprop:Generator_UserDSName="npos_dbDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="inventory_supplier" msprop:Generator_TableClassName="inventory_supplierDataTable" msprop:Generator_TableVarName="tableinventory_supplier" msprop:Generator_RowChangedName="inventory_supplierRowChanged" msprop:Generator_TablePropName="inventory_supplier" msprop:Generator_RowDeletingName="inventory_supplierRowDeleting" msprop:Generator_RowChangingName="inventory_supplierRowChanging" msprop:Generator_RowEvHandlerName="inventory_supplierRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_supplierRowDeleted" msprop:Generator_RowClassName="inventory_supplierRow" msprop:Generator_UserTableName="inventory_supplier" msprop:Generator_RowEvArgName="inventory_supplierRowChangeEvent">
+        <xs:element name="inventory_supplier" msprop:Generator_TableClassName="inventory_supplierDataTable" msprop:Generator_TableVarName="tableinventory_supplier" msprop:Generator_TablePropName="inventory_supplier" msprop:Generator_RowDeletingName="inventory_supplierRowDeleting" msprop:Generator_RowChangingName="inventory_supplierRowChanging" msprop:Generator_RowEvHandlerName="inventory_supplierRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_supplierRowDeleted" msprop:Generator_UserTableName="inventory_supplier" msprop:Generator_RowChangedName="inventory_supplierRowChanged" msprop:Generator_RowEvArgName="inventory_supplierRowChangeEvent" msprop:Generator_RowClassName="inventory_supplierRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="supplier_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnsupplier_id" msprop:Generator_ColumnPropNameInRow="supplier_id" msprop:Generator_ColumnPropNameInTable="supplier_idColumn" msprop:Generator_UserColumnName="supplier_id" type="xs:int" />
@@ -1469,7 +1536,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventory_warehouse" msprop:Generator_TableClassName="inventory_warehouseDataTable" msprop:Generator_TableVarName="tableinventory_warehouse" msprop:Generator_TablePropName="inventory_warehouse" msprop:Generator_RowDeletingName="inventory_warehouseRowDeleting" msprop:Generator_RowChangingName="inventory_warehouseRowChanging" msprop:Generator_RowEvHandlerName="inventory_warehouseRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_warehouseRowDeleted" msprop:Generator_UserTableName="inventory_warehouse" msprop:Generator_RowChangedName="inventory_warehouseRowChanged" msprop:Generator_RowEvArgName="inventory_warehouseRowChangeEvent" msprop:Generator_RowClassName="inventory_warehouseRow">
+        <xs:element name="inventory_warehouse" msprop:Generator_TableClassName="inventory_warehouseDataTable" msprop:Generator_TableVarName="tableinventory_warehouse" msprop:Generator_RowChangedName="inventory_warehouseRowChanged" msprop:Generator_TablePropName="inventory_warehouse" msprop:Generator_RowDeletingName="inventory_warehouseRowDeleting" msprop:Generator_RowChangingName="inventory_warehouseRowChanging" msprop:Generator_RowEvHandlerName="inventory_warehouseRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_warehouseRowDeleted" msprop:Generator_RowClassName="inventory_warehouseRow" msprop:Generator_UserTableName="inventory_warehouse" msprop:Generator_RowEvArgName="inventory_warehouseRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="warehouse_code" msprop:Generator_ColumnVarNameInTable="columnwarehouse_code" msprop:Generator_ColumnPropNameInRow="warehouse_code" msprop:Generator_ColumnPropNameInTable="warehouse_codeColumn" msprop:Generator_UserColumnName="warehouse_code">
@@ -1489,7 +1556,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventory_category" msprop:Generator_TableClassName="inventory_categoryDataTable" msprop:Generator_TableVarName="tableinventory_category" msprop:Generator_RowChangedName="inventory_categoryRowChanged" msprop:Generator_TablePropName="inventory_category" msprop:Generator_RowDeletingName="inventory_categoryRowDeleting" msprop:Generator_RowChangingName="inventory_categoryRowChanging" msprop:Generator_RowEvHandlerName="inventory_categoryRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_categoryRowDeleted" msprop:Generator_RowClassName="inventory_categoryRow" msprop:Generator_UserTableName="inventory_category" msprop:Generator_RowEvArgName="inventory_categoryRowChangeEvent">
+        <xs:element name="inventory_category" msprop:Generator_TableClassName="inventory_categoryDataTable" msprop:Generator_TableVarName="tableinventory_category" msprop:Generator_TablePropName="inventory_category" msprop:Generator_RowDeletingName="inventory_categoryRowDeleting" msprop:Generator_RowChangingName="inventory_categoryRowChanging" msprop:Generator_RowEvHandlerName="inventory_categoryRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_categoryRowDeleted" msprop:Generator_UserTableName="inventory_category" msprop:Generator_RowChangedName="inventory_categoryRowChanged" msprop:Generator_RowEvArgName="inventory_categoryRowChangeEvent" msprop:Generator_RowClassName="inventory_categoryRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cat_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncat_id" msprop:Generator_ColumnPropNameInRow="cat_id" msprop:Generator_ColumnPropNameInTable="cat_idColumn" msprop:Generator_UserColumnName="cat_id" type="xs:int" />
@@ -1510,7 +1577,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventory_stocks" msprop:Generator_TableClassName="inventory_stocksDataTable" msprop:Generator_TableVarName="tableinventory_stocks" msprop:Generator_RowChangedName="inventory_stocksRowChanged" msprop:Generator_TablePropName="inventory_stocks" msprop:Generator_RowDeletingName="inventory_stocksRowDeleting" msprop:Generator_RowChangingName="inventory_stocksRowChanging" msprop:Generator_RowEvHandlerName="inventory_stocksRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_stocksRowDeleted" msprop:Generator_RowClassName="inventory_stocksRow" msprop:Generator_UserTableName="inventory_stocks" msprop:Generator_RowEvArgName="inventory_stocksRowChangeEvent">
+        <xs:element name="inventory_stocks" msprop:Generator_TableClassName="inventory_stocksDataTable" msprop:Generator_TableVarName="tableinventory_stocks" msprop:Generator_TablePropName="inventory_stocks" msprop:Generator_RowDeletingName="inventory_stocksRowDeleting" msprop:Generator_RowChangingName="inventory_stocksRowChanging" msprop:Generator_RowEvHandlerName="inventory_stocksRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_stocksRowDeleted" msprop:Generator_UserTableName="inventory_stocks" msprop:Generator_RowChangedName="inventory_stocksRowChanged" msprop:Generator_RowEvArgName="inventory_stocksRowChangeEvent" msprop:Generator_RowClassName="inventory_stocksRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="stock_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnstock_id" msprop:Generator_ColumnPropNameInRow="stock_id" msprop:Generator_ColumnPropNameInTable="stock_idColumn" msprop:Generator_UserColumnName="stock_id" type="xs:int" />
@@ -1563,7 +1630,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="po_order" msprop:Generator_TableClassName="po_orderDataTable" msprop:Generator_TableVarName="tablepo_order" msprop:Generator_RowChangedName="po_orderRowChanged" msprop:Generator_TablePropName="po_order" msprop:Generator_RowDeletingName="po_orderRowDeleting" msprop:Generator_RowChangingName="po_orderRowChanging" msprop:Generator_RowEvHandlerName="po_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="po_orderRowDeleted" msprop:Generator_RowClassName="po_orderRow" msprop:Generator_UserTableName="po_order" msprop:Generator_RowEvArgName="po_orderRowChangeEvent">
+        <xs:element name="po_order" msprop:Generator_TableClassName="po_orderDataTable" msprop:Generator_TableVarName="tablepo_order" msprop:Generator_TablePropName="po_order" msprop:Generator_RowDeletingName="po_orderRowDeleting" msprop:Generator_RowChangingName="po_orderRowChanging" msprop:Generator_RowEvHandlerName="po_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="po_orderRowDeleted" msprop:Generator_UserTableName="po_order" msprop:Generator_RowChangedName="po_orderRowChanged" msprop:Generator_RowEvArgName="po_orderRowChangeEvent" msprop:Generator_RowClassName="po_orderRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="po_no" msprop:Generator_ColumnVarNameInTable="columnpo_no" msprop:Generator_ColumnPropNameInRow="po_no" msprop:Generator_ColumnPropNameInTable="po_noColumn" msprop:Generator_UserColumnName="po_no" type="xs:int" />
@@ -1659,7 +1726,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="po_order_list" msprop:Generator_TableClassName="po_order_listDataTable" msprop:Generator_TableVarName="tablepo_order_list" msprop:Generator_RowChangedName="po_order_listRowChanged" msprop:Generator_TablePropName="po_order_list" msprop:Generator_RowDeletingName="po_order_listRowDeleting" msprop:Generator_RowChangingName="po_order_listRowChanging" msprop:Generator_RowEvHandlerName="po_order_listRowChangeEventHandler" msprop:Generator_RowDeletedName="po_order_listRowDeleted" msprop:Generator_RowClassName="po_order_listRow" msprop:Generator_UserTableName="po_order_list" msprop:Generator_RowEvArgName="po_order_listRowChangeEvent">
+        <xs:element name="po_order_list" msprop:Generator_TableClassName="po_order_listDataTable" msprop:Generator_TableVarName="tablepo_order_list" msprop:Generator_TablePropName="po_order_list" msprop:Generator_RowDeletingName="po_order_listRowDeleting" msprop:Generator_RowChangingName="po_order_listRowChanging" msprop:Generator_RowEvHandlerName="po_order_listRowChangeEventHandler" msprop:Generator_RowDeletedName="po_order_listRowDeleted" msprop:Generator_UserTableName="po_order_list" msprop:Generator_RowChangedName="po_order_listRowChanged" msprop:Generator_RowEvArgName="po_order_listRowChangeEvent" msprop:Generator_RowClassName="po_order_listRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="po_no" msprop:Generator_ColumnVarNameInTable="columnpo_no" msprop:Generator_ColumnPropNameInRow="po_no" msprop:Generator_ColumnPropNameInTable="po_noColumn" msprop:Generator_UserColumnName="po_no" type="xs:int" />
@@ -1690,7 +1757,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventory_items" msprop:Generator_TableClassName="inventory_itemsDataTable" msprop:Generator_TableVarName="tableinventory_items" msprop:Generator_RowChangedName="inventory_itemsRowChanged" msprop:Generator_TablePropName="inventory_items" msprop:Generator_RowDeletingName="inventory_itemsRowDeleting" msprop:Generator_RowChangingName="inventory_itemsRowChanging" msprop:Generator_RowEvHandlerName="inventory_itemsRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_itemsRowDeleted" msprop:Generator_RowClassName="inventory_itemsRow" msprop:Generator_UserTableName="inventory_items" msprop:Generator_RowEvArgName="inventory_itemsRowChangeEvent">
+        <xs:element name="inventory_items" msprop:Generator_TableClassName="inventory_itemsDataTable" msprop:Generator_TableVarName="tableinventory_items" msprop:Generator_TablePropName="inventory_items" msprop:Generator_RowDeletingName="inventory_itemsRowDeleting" msprop:Generator_RowChangingName="inventory_itemsRowChanging" msprop:Generator_RowEvHandlerName="inventory_itemsRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_itemsRowDeleted" msprop:Generator_UserTableName="inventory_items" msprop:Generator_RowChangedName="inventory_itemsRowChanged" msprop:Generator_RowEvArgName="inventory_itemsRowChangeEvent" msprop:Generator_RowClassName="inventory_itemsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="item_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnitem_id" msprop:Generator_ColumnPropNameInRow="item_id" msprop:Generator_ColumnPropNameInTable="item_idColumn" msprop:Generator_UserColumnName="item_id" type="xs:int" />
@@ -1742,7 +1809,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventory_items_kit" msprop:Generator_TableClassName="inventory_items_kitDataTable" msprop:Generator_TableVarName="tableinventory_items_kit" msprop:Generator_RowChangedName="inventory_items_kitRowChanged" msprop:Generator_TablePropName="inventory_items_kit" msprop:Generator_RowDeletingName="inventory_items_kitRowDeleting" msprop:Generator_RowChangingName="inventory_items_kitRowChanging" msprop:Generator_RowEvHandlerName="inventory_items_kitRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_items_kitRowDeleted" msprop:Generator_RowClassName="inventory_items_kitRow" msprop:Generator_UserTableName="inventory_items_kit" msprop:Generator_RowEvArgName="inventory_items_kitRowChangeEvent">
+        <xs:element name="inventory_items_kit" msprop:Generator_TableClassName="inventory_items_kitDataTable" msprop:Generator_TableVarName="tableinventory_items_kit" msprop:Generator_TablePropName="inventory_items_kit" msprop:Generator_RowDeletingName="inventory_items_kitRowDeleting" msprop:Generator_RowChangingName="inventory_items_kitRowChanging" msprop:Generator_RowEvHandlerName="inventory_items_kitRowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_items_kitRowDeleted" msprop:Generator_UserTableName="inventory_items_kit" msprop:Generator_RowChangedName="inventory_items_kitRowChanged" msprop:Generator_RowEvArgName="inventory_items_kitRowChangeEvent" msprop:Generator_RowClassName="inventory_items_kitRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="stock_code" msprop:Generator_ColumnVarNameInTable="columnstock_code" msprop:Generator_ColumnPropNameInRow="stock_code" msprop:Generator_ColumnPropNameInTable="stock_codeColumn" msprop:Generator_UserColumnName="stock_code">
@@ -1770,7 +1837,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventory_items1" msprop:Generator_TableClassName="inventory_items1DataTable" msprop:Generator_TableVarName="tableinventory_items1" msprop:Generator_TablePropName="inventory_items1" msprop:Generator_RowDeletingName="inventory_items1RowDeleting" msprop:Generator_RowChangingName="inventory_items1RowChanging" msprop:Generator_RowEvHandlerName="inventory_items1RowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_items1RowDeleted" msprop:Generator_UserTableName="inventory_items1" msprop:Generator_RowChangedName="inventory_items1RowChanged" msprop:Generator_RowEvArgName="inventory_items1RowChangeEvent" msprop:Generator_RowClassName="inventory_items1Row">
+        <xs:element name="inventory_items1" msprop:Generator_TableClassName="inventory_items1DataTable" msprop:Generator_TableVarName="tableinventory_items1" msprop:Generator_RowChangedName="inventory_items1RowChanged" msprop:Generator_TablePropName="inventory_items1" msprop:Generator_RowDeletingName="inventory_items1RowDeleting" msprop:Generator_RowChangingName="inventory_items1RowChanging" msprop:Generator_RowEvHandlerName="inventory_items1RowChangeEventHandler" msprop:Generator_RowDeletedName="inventory_items1RowDeleted" msprop:Generator_RowClassName="inventory_items1Row" msprop:Generator_UserTableName="inventory_items1" msprop:Generator_RowEvArgName="inventory_items1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="item_ean" msprop:Generator_ColumnVarNameInTable="columnitem_ean" msprop:Generator_ColumnPropNameInRow="item_ean" msprop:Generator_ColumnPropNameInTable="item_eanColumn" msprop:Generator_UserColumnName="item_ean" minOccurs="0">
@@ -1793,7 +1860,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inventoryItemsReport" msprop:Generator_TableClassName="inventoryItemsReportDataTable" msprop:Generator_TableVarName="tableinventoryItemsReport" msprop:Generator_TablePropName="inventoryItemsReport" msprop:Generator_RowDeletingName="inventoryItemsReportRowDeleting" msprop:Generator_RowChangingName="inventoryItemsReportRowChanging" msprop:Generator_RowEvHandlerName="inventoryItemsReportRowChangeEventHandler" msprop:Generator_RowDeletedName="inventoryItemsReportRowDeleted" msprop:Generator_UserTableName="inventoryItemsReport" msprop:Generator_RowChangedName="inventoryItemsReportRowChanged" msprop:Generator_RowEvArgName="inventoryItemsReportRowChangeEvent" msprop:Generator_RowClassName="inventoryItemsReportRow">
+        <xs:element name="inventoryItemsReport" msprop:Generator_TableClassName="inventoryItemsReportDataTable" msprop:Generator_TableVarName="tableinventoryItemsReport" msprop:Generator_RowChangedName="inventoryItemsReportRowChanged" msprop:Generator_TablePropName="inventoryItemsReport" msprop:Generator_RowDeletingName="inventoryItemsReportRowDeleting" msprop:Generator_RowChangingName="inventoryItemsReportRowChanging" msprop:Generator_RowEvHandlerName="inventoryItemsReportRowChangeEventHandler" msprop:Generator_RowDeletedName="inventoryItemsReportRowDeleted" msprop:Generator_RowClassName="inventoryItemsReportRow" msprop:Generator_UserTableName="inventoryItemsReport" msprop:Generator_RowEvArgName="inventoryItemsReportRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="item_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnitem_id" msprop:Generator_ColumnPropNameInRow="item_id" msprop:Generator_ColumnPropNameInTable="item_idColumn" msprop:Generator_UserColumnName="item_id" type="xs:int" />
@@ -1833,7 +1900,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="pos_store" msprop:Generator_TableClassName="pos_storeDataTable" msprop:Generator_TableVarName="tablepos_store" msprop:Generator_RowChangedName="pos_storeRowChanged" msprop:Generator_TablePropName="pos_store" msprop:Generator_RowDeletingName="pos_storeRowDeleting" msprop:Generator_RowChangingName="pos_storeRowChanging" msprop:Generator_RowEvHandlerName="pos_storeRowChangeEventHandler" msprop:Generator_RowDeletedName="pos_storeRowDeleted" msprop:Generator_RowClassName="pos_storeRow" msprop:Generator_UserTableName="pos_store" msprop:Generator_RowEvArgName="pos_storeRowChangeEvent">
+        <xs:element name="pos_store" msprop:Generator_TableClassName="pos_storeDataTable" msprop:Generator_TableVarName="tablepos_store" msprop:Generator_TablePropName="pos_store" msprop:Generator_RowDeletingName="pos_storeRowDeleting" msprop:Generator_RowChangingName="pos_storeRowChanging" msprop:Generator_RowEvHandlerName="pos_storeRowChangeEventHandler" msprop:Generator_RowDeletedName="pos_storeRowDeleted" msprop:Generator_UserTableName="pos_store" msprop:Generator_RowChangedName="pos_storeRowChanged" msprop:Generator_RowEvArgName="pos_storeRowChangeEvent" msprop:Generator_RowClassName="pos_storeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="pos_trn" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpos_trn" msprop:Generator_ColumnPropNameInRow="pos_trn" msprop:Generator_ColumnPropNameInTable="pos_trnColumn" msprop:Generator_UserColumnName="pos_trn" type="xs:int" />
@@ -1890,7 +1957,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="pos_park" msprop:Generator_TableClassName="pos_parkDataTable" msprop:Generator_TableVarName="tablepos_park" msprop:Generator_RowChangedName="pos_parkRowChanged" msprop:Generator_TablePropName="pos_park" msprop:Generator_RowDeletingName="pos_parkRowDeleting" msprop:Generator_RowChangingName="pos_parkRowChanging" msprop:Generator_RowEvHandlerName="pos_parkRowChangeEventHandler" msprop:Generator_RowDeletedName="pos_parkRowDeleted" msprop:Generator_RowClassName="pos_parkRow" msprop:Generator_UserTableName="pos_park" msprop:Generator_RowEvArgName="pos_parkRowChangeEvent">
+        <xs:element name="pos_park" msprop:Generator_TableClassName="pos_parkDataTable" msprop:Generator_TableVarName="tablepos_park" msprop:Generator_TablePropName="pos_park" msprop:Generator_RowDeletingName="pos_parkRowDeleting" msprop:Generator_RowChangingName="pos_parkRowChanging" msprop:Generator_RowEvHandlerName="pos_parkRowChangeEventHandler" msprop:Generator_RowDeletedName="pos_parkRowDeleted" msprop:Generator_UserTableName="pos_park" msprop:Generator_RowChangedName="pos_parkRowChanged" msprop:Generator_RowEvArgName="pos_parkRowChangeEvent" msprop:Generator_RowClassName="pos_parkRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="pos_orno" msprop:Generator_ColumnVarNameInTable="columnpos_orno" msprop:Generator_ColumnPropNameInRow="pos_orno" msprop:Generator_ColumnPropNameInTable="pos_ornoColumn" msprop:Generator_UserColumnName="pos_orno" type="xs:int" />
@@ -1932,7 +1999,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="pos_park1" msprop:Generator_TableClassName="pos_park1DataTable" msprop:Generator_TableVarName="tablepos_park1" msprop:Generator_RowChangedName="pos_park1RowChanged" msprop:Generator_TablePropName="pos_park1" msprop:Generator_RowDeletingName="pos_park1RowDeleting" msprop:Generator_RowChangingName="pos_park1RowChanging" msprop:Generator_RowEvHandlerName="pos_park1RowChangeEventHandler" msprop:Generator_RowDeletedName="pos_park1RowDeleted" msprop:Generator_RowClassName="pos_park1Row" msprop:Generator_UserTableName="pos_park1" msprop:Generator_RowEvArgName="pos_park1RowChangeEvent">
+        <xs:element name="pos_park1" msprop:Generator_TableClassName="pos_park1DataTable" msprop:Generator_TableVarName="tablepos_park1" msprop:Generator_TablePropName="pos_park1" msprop:Generator_RowDeletingName="pos_park1RowDeleting" msprop:Generator_RowChangingName="pos_park1RowChanging" msprop:Generator_RowEvHandlerName="pos_park1RowChangeEventHandler" msprop:Generator_RowDeletedName="pos_park1RowDeleted" msprop:Generator_UserTableName="pos_park1" msprop:Generator_RowChangedName="pos_park1RowChanged" msprop:Generator_RowEvArgName="pos_park1RowChangeEvent" msprop:Generator_RowClassName="pos_park1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="pos_orno" msprop:Generator_ColumnVarNameInTable="columnpos_orno" msprop:Generator_ColumnPropNameInRow="pos_orno" msprop:Generator_ColumnPropNameInTable="pos_ornoColumn" msprop:Generator_UserColumnName="pos_orno" type="xs:int" />
@@ -1982,7 +2049,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="itemstockR" msprop:Generator_TableClassName="itemstockRDataTable" msprop:Generator_TableVarName="tableitemstockR" msprop:Generator_RowChangedName="itemstockRRowChanged" msprop:Generator_TablePropName="itemstockR" msprop:Generator_RowDeletingName="itemstockRRowDeleting" msprop:Generator_RowChangingName="itemstockRRowChanging" msprop:Generator_RowEvHandlerName="itemstockRRowChangeEventHandler" msprop:Generator_RowDeletedName="itemstockRRowDeleted" msprop:Generator_RowClassName="itemstockRRow" msprop:Generator_UserTableName="itemstockR" msprop:Generator_RowEvArgName="itemstockRRowChangeEvent">
+        <xs:element name="itemstockR" msprop:Generator_TableClassName="itemstockRDataTable" msprop:Generator_TableVarName="tableitemstockR" msprop:Generator_TablePropName="itemstockR" msprop:Generator_RowDeletingName="itemstockRRowDeleting" msprop:Generator_RowChangingName="itemstockRRowChanging" msprop:Generator_RowEvHandlerName="itemstockRRowChangeEventHandler" msprop:Generator_RowDeletedName="itemstockRRowDeleted" msprop:Generator_UserTableName="itemstockR" msprop:Generator_RowChangedName="itemstockRRowChanged" msprop:Generator_RowEvArgName="itemstockRRowChangeEvent" msprop:Generator_RowClassName="itemstockRRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="item_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnitem_id" msprop:Generator_ColumnPropNameInRow="item_id" msprop:Generator_ColumnPropNameInTable="item_idColumn" msprop:Generator_UserColumnName="item_id" type="xs:int" />
@@ -2047,7 +2114,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Display_ii" msprop:Generator_TableClassName="Display_iiDataTable" msprop:Generator_TableVarName="tableDisplay_ii" msprop:Generator_TablePropName="Display_ii" msprop:Generator_RowDeletingName="Display_iiRowDeleting" msprop:Generator_RowChangingName="Display_iiRowChanging" msprop:Generator_RowEvHandlerName="Display_iiRowChangeEventHandler" msprop:Generator_RowDeletedName="Display_iiRowDeleted" msprop:Generator_UserTableName="Display_ii" msprop:Generator_RowChangedName="Display_iiRowChanged" msprop:Generator_RowEvArgName="Display_iiRowChangeEvent" msprop:Generator_RowClassName="Display_iiRow">
+        <xs:element name="Display_ii" msprop:Generator_TableClassName="Display_iiDataTable" msprop:Generator_TableVarName="tableDisplay_ii" msprop:Generator_RowChangedName="Display_iiRowChanged" msprop:Generator_TablePropName="Display_ii" msprop:Generator_RowDeletingName="Display_iiRowDeleting" msprop:Generator_RowChangingName="Display_iiRowChanging" msprop:Generator_RowEvHandlerName="Display_iiRowChangeEventHandler" msprop:Generator_RowDeletedName="Display_iiRowDeleted" msprop:Generator_RowClassName="Display_iiRow" msprop:Generator_UserTableName="Display_ii" msprop:Generator_RowEvArgName="Display_iiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="item_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnitem_id" msprop:Generator_ColumnPropNameInRow="item_id" msprop:Generator_ColumnPropNameInTable="item_idColumn" msprop:Generator_UserColumnName="item_id" type="xs:int" />
@@ -2088,7 +2155,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DisplayKits" msprop:Generator_TableClassName="DisplayKitsDataTable" msprop:Generator_TableVarName="tableDisplayKits" msprop:Generator_RowChangedName="DisplayKitsRowChanged" msprop:Generator_TablePropName="DisplayKits" msprop:Generator_RowDeletingName="DisplayKitsRowDeleting" msprop:Generator_RowChangingName="DisplayKitsRowChanging" msprop:Generator_RowEvHandlerName="DisplayKitsRowChangeEventHandler" msprop:Generator_RowDeletedName="DisplayKitsRowDeleted" msprop:Generator_RowClassName="DisplayKitsRow" msprop:Generator_UserTableName="DisplayKits" msprop:Generator_RowEvArgName="DisplayKitsRowChangeEvent">
+        <xs:element name="DisplayKits" msprop:Generator_TableClassName="DisplayKitsDataTable" msprop:Generator_TableVarName="tableDisplayKits" msprop:Generator_TablePropName="DisplayKits" msprop:Generator_RowDeletingName="DisplayKitsRowDeleting" msprop:Generator_RowChangingName="DisplayKitsRowChanging" msprop:Generator_RowEvHandlerName="DisplayKitsRowChangeEventHandler" msprop:Generator_RowDeletedName="DisplayKitsRowDeleted" msprop:Generator_UserTableName="DisplayKits" msprop:Generator_RowChangedName="DisplayKitsRowChanged" msprop:Generator_RowEvArgName="DisplayKitsRowChangeEvent" msprop:Generator_RowClassName="DisplayKitsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="item_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnitem_id" msprop:Generator_ColumnPropNameInRow="item_id" msprop:Generator_ColumnPropNameInTable="item_idColumn" msprop:Generator_UserColumnName="item_id" type="xs:int" />
@@ -2129,7 +2196,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DisplayStocks" msprop:Generator_TableClassName="DisplayStocksDataTable" msprop:Generator_TableVarName="tableDisplayStocks" msprop:Generator_RowChangedName="DisplayStocksRowChanged" msprop:Generator_TablePropName="DisplayStocks" msprop:Generator_RowDeletingName="DisplayStocksRowDeleting" msprop:Generator_RowChangingName="DisplayStocksRowChanging" msprop:Generator_RowEvHandlerName="DisplayStocksRowChangeEventHandler" msprop:Generator_RowDeletedName="DisplayStocksRowDeleted" msprop:Generator_RowClassName="DisplayStocksRow" msprop:Generator_UserTableName="DisplayStocks" msprop:Generator_RowEvArgName="DisplayStocksRowChangeEvent">
+        <xs:element name="DisplayStocks" msprop:Generator_TableClassName="DisplayStocksDataTable" msprop:Generator_TableVarName="tableDisplayStocks" msprop:Generator_TablePropName="DisplayStocks" msprop:Generator_RowDeletingName="DisplayStocksRowDeleting" msprop:Generator_RowChangingName="DisplayStocksRowChanging" msprop:Generator_RowEvHandlerName="DisplayStocksRowChangeEventHandler" msprop:Generator_RowDeletedName="DisplayStocksRowDeleted" msprop:Generator_UserTableName="DisplayStocks" msprop:Generator_RowChangedName="DisplayStocksRowChanged" msprop:Generator_RowEvArgName="DisplayStocksRowChangeEvent" msprop:Generator_RowClassName="DisplayStocksRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="stock_id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnstock_id" msprop:Generator_ColumnPropNameInRow="stock_id" msprop:Generator_ColumnPropNameInTable="stock_idColumn" msprop:Generator_UserColumnName="stock_id" type="xs:int" />
@@ -2197,7 +2264,7 @@ ORDER BY inventory_stocks.stock_name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="pos_cdlog" msprop:Generator_TableClassName="pos_cdlogDataTable" msprop:Generator_TableVarName="tablepos_cdlog" msprop:Generator_TablePropName="pos_cdlog" msprop:Generator_RowDeletingName="pos_cdlogRowDeleting" msprop:Generator_RowChangingName="pos_cdlogRowChanging" msprop:Generator_RowEvHandlerName="pos_cdlogRowChangeEventHandler" msprop:Generator_RowDeletedName="pos_cdlogRowDeleted" msprop:Generator_UserTableName="pos_cdlog" msprop:Generator_RowChangedName="pos_cdlogRowChanged" msprop:Generator_RowEvArgName="pos_cdlogRowChangeEvent" msprop:Generator_RowClassName="pos_cdlogRow">
+        <xs:element name="pos_cdlog" msprop:Generator_TableClassName="pos_cdlogDataTable" msprop:Generator_TableVarName="tablepos_cdlog" msprop:Generator_RowChangedName="pos_cdlogRowChanged" msprop:Generator_TablePropName="pos_cdlog" msprop:Generator_RowDeletingName="pos_cdlogRowDeleting" msprop:Generator_RowChangingName="pos_cdlogRowChanging" msprop:Generator_RowEvHandlerName="pos_cdlogRowChangeEventHandler" msprop:Generator_RowDeletedName="pos_cdlogRowDeleted" msprop:Generator_RowClassName="pos_cdlogRow" msprop:Generator_UserTableName="pos_cdlog" msprop:Generator_RowEvArgName="pos_cdlogRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="logid" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnlogid" msprop:Generator_ColumnPropNameInRow="logid" msprop:Generator_ColumnPropNameInTable="logidColumn" msprop:Generator_UserColumnName="logid" type="xs:int" />
@@ -2227,6 +2294,86 @@ ORDER BY inventory_stocks.stock_name</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="quotation_store" msprop:Generator_TableClassName="quotation_storeDataTable" msprop:Generator_TableVarName="tablequotation_store" msprop:Generator_TablePropName="quotation_store" msprop:Generator_RowDeletingName="quotation_storeRowDeleting" msprop:Generator_RowChangingName="quotation_storeRowChanging" msprop:Generator_RowEvHandlerName="quotation_storeRowChangeEventHandler" msprop:Generator_RowDeletedName="quotation_storeRowDeleted" msprop:Generator_UserTableName="quotation_store" msprop:Generator_RowChangedName="quotation_storeRowChanged" msprop:Generator_RowEvArgName="quotation_storeRowChangeEvent" msprop:Generator_RowClassName="quotation_storeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="quote_trn" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnquote_trn" msprop:Generator_ColumnPropNameInRow="quote_trn" msprop:Generator_ColumnPropNameInTable="quote_trnColumn" msprop:Generator_UserColumnName="quote_trn" type="xs:int" />
+              <xs:element name="quote_no" msprop:Generator_ColumnVarNameInTable="columnquote_no" msprop:Generator_ColumnPropNameInRow="quote_no" msprop:Generator_ColumnPropNameInTable="quote_noColumn" msprop:Generator_UserColumnName="quote_no" type="xs:int" minOccurs="0" />
+              <xs:element name="quote_date" msprop:Generator_ColumnVarNameInTable="columnquote_date" msprop:Generator_ColumnPropNameInRow="quote_date" msprop:Generator_ColumnPropNameInTable="quote_dateColumn" msprop:Generator_UserColumnName="quote_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="quote_time" msprop:Generator_ColumnVarNameInTable="columnquote_time" msprop:Generator_ColumnPropNameInRow="quote_time" msprop:Generator_ColumnPropNameInTable="quote_timeColumn" msprop:Generator_UserColumnName="quote_time" type="xs:duration" minOccurs="0" />
+              <xs:element name="quote_user" msprop:Generator_ColumnVarNameInTable="columnquote_user" msprop:Generator_ColumnPropNameInRow="quote_user" msprop:Generator_ColumnPropNameInTable="quote_userColumn" msprop:Generator_UserColumnName="quote_user" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="quote_total_amt" msprop:Generator_ColumnVarNameInTable="columnquote_total_amt" msprop:Generator_ColumnPropNameInRow="quote_total_amt" msprop:Generator_ColumnPropNameInTable="quote_total_amtColumn" msprop:Generator_UserColumnName="quote_total_amt" type="xs:double" minOccurs="0" />
+              <xs:element name="quote_custcode" msprop:Generator_ColumnVarNameInTable="columnquote_custcode" msprop:Generator_ColumnPropNameInRow="quote_custcode" msprop:Generator_ColumnPropNameInTable="quote_custcodeColumn" msprop:Generator_UserColumnName="quote_custcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="quote_customer" msprop:Generator_ColumnVarNameInTable="columnquote_customer" msprop:Generator_ColumnPropNameInRow="quote_customer" msprop:Generator_ColumnPropNameInTable="quote_customerColumn" msprop:Generator_UserColumnName="quote_customer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="quote_address" msprop:Generator_ColumnVarNameInTable="columnquote_address" msprop:Generator_ColumnPropNameInRow="quote_address" msprop:Generator_ColumnPropNameInTable="quote_addressColumn" msprop:Generator_UserColumnName="quote_address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="quote_park" msprop:Generator_ColumnVarNameInTable="columnquote_park" msprop:Generator_ColumnPropNameInRow="quote_park" msprop:Generator_ColumnPropNameInTable="quote_parkColumn" msprop:Generator_UserColumnName="quote_park" type="xs:int" minOccurs="0" />
+              <xs:element name="is_cancel" msprop:Generator_ColumnVarNameInTable="columnis_cancel" msprop:Generator_ColumnPropNameInRow="is_cancel" msprop:Generator_ColumnPropNameInTable="is_cancelColumn" msprop:Generator_UserColumnName="is_cancel" type="xs:int" minOccurs="0" />
+              <xs:element name="is_linked" msprop:Generator_ColumnVarNameInTable="columnis_linked" msprop:Generator_ColumnPropNameInRow="is_linked" msprop:Generator_ColumnPropNameInTable="is_linkedColumn" msprop:Generator_UserColumnName="is_linked" type="xs:int" minOccurs="0" />
+              <xs:element name="order_no" msprop:Generator_ColumnVarNameInTable="columnorder_no" msprop:Generator_ColumnPropNameInRow="order_no" msprop:Generator_ColumnPropNameInTable="order_noColumn" msprop:Generator_UserColumnName="order_no" type="xs:int" minOccurs="0" />
+              <xs:element name="first_name" msprop:Generator_ColumnVarNameInTable="columnfirst_name" msprop:Generator_ColumnPropNameInRow="first_name" msprop:Generator_ColumnPropNameInTable="first_nameColumn" msprop:Generator_UserColumnName="first_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="middle_name" msprop:Generator_ColumnVarNameInTable="columnmiddle_name" msprop:Generator_ColumnPropNameInRow="middle_name" msprop:Generator_ColumnPropNameInTable="middle_nameColumn" msprop:Generator_UserColumnName="middle_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="last_name" msprop:Generator_ColumnVarNameInTable="columnlast_name" msprop:Generator_ColumnPropNameInRow="last_name" msprop:Generator_ColumnPropNameInTable="last_nameColumn" msprop:Generator_UserColumnName="last_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="quotation_park" msprop:Generator_TableClassName="quotation_parkDataTable" msprop:Generator_TableVarName="tablequotation_park" msprop:Generator_TablePropName="quotation_park" msprop:Generator_RowDeletingName="quotation_parkRowDeleting" msprop:Generator_RowChangingName="quotation_parkRowChanging" msprop:Generator_RowEvHandlerName="quotation_parkRowChangeEventHandler" msprop:Generator_RowDeletedName="quotation_parkRowDeleted" msprop:Generator_UserTableName="quotation_park" msprop:Generator_RowChangedName="quotation_parkRowChanged" msprop:Generator_RowEvArgName="quotation_parkRowChangeEvent" msprop:Generator_RowClassName="quotation_parkRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="a" msprop:Generator_ColumnVarNameInTable="columna" msprop:Generator_ColumnPropNameInRow="a" msprop:Generator_ColumnPropNameInTable="aColumn" msprop:Generator_UserColumnName="a" type="xs:int" minOccurs="0" />
+              <xs:element name="b" msprop:Generator_ColumnVarNameInTable="columnb" msprop:Generator_ColumnPropNameInRow="b" msprop:Generator_ColumnPropNameInTable="bColumn" msprop:Generator_UserColumnName="b" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c" msprop:Generator_ColumnVarNameInTable="columnc" msprop:Generator_ColumnPropNameInRow="c" msprop:Generator_ColumnPropNameInTable="cColumn" msprop:Generator_UserColumnName="c" type="xs:double" minOccurs="0" />
+              <xs:element name="d" msprop:Generator_ColumnVarNameInTable="columnd" msprop:Generator_ColumnPropNameInRow="d" msprop:Generator_ColumnPropNameInTable="dColumn" msprop:Generator_UserColumnName="d" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2283,6 +2430,10 @@ ORDER BY inventory_stocks.stock_name</CommandText>
     <xs:unique name="pos_cdlog_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:pos_cdlog" />
       <xs:field xpath="mstns:logid" />
+    </xs:unique>
+    <xs:unique name="quotation_store_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:quotation_store" />
+      <xs:field xpath="mstns:quote_trn" />
     </xs:unique>
   </xs:element>
 </xs:schema>

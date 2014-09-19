@@ -5,42 +5,58 @@
     <Setting Name="npos_dbConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
+      <Value Profile="(Default)">server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
     </Setting>
     <Setting Name="npos_dbConnectionString1" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
+      <Value Profile="(Default)">server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
     </Setting>
     <Setting Name="npos_dbConnectionString2" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhostuser id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=localhostuser id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhostuser id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
+      <Value Profile="(Default)">server=localhostuser id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
     </Setting>
     <Setting Name="npos_dbConnectionString3" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
+      <Value Profile="(Default)">server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
     </Setting>
     <Setting Name="npos_dbConnectionString4" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=root</Value>
+      <Value Profile="(Default)">server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false;</Value>
+    </Setting>
+    <Setting Name="nposr_dbConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root;Pooling=false</Value>
+    </Setting>
+    <Setting Name="nposr_dbConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password=root</Value>
     </Setting>
   </Settings>
 </SettingsFile>

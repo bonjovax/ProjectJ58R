@@ -26,8 +26,8 @@ namespace nPOSProj.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=" +
-            "root;Pooling=false;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password" +
+            "=root;Pooling=false;")]
         public string npos_dbConnectionString {
             get {
                 return ((string)(this["npos_dbConnectionString"]));
@@ -37,8 +37,8 @@ namespace nPOSProj.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=" +
-            "root;Pooling=false;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password" +
+            "=root;Pooling=false;")]
         public string npos_dbConnectionString1 {
             get {
                 return ((string)(this["npos_dbConnectionString1"]));
@@ -48,8 +48,8 @@ namespace nPOSProj.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhostuser id=root;database=npos_db;persistsecurityinfo=True;password=r" +
-            "oot;Pooling=false;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhostuser id=root;database=nposr_db;persistsecurityinfo=True;password=" +
+            "root;Pooling=false;")]
         public string npos_dbConnectionString2 {
             get {
                 return ((string)(this["npos_dbConnectionString2"]));
@@ -59,8 +59,8 @@ namespace nPOSProj.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=" +
-            "root;Pooling=false;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password" +
+            "=root;Pooling=false;")]
         public string npos_dbConnectionString3 {
             get {
                 return ((string)(this["npos_dbConnectionString3"]));
@@ -70,11 +70,33 @@ namespace nPOSProj.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=npos_db;persistsecurityinfo=True;password=" +
-            "root")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password" +
+            "=root;Pooling=false;")]
         public string npos_dbConnectionString4 {
             get {
                 return ((string)(this["npos_dbConnectionString4"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password" +
+            "=root;Pooling=false")]
+        public string nposr_dbConnectionString {
+            get {
+                return ((string)(this["nposr_dbConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=nposr_db;persistsecurityinfo=True;password" +
+            "=root")]
+        public string nposr_dbConnectionString1 {
+            get {
+                return ((string)(this["nposr_dbConnectionString1"]));
             }
         }
     }
