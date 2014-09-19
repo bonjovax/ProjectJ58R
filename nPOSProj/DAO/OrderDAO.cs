@@ -1862,5 +1862,85 @@ namespace nPOSProj.DAO
             }
         }
         #endregion
+        #region Quotation Attrib DAO
+        public String getCustomerCode(Int32 quote_no)
+        {
+            String cc = "";
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quote_custcode AS a FROM quotation_store ";
+            query += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    cc = rdr["a"].ToString();
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return cc;
+        }
+        public String getCustomer(Int32 quote_no)
+        {
+            String c = "";
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quote_customer AS b FROM quotation_store ";
+            query += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    c = rdr["b"].ToString();
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return c;
+        }
+        public String getAddress(Int32 quote_no)
+        {
+            String a = "";
+            con = new MySqlConnection();
+            db = new Conf.dbs();
+            con.ConnectionString = db.getConnectionString();
+            String query = "SELECT quote_address AS c FROM quotation_store ";
+            query += "WHERE quote_no = ?quote_no";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?quote_no", quote_no);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    a = rdr["c"].ToString();
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return a;
+        }
+        #endregion
     }
 }

@@ -529,5 +529,28 @@ namespace nPOSProj.VO
             orderdao.TriggerOrderPOSDone(Pos_vatable, Pos_vex, Pos_vatz, Pos_tax_perc, Pos_tax_amt, Pos_total_amt, Pos_orno, Pos_terminal);
         }
         #endregion
+        #region Attribute Quotation VO
+        public String askCustomerCodeR()
+        {
+            String custcode;
+            orderdao = new DAO.OrderDAO();
+            custcode = orderdao.getCustomerCode(Quotation_no);
+            return custcode;
+        }
+        public String askCustomer()
+        {
+            String customer;
+            orderdao = new DAO.OrderDAO();
+            customer = orderdao.getCustomer(Quotation_no);
+            return customer;
+        }
+        public String askAddressR()
+        {
+            String address;
+            orderdao = new DAO.OrderDAO();
+            address = orderdao.getAddress(Quotation_no);
+            return address;
+        }
+        #endregion
     }
 }

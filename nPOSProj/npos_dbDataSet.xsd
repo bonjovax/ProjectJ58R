@@ -1437,16 +1437,18 @@ FROM            user_account INNER JOIN
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="quotation_parkTableAdapter" GeneratorDataComponentClassName="quotation_parkTableAdapter" Name="quotation_park" UserDataComponentName="quotation_parkTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="nposr_dbConnectionString1 (Settings)" DbObjectName="SELECT quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d FROM quotation_park INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code UNION ALL SELECT quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d FROM quotation_park quotation_park_1 INNER JOIN inventory_items inventory_items_1 ON quotation_park_1.quote_ean = inventory_items_1.item_ean WHERE (inventory_items_1.is_kit = 1)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="nposr_dbConnectionString1 (Settings)" DbObjectName="SELECT quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d, quotation_park.quote_no AS e FROM quotation_park INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code UNION ALL SELECT quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d, quotation_park_1.quote_no AS e FROM quotation_park quotation_park_1 INNER JOIN inventory_items inventory_items_1 ON quotation_park_1.quote_ean = inventory_items_1.item_ean WHERE (inventory_items_1.is_kit = 1)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        a, b, c, d
-FROM            (SELECT        quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d
+                    <CommandText>SELECT        a, b, c, d, e
+FROM            (SELECT        quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d, 
+                                                    quotation_park.quote_no AS e
                           FROM            quotation_park INNER JOIN
                                                     inventory_items ON quotation_park.quote_ean = inventory_items.item_ean INNER JOIN
                                                     inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code
                           UNION ALL
-                          SELECT        quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d
+                          SELECT        quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d, 
+                                                   quotation_park_1.quote_no AS e
                           FROM            quotation_park quotation_park_1 INNER JOIN
                                                    inventory_items inventory_items_1 ON quotation_park_1.quote_ean = inventory_items_1.item_ean
                           WHERE        (inventory_items_1.is_kit = 1)) quotation
@@ -1461,6 +1463,7 @@ ORDER BY aaa</CommandText>
               <Mapping SourceColumn="b" DataSetColumn="b" />
               <Mapping SourceColumn="c" DataSetColumn="c" />
               <Mapping SourceColumn="d" DataSetColumn="d" />
+              <Mapping SourceColumn="e" DataSetColumn="e" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -2374,6 +2377,7 @@ ORDER BY aaa</CommandText>
               </xs:element>
               <xs:element name="c" msprop:Generator_ColumnVarNameInTable="columnc" msprop:Generator_ColumnPropNameInRow="c" msprop:Generator_ColumnPropNameInTable="cColumn" msprop:Generator_UserColumnName="c" type="xs:double" minOccurs="0" />
               <xs:element name="d" msprop:Generator_ColumnVarNameInTable="columnd" msprop:Generator_ColumnPropNameInRow="d" msprop:Generator_ColumnPropNameInTable="dColumn" msprop:Generator_UserColumnName="d" type="xs:double" minOccurs="0" />
+              <xs:element name="e" msprop:Generator_ColumnVarNameInTable="columne" msprop:Generator_ColumnPropNameInRow="e" msprop:Generator_ColumnPropNameInTable="eColumn" msprop:Generator_UserColumnName="e" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

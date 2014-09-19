@@ -8606,6 +8606,8 @@ namespace nPOSProj {
             
             private global::System.Data.DataColumn columnd;
             
+            private global::System.Data.DataColumn columne;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public quotation_parkDataTable() {
@@ -8673,6 +8675,14 @@ namespace nPOSProj {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn eColumn {
+                get {
+                    return this.columne;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8708,13 +8718,14 @@ namespace nPOSProj {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public quotation_parkRow Addquotation_parkRow(int a, string b, double c, double d) {
+            public quotation_parkRow Addquotation_parkRow(int a, string b, double c, double d, int e) {
                 quotation_parkRow rowquotation_parkRow = ((quotation_parkRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         a,
                         b,
                         c,
-                        d};
+                        d,
+                        e};
                 rowquotation_parkRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotation_parkRow);
                 return rowquotation_parkRow;
@@ -8741,6 +8752,7 @@ namespace nPOSProj {
                 this.columnb = base.Columns["b"];
                 this.columnc = base.Columns["c"];
                 this.columnd = base.Columns["d"];
+                this.columne = base.Columns["e"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8754,6 +8766,8 @@ namespace nPOSProj {
                 base.Columns.Add(this.columnc);
                 this.columnd = new global::System.Data.DataColumn("d", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnd);
+                this.columne = new global::System.Data.DataColumn("e", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columne);
                 this.columnb.MaxLength = 75;
             }
             
@@ -14450,6 +14464,22 @@ namespace nPOSProj {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int e {
+                get {
+                    try {
+                        return ((int)(this[this.tablequotation_park.eColumn]));
+                    }
+                    catch (global::System.InvalidCastException e1) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'e\' in table \'quotation_park\' is DBNull.", e1);
+                    }
+                }
+                set {
+                    this[this.tablequotation_park.eColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsaNull() {
                 return this.IsNull(this.tablequotation_park.aColumn);
             }
@@ -14494,6 +14524,18 @@ namespace nPOSProj {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetdNull() {
                 this[this.tablequotation_park.dColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IseNull() {
+                return this.IsNull(this.tablequotation_park.eColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SeteNull() {
+                this[this.tablequotation_park.eColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -25505,6 +25547,7 @@ FROM            user_account INNER JOIN
             tableMapping.ColumnMappings.Add("b", "b");
             tableMapping.ColumnMappings.Add("c", "c");
             tableMapping.ColumnMappings.Add("d", "d");
+            tableMapping.ColumnMappings.Add("e", "e");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -25521,13 +25564,15 @@ FROM            user_account INNER JOIN
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        a, b, c, d
-FROM            (SELECT        quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d
+            this._commandCollection[0].CommandText = @"SELECT        a, b, c, d, e
+FROM            (SELECT        quotation_park.quote_park_trn AS aaa, quotation_park.quote_qty AS a, inventory_stocks.stock_name AS b, quotation_park.quote_item_price AS c, quotation_park.quote_total AS d, 
+                                                    quotation_park.quote_no AS e
                           FROM            quotation_park INNER JOIN
                                                     inventory_items ON quotation_park.quote_ean = inventory_items.item_ean INNER JOIN
                                                     inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code
                           UNION ALL
-                          SELECT        quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d
+                          SELECT        quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d, 
+                                                   quotation_park_1.quote_no AS e
                           FROM            quotation_park quotation_park_1 INNER JOIN
                                                    inventory_items inventory_items_1 ON quotation_park_1.quote_ean = inventory_items_1.item_ean
                           WHERE        (inventory_items_1.is_kit = 1)) quotation

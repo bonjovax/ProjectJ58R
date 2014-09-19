@@ -61,6 +61,11 @@ namespace nPOSProj
                 gotoQuotePark();
                 return true;
             }
+            if (keyData == Keys.F6 && btnF6.Enabled == true)
+            {
+                this.gotoPrintQuote();
+                return true;
+            }
             if (keyData == Keys.F7 && btnDone.Enabled == true)
             {
                 gotoDone();
@@ -266,6 +271,21 @@ namespace nPOSProj
             }
         }
 
+        private void gotoPrintQuote()
+        {
+            using (frmRptQuotation quotation = new frmRptQuotation())
+            {
+                try
+                {
+                    quotation.Quote_no = Convert.ToInt32(lblQN.Text);
+                    quotation.ShowDialog();
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
         private void gotoDone()
         {
             DialogResult dlg = MessageBox.Show("Do you wish to Proceed?", "Proceed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -375,6 +395,9 @@ namespace nPOSProj
                 {
                     lblQN.Text = park.Quotation_no.ToString();
                     ordervo.Quotation_no = park.Quotation_no;
+                    rdCustomerCode.Text = ordervo.askCustomerCodeR();
+                    rdCompany.Text = ordervo.askCustomer();
+                    rdAddress.Text = ordervo.askAddressR();
                     //dataGridView1.Rows.Clear();
                     //1 Data Load
                     this.LoadQuoteDataItem(park.Quotation_no);
@@ -746,6 +769,11 @@ namespace nPOSProj
                     btnLink.Enabled = false;
                 }
             }
+        }
+
+        private void btnF6_Click(object sender, EventArgs e)
+        {
+            this.gotoPrintQuote();
         }
     }
 }
