@@ -863,41 +863,14 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "SELECT COUNT(*) AS x FROM pos_park ";
+            String query = "SELECT COUNT(*) AS x FROM (SELECT pos_park.trn AS xxx, pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_stocks.stock_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM pos_park ";
             query += "INNER JOIN inventory_items ON pos_park.pos_ean = inventory_items.item_ean ";
             query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
-            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 0)";
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("?order_no", order_no);
-                cmd.ExecuteScalar();
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    cunt = Convert.ToInt32(rdr["x"].ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(" Error :: ERROR " + ex);
-            }
-            finally
-            {
-                con.Close();
-            }
-            return cunt;
-        }
-        public Int32 ParkCountKit(Int32 order_no)
-        {
-            Int32 cunt = 0;
-            con = new MySqlConnection();
-            db = new Conf.dbs();
-            con.ConnectionString = db.getConnectionString();
-            String query = "SELECT COUNT(*) AS x FROM inventory_items ";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 0) ";
+            query += "UNION ALL ";
+            query += "SELECT pos_park.trn AS xxx, pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_items.kit_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM inventory_items ";
             query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
-            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 1)";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 1)) pos_park ORDER BY xxx";
             try
             {
                 con.Open();
@@ -927,48 +900,14 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "SELECT pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_stocks.stock_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM pos_park ";
+            String query = "SELECT a, b, c, d, e FROM (SELECT pos_park.trn AS xxx, pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_stocks.stock_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM pos_park ";
             query += "INNER JOIN inventory_items ON pos_park.pos_ean = inventory_items.item_ean ";
             query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
-            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 0)";
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("?order_no", order_no);
-                cmd.ExecuteScalar();
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                Int32 cunts = 0;
-                while (rdr.Read())
-                {
-                    bilat[0, cunts] = rdr["a"].ToString();
-                    bilat[1, cunts] = rdr["b"].ToString();
-                    bilat[2, cunts] = rdr["c"].ToString();
-                    bilat[3, cunts] = rdr["d"].ToString();
-                    bilat[4, cunts] = rdr["e"].ToString();
-                    cunts++;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(" Err :: ERROR " + ex);
-            }
-            finally
-            {
-                con.Close();
-            }
-            return bilat;
-        }
-        public String[,] ReadParkKit(Int32 order_no)
-        {
-            Int32 cunt = this.ParkCountKit(order_no);
-            String[,] bilat = new String[5, cunt];
-            con = new MySqlConnection();
-            db = new Conf.dbs();
-            con.ConnectionString = db.getConnectionString();
-            String query = "SELECT pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_items.kit_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM inventory_items ";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 0) ";
+            query += "UNION ALL ";
+            query += "SELECT pos_park.trn AS xxx, pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_items.kit_name AS c, pos_park.order_item_amount AS d, pos_park.pos_amt AS e FROM inventory_items ";
             query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
-            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 1)";
+            query += "WHERE (pos_park.pos_orderno = ?order_no) AND (inventory_items.is_kit = 1)) pos_park ORDER BY xxx";
             try
             {
                 con.Open();
@@ -1431,11 +1370,16 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "SELECT COUNT(*) AS zozo FROM inventory_items ";
+            String query = "SELECT COUNT(*) AS zozo FROM (SELECT quotation_park.quote_park_trn AS abc, quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_stocks.stock_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e ";
+            query += "FROM inventory_items ";
             query += "INNER JOIN quotation_park ON inventory_items.item_ean = quotation_park.quote_ean ";
             query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
             query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) AND (quotation_park.is_send = 0) ";
-            query += "ORDER BY quotation_park.quote_park_trn";
+            query += "UNION ALL ";
+            query += "SELECT quotation_park.quote_park_trn AS abc, quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_items.kit_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM quotation_park ";
+            query += "INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean ";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) AND (quotation_park.is_send = 0)) quotation ";
+            query += "ORDER BY abc";
             try
             {
                 con.Open();
@@ -1458,39 +1402,6 @@ namespace nPOSProj.DAO
             }
             return cunt;
         }
-        public Int32 QuoteLoadItemKitCount(Int32 quote_no)
-        {
-            Int32 cunt = 0;
-            con = new MySqlConnection();
-            db = new Conf.dbs();
-            con.ConnectionString = db.getConnectionString();
-            String query = "SELECT COUNT(*) AS xoxo FROM quotation_park ";
-            query += "INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean ";
-            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) AND (quotation_park.is_send = 0) ";
-            query += "ORDER BY quotation_park.quote_park_trn ASC";
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("?quote_no", quote_no);
-                cmd.ExecuteScalar();
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    cunt = Convert.ToInt32(rdr["xoxo"].ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(" Error :: ERROR " + ex);
-            }
-            finally
-            {
-                con.Close();
-            }
-            return cunt;
-        }
-        //
         public String[,] QuoteLoadItem(Int32 quote_no)
         {
             Int32 cunt = this.QuoteLoadItemCount(quote_no);
@@ -1498,51 +1409,17 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "SELECT quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_stocks.stock_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM inventory_items ";
+            String query = "SELECT a, b, c, d, e FROM (SELECT quotation_park.quote_park_trn AS abc, quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_stocks.stock_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e ";
+            query += "FROM inventory_items ";
             query += "INNER JOIN quotation_park ON inventory_items.item_ean = quotation_park.quote_ean ";
             query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
             query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 0) AND (quotation_park.is_send = 0) ";
-            query += "ORDER BY quotation_park.quote_park_trn";
-
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("?quote_no", quote_no);
-                cmd.ExecuteScalar();
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                Int32 cunts = 0;
-                while (rdr.Read())
-                {
-                    bilat[0, cunts] = rdr["a"].ToString();
-                    bilat[1, cunts] = rdr["b"].ToString();
-                    bilat[2, cunts] = rdr["c"].ToString();
-                    bilat[3, cunts] = rdr["d"].ToString();
-                    bilat[4, cunts] = rdr["e"].ToString();
-                    cunts++;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(" Err :: ERROR " + ex);
-            }
-            finally
-            {
-                con.Close();
-            }
-            return bilat;
-        }
-        public String[,] QuoteLoadItemKits(Int32 quote_no)
-        {
-            Int32 cunt = this.QuoteLoadItemKitCount(quote_no);
-            String[,] bilat = new String[5, cunt];
-            con = new MySqlConnection();
-            db = new Conf.dbs();
-            con.ConnectionString = db.getConnectionString();
-            String query = "SELECT quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_items.kit_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM quotation_park ";
+            query += "UNION ALL ";
+            query += "SELECT quotation_park.quote_park_trn AS abc, quotation_park.quote_ean AS a, quotation_park.quote_qty AS b, inventory_items.kit_name AS c, quotation_park.quote_item_price AS d, quotation_park.quote_total AS e FROM quotation_park ";
             query += "INNER JOIN inventory_items ON quotation_park.quote_ean = inventory_items.item_ean ";
-            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) AND (quotation_park.is_send = 0) ";
-            query += "ORDER BY quotation_park.quote_park_trn ASC";
+            query += "WHERE (quotation_park.quote_no = ?quote_no) AND (inventory_items.is_kit = 1) AND (quotation_park.is_send = 0)) quotation ";
+            query += "ORDER BY abc";
+
             try
             {
                 con.Open();

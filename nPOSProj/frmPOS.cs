@@ -2513,41 +2513,6 @@ namespace nPOSProj
         }
 
         #endregion
-
-        //private void detectWholesale()
-        //{
-        //    frmLogin fl = new frmLogin();
-        //    con.ConnectionString = dbcon.getConnectionString();
-        //    String query = "SELECT pos_iswholesale AS a FROM pos_store ";
-        //    query += "WHERE (pos_orno = ?pos_orno) AND (pos_terminal = ?pos_terminal) AND (pos_iswholesale = 1)";
-        //    try
-        //    {
-        //        con.Open();
-        //        MySqlCommand cmd = new MySqlCommand(query, con);
-        //        cmd.Parameters.AddWithValue("?pos_orno", orderNo);
-        //        cmd.Parameters.AddWithValue("?pos_terminal", fl.tN);
-        //        cmd.ExecuteScalar();
-        //        MySqlDataReader rdr = cmd.ExecuteReader();
-        //        if (rdr.Read())
-        //        {
-        //            if (rdr["a"].ToString() == "1")
-        //            {
-        //                wholsale_select = true;
-        //                btnWholesale.Enabled = false;
-        //            }
-        //            else
-        //            {
-        //                wholsale_select = false;
-        //                btnWholesale.Enabled = false;
-        //            }
-        //        }
-        //        con.Close();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        rdDescription.Text = "Error 10: Network Connection";
-        //    }
-        //}
         private void loadParkedData()
         {
             frmLogin fl = new frmLogin();
@@ -2556,13 +2521,18 @@ namespace nPOSProj
                 lviewPOS.Items.Clear();
                 con.ConnectionString = dbcon.getConnectionString();
                 con.Open();
-                String query = "SELECT pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_stocks.stock_name AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, pos_park.pos_discount_amt AS f, pos_park.pos_amt AS g, inventory_items.item_tax_type AS h ";
-                query += "FROM pos_park INNER JOIN inventory_items ON pos_park.pos_ean = inventory_items.item_ean INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
-                query += "WHERE (pos_park.pos_orno = ?pos_orno) AND (pos_park.pos_terminal = ?pos_terminal) ";
-                query += "UNION ALL "; //Thanks to this Clause It Made My Life Easier ^_^
-                query += "SELECT pos_park.pos_ean AS a, pos_park.pos_quantity AS b, inventory_items.kit_name AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, pos_park.pos_discount_amt AS f, pos_park.pos_amt AS g, inventory_items.item_tax_type AS h ";
-                query += "FROM pos_park INNER JOIN inventory_items ON pos_park.pos_ean = inventory_items.item_ean ";
-                query += "WHERE (pos_park.pos_orno = ?pos_orno) AND (inventory_items.is_kit = 1) AND (pos_park.pos_terminal = ?pos_terminal)";
+                String query = "SELECT a, b, c, d, e, f, g, h FROM ";
+                query += "(SELECT pos_park_2.trn AS aaa, pos_park_2.pos_ean AS a, pos_park_2.pos_quantity AS b, inventory_stocks.stock_name AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, pos_park_2.pos_discount_amt AS f, pos_park_2.pos_amt AS g, inventory_items.item_tax_type AS h ";
+                query += "FROM pos_park pos_park_2 ";
+                query += "INNER JOIN inventory_items ON pos_park_2.pos_ean = inventory_items.item_ean ";
+                query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
+                query += "WHERE (pos_park_2.pos_orno = ?pos_orno) AND (pos_park_2.pos_terminal = ?pos_terminal) ";
+                query += "UNION ALL ";
+                query += "SELECT pos_park_1.trn AS aaa, pos_park_1.pos_ean AS a, pos_park_1.pos_quantity AS b, inventory_items_1.kit_name AS c, inventory_items_1.item_retail_price AS d, inventory_items_1.item_whole_price AS e, pos_park_1.pos_discount_amt AS f, pos_park_1.pos_amt AS g, inventory_items_1.item_tax_type AS h ";
+                query += "FROM pos_park pos_park_1 ";
+                query += "INNER JOIN inventory_items inventory_items_1 ON pos_park_1.pos_ean = inventory_items_1.item_ean ";
+                query += "WHERE (pos_park_1.pos_orno = ?pos_orno) AND (inventory_items_1.is_kit = 1) AND (pos_park_1.pos_terminal = ?pos_terminal)) pos_park ";
+                query += "ORDER BY aaa";
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 cmd.Parameters.AddWithValue("?pos_orno", orderNo);
                 cmd.Parameters.AddWithValue("?pos_terminal", fl.tN);

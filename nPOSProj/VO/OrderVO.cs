@@ -362,14 +362,6 @@ namespace nPOSProj.VO
             tablit = orderdao.ReadPark(Pos_orderno);
             return tablit;
         }
-        public String[,] ReadParkItemKit()
-        {
-            orderdao = new DAO.OrderDAO();
-            Int32 cunt = orderdao.ParkCountKit(Pos_orderno);
-            String[,] tablit = new String[5, cunt];
-            tablit = orderdao.ReadParkKit(Pos_orderno);
-            return tablit;
-        }
         #endregion
         #region History Value
         private String targetdate;
@@ -466,14 +458,6 @@ namespace nPOSProj.VO
             String[,] talib = new String[5, cunt];
             talib = orderdao.QuoteLoadItem(Quotation_no);
             return talib;
-        }
-        public String[,] ReadItemKitsQuote()
-        {
-            orderdao = new DAO.OrderDAO();
-            Int32 cunt = orderdao.QuoteLoadItemCount(Quotation_no);
-            String[,] bilat = new String[5, cunt];
-            bilat = orderdao.QuoteLoadItemKits(Quotation_no);
-            return bilat;
         }
         #endregion
         #region Quote History Display VO

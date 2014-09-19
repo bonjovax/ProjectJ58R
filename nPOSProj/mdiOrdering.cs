@@ -98,23 +98,6 @@ namespace nPOSProj
                 MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void LoadDataItemKit(Int32 order_no)
-        {
-            ordervo = new VO.OrderVO();
-            ordervo.Pos_orderno = order_no;
-            String[,] grabData = ordervo.ReadParkItemKit();
-            try
-            {
-                for (int o = 0; o < grabData.GetLength(1); o++)
-                {
-                    dataGridView1.Rows.Add(grabData[0, o].ToString(), grabData[1, o].ToString(), grabData[2, o].ToString(), Convert.ToDouble(grabData[3, o].ToString()).ToString("#,###,##0.00"), Convert.ToDouble(grabData[4, o].ToString()).ToString("#,###,##0.00"));
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -636,7 +619,7 @@ namespace nPOSProj
                     lblON.Text = park.Order_no.ToString();
                     dataGridView1.Rows.Clear();
                     this.LoadDataItem(park.Order_no);
-                    this.LoadDataItemKit(park.Order_no);
+                    //this.LoadDataItemKit(park.Order_no);
                     lblTotal.Text = CellSum().ToString("#,###,##0.00");
                     clearboxes();
                     unlockcontrols();
