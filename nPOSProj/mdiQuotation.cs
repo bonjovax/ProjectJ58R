@@ -305,6 +305,7 @@ namespace nPOSProj
                 btnF4.Enabled = false;
                 btnF5.Enabled = true;
                 btnF1.Enabled = true;
+                btnF6.Enabled = false;
                 btnDone.Enabled = false;
                 lblQN.Text = "0";
                 lblTotal.Text = "0.00";

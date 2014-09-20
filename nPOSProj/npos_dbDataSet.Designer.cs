@@ -25570,6 +25570,7 @@ FROM            (SELECT        quotation_park.quote_park_trn AS aaa, quotation_p
                           FROM            quotation_park INNER JOIN
                                                     inventory_items ON quotation_park.quote_ean = inventory_items.item_ean INNER JOIN
                                                     inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code
+                          WHERE        (quotation_park.is_send = 0)
                           UNION ALL
                           SELECT        quotation_park_1.quote_park_trn AS aaa, quotation_park_1.quote_qty AS a, inventory_items_1.kit_name AS b, quotation_park_1.quote_item_price AS c, quotation_park_1.quote_total AS d, 
                                                    quotation_park_1.quote_no AS e
