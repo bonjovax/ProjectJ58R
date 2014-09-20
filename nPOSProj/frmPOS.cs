@@ -637,6 +637,9 @@ namespace nPOSProj
                 txtBoxQty.Text = "1";
                 rdDescription.Text = "Transaction Parked!";
                 lblVatable.Text = "0.00";
+                lblVATe.Text = "0.00";
+                lblVATz.Text = "0.00";
+                lblTAXamt.Text = "0.00";
                 rdPrice.Text = "0.00";
                 rdTotal.Text = "0.00";
                 lblTotalAmount.Text = "0.00";
@@ -2480,6 +2483,9 @@ namespace nPOSProj
                                 txtBoxQty.Text = "1";
                                 rdDescription.Text = "Transaction Cancelled!";
                                 lblVatable.Text = "0.00";
+                                lblVATe.Text = "0.00";
+                                lblVATz.Text = "0.00";
+                                lblTAXamt.Text = "0.00";
                                 rdPrice.Text = "0.00";
                                 rdTotal.Text = "0.00";
                                 lblTotalAmount.Text = "0.00";
