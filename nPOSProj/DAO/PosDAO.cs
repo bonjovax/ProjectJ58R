@@ -878,5 +878,34 @@ namespace nPOSProj.DAO
             }
         }
         #endregion
+        #region Security DAO
+        public Boolean canPass(String user_name, String user_password)
+        {
+            Boolean passed = false;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT * FROM user_account ";
+            query += "WHERE user_name = ?user_name AND user_password = ?user_password";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?user_name", user_name);
+                cmd.Parameters.AddWithValue("?user_password", user_password);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    passed = true;
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return passed;
+        }
+        #endregion
     }
 }

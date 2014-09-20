@@ -83,6 +83,12 @@
     <Compile Include="cstDlgAlert.Designer.cs">
       <DependentUpon>cstDlgAlert.cs</DependentUpon>
     </Compile>
+    <Compile Include="cstPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cstPassword.Designer.cs">
+      <DependentUpon>cstPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\ChangePasswordDAO.cs" />
     <Compile Include="DAO\ConfigDAO.cs" />
     <Compile Include="DAO\CustomersDAO.cs" />
@@ -523,6 +529,9 @@
     <Compile Include="VO\UserAccountVO.cs" />
     <EmbeddedResource Include="cstDlgAlert.resx">
       <DependentUpon>cstDlgAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cstPassword.resx">
+      <DependentUpon>cstPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>

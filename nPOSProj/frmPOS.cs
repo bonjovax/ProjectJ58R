@@ -377,44 +377,53 @@ namespace nPOSProj
         #endregion
         private void onFormClose()
         {
-            login = new DAO.LoginDAO();
-            String userName = frmLogin.User.user_name;
-            login.catchUsername(userName);
-            frmMenu fm = new frmMenu();
-            if (login.hasSales())
+            using (cstPassword pword = new cstPassword())
             {
-                fm.unlockSales();
+
+                String userName = frmLogin.User.user_name;
+                pword.Pos_username = userName;
+                pword.ShowDialog();
+                if (pword.Approved == true)
+                {
+                    login = new DAO.LoginDAO();
+                    login.catchUsername(userName);
+                    frmMenu fm = new frmMenu();
+                    if (login.hasSales())
+                    {
+                        fm.unlockSales();
+                    }
+                    if (login.hasOrder())
+                    {
+                        fm.unlockOrder();
+                    }
+                    if (login.hasCustomers())
+                    {
+                        fm.unlockCustomers();
+                    }
+                    if (login.hasInventory())
+                    {
+                        fm.unlockInventory();
+                    }
+                    if (login.hasReports())
+                    {
+                        fm.unlockGeneralReports();
+                    }
+                    if (login.hasGC())
+                    {
+                        fm.unlockGiftCards();
+                    }
+                    if (login.hasUser_Accounts())
+                    {
+                        fm.unlockUserAccounts();
+                    }
+                    if (login.hasUserConf())
+                    {
+                        fm.unlockConfig();
+                    }
+                    fm.Show();
+                    this.Hide();
+                }
             }
-            if (login.hasOrder())
-            {
-                fm.unlockOrder();
-            }
-            if (login.hasCustomers())
-            {
-                fm.unlockCustomers();
-            }
-            if (login.hasInventory())
-            {
-                fm.unlockInventory();
-            }
-            if (login.hasReports())
-            {
-                fm.unlockGeneralReports();
-            }
-            if (login.hasGC())
-            {
-                fm.unlockGiftCards();
-            }
-            if (login.hasUser_Accounts())
-            {
-                fm.unlockUserAccounts();
-            }
-            if (login.hasUserConf())
-            {
-                fm.unlockConfig();
-            }
-            fm.Show();
-            this.Hide();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

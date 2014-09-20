@@ -9,6 +9,7 @@ namespace nPOSProj.VO
     {
         #region Value Stuffs
         private DAO.PosDAO POSDAO;
+        private Conf.Crypto crypt;
         private Int32 pos_orno;
 
         public Int32 Pos_orno
@@ -50,6 +51,13 @@ namespace nPOSProj.VO
         {
             get { return pos_user; }
             set { pos_user = value; }
+        }
+        private String pos_password;
+
+        public String Pos_password
+        {
+            get { return pos_password; }
+            set { pos_password = value; }
         }
         private Int32 pos_iswholesale;
 
@@ -522,6 +530,19 @@ namespace nPOSProj.VO
         {
             POSDAO = new DAO.PosDAO();
             POSDAO.LogCC(Thousand, Fiveh, Twoh, Oneh, Fifty, Twenty, Ten, Five, One, Ctwentyfive, Pos_terminal, Pos_user);
+        }
+        #endregion
+        #region Security VO
+        public Boolean canExit()
+        {
+            Boolean yes = false;
+            String hashed = "";
+            POSDAO = new DAO.PosDAO();
+            crypt = new Conf.Crypto();
+            crypt.Hashed(Pos_password);
+            hashed = crypt.RefretreiveHash();
+            yes = POSDAO.canPass(Pos_user, hashed);
+            return yes;
         }
         #endregion
     }
