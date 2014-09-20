@@ -27,6 +27,26 @@ namespace nPOSProj
             set { ean = value; }
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            if (keyData == Keys.F1)
+            {
+                dataGridView1.Focus();
+                return true;
+            }
+            if (keyData == Keys.F2)
+            {
+                txtBoxSearch.Focus();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         public frmDlgSearch()
         {
             InitializeComponent();
