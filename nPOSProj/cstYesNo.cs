@@ -62,17 +62,37 @@ namespace nPOSProj
             if (msgX.BackColor == Color.SteelBlue && msgX.ForeColor == Color.White && lblCmd.BackColor == Color.SteelBlue && lblCmd.ForeColor == Color.White)
             {
                 msgX.BackColor = Color.White;
+                btnYes.BackColor = Color.White;
+                btnNo.BackColor = Color.White;
                 lblCmd.BackColor = Color.White;
                 msgX.ForeColor = Color.Black;
+                btnYes.ForeColor = Color.Black;
+                btnNo.ForeColor = Color.Black;
                 lblCmd.ForeColor = Color.Black;
             }
             else
             {
                 msgX.BackColor = Color.SteelBlue;
                 lblCmd.BackColor = Color.SteelBlue;
+                btnYes.BackColor = Color.SteelBlue;
+                btnNo.BackColor = Color.SteelBlue;
                 msgX.ForeColor = Color.White;
+                btnYes.ForeColor = Color.White;
+                btnNo.ForeColor = Color.White;
                 lblCmd.ForeColor = Color.White;
             }
+        }
+
+        private void btnYes_Click(object sender, EventArgs e)
+        {
+            Selected = true;
+            this.Close();
+        }
+
+        private void btnNo_Click(object sender, EventArgs e)
+        {
+            Selected = false;
+            this.Close();
         }
     }
 }
