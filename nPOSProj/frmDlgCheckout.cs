@@ -340,6 +340,7 @@ namespace nPOSProj
 
         private void mskCC_KeyDown(object sender, KeyEventArgs e)
         {
+            cstDlgAlert alert = new cstDlgAlert();
             if (e.KeyCode == Keys.Enter)
             {
                 if (Regex.IsMatch(mskCC.Text, r.Visa()) || Regex.IsMatch(mskCC.Text, r.Mastercard()))
@@ -351,7 +352,8 @@ namespace nPOSProj
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Card", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    alert.MsgDiri = "Invalid Card";
+                    alert.ShowDialog();
                 }
             }
         }
@@ -414,6 +416,7 @@ namespace nPOSProj
 
         private void txtBoxTender_KeyDown(object sender, KeyEventArgs e)
         {
+            cstDlgAlert alert = new cstDlgAlert();
             if (e.KeyCode == Keys.Enter)
             {
                 if (Regex.IsMatch(txtBoxTender.Text, r.Amount()))
@@ -433,11 +436,15 @@ namespace nPOSProj
                         this.Close();
                     }
                     else
-                        MessageBox.Show("Insufficient Amount!\nPlease Try Again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        alert.MsgDiri = "Insufficient Amount!";
+                        alert.ShowDialog();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please Enter Tender Amount Propery!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    alert.MsgDiri = "Please Enter Tender Amount Properly!";
+                    alert.ShowDialog();
                 }
             }
         }
@@ -495,13 +502,22 @@ namespace nPOSProj
 
         private void txtBoxBankNBranch_KeyDown(object sender, KeyEventArgs e)
         {
+            cstDlgAlert alert = new cstDlgAlert();
             if (e.KeyCode == Keys.Enter)
             {
-                CheckNo = txtBoxCheckNo.Text;
-                BankNBranch = txtBoxBankNBranch.Text;
-                CRef = lblRefNo.Text;
-                IsBCTX = true;
-                this.Close();
+                if (txtBoxCheckNo.Text != "" && txtBoxBankNBranch.Text != "")
+                {
+                    CheckNo = txtBoxCheckNo.Text;
+                    BankNBranch = txtBoxBankNBranch.Text;
+                    CRef = lblRefNo.Text;
+                    IsBCTX = true;
+                    this.Close();
+                }
+                else
+                {
+                    alert.MsgDiri = "Please Complete Cheque Details!";
+                    alert.ShowDialog();
+                }
             }
         }
 
