@@ -459,7 +459,6 @@
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(297, 26);
             this.lblDate.TabIndex = 14;
-            this.lblDate.Text = "Date";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTime
@@ -472,7 +471,6 @@
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(297, 26);
             this.lblTime.TabIndex = 15;
-            this.lblTime.Text = "00:00:00 AM";
             this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer1
