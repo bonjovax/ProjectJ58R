@@ -728,6 +728,7 @@
             this.lviewPOS.UseCompatibleStateImageBehavior = false;
             this.lviewPOS.View = System.Windows.Forms.View.Details;
             this.lviewPOS.SelectedIndexChanged += new System.EventHandler(this.lviewPOS_SelectedIndexChanged);
+            this.lviewPOS.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lviewPOS_MouseDoubleClick);
             // 
             // label2
             // 
@@ -739,7 +740,7 @@
             this.label2.Size = new System.Drawing.Size(955, 15);
             this.label2.TabIndex = 40;
             this.label2.Text = "Q - Go to Quantity | A - Go to EAN  | S - Go To List | W - Cash Controller | [O] " +
-    "- Open Cash Drawer | N - No Sale";
+    "- Open Cash Drawer | N - No Sale | P - Park";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnRetail

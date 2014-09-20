@@ -89,6 +89,12 @@
     <Compile Include="cstPassword.Designer.cs">
       <DependentUpon>cstPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="cstYesNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cstYesNo.Designer.cs">
+      <DependentUpon>cstYesNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\ChangePasswordDAO.cs" />
     <Compile Include="DAO\ConfigDAO.cs" />
     <Compile Include="DAO\CustomersDAO.cs" />
@@ -532,6 +538,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cstPassword.resx">
       <DependentUpon>cstPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cstYesNo.resx">
+      <DependentUpon>cstYesNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>

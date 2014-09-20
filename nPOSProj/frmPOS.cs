@@ -614,6 +614,34 @@ namespace nPOSProj
                 mCashInOut controller = new mCashInOut();
                 controller.ShowDialog();
             }
+            if (keyData == Keys.P && btnParkSale.Enabled == false)
+            {
+                lviewPOS.Items.Clear();
+                btnSearch.Enabled = false;
+                btnRefund.Enabled = false;
+                btnWholesale.Enabled = false;
+                btnRetail.Visible = false;
+                btnCancelSale.Enabled = false;
+                btnVoid.Enabled = false;
+                btnEdit.Enabled = false;
+                btnRefund.Enabled = true;
+                btnCancelSale.Enabled = false;
+                btnCheckout.Enabled = false; //Very Important La
+                btnDiscount.Enabled = false;
+                txtBoxQty.ReadOnly = true;
+                txtBoxEAN.ReadOnly = true;
+                txtBoxEAN.Focus();
+                proceeds = false; //Important
+                //
+                proceed.Visible = true;
+                txtBoxQty.Text = "1";
+                rdDescription.Text = "Transaction Parked!";
+                lblVatable.Text = "0.00";
+                rdPrice.Text = "0.00";
+                rdTotal.Text = "0.00";
+                lblTotalAmount.Text = "0.00";
+                btnParkSale.Enabled = true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -743,14 +771,18 @@ namespace nPOSProj
         {
             try
             {
-                DialogResult dr = MessageBox.Show("Do You Wish To Set Your Transaction to Wholesale?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == System.Windows.Forms.DialogResult.Yes)
+                using (cstYesNo yesno = new cstYesNo())
                 {
-                    pos.Pos_orno = OrNo;
-                    pos.SwitchToWholeSale();
-                    btnWholesale.Enabled = false;
-                    btnRetail.Visible = true;
-                    wholsale_select = true;
+                    yesno.Message = "Do You Wish to Set Your Transaction to Wholesale?";
+                    yesno.ShowDialog();
+                    if (yesno.Selected == true)
+                    {
+                        pos.Pos_orno = OrNo;
+                        pos.SwitchToWholeSale();
+                        btnWholesale.Enabled = false;
+                        btnRetail.Visible = true;
+                        wholsale_select = true;
+                    }
                 }
             }
             catch (Exception)
@@ -763,14 +795,18 @@ namespace nPOSProj
         {
             try
             {
-                DialogResult dr = MessageBox.Show("Do You Wish To Set Your Transaction to Retail?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == System.Windows.Forms.DialogResult.Yes)
+                using (cstYesNo yesno = new cstYesNo())
                 {
-                    pos.Pos_orno = OrNo;
-                    pos.SwitchToRetail();
-                    btnWholesale.Enabled = true;
-                    btnRetail.Visible = false;
-                    wholsale_select = false;
+                    yesno.Message = "Do You Wish To Set Your Transaction to Retail?";
+                    yesno.ShowDialog();
+                    if (yesno.Selected == true)
+                    {
+                        pos.Pos_orno = OrNo;
+                        pos.SwitchToRetail();
+                        btnWholesale.Enabled = true;
+                        btnRetail.Visible = false;
+                        wholsale_select = false;
+                    }
                 }
             }
             catch (Exception)
@@ -1709,168 +1745,171 @@ namespace nPOSProj
         private void gotoVoid()
         {
             frmLogin fl = new frmLogin();
-            DialogResult dlg = MessageBox.Show("Do you wish to Continue?", "Void Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            using (cstYesNo yesno = new cstYesNo())
             {
-                try
+                yesno.Message = "Do you wish to VOID your Selected Items?";
+                yesno.ShowDialog();
+                if (yesno.Selected == true)
                 {
-                    String eanX = catchEan;
-                    lviewPOS.SelectedItems[0].Remove();
-                    Double total_fin = 0;
-                    Double total_fins = 0;
-                    Double a = 0;
-                    Double b = 0; //To Data Tax Amount
-                    Double vATable = 0;
-                    Double v1 = 0;
-                    Double v2 = 0;
-                    Double v3 = 1.12;
-                    Double vExempt = 0;
-                    Double vZero = 0;
-                    foreach (ListViewItem lv in lviewPOS.Items)
+                    try
                     {
-                        total_fin += Double.Parse(lv.SubItems[5].Text);
-                        total_fins += Double.Parse(lv.SubItems[5].Text);
-                        if (lv.SubItems[6].Text == "V")
+                        String eanX = catchEan;
+                        lviewPOS.SelectedItems[0].Remove();
+                        Double total_fin = 0;
+                        Double total_fins = 0;
+                        Double a = 0;
+                        Double b = 0; //To Data Tax Amount
+                        Double vATable = 0;
+                        Double v1 = 0;
+                        Double v2 = 0;
+                        Double v3 = 1.12;
+                        Double vExempt = 0;
+                        Double vZero = 0;
+                        foreach (ListViewItem lv in lviewPOS.Items)
                         {
-                            if (all_items_tax == 1) //If All Items are Taxable
+                            total_fin += Double.Parse(lv.SubItems[5].Text);
+                            total_fins += Double.Parse(lv.SubItems[5].Text);
+                            if (lv.SubItems[6].Text == "V")
                             {
-                                v1 += Double.Parse(lv.SubItems[5].Text);
-                                v2 = (v1 / v3) * taxP;
-                                vATable = v1;
+                                if (all_items_tax == 1) //If All Items are Taxable
+                                {
+                                    v1 += Double.Parse(lv.SubItems[5].Text);
+                                    v2 = (v1 / v3) * taxP;
+                                    vATable = v1;
+                                }
+                                else //Otherwise
+                                {
+                                    v1 += Double.Parse(lv.SubItems[5].Text);
+                                }
                             }
-                            else //Otherwise
+                            if (lv.SubItems[6].Text == "E")
                             {
-                                v1 += Double.Parse(lv.SubItems[5].Text);
+                                vExempt += Double.Parse(lv.SubItems[5].Text);
+                            }
+                            if (lv.SubItems[6].Text == "Z")
+                            {
+                                vZero += Double.Parse(lv.SubItems[5].Text);
                             }
                         }
-                        if (lv.SubItems[6].Text == "E")
+                        if (all_items_tax == 1) //If All Items are Taxable
                         {
-                            vExempt += Double.Parse(lv.SubItems[5].Text);
-                        }
-                        if (lv.SubItems[6].Text == "Z")
-                        {
-                            vZero += Double.Parse(lv.SubItems[5].Text);
-                        }
-                    }
-                    if (all_items_tax == 1) //If All Items are Taxable
-                    {
-                        if (TaxT == "V")
-                        {
-                            pos.Pos_vatable = vATable;
-                            pos.Pos_vex = vExempt;
-                            pos.Pos_vatz = vZero;
-                            lblVatable.Text = vATable.ToString("#,###,##0.00");
-                            lblVATe.Text = vExempt.ToString("###,###,##0.00");
-                            lblVATz.Text = vZero.ToString("###,###,##0.00");
+                            if (TaxT == "V")
+                            {
+                                pos.Pos_vatable = vATable;
+                                pos.Pos_vex = vExempt;
+                                pos.Pos_vatz = vZero;
+                                lblVatable.Text = vATable.ToString("#,###,##0.00");
+                                lblVATe.Text = vExempt.ToString("###,###,##0.00");
+                                lblVATz.Text = vZero.ToString("###,###,##0.00");
+                            }
+                            else
+                            {
+                                vATable = 0;
+                                vExempt = 0;
+                                vZero = 0;
+                            }
+                            lblTotalAmount.Text = total_fin.ToString("###,###,##0.00");
+                            if (itemTT == "V")
+                            {
+                                if (TaxT == "V")
+                                {
+                                    //Tax
+                                    a = (v1 / v3) * taxP;
+                                    //Please Add Condition if Sale is VAT
+                                    pos.Pos_tax_amt = v2;
+                                    lblTAXamt.Text = v2.ToString("#,###,##0.00");
+                                    b = v1;
+                                    pos.Pos_vatable = b;
+                                    lblVatable.Text = b.ToString("#,###,##0.00");
+                                }
+                                else
+                                {
+                                    a = 0;
+                                    v2 = 0;
+                                    b = 0;
+                                }
+                            }
                         }
                         else
                         {
-                            vATable = 0;
-                            vExempt = 0;
-                            vZero = 0;
-                        }
-                        lblTotalAmount.Text = total_fin.ToString("###,###,##0.00");
-                        if (itemTT == "V")
-                        {
                             if (TaxT == "V")
                             {
-                                //Tax
-                                a = (v1 / v3) * taxP;
-                                //Please Add Condition if Sale is VAT
-                                pos.Pos_tax_amt = v2;
-                                lblTAXamt.Text = v2.ToString("#,###,##0.00");
-                                b = v1;
-                                pos.Pos_vatable = b;
-                                lblVatable.Text = b.ToString("#,###,##0.00");
+                                pos.Pos_vatable = v1;
+                                pos.Pos_vex = vExempt;
+                                pos.Pos_vatz = vZero;
+                                lblVatable.Text = v1.ToString("#,###,##0.00");
+                                lblVATe.Text = vExempt.ToString("###,###,##0.00");
+                                lblVATz.Text = vZero.ToString("###,###,##0.00");
                             }
-                            else
+                            if (itemTT == "V")
                             {
-                                a = 0;
-                                v2 = 0;
-                                b = 0;
+                                if (TaxT == "V")
+                                {
+                                    a = (v1 / v3) * taxP;
+                                    pos.Pos_tax_amt = a;
+                                    lblTAXamt.Text = a.ToString("###,###,##0.00");
+                                }
+                                else
+                                {
+                                    a = 0;
+                                }
                             }
+                            a = (v1 / v3) * taxP;
+                            totalVar = v1 + vExempt + vZero + a;
+                            lblTotalAmount.Text = totalVar.ToString("###,###,##0.00");
                         }
-
-                    }
-                    else
-                    {
-                        if (TaxT == "V")
+                        pos.Pos_tax_perc = taxP;
+                        // Trunk Data
+                        if (all_items_tax == 1)
                         {
-                            pos.Pos_vatable = v1;
-                            pos.Pos_vex = vExempt;
-                            pos.Pos_vatz = vZero;
-                            lblVatable.Text = v1.ToString("#,###,##0.00");
-                            lblVATe.Text = vExempt.ToString("###,###,##0.00");
-                            lblVATz.Text = vZero.ToString("###,###,##0.00");
+                            pos.Pos_tax_amt = v2;
+                            pos.Pos_total_amt = total_fin;
+                            lblTAXamt.Text = v2.ToString("###,###,##0.00");
                         }
-                        if (itemTT == "V")
+                        else
                         {
-                            if (TaxT == "V")
-                            {
-                                a = (v1 / v3) * taxP;
-                                pos.Pos_tax_amt = a;
-                                lblTAXamt.Text = a.ToString("###,###,##0.00");
-                            }
-                            else
-                            {
-                                a = 0;
-                            }
+                            pos.Pos_tax_amt = a;
+                            pos.Pos_total_amt = totalVar;
+                            lblTAXamt.Text = a.ToString("###,###,##0.00");
                         }
-                        a = (v1 / v3) * taxP;
-                        totalVar = v1 + vExempt + vZero + a;
-                        lblTotalAmount.Text = totalVar.ToString("###,###,##0.00");
+                        Double discountTotal = 0;
+                        foreach (ListViewItem lv in lviewPOS.Items)
+                        {
+                            discountTotal += Double.Parse(lv.SubItems[4].Text);
+                        }
+                        pos.Total_pos_disc_amt = discountTotal; //Butangi
+                        pos.Pos_orno = OrNo;
+                        pos.Pos_terminal = fl.tN;
+                        pos.UpdateTrunk();
+                        //Void Item Data
+                        pos.Pos_ean = eanX;
+                        pos.Pos_quantity = catchQty;
+                        pos.ParkVoidItem();
+                        //
+                        btnVoid.Enabled = false;
+                        if (lviewPOS.Items.Count != 0)
+                        {
+                            btnCheckout.Enabled = true;
+                            btnCancelSale.Enabled = true;
+                            btnParkSale.Enabled = false;
+                            nosale = false;
+                        }
+                        else
+                        {
+                            btnCheckout.Enabled = false;
+                            btnCancelSale.Enabled = false;
+                            btnParkSale.Enabled = true;
+                            nosale = true;
+                        }
+                        btnDiscount.Enabled = false;
+                        btnEdit.Enabled = false;
+                        btnVoid.Enabled = false;
+                        txtBoxEAN.Focus();
                     }
-                    pos.Pos_tax_perc = taxP;
-                    // Trunk Data
-                    if (all_items_tax == 1)
+                    catch (Exception)
                     {
-                        pos.Pos_tax_amt = v2;
-                        pos.Pos_total_amt = total_fin;
-                        lblTAXamt.Text = v2.ToString("###,###,##0.00");
+                        rdDescription.Text = "Error 10: Network Connection";
                     }
-                    else
-                    {
-                        pos.Pos_tax_amt = a;
-                        pos.Pos_total_amt = totalVar;
-                        lblTAXamt.Text = a.ToString("###,###,##0.00");
-                    }
-                    Double discountTotal = 0;
-                    foreach (ListViewItem lv in lviewPOS.Items)
-                    {
-                        discountTotal += Double.Parse(lv.SubItems[4].Text);
-                    }
-                    pos.Total_pos_disc_amt = discountTotal; //Butangi
-                    pos.Pos_orno = OrNo;
-                    pos.Pos_terminal = fl.tN;
-                    pos.UpdateTrunk();
-                    //Void Item Data
-                    pos.Pos_ean = eanX;
-                    pos.Pos_quantity = catchQty;
-                    pos.ParkVoidItem();
-                    //
-                    btnVoid.Enabled = false;
-                    if (lviewPOS.Items.Count != 0)
-                    {
-                        btnCheckout.Enabled = true;
-                        btnCancelSale.Enabled = true;
-                        btnParkSale.Enabled = false;
-                        nosale = false;
-                    }
-                    else
-                    {
-                        btnCheckout.Enabled = false;
-                        btnCancelSale.Enabled = false;
-                        btnParkSale.Enabled = true;
-                        nosale = true;
-                    }
-                    btnDiscount.Enabled = false;
-                    btnEdit.Enabled = false;
-                    btnVoid.Enabled = false;
-                    txtBoxEAN.Focus();
-                }
-                catch (Exception)
-                {
-                    rdDescription.Text = "Error 10: Network Connection";
                 }
             }
         }
@@ -2384,68 +2423,73 @@ namespace nPOSProj
         private void gotoCancelT()
         {
             frmLogin fl = new frmLogin();
-            DialogResult dlg = MessageBox.Show("Do you Wish To Cancel Transaction Made By You?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dlg == System.Windows.Forms.DialogResult.Yes)
+            using (cstYesNo yesno = new cstYesNo())
             {
-                String query = "SELECT pos_ean, pos_quantity FROM pos_park ";
-                query += "WHERE pos_orno = ?pos_orno AND pos_terminal = ?pos_terminal";
-                using (MySqlConnection con = new MySqlConnection(dbcon.getConnectionString()))
+                yesno.Message = "Do you Wish To Cancel Transaction Made By You?";
+                yesno.ShowDialog();
+                if (yesno.Selected == true)
                 {
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, con))
+                    String query = "SELECT pos_ean, pos_quantity FROM pos_park ";
+                    query += "WHERE pos_orno = ?pos_orno AND pos_terminal = ?pos_terminal";
+                    using (MySqlConnection con = new MySqlConnection(dbcon.getConnectionString()))
                     {
-                        try
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, con))
                         {
-                            adapter.SelectCommand.Parameters.AddWithValue("?pos_orno", OrNo);
-                            adapter.SelectCommand.Parameters.AddWithValue("?pos_terminal", fl.tN);
-                            pos.Pos_orno = OrNo;
-                            pos.Pos_terminal = fl.tN;
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-                            for (int i = 0; i < dataTable.Rows.Count; i++)
+                            try
                             {
-                                String Eans;
-                                Int32 qtys = 0;
-                                Eans = dataTable.Rows[i][0].ToString();
-                                qtys = Convert.ToInt32(dataTable.Rows[i][1]);
-                                //Data Integration Return Sale to Item
-                                pos.Pos_ean = Eans;
-                                pos.Pos_quantity = qtys;
-                                pos.ReturnCancelItems();
+                                adapter.SelectCommand.Parameters.AddWithValue("?pos_orno", OrNo);
+                                adapter.SelectCommand.Parameters.AddWithValue("?pos_terminal", fl.tN);
+                                pos.Pos_orno = OrNo;
+                                pos.Pos_terminal = fl.tN;
+                                DataTable dataTable = new DataTable();
+                                adapter.Fill(dataTable);
+                                for (int i = 0; i < dataTable.Rows.Count; i++)
+                                {
+                                    String Eans;
+                                    Int32 qtys = 0;
+                                    Eans = dataTable.Rows[i][0].ToString();
+                                    qtys = Convert.ToInt32(dataTable.Rows[i][1]);
+                                    //Data Integration Return Sale to Item
+                                    pos.Pos_ean = Eans;
+                                    pos.Pos_quantity = qtys;
+                                    pos.ReturnCancelItems();
+                                    //
+                                }
+                                //Wipe all Park Item and Switch Core Table to Cancelled
+                                pos.CancelSale();
+                                //
+                                //Event
+                                lviewPOS.Items.Clear();
+                                btnSearch.Enabled = false;
+                                btnRefund.Enabled = false;
+                                btnWholesale.Enabled = false;
+                                btnRetail.Visible = false;
+                                btnCancelSale.Enabled = false;
+                                btnVoid.Enabled = false;
+                                btnEdit.Enabled = false;
+                                btnRefund.Enabled = true;
+                                btnCancelSale.Enabled = false;
+                                btnCheckout.Enabled = false; //Very Important La
+                                btnDiscount.Enabled = false;
+                                txtBoxQty.ReadOnly = true;
+                                txtBoxEAN.ReadOnly = true;
+                                txtBoxEAN.Focus();
+                                proceeds = false; //Important
+                                //
+                                proceed.Visible = true;
+                                txtBoxQty.Text = "1";
+                                rdDescription.Text = "Transaction Cancelled!";
+                                lblVatable.Text = "0.00";
+                                rdPrice.Text = "0.00";
+                                rdTotal.Text = "0.00";
+                                lblTotalAmount.Text = "0.00";
+                                btnParkSale.Enabled = true;
                                 //
                             }
-                            //Wipe all Park Item and Switch Core Table to Cancelled
-                            pos.CancelSale();
-                            //
-                            //Event
-                            lviewPOS.Items.Clear();
-                            btnSearch.Enabled = false;
-                            btnRefund.Enabled = false;
-                            btnWholesale.Enabled = false;
-                            btnRetail.Visible = false;
-                            btnCancelSale.Enabled = false;
-                            btnVoid.Enabled = false;
-                            btnEdit.Enabled = false;
-                            btnCancelSale.Enabled = false;
-                            btnCheckout.Enabled = false; //Very Important La
-                            btnDiscount.Enabled = false;
-                            txtBoxQty.ReadOnly = true;
-                            txtBoxEAN.ReadOnly = true;
-                            txtBoxEAN.Focus();
-                            proceeds = false; //Important
-                            //
-                            proceed.Visible = true;
-                            txtBoxQty.Text = "1";
-                            rdDescription.Text = "Transaction Cancelled!";
-                            lblVatable.Text = "0.00";
-                            rdPrice.Text = "0.00";
-                            rdTotal.Text = "0.00";
-                            lblTotalAmount.Text = "0.00";
-                            btnParkSale.Enabled = true;
-                            //
-                        }
-                        catch (MySqlException)
-                        {
-                            rdDescription.Text = "Error 10: Network Connection";
+                            catch (MySqlException)
+                            {
+                                rdDescription.Text = "Error 10: Network Connection";
+                            }
                         }
                     }
                 }
@@ -2619,6 +2663,27 @@ namespace nPOSProj
         private void btnRetail_Click(object sender, EventArgs e)
         {
             gotoRetail();
+        }
+
+        private void lviewPOS_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = lviewPOS.SelectedItems[0];
+            catchEan = item.Text;
+            catchQty = Convert.ToInt32(item.SubItems[1].Text);
+            catchPrice = Convert.ToDouble(item.SubItems[3].Text);
+            //Discount
+            getTotalAmt = Convert.ToDouble(item.SubItems[5].Text);
+            btnDiscount.Enabled = true;
+            btnVoid.Enabled = true; //Void
+            discountTx = true;
+            //
+            login = new DAO.LoginDAO();
+            String userName = frmLogin.User.user_name;
+            login.catchUsername(userName);
+            if (login.hasUser_Accounts())
+            {
+                btnEdit.Enabled = true;
+            }
         }
     }
 }
