@@ -369,6 +369,7 @@ namespace nPOSProj
                     btnF2A.Enabled = false;
                     wholesale = false;
                     btnF4.Enabled = false;
+                    btnF6.Enabled = false;
                     btnF5.Enabled = true;
                     btnF1.Enabled = true;
                     lblQN.Text = "x";
