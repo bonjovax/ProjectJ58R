@@ -187,6 +187,17 @@ namespace nPOSProj
                 mdiConfig.ShowDialog();
                 return true;
             }
+            if (keyData == Keys.F9)
+            {
+                frmChangePass fcp = new frmChangePass();
+                fcp.ShowDialog();
+                return true;
+            }
+            if (keyData == Keys.Escape)
+            {
+                this.closingForm();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 

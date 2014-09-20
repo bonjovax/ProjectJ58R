@@ -453,7 +453,7 @@ namespace nPOSProj
                 gotoVoid();
                 return true;
             }
-            if (keyData == Keys.F5 && btnVoid.Enabled == true)
+            if (keyData == Keys.F5 && btnEdit.Enabled == true)
             {
                 gotoEdit();
                 return true;

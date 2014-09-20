@@ -74,11 +74,11 @@
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLogout.Location = new System.Drawing.Point(636, 482);
+            this.btnLogout.Location = new System.Drawing.Point(636, 470);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(61, 74);
+            this.btnLogout.Size = new System.Drawing.Size(61, 86);
             this.btnLogout.TabIndex = 9;
-            this.btnLogout.Text = "&Log-out";
+            this.btnLogout.Text = "(Esc) Log-out";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -100,7 +100,7 @@
             this.btnSales.Name = "btnSales";
             this.btnSales.Size = new System.Drawing.Size(164, 162);
             this.btnSales.TabIndex = 0;
-            this.btnSales.Text = "&Sales (F1)";
+            this.btnSales.Text = "Sales (F1)";
             this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSales.UseVisualStyleBackColor = false;
             this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
@@ -122,7 +122,7 @@
             this.btnGenReports.Name = "btnGenReports";
             this.btnGenReports.Size = new System.Drawing.Size(164, 162);
             this.btnGenReports.TabIndex = 4;
-            this.btnGenReports.Text = "&Reports (F5)";
+            this.btnGenReports.Text = "Reports (F5)";
             this.btnGenReports.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGenReports.UseVisualStyleBackColor = false;
             this.btnGenReports.Click += new System.EventHandler(this.btnGenReports_Click);
@@ -144,7 +144,7 @@
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(164, 162);
             this.btnCustomers.TabIndex = 1;
-            this.btnCustomers.Text = "&Customers (F3)";
+            this.btnCustomers.Text = "Customers (F3)";
             this.btnCustomers.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCustomers.UseVisualStyleBackColor = false;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
@@ -166,7 +166,7 @@
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(164, 162);
             this.btnInventory.TabIndex = 3;
-            this.btnInventory.Text = "&Inventory (F4)";
+            this.btnInventory.Text = "Inventory (F4)";
             this.btnInventory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
@@ -188,7 +188,7 @@
             this.btnGC.Name = "btnGC";
             this.btnGC.Size = new System.Drawing.Size(164, 162);
             this.btnGC.TabIndex = 5;
-            this.btnGC.Text = "&Gift Cards (F6)";
+            this.btnGC.Text = "Gift Cards (F6)";
             this.btnGC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGC.UseVisualStyleBackColor = false;
             this.btnGC.Click += new System.EventHandler(this.btnGC_Click);
@@ -210,7 +210,7 @@
             this.btnUserAccounts.Name = "btnUserAccounts";
             this.btnUserAccounts.Size = new System.Drawing.Size(164, 162);
             this.btnUserAccounts.TabIndex = 6;
-            this.btnUserAccounts.Text = "&Users (F7)";
+            this.btnUserAccounts.Text = "Users (F7)";
             this.btnUserAccounts.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUserAccounts.UseVisualStyleBackColor = false;
             this.btnUserAccounts.Click += new System.EventHandler(this.btnUserAccounts_Click);
@@ -232,7 +232,7 @@
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(164, 162);
             this.btnConfig.TabIndex = 7;
-            this.btnConfig.Text = "Con&figure (F8)";
+            this.btnConfig.Text = "Configure (F8)";
             this.btnConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfig.UseVisualStyleBackColor = false;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
@@ -248,11 +248,11 @@
             this.btnChangePassword.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangePassword.ForeColor = System.Drawing.Color.White;
             this.btnChangePassword.Image = ((System.Drawing.Image)(resources.GetObject("btnChangePassword.Image")));
-            this.btnChangePassword.Location = new System.Drawing.Point(571, 482);
+            this.btnChangePassword.Location = new System.Drawing.Point(571, 470);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(63, 74);
+            this.btnChangePassword.Size = new System.Drawing.Size(63, 86);
             this.btnChangePassword.TabIndex = 8;
-            this.btnChangePassword.Text = "Change &Password";
+            this.btnChangePassword.Text = "(F9) Change Password";
             this.btnChangePassword.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnChangePassword.UseVisualStyleBackColor = false;
             this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
@@ -343,7 +343,7 @@
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(164, 162);
             this.btnOrder.TabIndex = 15;
-            this.btnOrder.Text = "&Order (F2)";
+            this.btnOrder.Text = "Order (F2)";
             this.btnOrder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOrder.UseVisualStyleBackColor = false;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
