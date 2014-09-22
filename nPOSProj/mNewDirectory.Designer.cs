@@ -56,12 +56,26 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.mskTIN = new System.Windows.Forms.MaskedTextBox();
+            this.mskSSS = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtBoxCreditLimit = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cBoxNetDays = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.groupBox1.Controls.Add(this.mskSSS);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.mskTIN);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.lblWarning);
             this.groupBox1.Controls.Add(this.txtBoxZip);
             this.groupBox1.Controls.Add(this.label11);
@@ -90,7 +104,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(500, 243);
+            this.groupBox1.Size = new System.Drawing.Size(500, 289);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Information";
@@ -363,11 +377,11 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSave.Location = new System.Drawing.Point(358, 247);
+            this.btnSave.Location = new System.Drawing.Point(367, 358);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(68, 53);
-            this.btnSave.TabIndex = 9;
+            this.btnSave.TabIndex = 31;
             this.btnSave.Text = "&Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -384,11 +398,11 @@
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(428, 247);
+            this.btnExit.Location = new System.Drawing.Point(437, 358);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(68, 53);
-            this.btnExit.TabIndex = 10;
+            this.btnExit.TabIndex = 32;
             this.btnExit.Text = "&Exit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = false;
@@ -405,22 +419,121 @@
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnClear.Location = new System.Drawing.Point(288, 247);
+            this.btnClear.Location = new System.Drawing.Point(297, 358);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(68, 53);
-            this.btnClear.TabIndex = 11;
+            this.btnClear.TabIndex = 30;
             this.btnClear.Text = "&Clear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cBoxNetDays);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txtBoxCreditLimit);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(4, 291);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(500, 65);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Terms";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(134, 244);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "TIN";
+            // 
+            // mskTIN
+            // 
+            this.mskTIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskTIN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskTIN.Location = new System.Drawing.Point(136, 261);
+            this.mskTIN.Mask = "000-000-000-000";
+            this.mskTIN.Name = "mskTIN";
+            this.mskTIN.Size = new System.Drawing.Size(109, 23);
+            this.mskTIN.TabIndex = 25;
+            // 
+            // mskSSS
+            // 
+            this.mskSSS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskSSS.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskSSS.Location = new System.Drawing.Point(249, 261);
+            this.mskSSS.Mask = "00-0000000-0";
+            this.mskSSS.Name = "mskSSS";
+            this.mskSSS.Size = new System.Drawing.Size(90, 23);
+            this.mskSSS.TabIndex = 27;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(247, 244);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(25, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "SSS";
+            // 
+            // txtBoxCreditLimit
+            // 
+            this.txtBoxCreditLimit.BackColor = System.Drawing.Color.Khaki;
+            this.txtBoxCreditLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxCreditLimit.Location = new System.Drawing.Point(4, 34);
+            this.txtBoxCreditLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxCreditLimit.MaxLength = 75;
+            this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
+            this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
+            this.txtBoxCreditLimit.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(2, 17);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Credit Limit";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(166, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 13);
+            this.label15.TabIndex = 20;
+            this.label15.Text = "Net Days";
+            // 
+            // cBoxNetDays
+            // 
+            this.cBoxNetDays.BackColor = System.Drawing.Color.Khaki;
+            this.cBoxNetDays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxNetDays.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cBoxNetDays.FormattingEnabled = true;
+            this.cBoxNetDays.Items.AddRange(new object[] {
+            "1-30",
+            "31-60",
+            "61-90",
+            "91+"});
+            this.cBoxNetDays.Location = new System.Drawing.Point(170, 35);
+            this.cBoxNetDays.Name = "cBoxNetDays";
+            this.cBoxNetDays.Size = new System.Drawing.Size(121, 21);
+            this.cBoxNetDays.TabIndex = 29;
             // 
             // mNewDirectory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(508, 304);
+            this.ClientSize = new System.Drawing.Size(508, 415);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
@@ -436,6 +549,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -469,5 +584,14 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label lblWarning;
+        private System.Windows.Forms.MaskedTextBox mskSSS;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox mskTIN;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cBoxNetDays;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtBoxCreditLimit;
+        private System.Windows.Forms.Label label14;
     }
 }

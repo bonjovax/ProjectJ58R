@@ -54,12 +54,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.mskSSS = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.mskTIN = new System.Windows.Forms.MaskedTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cBoxNetDays = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtBoxCreditLimit = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cBoxSuspended = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.groupBox1.Controls.Add(this.mskSSS);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.mskTIN);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtBoxZip);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtBoxProv);
@@ -87,7 +102,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(586, 305);
+            this.groupBox1.Size = new System.Drawing.Size(586, 351);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Information";
@@ -332,7 +347,7 @@
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(526, 311);
+            this.btnExit.Location = new System.Drawing.Point(528, 427);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 53);
             this.btnExit.TabIndex = 13;
@@ -353,7 +368,7 @@
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnUpdate.Location = new System.Drawing.Point(463, 311);
+            this.btnUpdate.Location = new System.Drawing.Point(465, 427);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(61, 53);
             this.btnUpdate.TabIndex = 12;
@@ -362,13 +377,125 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // mskSSS
+            // 
+            this.mskSSS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskSSS.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskSSS.Location = new System.Drawing.Point(297, 322);
+            this.mskSSS.Mask = "00-0000000-0";
+            this.mskSSS.Name = "mskSSS";
+            this.mskSSS.Size = new System.Drawing.Size(90, 23);
+            this.mskSSS.TabIndex = 31;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(295, 305);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 17);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "SSS";
+            // 
+            // mskTIN
+            // 
+            this.mskTIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskTIN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskTIN.Location = new System.Drawing.Point(184, 322);
+            this.mskTIN.Mask = "000-000-000-000";
+            this.mskTIN.Name = "mskTIN";
+            this.mskTIN.Size = new System.Drawing.Size(109, 23);
+            this.mskTIN.TabIndex = 29;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(182, 305);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(28, 17);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "TIN";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cBoxSuspended);
+            this.groupBox2.Controls.Add(this.cBoxNetDays);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txtBoxCreditLimit);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(3, 359);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(500, 65);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Terms";
+            // 
+            // cBoxNetDays
+            // 
+            this.cBoxNetDays.BackColor = System.Drawing.Color.Khaki;
+            this.cBoxNetDays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxNetDays.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cBoxNetDays.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.cBoxNetDays.FormattingEnabled = true;
+            this.cBoxNetDays.Items.AddRange(new object[] {
+            "1-30",
+            "31-60",
+            "61-90",
+            "91+"});
+            this.cBoxNetDays.Location = new System.Drawing.Point(170, 35);
+            this.cBoxNetDays.Name = "cBoxNetDays";
+            this.cBoxNetDays.Size = new System.Drawing.Size(121, 21);
+            this.cBoxNetDays.TabIndex = 29;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(167, 15);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 17);
+            this.label15.TabIndex = 20;
+            this.label15.Text = "Net Days";
+            // 
+            // txtBoxCreditLimit
+            // 
+            this.txtBoxCreditLimit.BackColor = System.Drawing.Color.Khaki;
+            this.txtBoxCreditLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxCreditLimit.Location = new System.Drawing.Point(4, 34);
+            this.txtBoxCreditLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxCreditLimit.MaxLength = 75;
+            this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
+            this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
+            this.txtBoxCreditLimit.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(1, 15);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(74, 17);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Credit Limit";
+            // 
+            // cBoxSuspended
+            // 
+            this.cBoxSuspended.AutoSize = true;
+            this.cBoxSuspended.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cBoxSuspended.Location = new System.Drawing.Point(408, 35);
+            this.cBoxSuspended.Name = "cBoxSuspended";
+            this.cBoxSuspended.Size = new System.Drawing.Size(89, 21);
+            this.cBoxSuspended.TabIndex = 30;
+            this.cBoxSuspended.Text = "Suspended";
+            this.cBoxSuspended.UseVisualStyleBackColor = true;
+            // 
             // mEditDirectory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(593, 368);
+            this.ClientSize = new System.Drawing.Size(593, 485);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.groupBox1);
@@ -384,6 +511,8 @@
             this.Load += new System.EventHandler(this.mEditDirectory_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -415,5 +544,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.MaskedTextBox mskSSS;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox mskTIN;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cBoxNetDays;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtBoxCreditLimit;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox cBoxSuspended;
     }
 }

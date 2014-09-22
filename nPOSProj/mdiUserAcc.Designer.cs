@@ -56,6 +56,7 @@
             this.txtBoxUserID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chkOrder = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.chkSystemAccess = new System.Windows.Forms.CheckBox();
             this.chkUserAccounts = new System.Windows.Forms.CheckBox();
@@ -79,7 +80,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtBoxUUserID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.chkOrder = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -384,6 +384,18 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Restrictions";
             // 
+            // chkOrder
+            // 
+            this.chkOrder.AutoSize = true;
+            this.chkOrder.Enabled = false;
+            this.chkOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkOrder.Location = new System.Drawing.Point(19, 66);
+            this.chkOrder.Name = "chkOrder";
+            this.chkOrder.Size = new System.Drawing.Size(67, 25);
+            this.chkOrder.TabIndex = 9;
+            this.chkOrder.Text = "Order";
+            this.chkOrder.UseVisualStyleBackColor = true;
+            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.OrangeRed;
@@ -408,9 +420,10 @@
             // 
             this.chkSystemAccess.AutoSize = true;
             this.chkSystemAccess.Enabled = false;
+            this.chkSystemAccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSystemAccess.Location = new System.Drawing.Point(19, 18);
             this.chkSystemAccess.Name = "chkSystemAccess";
-            this.chkSystemAccess.Size = new System.Drawing.Size(166, 25);
+            this.chkSystemAccess.Size = new System.Drawing.Size(163, 25);
             this.chkSystemAccess.TabIndex = 7;
             this.chkSystemAccess.Text = "** System Access **";
             this.chkSystemAccess.UseVisualStyleBackColor = true;
@@ -420,9 +433,10 @@
             // 
             this.chkUserAccounts.AutoSize = true;
             this.chkUserAccounts.Enabled = false;
-            this.chkUserAccounts.Location = new System.Drawing.Point(199, 92);
+            this.chkUserAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkUserAccounts.Location = new System.Drawing.Point(199, 89);
             this.chkUserAccounts.Name = "chkUserAccounts";
-            this.chkUserAccounts.Size = new System.Drawing.Size(128, 25);
+            this.chkUserAccounts.Size = new System.Drawing.Size(125, 25);
             this.chkUserAccounts.TabIndex = 14;
             this.chkUserAccounts.Text = "User Accounts";
             this.chkUserAccounts.UseVisualStyleBackColor = true;
@@ -432,9 +446,10 @@
             // 
             this.chkConfiguration.AutoSize = true;
             this.chkConfiguration.Enabled = false;
+            this.chkConfiguration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkConfiguration.Location = new System.Drawing.Point(331, 18);
             this.chkConfiguration.Name = "chkConfiguration";
-            this.chkConfiguration.Size = new System.Drawing.Size(125, 25);
+            this.chkConfiguration.Size = new System.Drawing.Size(122, 25);
             this.chkConfiguration.TabIndex = 15;
             this.chkConfiguration.Text = "Configuration";
             this.chkConfiguration.UseVisualStyleBackColor = true;
@@ -444,9 +459,10 @@
             // 
             this.chkGiftCards.AutoSize = true;
             this.chkGiftCards.Enabled = false;
+            this.chkGiftCards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkGiftCards.Location = new System.Drawing.Point(199, 66);
             this.chkGiftCards.Name = "chkGiftCards";
-            this.chkGiftCards.Size = new System.Drawing.Size(98, 25);
+            this.chkGiftCards.Size = new System.Drawing.Size(95, 25);
             this.chkGiftCards.TabIndex = 13;
             this.chkGiftCards.Text = "Gift Cards";
             this.chkGiftCards.UseVisualStyleBackColor = true;
@@ -456,9 +472,10 @@
             // 
             this.chkInventory.AutoSize = true;
             this.chkInventory.Enabled = false;
+            this.chkInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkInventory.Location = new System.Drawing.Point(199, 18);
             this.chkInventory.Name = "chkInventory";
-            this.chkInventory.Size = new System.Drawing.Size(95, 25);
+            this.chkInventory.Size = new System.Drawing.Size(92, 25);
             this.chkInventory.TabIndex = 11;
             this.chkInventory.Text = "Inventory";
             this.chkInventory.UseVisualStyleBackColor = true;
@@ -468,9 +485,10 @@
             // 
             this.chkReports.AutoSize = true;
             this.chkReports.Enabled = false;
+            this.chkReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkReports.Location = new System.Drawing.Point(199, 41);
             this.chkReports.Name = "chkReports";
-            this.chkReports.Size = new System.Drawing.Size(83, 25);
+            this.chkReports.Size = new System.Drawing.Size(80, 25);
             this.chkReports.TabIndex = 12;
             this.chkReports.Text = "Reports";
             this.chkReports.UseVisualStyleBackColor = true;
@@ -480,9 +498,10 @@
             // 
             this.chkCustomers.AutoSize = true;
             this.chkCustomers.Enabled = false;
-            this.chkCustomers.Location = new System.Drawing.Point(19, 92);
+            this.chkCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkCustomers.Location = new System.Drawing.Point(19, 89);
             this.chkCustomers.Name = "chkCustomers";
-            this.chkCustomers.Size = new System.Drawing.Size(104, 25);
+            this.chkCustomers.Size = new System.Drawing.Size(101, 25);
             this.chkCustomers.TabIndex = 10;
             this.chkCustomers.Text = "Customers";
             this.chkCustomers.UseVisualStyleBackColor = true;
@@ -492,9 +511,10 @@
             // 
             this.chkSales.AutoSize = true;
             this.chkSales.Enabled = false;
+            this.chkSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSales.Location = new System.Drawing.Point(19, 41);
             this.chkSales.Name = "chkSales";
-            this.chkSales.Size = new System.Drawing.Size(65, 25);
+            this.chkSales.Size = new System.Drawing.Size(62, 25);
             this.chkSales.TabIndex = 8;
             this.chkSales.Text = "Sales";
             this.chkSales.UseVisualStyleBackColor = true;
@@ -682,17 +702,6 @@
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 27;
             this.label12.Text = "User ID";
-            // 
-            // chkOrder
-            // 
-            this.chkOrder.AutoSize = true;
-            this.chkOrder.Enabled = false;
-            this.chkOrder.Location = new System.Drawing.Point(19, 66);
-            this.chkOrder.Name = "chkOrder";
-            this.chkOrder.Size = new System.Drawing.Size(70, 25);
-            this.chkOrder.TabIndex = 9;
-            this.chkOrder.Text = "Order";
-            this.chkOrder.UseVisualStyleBackColor = true;
             // 
             // mdiUserAcc
             // 
