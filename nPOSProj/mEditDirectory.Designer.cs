@@ -350,7 +350,7 @@
             this.btnExit.Location = new System.Drawing.Point(528, 427);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 53);
-            this.btnExit.TabIndex = 13;
+            this.btnExit.TabIndex = 36;
             this.btnExit.Text = "&Exit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = false;
@@ -371,7 +371,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(465, 427);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(61, 53);
-            this.btnUpdate.TabIndex = 12;
+            this.btnUpdate.TabIndex = 35;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -445,7 +445,7 @@
             this.cBoxNetDays.Location = new System.Drawing.Point(170, 35);
             this.cBoxNetDays.Name = "cBoxNetDays";
             this.cBoxNetDays.Size = new System.Drawing.Size(121, 21);
-            this.cBoxNetDays.TabIndex = 29;
+            this.cBoxNetDays.TabIndex = 33;
             // 
             // label15
             // 
@@ -463,10 +463,10 @@
             this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxCreditLimit.Location = new System.Drawing.Point(4, 34);
             this.txtBoxCreditLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxCreditLimit.MaxLength = 75;
+            this.txtBoxCreditLimit.MaxLength = 10;
             this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
             this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
-            this.txtBoxCreditLimit.TabIndex = 28;
+            this.txtBoxCreditLimit.TabIndex = 32;
             // 
             // label14
             // 
@@ -484,7 +484,7 @@
             this.cBoxSuspended.Location = new System.Drawing.Point(408, 35);
             this.cBoxSuspended.Name = "cBoxSuspended";
             this.cBoxSuspended.Size = new System.Drawing.Size(89, 21);
-            this.cBoxSuspended.TabIndex = 30;
+            this.cBoxSuspended.TabIndex = 34;
             this.cBoxSuspended.Text = "Suspended";
             this.cBoxSuspended.UseVisualStyleBackColor = true;
             // 

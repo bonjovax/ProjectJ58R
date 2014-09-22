@@ -488,7 +488,7 @@
             this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxCreditLimit.Location = new System.Drawing.Point(4, 34);
             this.txtBoxCreditLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxCreditLimit.MaxLength = 75;
+            this.txtBoxCreditLimit.MaxLength = 10;
             this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
             this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
             this.txtBoxCreditLimit.TabIndex = 28;
