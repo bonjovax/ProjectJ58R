@@ -170,7 +170,7 @@ namespace nPOSProj
 
         private void txtBoxFirst_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
             {
                 btnSave.Enabled = true;
             }
@@ -182,7 +182,7 @@ namespace nPOSProj
 
         private void txtBoxMiddle_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
             {
                 btnSave.Enabled = true;
             }
@@ -194,7 +194,7 @@ namespace nPOSProj
 
         private void txtBoxLast_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
             {
                 btnSave.Enabled = true;
             }
@@ -206,7 +206,7 @@ namespace nPOSProj
 
         private void txtBoxPhone_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
             {
                 btnSave.Enabled = true;
             }
@@ -218,7 +218,7 @@ namespace nPOSProj
 
         private void txtBoxAddress_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
             {
                 btnSave.Enabled = true;
             }
@@ -230,7 +230,7 @@ namespace nPOSProj
 
         private void txtBoxCity_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
             {
                 btnSave.Enabled = true;
             }
@@ -242,7 +242,7 @@ namespace nPOSProj
 
         private void txtBoxProv_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
             {
                 btnSave.Enabled = true;
             }
@@ -273,7 +273,14 @@ namespace nPOSProj
                     customers.Zip_code = txtBoxZip.Text;
                     customers.Tin = mskTIN.Text;
                     customers.Sss = mskSSS.Text;
-                    customers.Creditlimit = Convert.ToDouble(txtBoxCreditLimit.Text);
+                    if (txtBoxCreditLimit.Text != "")
+                    {
+                        customers.Creditlimit = Convert.ToDouble(txtBoxCreditLimit.Text);
+                    }
+                    else
+                    {
+                        customers.Creditlimit = 0;
+                    }
                     //1-30 31-60 61-90 91+
                     if (cBoxNetDays.Text == "1-30")
                     {
@@ -318,21 +325,9 @@ namespace nPOSProj
             }
         }
 
-        private void txtBoxCreditLimit_TextChanged(object sender, EventArgs e)
-        {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "" && Convert.ToDouble(txtBoxIR.Text) != 0)
-            {
-                btnSave.Enabled = true;
-            }
-            else
-            {
-                btnSave.Enabled = false;
-            }
-        }
-
         private void cBoxNetDays_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && txtBoxCreditLimit.Text != "" && cBoxNetDays.Text != "")
+            if (txtBoxCustomerCode.Text != "" && txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "" && cBoxNetDays.Text != "")
             {
                 btnSave.Enabled = true;
             }
@@ -344,7 +339,7 @@ namespace nPOSProj
 
         private void txtBoxIR_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }

@@ -522,7 +522,6 @@
             this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
             this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
             this.txtBoxCreditLimit.TabIndex = 28;
-            this.txtBoxCreditLimit.TextChanged += new System.EventHandler(this.txtBoxCreditLimit_TextChanged);
             this.txtBoxCreditLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxCreditLimit_KeyPress);
             // 
             // label14

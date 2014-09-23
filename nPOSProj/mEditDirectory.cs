@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace nPOSProj
 {
@@ -102,7 +103,8 @@ namespace nPOSProj
             {
                 cBoxSuspended.Checked = false;
             }
-            txtBoxIR.Text = Convert.ToDouble(getScam[16]).ToString("#,###,##0.00");
+            String x = Convert.ToDouble(getScam[16]).ToString("#0.##%");
+            txtBoxIR.Text = x.Replace("%", "");
             dateTimePicker1.Text = Convert.ToDateTime(getScam[17]).ToString("MM/dd/yyyy");
         }
 
@@ -231,7 +233,14 @@ namespace nPOSProj
                     customers.Zip_code = txtBoxZip.Text;
                     customers.Tin = mskTIN.Text;
                     customers.Sss = mskSSS.Text;
-                    customers.Creditlimit = Convert.ToDouble(txtBoxCreditLimit.Text);
+                    if (txtBoxCreditLimit.Text != "")
+                    {
+                        customers.Creditlimit = Convert.ToDouble(txtBoxCreditLimit.Text);
+                    }
+                    else
+                    {
+                        customers.Creditlimit = 0;
+                    }
                     if (cBoxNetDays.Text == "1-30")
                     {
                         customers.Netdays = 30;
@@ -312,7 +321,7 @@ namespace nPOSProj
 
         private void txtBoxIR_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }

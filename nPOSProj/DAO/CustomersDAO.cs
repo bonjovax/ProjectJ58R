@@ -221,7 +221,7 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?n", sss);
                 cmd.Parameters.AddWithValue("?o", creditlimit);
                 cmd.Parameters.AddWithValue("?p", netdays);
-                cmd.Parameters.AddWithValue("?q", interestrate);
+                cmd.Parameters.AddWithValue("?q", "." + interestrate);
                 cmd.Parameters.AddWithValue("?r", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -257,7 +257,7 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?x", sss);
                 cmd.Parameters.AddWithValue("?y", creditlimit);
                 cmd.Parameters.AddWithValue("?z", netdays);
-                cmd.Parameters.AddWithValue("?aa", interest_rate);
+                cmd.Parameters.AddWithValue("?aa", "." + interest_rate);
                 cmd.Parameters.AddWithValue("?bb", Convert.ToDateTime(duedate).ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("?k", custcode);
                 cmd.Parameters.AddWithValue("?suspend", is_suspended);
