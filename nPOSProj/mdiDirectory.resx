@@ -203,6 +203,26 @@
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="btnPing.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="btnPing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAppJREFUaEPtmC9Q40AUhysQiAoEAoFAnEBWIhAIBAKBOIFEnEQgKxCdQSIQFQjE
+        iZMViIoTCATyxAkEogKBQCAQCAQzLd/v5SUlLQlhpkkj9pv5zf57u+9tkt3uthEIBAKBQCBQU4bD4So6
+        RF3023UyGo220YKb1Q+CVOCXBGmQf0P3rheveyI58C71QUER3LMH+YjOyOqJr3j7gsrU2wRJ+2jVOs8b
+        AjlXUFnQPkCHZJuyJ92kfIc04ZYNMi8IYldBFkEBo331o7jik/hPfj7rAsdLBPCg4L4DfU7Vn1RrRm+h
+        YwNWDc5zP5086Bu/iQ75N9J1G7QqcLiIY9tZsqBd3/4f9NeDTKCsJ7+Glsm/ohMfuhpwmPvt0663k3zb
+        5FsedALlK7WR3qBbM6wKHP7yOKagTXv9opsmUNc2gw9gq3WgH7xXN6sGfHeiEKYhmGs3S0HTVmQxBtsj
+        pC125GblwPhLaNuLegPm9DNoG7hZCpoOIosx2PZI7M242ezByQ6KjwIDEm2f+yrnkDouUG7S5y5qGkPd
+        P6SF/umkZwKD37g/g/IRiXaP1M4yCe06xGmttEnvo9o01OvY8YIu3N3sYfCpCXh936tmwZY5KwMNTrD2
+        i+uTWfb6Ncq5vwVFYIyeOSoT/LQid+OFLHCeuZiLQH9tufZASgdnt6jvxQTqrqJwvg99f/ow5YM/2wYn
+        nVKlY8Upyl3UH8FWi7q87z4LHOsiote+6VUJ1G+gqa1yEmy6JHY3qBwc62lr39bTbnt1gtrRnttcI10n
+        tdfrQHeMfrjpfFEwBKqnqQvJHqrvZT0LgtYJM77j6ralpx5f4vNU3cItgk/kDOmYUYT6/SsR4wF+RX0n
+        wFvQwv1KO24eCAQCgUAgUD2Nxjt4Nk2B86GG/gAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

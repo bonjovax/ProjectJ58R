@@ -251,6 +251,18 @@ namespace nPOSProj.VO
             check = customers.checkCustcode(Custcode);
             return check;
         }
+        public Double getIR()
+        {
+            Double ir = 0;
+            customers = new DAO.CustomersDAO();
+            ir = customers.grabInterestRate(Custcode);
+            return ir;
+        }
+        public void PingInterest()
+        {
+            customers = new DAO.CustomersDAO();
+            customers.PingIR(Balance, Custcode);
+        }
         #endregion
         #region Payments
         public String[,] ReadPaymentsDefualt()

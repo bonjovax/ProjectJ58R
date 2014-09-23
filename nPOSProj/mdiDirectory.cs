@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace nPOSProj
 {
@@ -78,6 +79,7 @@ namespace nPOSProj
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnDelete.Enabled = true;
+            btnPing.Enabled = true;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -144,6 +146,31 @@ namespace nPOSProj
                     dt.Rows.Add(dickrow);
                 }
                 dt.WriteXml(saveFileDialog1.FileName);
+            }
+        }
+
+        private void btnPing_Click(object sender, EventArgs e)
+        {
+            Double Init;
+            Double Finale;
+            customer = new VO.CustomersVO();
+            DialogResult dlg = MessageBox.Show("Do you wish to Ping this Account?\nThis will be Undone!", "Ping Interest", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            try
+            {
+                if (dlg == System.Windows.Forms.DialogResult.Yes)
+                {
+                    customer.Custcode = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                    Init = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[5].Value) * customer.getIR();
+                    Finale = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[5].Value) + Init;
+                    customer.Balance = Finale;
+                    customer.PingInterest();
+                    dataGridView1.SelectedRows[0].Cells[5].Value = Finale.ToString("#,###,##0.00");
+                    btnPing.Enabled = false;
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Ping Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

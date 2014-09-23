@@ -676,6 +676,62 @@ namespace nPOSProj.DAO
             }
             return korek;
         }
+        //
+        public Double grabInterestRate(String custcode)
+        {
+            Double IR = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT crm_interest AS a FROM crm_customer ";
+            query += "WHERE crm_custcode = ?crm_custcode";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?crm_custcode", custcode);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    IR = Convert.ToDouble(rdr["a"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                con.Close();
+            }
+            return IR;
+        }
+        public void PingIR(Double crm_balance, String custcode)
+        {
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "UPDATE crm_customer SET crm_balance = ?a ";
+            query += "WHERE crm_custcode = ?crm_custcode";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", crm_balance);
+                cmd.Parameters.AddWithValue("?crm_custcode", custcode);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
         #region Checkout Part
         public void CreditAccount(Double crm_balance, Double crm_payable, String crm_custcode)

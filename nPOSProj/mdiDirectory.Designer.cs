@@ -43,6 +43,7 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.btnXML = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnPing = new System.Windows.Forms.Button();
             this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Firstname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -174,7 +175,7 @@
             this.btnXML.ForeColor = System.Drawing.Color.White;
             this.btnXML.Image = ((System.Drawing.Image)(resources.GetObject("btnXML.Image")));
             this.btnXML.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXML.Location = new System.Drawing.Point(217, -1);
+            this.btnXML.Location = new System.Drawing.Point(216, -1);
             this.btnXML.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnXML.Name = "btnXML";
             this.btnXML.Size = new System.Drawing.Size(106, 42);
@@ -183,6 +184,30 @@
             this.btnXML.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXML.UseVisualStyleBackColor = false;
             this.btnXML.Click += new System.EventHandler(this.btnXML_Click);
+            // 
+            // btnPing
+            // 
+            this.btnPing.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnPing.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPing.Enabled = false;
+            this.btnPing.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(171)))));
+            this.btnPing.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(171)))));
+            this.btnPing.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(171)))));
+            this.btnPing.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(171)))));
+            this.btnPing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPing.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPing.ForeColor = System.Drawing.Color.White;
+            this.btnPing.Image = ((System.Drawing.Image)(resources.GetObject("btnPing.Image")));
+            this.btnPing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPing.Location = new System.Drawing.Point(321, -1);
+            this.btnPing.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnPing.Name = "btnPing";
+            this.btnPing.Size = new System.Drawing.Size(126, 42);
+            this.btnPing.TabIndex = 12;
+            this.btnPing.Text = "&Ping Interest";
+            this.btnPing.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPing.UseVisualStyleBackColor = false;
+            this.btnPing.Click += new System.EventHandler(this.btnPing_Click);
             // 
             // CustomerCode
             // 
@@ -232,7 +257,7 @@
             // AccountBalance
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.Format = "N2";
             dataGridViewCellStyle7.NullValue = null;
             this.AccountBalance.DefaultCellStyle = dataGridViewCellStyle7;
             this.AccountBalance.HeaderText = "Balance";
@@ -252,6 +277,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(171)))));
             this.ClientSize = new System.Drawing.Size(997, 491);
+            this.Controls.Add(this.btnPing);
             this.Controls.Add(this.btnXML);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnFilter);
@@ -279,6 +305,7 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnXML;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btnPing;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Company;
         private System.Windows.Forms.DataGridViewTextBoxColumn Firstname;
