@@ -505,7 +505,7 @@
             this.txtBoxIR.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxIR.Location = new System.Drawing.Point(294, 34);
             this.txtBoxIR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxIR.MaxLength = 5;
+            this.txtBoxIR.MaxLength = 3;
             this.txtBoxIR.Name = "txtBoxIR";
             this.txtBoxIR.Size = new System.Drawing.Size(92, 23);
             this.txtBoxIR.TabIndex = 34;
