@@ -28,7 +28,7 @@ namespace nPOSProj
         private void autoCompleteCustCode()
         {
             con.ConnectionString = dbcon.getConnectionString();
-            String sql = "SELECT DISTINCT crm_custcode AS anus FROM crm_customer ORDER BY crm_custcode ASC";
+            String sql = "SELECT DISTINCT crm_custcode AS anus FROM crm_customer WHERE is_suspended = 0 ORDER BY crm_custcode ASC";
             try
             {
                 con.Open();
@@ -55,7 +55,7 @@ namespace nPOSProj
         private void autoCompleteCompany()
         {
             con.ConnectionString = dbcon.getConnectionString();
-            String sql = "SELECT crm_companyname AS anus FROM crm_customer ORDER BY crm_companyname ASC";
+            String sql = "SELECT crm_companyname AS anus FROM crm_customer WHERE is_suspended = 0 ORDER BY crm_companyname ASC";
             try
             {
                 con.Open();
@@ -643,10 +643,37 @@ namespace nPOSProj
 
         private void btnAProceed_Click(object sender, EventArgs e)
         {
-            Custcode = txtBoxCustCode.Text;
-            Company = txtBoxCompany.Text;
-            IsARTX = true;
-            this.Close();
+            customers = new VO.CustomersVO();
+            customers.Custcode = txtBoxCustCode.Text;
+            customers.Companyname = txtBoxCompany.Text;
+            String[] getScammer = customers.ReadCheckoutInfo();
+            Double creditlimit = 0;
+            Double customerbalance = 0;
+            Double currentbalance = 0;
+            customerbalance = Convert.ToDouble(getScammer[0]);
+            creditlimit = Convert.ToDouble(getScammer[1]);
+            currentbalance = customerbalance + Convert.ToDouble(lblTotalAmountAR.Text);
+            //
+            if (creditlimit == 0)
+            {
+                Custcode = txtBoxCustCode.Text;
+                Company = txtBoxCompany.Text;
+                IsARTX = true;
+                this.Close();
+            }
+            if (creditlimit >= currentbalance)
+            {
+                Custcode = txtBoxCustCode.Text;
+                Company = txtBoxCompany.Text;
+                IsARTX = true;
+                this.Close();
+            }
+            else
+            {
+                cstDlgAlert alert = new cstDlgAlert();
+                alert.MsgDiri = "Account has Exceeded \nP " + creditlimit.ToString("#,###,##0.00") + " Credit Limit";
+                alert.ShowDialog();
+            }
         }
     }
 }

@@ -75,6 +75,33 @@ namespace nPOSProj
             txtBoxCity.Text = getScam[8].ToString();
             txtBoxProv.Text = getScam[9].ToString();
             txtBoxZip.Text = getScam[10].ToString();
+            mskTIN.Text = getScam[11].ToString();
+            mskSSS.Text = getScam[12].ToString();
+            txtBoxCreditLimit.Text = Convert.ToDouble(getScam[13]).ToString("#,###,##0.00");
+            if (getScam[14].ToString() == "30")
+            {
+                cBoxNetDays.Text = "1-30";
+            }
+            if (getScam[14].ToString() == "60")
+            {
+                cBoxNetDays.Text = "31-60";
+            }
+            if (getScam[14].ToString() == "90")
+            {
+                cBoxNetDays.Text = "61-90";
+            }
+            if (getScam[14].ToString() == "120")
+            {
+                cBoxNetDays.Text = "91+";
+            }
+            if (getScam[15].ToString() == "1")
+            {
+                cBoxSuspended.Checked = true;
+            }
+            else
+            {
+                cBoxSuspended.Checked = false;
+            }
         }
 
         private void txtBoxCompany_TextChanged(object sender, EventArgs e)
@@ -198,6 +225,33 @@ namespace nPOSProj
                 customers.City = txtBoxCity.Text;
                 customers.Province = txtBoxProv.Text;
                 customers.Zip_code = txtBoxZip.Text;
+                customers.Tin = mskTIN.Text;
+                customers.Sss = mskSSS.Text;
+                customers.Creditlimit = Convert.ToDouble(txtBoxCreditLimit.Text);
+                if (cBoxNetDays.Text == "1-30")
+                {
+                    customers.Netdays = 30;
+                }
+                if (cBoxNetDays.Text == "31-60")
+                {
+                    customers.Netdays = 60;
+                }
+                if (cBoxNetDays.Text == "61-90")
+                {
+                    customers.Netdays = 90;
+                }
+                if (cBoxNetDays.Text == "91+")
+                {
+                    customers.Netdays = 120;
+                }
+                if (cBoxSuspended.Checked == true)
+                {
+                    customers.Is_suspended = 1;
+                }
+                else
+                {
+                    customers.Is_suspended = 0;
+                }
                 customers.Custcode = txtBoxCustomerCode.Text;
                 Company = txtBoxCompany.Text;
                 First = txtBoxFirst.Text;
@@ -212,6 +266,30 @@ namespace nPOSProj
         {
             Activity = false;
             this.Close();
+        }
+
+        private void txtBoxCreditLimit_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "")
+            {
+                btnUpdate.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+            }
+        }
+
+        private void cBoxNetDays_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txtBoxCompany.Text != "" && txtBoxFirst.Text != "" && txtBoxMiddle.Text != "" && txtBoxLast.Text != "" && txtBoxPhone.Text != "" && txtBoxAddress.Text != "" && txtBoxCity.Text != "" && txtBoxProv.Text != "")
+            {
+                btnUpdate.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+            }
         }
     }
 }

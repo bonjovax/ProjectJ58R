@@ -133,6 +133,42 @@ namespace nPOSProj.VO
             get { return amountPaid; }
             set { amountPaid = value; }
         }
+
+        private String sss;
+
+        public String Sss
+        {
+            get { return sss; }
+            set { sss = value; }
+        }
+        private String tin;
+
+        public String Tin
+        {
+            get { return tin; }
+            set { tin = value; }
+        }
+        private Double creditlimit;
+
+        public Double Creditlimit
+        {
+            get { return creditlimit; }
+            set { creditlimit = value; }
+        }
+        private Int32 netdays;
+
+        public Int32 Netdays
+        {
+            get { return netdays; }
+            set { netdays = value; }
+        }
+        private Int32 is_suspended;
+
+        public Int32 Is_suspended
+        {
+            get { return is_suspended; }
+            set { is_suspended = value; }
+        }
         #endregion
         public CustomersVO() { }
 
@@ -167,20 +203,27 @@ namespace nPOSProj.VO
         public String[] ReadEdits()
         {
             customers = new DAO.CustomersDAO();
-            String[] jefreak = new String[11];
+            String[] jefreak = new String[16];
             customers.ReadEdit(Custcode);
             jefreak = customers.ReadEdit(Custcode);
             return jefreak;
         }
+        public String[] ReadCheckoutInfo()
+        {
+            customers = new DAO.CustomersDAO();
+            String[] luuya = new String[2];
+            luuya = customers.ReadData(Custcode, Companyname);
+            return luuya;
+        }
         public void AddCustomers()
         {
             customers = new DAO.CustomersDAO();
-            customers.Add(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code);
+            customers.Add(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays);
         }
         public void UpdateCustomers()
         {
             customers = new DAO.CustomersDAO();
-            customers.Update(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code);
+            customers.Update(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays, Is_suspended);
         }
         public void DeleteCustomers()
         {

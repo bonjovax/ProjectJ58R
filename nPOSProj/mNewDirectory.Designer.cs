@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mNewDirectory));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mskSSS = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.mskTIN = new System.Windows.Forms.MaskedTextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.lblWarning = new System.Windows.Forms.Label();
             this.txtBoxZip = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,14 +61,10 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.mskTIN = new System.Windows.Forms.MaskedTextBox();
-            this.mskSSS = new System.Windows.Forms.MaskedTextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.cBoxNetDays = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtBoxCreditLimit = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cBoxNetDays = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +108,44 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Information";
+            // 
+            // mskSSS
+            // 
+            this.mskSSS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskSSS.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskSSS.Location = new System.Drawing.Point(249, 261);
+            this.mskSSS.Mask = "00-0000000-0";
+            this.mskSSS.Name = "mskSSS";
+            this.mskSSS.Size = new System.Drawing.Size(90, 23);
+            this.mskSSS.TabIndex = 27;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(247, 244);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(25, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "SSS";
+            // 
+            // mskTIN
+            // 
+            this.mskTIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskTIN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskTIN.Location = new System.Drawing.Point(136, 261);
+            this.mskTIN.Mask = "000-000-000-000";
+            this.mskTIN.Name = "mskTIN";
+            this.mskTIN.Size = new System.Drawing.Size(109, 23);
+            this.mskTIN.TabIndex = 25;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(134, 244);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "TIN";
             // 
             // lblWarning
             // 
@@ -443,74 +481,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Terms";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(134, 244);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(23, 13);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "TIN";
-            // 
-            // mskTIN
-            // 
-            this.mskTIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mskTIN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskTIN.Location = new System.Drawing.Point(136, 261);
-            this.mskTIN.Mask = "000-000-000-000";
-            this.mskTIN.Name = "mskTIN";
-            this.mskTIN.Size = new System.Drawing.Size(109, 23);
-            this.mskTIN.TabIndex = 25;
-            // 
-            // mskSSS
-            // 
-            this.mskSSS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mskSSS.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskSSS.Location = new System.Drawing.Point(249, 261);
-            this.mskSSS.Mask = "00-0000000-0";
-            this.mskSSS.Name = "mskSSS";
-            this.mskSSS.Size = new System.Drawing.Size(90, 23);
-            this.mskSSS.TabIndex = 27;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(247, 244);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(25, 13);
-            this.label13.TabIndex = 26;
-            this.label13.Text = "SSS";
-            // 
-            // txtBoxCreditLimit
-            // 
-            this.txtBoxCreditLimit.BackColor = System.Drawing.Color.Khaki;
-            this.txtBoxCreditLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxCreditLimit.Location = new System.Drawing.Point(4, 34);
-            this.txtBoxCreditLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxCreditLimit.MaxLength = 10;
-            this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
-            this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
-            this.txtBoxCreditLimit.TabIndex = 28;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(2, 17);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 13);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Credit Limit";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(166, 17);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 13);
-            this.label15.TabIndex = 20;
-            this.label15.Text = "Net Days";
-            // 
             // cBoxNetDays
             // 
             this.cBoxNetDays.BackColor = System.Drawing.Color.Khaki;
@@ -526,6 +496,39 @@
             this.cBoxNetDays.Name = "cBoxNetDays";
             this.cBoxNetDays.Size = new System.Drawing.Size(121, 21);
             this.cBoxNetDays.TabIndex = 29;
+            this.cBoxNetDays.SelectedIndexChanged += new System.EventHandler(this.cBoxNetDays_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(166, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 13);
+            this.label15.TabIndex = 20;
+            this.label15.Text = "Net Days";
+            // 
+            // txtBoxCreditLimit
+            // 
+            this.txtBoxCreditLimit.BackColor = System.Drawing.Color.Khaki;
+            this.txtBoxCreditLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxCreditLimit.Location = new System.Drawing.Point(4, 34);
+            this.txtBoxCreditLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxCreditLimit.MaxLength = 10;
+            this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
+            this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
+            this.txtBoxCreditLimit.TabIndex = 28;
+            this.txtBoxCreditLimit.TextChanged += new System.EventHandler(this.txtBoxCreditLimit_TextChanged);
+            this.txtBoxCreditLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxCreditLimit_KeyPress);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(2, 17);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Credit Limit";
             // 
             // mNewDirectory
             // 

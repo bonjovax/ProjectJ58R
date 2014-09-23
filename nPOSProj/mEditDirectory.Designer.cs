@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mEditDirectory));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mskSSS = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.mskTIN = new System.Windows.Forms.MaskedTextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtBoxZip = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtBoxProv = new System.Windows.Forms.TextBox();
@@ -54,16 +58,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.mskSSS = new System.Windows.Forms.MaskedTextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.mskTIN = new System.Windows.Forms.MaskedTextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cBoxSuspended = new System.Windows.Forms.CheckBox();
             this.cBoxNetDays = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtBoxCreditLimit = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.cBoxSuspended = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +106,44 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Information";
+            // 
+            // mskSSS
+            // 
+            this.mskSSS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskSSS.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskSSS.Location = new System.Drawing.Point(297, 322);
+            this.mskSSS.Mask = "00-0000000-0";
+            this.mskSSS.Name = "mskSSS";
+            this.mskSSS.Size = new System.Drawing.Size(90, 23);
+            this.mskSSS.TabIndex = 31;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(295, 305);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 17);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "SSS";
+            // 
+            // mskTIN
+            // 
+            this.mskTIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskTIN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskTIN.Location = new System.Drawing.Point(184, 322);
+            this.mskTIN.Mask = "000-000-000-000";
+            this.mskTIN.Name = "mskTIN";
+            this.mskTIN.Size = new System.Drawing.Size(109, 23);
+            this.mskTIN.TabIndex = 29;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(182, 305);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(28, 17);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "TIN";
             // 
             // txtBoxZip
             // 
@@ -377,44 +415,6 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // mskSSS
-            // 
-            this.mskSSS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mskSSS.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskSSS.Location = new System.Drawing.Point(297, 322);
-            this.mskSSS.Mask = "00-0000000-0";
-            this.mskSSS.Name = "mskSSS";
-            this.mskSSS.Size = new System.Drawing.Size(90, 23);
-            this.mskSSS.TabIndex = 31;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(295, 305);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 17);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "SSS";
-            // 
-            // mskTIN
-            // 
-            this.mskTIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mskTIN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskTIN.Location = new System.Drawing.Point(184, 322);
-            this.mskTIN.Mask = "000-000-000-000";
-            this.mskTIN.Name = "mskTIN";
-            this.mskTIN.Size = new System.Drawing.Size(109, 23);
-            this.mskTIN.TabIndex = 29;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(182, 305);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(28, 17);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "TIN";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cBoxSuspended);
@@ -429,6 +429,17 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Terms";
+            // 
+            // cBoxSuspended
+            // 
+            this.cBoxSuspended.AutoSize = true;
+            this.cBoxSuspended.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cBoxSuspended.Location = new System.Drawing.Point(408, 35);
+            this.cBoxSuspended.Name = "cBoxSuspended";
+            this.cBoxSuspended.Size = new System.Drawing.Size(89, 21);
+            this.cBoxSuspended.TabIndex = 34;
+            this.cBoxSuspended.Text = "Suspended";
+            this.cBoxSuspended.UseVisualStyleBackColor = true;
             // 
             // cBoxNetDays
             // 
@@ -446,6 +457,7 @@
             this.cBoxNetDays.Name = "cBoxNetDays";
             this.cBoxNetDays.Size = new System.Drawing.Size(121, 21);
             this.cBoxNetDays.TabIndex = 33;
+            this.cBoxNetDays.SelectedIndexChanged += new System.EventHandler(this.cBoxNetDays_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -460,13 +472,14 @@
             // 
             this.txtBoxCreditLimit.BackColor = System.Drawing.Color.Khaki;
             this.txtBoxCreditLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxCreditLimit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxCreditLimit.Location = new System.Drawing.Point(4, 34);
             this.txtBoxCreditLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxCreditLimit.MaxLength = 10;
             this.txtBoxCreditLimit.Name = "txtBoxCreditLimit";
             this.txtBoxCreditLimit.Size = new System.Drawing.Size(162, 23);
             this.txtBoxCreditLimit.TabIndex = 32;
+            this.txtBoxCreditLimit.TextChanged += new System.EventHandler(this.txtBoxCreditLimit_TextChanged);
             // 
             // label14
             // 
@@ -476,17 +489,6 @@
             this.label14.Size = new System.Drawing.Size(74, 17);
             this.label14.TabIndex = 18;
             this.label14.Text = "Credit Limit";
-            // 
-            // cBoxSuspended
-            // 
-            this.cBoxSuspended.AutoSize = true;
-            this.cBoxSuspended.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cBoxSuspended.Location = new System.Drawing.Point(408, 35);
-            this.cBoxSuspended.Name = "cBoxSuspended";
-            this.cBoxSuspended.Size = new System.Drawing.Size(89, 21);
-            this.cBoxSuspended.TabIndex = 34;
-            this.cBoxSuspended.Text = "Suspended";
-            this.cBoxSuspended.UseVisualStyleBackColor = true;
             // 
             // mEditDirectory
             // 
