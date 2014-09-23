@@ -169,6 +169,20 @@ namespace nPOSProj.VO
             get { return is_suspended; }
             set { is_suspended = value; }
         }
+        private Double interest_rate;
+
+        public Double Interest_rate
+        {
+            get { return interest_rate; }
+            set { interest_rate = value; }
+        }
+        private String due_date;
+
+        public String Due_date
+        {
+            get { return due_date; }
+            set { due_date = value; }
+        }
         #endregion
         public CustomersVO() { }
 
@@ -203,7 +217,7 @@ namespace nPOSProj.VO
         public String[] ReadEdits()
         {
             customers = new DAO.CustomersDAO();
-            String[] jefreak = new String[16];
+            String[] jefreak = new String[18];
             customers.ReadEdit(Custcode);
             jefreak = customers.ReadEdit(Custcode);
             return jefreak;
@@ -218,12 +232,12 @@ namespace nPOSProj.VO
         public void AddCustomers()
         {
             customers = new DAO.CustomersDAO();
-            customers.Add(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays);
+            customers.Add(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays, Interest_rate);
         }
         public void UpdateCustomers()
         {
             customers = new DAO.CustomersDAO();
-            customers.Update(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays, Is_suspended);
+            customers.Update(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays, Is_suspended, Interest_rate, Due_date);
         }
         public void DeleteCustomers()
         {

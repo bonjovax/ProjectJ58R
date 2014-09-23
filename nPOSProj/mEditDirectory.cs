@@ -102,6 +102,8 @@ namespace nPOSProj
             {
                 cBoxSuspended.Checked = false;
             }
+            txtBoxIR.Text = Convert.ToDouble(getScam[16]).ToString("#,###,##0.00");
+            dateTimePicker1.Text = Convert.ToDateTime(getScam[17]).ToString("MM/dd/yyyy");
         }
 
         private void txtBoxCompany_TextChanged(object sender, EventArgs e)
@@ -212,53 +214,69 @@ namespace nPOSProj
         {
             customers = new VO.CustomersVO();
             DialogResult dr = MessageBox.Show("Do you wish to Continue Updating?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == System.Windows.Forms.DialogResult.Yes)
+            try
             {
-                Activity = true;
-                customers.Companyname = txtBoxCompany.Text;
-                customers.Firstname = txtBoxFirst.Text;
-                customers.Middlename = txtBoxMiddle.Text;
-                customers.Lastname = txtBoxLast.Text;
-                customers.Email = txtBoxEmail.Text;
-                customers.Phone_no = txtBoxPhone.Text;
-                customers.Address = txtBoxAddress.Text;
-                customers.City = txtBoxCity.Text;
-                customers.Province = txtBoxProv.Text;
-                customers.Zip_code = txtBoxZip.Text;
-                customers.Tin = mskTIN.Text;
-                customers.Sss = mskSSS.Text;
-                customers.Creditlimit = Convert.ToDouble(txtBoxCreditLimit.Text);
-                if (cBoxNetDays.Text == "1-30")
+                if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
-                    customers.Netdays = 30;
+                    Activity = true;
+                    customers.Companyname = txtBoxCompany.Text;
+                    customers.Firstname = txtBoxFirst.Text;
+                    customers.Middlename = txtBoxMiddle.Text;
+                    customers.Lastname = txtBoxLast.Text;
+                    customers.Email = txtBoxEmail.Text;
+                    customers.Phone_no = txtBoxPhone.Text;
+                    customers.Address = txtBoxAddress.Text;
+                    customers.City = txtBoxCity.Text;
+                    customers.Province = txtBoxProv.Text;
+                    customers.Zip_code = txtBoxZip.Text;
+                    customers.Tin = mskTIN.Text;
+                    customers.Sss = mskSSS.Text;
+                    customers.Creditlimit = Convert.ToDouble(txtBoxCreditLimit.Text);
+                    if (cBoxNetDays.Text == "1-30")
+                    {
+                        customers.Netdays = 30;
+                    }
+                    if (cBoxNetDays.Text == "31-60")
+                    {
+                        customers.Netdays = 60;
+                    }
+                    if (cBoxNetDays.Text == "61-90")
+                    {
+                        customers.Netdays = 90;
+                    }
+                    if (cBoxNetDays.Text == "91+")
+                    {
+                        customers.Netdays = 120;
+                    }
+                    if (cBoxSuspended.Checked == true)
+                    {
+                        customers.Is_suspended = 1;
+                    }
+                    else
+                    {
+                        customers.Is_suspended = 0;
+                    }
+                    if (txtBoxIR.Text != "")
+                    {
+                        customers.Interest_rate = Convert.ToDouble(txtBoxIR.Text);
+                    }
+                    else
+                    {
+                        customers.Interest_rate = 0;
+                    }
+                    customers.Due_date = dateTimePicker1.Text;
+                    customers.Custcode = txtBoxCustomerCode.Text;
+                    Company = txtBoxCompany.Text;
+                    First = txtBoxFirst.Text;
+                    Middle = txtBoxMiddle.Text;
+                    Last = txtBoxLast.Text;
+                    customers.UpdateCustomers();
+                    this.Close();
                 }
-                if (cBoxNetDays.Text == "31-60")
-                {
-                    customers.Netdays = 60;
-                }
-                if (cBoxNetDays.Text == "61-90")
-                {
-                    customers.Netdays = 90;
-                }
-                if (cBoxNetDays.Text == "91+")
-                {
-                    customers.Netdays = 120;
-                }
-                if (cBoxSuspended.Checked == true)
-                {
-                    customers.Is_suspended = 1;
-                }
-                else
-                {
-                    customers.Is_suspended = 0;
-                }
-                customers.Custcode = txtBoxCustomerCode.Text;
-                Company = txtBoxCompany.Text;
-                First = txtBoxFirst.Text;
-                Middle = txtBoxMiddle.Text;
-                Last = txtBoxLast.Text;
-                customers.UpdateCustomers();
-                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check your Input and Try Again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -289,6 +307,14 @@ namespace nPOSProj
             else
             {
                 btnUpdate.Enabled = false;
+            }
+        }
+
+        private void txtBoxIR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
             }
         }
     }

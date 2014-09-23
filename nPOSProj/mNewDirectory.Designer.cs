@@ -65,6 +65,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtBoxCreditLimit = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtBoxIR = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -419,7 +421,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(68, 53);
-            this.btnSave.TabIndex = 31;
+            this.btnSave.TabIndex = 32;
             this.btnSave.Text = "&Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -440,7 +442,7 @@
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(68, 53);
-            this.btnExit.TabIndex = 32;
+            this.btnExit.TabIndex = 33;
             this.btnExit.Text = "&Exit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = false;
@@ -461,7 +463,7 @@
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(68, 53);
-            this.btnClear.TabIndex = 30;
+            this.btnClear.TabIndex = 31;
             this.btnClear.Text = "&Clear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClear.UseVisualStyleBackColor = false;
@@ -469,6 +471,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtBoxIR);
+            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.cBoxNetDays);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.txtBoxCreditLimit);
@@ -529,6 +533,29 @@
             this.label14.Size = new System.Drawing.Size(65, 13);
             this.label14.TabIndex = 18;
             this.label14.Text = "Credit Limit";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(292, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(84, 13);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "Interest Rate %";
+            // 
+            // txtBoxIR
+            // 
+            this.txtBoxIR.BackColor = System.Drawing.Color.White;
+            this.txtBoxIR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxIR.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxIR.Location = new System.Drawing.Point(295, 34);
+            this.txtBoxIR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxIR.MaxLength = 5;
+            this.txtBoxIR.Name = "txtBoxIR";
+            this.txtBoxIR.Size = new System.Drawing.Size(81, 23);
+            this.txtBoxIR.TabIndex = 30;
+            this.txtBoxIR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxIR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxIR_KeyPress);
             // 
             // mNewDirectory
             // 
@@ -596,5 +623,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtBoxCreditLimit;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtBoxIR;
     }
 }

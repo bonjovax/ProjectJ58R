@@ -64,6 +64,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtBoxCreditLimit = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.txtBoxIR = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -388,7 +392,7 @@
             this.btnExit.Location = new System.Drawing.Point(528, 427);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 53);
-            this.btnExit.TabIndex = 36;
+            this.btnExit.TabIndex = 38;
             this.btnExit.Text = "&Exit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = false;
@@ -409,7 +413,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(465, 427);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(61, 53);
-            this.btnUpdate.TabIndex = 35;
+            this.btnUpdate.TabIndex = 37;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -417,6 +421,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.txtBoxIR);
+            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.cBoxSuspended);
             this.groupBox2.Controls.Add(this.cBoxNetDays);
             this.groupBox2.Controls.Add(this.label15);
@@ -425,7 +433,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(3, 359);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(500, 65);
+            this.groupBox2.Size = new System.Drawing.Size(586, 65);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Terms";
@@ -434,10 +442,10 @@
             // 
             this.cBoxSuspended.AutoSize = true;
             this.cBoxSuspended.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cBoxSuspended.Location = new System.Drawing.Point(408, 35);
+            this.cBoxSuspended.Location = new System.Drawing.Point(494, 40);
             this.cBoxSuspended.Name = "cBoxSuspended";
             this.cBoxSuspended.Size = new System.Drawing.Size(89, 21);
-            this.cBoxSuspended.TabIndex = 34;
+            this.cBoxSuspended.TabIndex = 36;
             this.cBoxSuspended.Text = "Suspended";
             this.cBoxSuspended.UseVisualStyleBackColor = true;
             // 
@@ -489,6 +497,49 @@
             this.label14.Size = new System.Drawing.Size(74, 17);
             this.label14.TabIndex = 18;
             this.label14.Text = "Credit Limit";
+            // 
+            // txtBoxIR
+            // 
+            this.txtBoxIR.BackColor = System.Drawing.Color.White;
+            this.txtBoxIR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxIR.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxIR.Location = new System.Drawing.Point(294, 34);
+            this.txtBoxIR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxIR.MaxLength = 5;
+            this.txtBoxIR.Name = "txtBoxIR";
+            this.txtBoxIR.Size = new System.Drawing.Size(92, 23);
+            this.txtBoxIR.TabIndex = 34;
+            this.txtBoxIR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxIR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxIR_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(291, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 17);
+            this.label16.TabIndex = 35;
+            this.label16.Text = "Interest Rate %";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(386, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(62, 17);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "Due Date";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(389, 34);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(94, 23);
+            this.dateTimePicker1.TabIndex = 35;
             // 
             // mEditDirectory
             // 
@@ -556,5 +607,9 @@
         private System.Windows.Forms.TextBox txtBoxCreditLimit;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox cBoxSuspended;
+        private System.Windows.Forms.TextBox txtBoxIR;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label17;
     }
 }
