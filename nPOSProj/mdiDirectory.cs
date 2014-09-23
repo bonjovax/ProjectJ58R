@@ -26,7 +26,7 @@ namespace nPOSProj
                 dataGridView1.Rows.Clear();
                 for (int x = 0; x < grabData.GetLength(1); x++)
                 {
-                    dataGridView1.Rows.Add(grabData[0, x].ToString(), grabData[1, x].ToString(), grabData[2, x].ToString(), grabData[3, x].ToString(), grabData[4, x].ToString(), Convert.ToDouble(grabData[5, x].ToString()));
+                    dataGridView1.Rows.Add(grabData[0, x].ToString(), grabData[1, x].ToString(), grabData[2, x].ToString(), grabData[3, x].ToString(), grabData[4, x].ToString(), Convert.ToDouble(grabData[5, x].ToString()), Convert.ToDateTime(grabData[6, x]).ToString("MM/dd/yyyy"));
                 }
             }
             catch (Exception)

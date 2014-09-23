@@ -83,12 +83,12 @@ namespace nPOSProj.DAO
         public String[,] ReadCustomer()
         {
             Int32 count = this.PositionCount();
-            String[,] xxx = new String[6, count];
+            String[,] xxx = new String[7, count];
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
             String query = "SELECT crm_custcode AS a, crm_companyname AS b, crm_firstname AS c, ";
-            query += "crm_middlename AS d, crm_lastname AS e, crm_balance AS f ";
+            query += "crm_middlename AS d, crm_lastname AS e, crm_balance AS f, crm_duedate AS g ";
             query += "FROM crm_customer";
             try
             {
@@ -104,6 +104,7 @@ namespace nPOSProj.DAO
                     xxx[3, counts] = rdr["d"].ToString();
                     xxx[4, counts] = rdr["e"].ToString();
                     xxx[5, counts] = rdr["f"].ToString();
+                    xxx[6, counts] = rdr["g"].ToString();
                     counts++;
                 }
             }

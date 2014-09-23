@@ -191,7 +191,7 @@ namespace nPOSProj.VO
         {
             customers = new DAO.CustomersDAO();
             Int32 count = customers.PositionCount();
-            String[,] xxx = new String[6, count];
+            String[,] xxx = new String[7, count];
             customers.ReadCustomer();
             xxx = customers.ReadCustomer();
             return xxx;

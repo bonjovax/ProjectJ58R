@@ -30,25 +30,26 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiDirectory));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiDirectory));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnXML = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.CustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Firstname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Middlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lastname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AccountBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnXML = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,8 @@
             this.Firstname,
             this.Middlename,
             this.Lastname,
-            this.AccountBalance});
+            this.AccountBalance,
+            this.DueDate});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.LimeGreen;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -84,66 +86,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(820, 450);
+            this.dataGridView1.Size = new System.Drawing.Size(1000, 450);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // CustomerCode
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.CustomerCode.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CustomerCode.HeaderText = "Code";
-            this.CustomerCode.Name = "CustomerCode";
-            this.CustomerCode.ReadOnly = true;
-            this.CustomerCode.Width = 85;
-            // 
-            // Company
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Company.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Company.HeaderText = "Company";
-            this.Company.Name = "Company";
-            this.Company.ReadOnly = true;
-            this.Company.Width = 200;
-            // 
-            // Firstname
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Firstname.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Firstname.HeaderText = "First Name";
-            this.Firstname.Name = "Firstname";
-            this.Firstname.ReadOnly = true;
-            this.Firstname.Width = 150;
-            // 
-            // Middlename
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Middlename.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Middlename.HeaderText = "Middle Name";
-            this.Middlename.Name = "Middlename";
-            this.Middlename.ReadOnly = true;
-            this.Middlename.Width = 150;
-            // 
-            // Lastname
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Lastname.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Lastname.HeaderText = "Last Name";
-            this.Lastname.Name = "Lastname";
-            this.Lastname.ReadOnly = true;
-            this.Lastname.Width = 150;
-            // 
-            // AccountBalance
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "C2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.AccountBalance.DefaultCellStyle = dataGridViewCellStyle7;
-            this.AccountBalance.HeaderText = "Balance";
-            this.AccountBalance.Name = "AccountBalance";
-            this.AccountBalance.ReadOnly = true;
-            this.AccountBalance.Width = 120;
             // 
             // btnDelete
             // 
@@ -238,12 +184,74 @@
             this.btnXML.UseVisualStyleBackColor = false;
             this.btnXML.Click += new System.EventHandler(this.btnXML_Click);
             // 
+            // CustomerCode
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.CustomerCode.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CustomerCode.HeaderText = "Code";
+            this.CustomerCode.Name = "CustomerCode";
+            this.CustomerCode.ReadOnly = true;
+            this.CustomerCode.Width = 85;
+            // 
+            // Company
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Company.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Company.HeaderText = "Company";
+            this.Company.Name = "Company";
+            this.Company.ReadOnly = true;
+            this.Company.Width = 200;
+            // 
+            // Firstname
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Firstname.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Firstname.HeaderText = "First Name";
+            this.Firstname.Name = "Firstname";
+            this.Firstname.ReadOnly = true;
+            this.Firstname.Width = 150;
+            // 
+            // Middlename
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Middlename.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Middlename.HeaderText = "Middle Name";
+            this.Middlename.Name = "Middlename";
+            this.Middlename.ReadOnly = true;
+            this.Middlename.Width = 150;
+            // 
+            // Lastname
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Lastname.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Lastname.HeaderText = "Last Name";
+            this.Lastname.Name = "Lastname";
+            this.Lastname.ReadOnly = true;
+            this.Lastname.Width = 150;
+            // 
+            // AccountBalance
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.AccountBalance.DefaultCellStyle = dataGridViewCellStyle7;
+            this.AccountBalance.HeaderText = "Balance";
+            this.AccountBalance.Name = "AccountBalance";
+            this.AccountBalance.ReadOnly = true;
+            this.AccountBalance.Width = 120;
+            // 
+            // DueDate
+            // 
+            this.DueDate.HeaderText = "Due Date";
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            // 
             // mdiDirectory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(0)))), ((int)(((byte)(171)))));
-            this.ClientSize = new System.Drawing.Size(820, 491);
+            this.ClientSize = new System.Drawing.Size(997, 491);
             this.Controls.Add(this.btnXML);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnFilter);
@@ -277,5 +285,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Middlename;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lastname;
         private System.Windows.Forms.DataGridViewTextBoxColumn AccountBalance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
     }
 }
