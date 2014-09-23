@@ -600,7 +600,7 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
-            String query = "SELECT crm_companyname FROM crm_customer WHERE crm_custcode = ?a";
+            String query = "SELECT crm_companyname FROM crm_customer WHERE crm_custcode = ?a AND is_suspended = 0";
             try
             {
                 con.Open();
@@ -624,7 +624,7 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
-            String query = "SELECT crm_custcode FROM crm_customer WHERE crm_companyname = ?a";
+            String query = "SELECT crm_custcode FROM crm_customer WHERE crm_companyname = ?a AND is_suspended = 0";
             try
             {
                 con.Open();
