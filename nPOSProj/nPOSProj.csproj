@@ -348,6 +348,12 @@
     <Compile Include="mdiStocks.Designer.cs">
       <DependentUpon>mdiStocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="mdiSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdiSummary.Designer.cs">
+      <DependentUpon>mdiSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="mdiSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -661,6 +667,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mdiStocks.resx">
       <DependentUpon>mdiStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mdiSummary.resx">
+      <DependentUpon>mdiSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mdiSupplier.resx">
       <DependentUpon>mdiSupplier.cs</DependentUpon>

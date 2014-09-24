@@ -42,6 +42,7 @@
             this.tsToday = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tsSummary = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsDirectory,
+            this.tsSummary,
             this.tsPayment,
             this.tsEmail,
             this.tsExit,
@@ -186,6 +188,19 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tsSummary
+            // 
+            this.tsSummary.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsSummary.ForeColor = System.Drawing.Color.White;
+            this.tsSummary.Image = ((System.Drawing.Image)(resources.GetObject("tsSummary.Image")));
+            this.tsSummary.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsSummary.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSummary.Name = "tsSummary";
+            this.tsSummary.Size = new System.Drawing.Size(71, 69);
+            this.tsSummary.Text = "&Summary";
+            this.tsSummary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsSummary.Click += new System.EventHandler(this.tsSummary_Click);
+            // 
             // mdiFrmCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +244,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripButton tsPayment;
         private System.Windows.Forms.ToolStripButton tsEmail;
+        private System.Windows.Forms.ToolStripButton tsSummary;
     }
 }

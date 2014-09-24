@@ -16,6 +16,7 @@ namespace nPOSProj
         private DAO.LoginDAO login;
         private mdiDirectory directory = new mdiDirectory();
         private mdiPayment payment = new mdiPayment();
+        private mdiSummary summary = new mdiSummary();
         private static String cmd = "mailto:DLG.alfel@gmail.com?subject=Customer Module Support&cc=jarmonilla892@gmail.com";
         public mdiFrmCustomers()
         {
@@ -141,6 +142,16 @@ namespace nPOSProj
         {
             frmAbout about = new frmAbout();
             about.ShowDialog();
+        }
+
+        private void tsSummary_Click(object sender, EventArgs e)
+        {
+            if (ActivateThisChild("mdiSummary") == false)
+            {
+                summary = new mdiSummary();
+                summary.MdiParent = this;
+                summary.Show();
+            }
         }
     }
 }
