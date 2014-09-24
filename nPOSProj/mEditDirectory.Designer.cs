@@ -59,15 +59,16 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtBoxIR = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.cBoxSuspended = new System.Windows.Forms.CheckBox();
             this.cBoxNetDays = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtBoxCreditLimit = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtBoxIR = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cBoxSummary = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -392,7 +393,7 @@
             this.btnExit.Location = new System.Drawing.Point(528, 427);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 53);
-            this.btnExit.TabIndex = 38;
+            this.btnExit.TabIndex = 39;
             this.btnExit.Text = "&Exit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = false;
@@ -413,7 +414,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(465, 427);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(61, 53);
-            this.btnUpdate.TabIndex = 37;
+            this.btnUpdate.TabIndex = 38;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -421,6 +422,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cBoxSummary);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.txtBoxIR);
@@ -438,11 +440,54 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Terms";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(389, 34);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(94, 23);
+            this.dateTimePicker1.TabIndex = 35;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(386, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(62, 17);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "Due Date";
+            // 
+            // txtBoxIR
+            // 
+            this.txtBoxIR.BackColor = System.Drawing.Color.White;
+            this.txtBoxIR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxIR.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxIR.Location = new System.Drawing.Point(294, 34);
+            this.txtBoxIR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxIR.MaxLength = 3;
+            this.txtBoxIR.Name = "txtBoxIR";
+            this.txtBoxIR.Size = new System.Drawing.Size(92, 23);
+            this.txtBoxIR.TabIndex = 34;
+            this.txtBoxIR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxIR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxIR_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(291, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 17);
+            this.label16.TabIndex = 35;
+            this.label16.Text = "Interest Rate %";
+            // 
             // cBoxSuspended
             // 
             this.cBoxSuspended.AutoSize = true;
             this.cBoxSuspended.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cBoxSuspended.Location = new System.Drawing.Point(494, 40);
+            this.cBoxSuspended.Location = new System.Drawing.Point(487, 15);
             this.cBoxSuspended.Name = "cBoxSuspended";
             this.cBoxSuspended.Size = new System.Drawing.Size(89, 21);
             this.cBoxSuspended.TabIndex = 36;
@@ -498,48 +543,16 @@
             this.label14.TabIndex = 18;
             this.label14.Text = "Credit Limit";
             // 
-            // txtBoxIR
+            // cBoxSummary
             // 
-            this.txtBoxIR.BackColor = System.Drawing.Color.White;
-            this.txtBoxIR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBoxIR.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxIR.Location = new System.Drawing.Point(294, 34);
-            this.txtBoxIR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxIR.MaxLength = 3;
-            this.txtBoxIR.Name = "txtBoxIR";
-            this.txtBoxIR.Size = new System.Drawing.Size(92, 23);
-            this.txtBoxIR.TabIndex = 34;
-            this.txtBoxIR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxIR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxIR_KeyPress);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(291, 16);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(96, 17);
-            this.label16.TabIndex = 35;
-            this.label16.Text = "Interest Rate %";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(386, 16);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 17);
-            this.label17.TabIndex = 37;
-            this.label17.Text = "Due Date";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(389, 34);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(94, 23);
-            this.dateTimePicker1.TabIndex = 35;
+            this.cBoxSummary.AutoSize = true;
+            this.cBoxSummary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cBoxSummary.Location = new System.Drawing.Point(487, 35);
+            this.cBoxSummary.Name = "cBoxSummary";
+            this.cBoxSummary.Size = new System.Drawing.Size(98, 21);
+            this.cBoxSummary.TabIndex = 37;
+            this.cBoxSummary.Text = "Inc Summary";
+            this.cBoxSummary.UseVisualStyleBackColor = true;
             // 
             // mEditDirectory
             // 
@@ -611,5 +624,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox cBoxSummary;
     }
 }

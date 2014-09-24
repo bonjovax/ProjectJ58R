@@ -106,6 +106,14 @@ namespace nPOSProj
             String x = Convert.ToDouble(getScam[16]).ToString("#0.##%");
             txtBoxIR.Text = x.Replace("%", "");
             dateTimePicker1.Text = Convert.ToDateTime(getScam[17]).ToString("MM/dd/yyyy");
+            if (getScam[18].ToString() == "1")
+            {
+                cBoxSummary.Checked = true;
+            }
+            else
+            {
+                cBoxSummary.Checked = false;
+            }
         }
 
         private void txtBoxCompany_TextChanged(object sender, EventArgs e)
@@ -264,6 +272,14 @@ namespace nPOSProj
                     else
                     {
                         customers.Is_suspended = 0;
+                    }
+                    if (cBoxSummary.Checked == true)
+                    {
+                        customers.Has_summary = 1;
+                    }
+                    else
+                    {
+                        customers.Has_summary = 0;
                     }
                     if (txtBoxIR.Text != "")
                     {

@@ -231,13 +231,13 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
-        public void Update(String custcode, String companyname, String firstname, String middlename, String lastname, String email, String phone_no, String address, String city, String province, String zip_code, String tin, String sss, Double creditlimit, Int32 netdays, Int32 is_suspended, Double interest_rate, String duedate)
+        public void Update(String custcode, String companyname, String firstname, String middlename, String lastname, String email, String phone_no, String address, String city, String province, String zip_code, String tin, String sss, Double creditlimit, Int32 netdays, Int32 is_suspended, Int32 has_summary, Double interest_rate, String duedate)
         {
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
             String query = "UPDATE crm_customer SET crm_companyname = ?a, crm_firstname = ?b, crm_middlename = ?c, crm_lastname = ?d, crm_email = ?e, ";
-            query += "crm_phone_no = ?f, crm_address = ?g, crm_city = ?h, crm_state_province = ?i, crm_zip_code = ?j, crm_tin = ?w, crm_sss = ?x, crm_creditlimit = ?y, crm_netdays = ?z, is_suspended = ?suspend, crm_interest = ?aa, crm_duedate = ?bb ";
+            query += "crm_phone_no = ?f, crm_address = ?g, crm_city = ?h, crm_state_province = ?i, crm_zip_code = ?j, crm_tin = ?w, crm_sss = ?x, crm_creditlimit = ?y, crm_netdays = ?z, is_suspended = ?suspend, has_summary = ?summary, crm_interest = ?aa, crm_duedate = ?bb ";
             query += "WHERE crm_custcode = ?k";
             try
             {
@@ -261,6 +261,7 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?bb", Convert.ToDateTime(duedate).ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("?k", custcode);
                 cmd.Parameters.AddWithValue("?suspend", is_suspended);
+                cmd.Parameters.AddWithValue("?summary", has_summary);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
             }
@@ -317,12 +318,12 @@ namespace nPOSProj.DAO
         }
         public String[] ReadEdit(String crm_custcode)
         {
-            String[] cabilat = new String[18];
+            String[] cabilat = new String[19];
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
             String query = "SELECT crm_custcode AS a, crm_companyname AS b, crm_firstname AS c, crm_middlename AS d, crm_lastname AS e, crm_email AS f, ";
-            query += "crm_phone_no AS g, crm_address AS h, crm_city AS i, crm_state_province AS j, crm_zip_code AS k, crm_tin AS l, crm_sss AS m, crm_creditlimit AS n, crm_netdays AS o, is_suspended AS p, crm_interest AS q, crm_duedate AS r ";
+            query += "crm_phone_no AS g, crm_address AS h, crm_city AS i, crm_state_province AS j, crm_zip_code AS k, crm_tin AS l, crm_sss AS m, crm_creditlimit AS n, crm_netdays AS o, is_suspended AS p, crm_interest AS q, crm_duedate AS r, has_summary AS s ";
             query += "FROM crm_customer ";
             query += "WHERE crm_custcode = ?crm_custcode";
             try
@@ -352,6 +353,7 @@ namespace nPOSProj.DAO
                     cabilat[15] = rdr["p"].ToString();
                     cabilat[16] = rdr["q"].ToString();
                     cabilat[17] = rdr["r"].ToString();
+                    cabilat[18] = rdr["s"].ToString();
                 }
             }
             finally

@@ -169,6 +169,13 @@ namespace nPOSProj.VO
             get { return is_suspended; }
             set { is_suspended = value; }
         }
+        private Int32 has_summary;
+
+        public Int32 Has_summary
+        {
+            get { return has_summary; }
+            set { has_summary = value; }
+        }
         private Double interest_rate;
 
         public Double Interest_rate
@@ -217,7 +224,7 @@ namespace nPOSProj.VO
         public String[] ReadEdits()
         {
             customers = new DAO.CustomersDAO();
-            String[] jefreak = new String[18];
+            String[] jefreak = new String[19];
             customers.ReadEdit(Custcode);
             jefreak = customers.ReadEdit(Custcode);
             return jefreak;
@@ -237,7 +244,7 @@ namespace nPOSProj.VO
         public void UpdateCustomers()
         {
             customers = new DAO.CustomersDAO();
-            customers.Update(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays, Is_suspended, Interest_rate, Due_date);
+            customers.Update(Custcode, Companyname, Firstname, Middlename, Lastname, Email, Phone_no, Address, City, Province, Zip_code, Tin, Sss, Creditlimit, Netdays, Is_suspended, Has_summary, Interest_rate, Due_date);
         }
         public void DeleteCustomers()
         {
