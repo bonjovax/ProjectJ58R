@@ -77,7 +77,7 @@
             this.btnEsc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEsc.Location = new System.Drawing.Point(1124, 1);
             this.btnEsc.Name = "btnEsc";
-            this.btnEsc.Size = new System.Drawing.Size(94, 42);
+            this.btnEsc.Size = new System.Drawing.Size(94, 34);
             this.btnEsc.TabIndex = 13;
             this.btnEsc.Text = "(Esc) Exit";
             this.btnEsc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -99,7 +99,7 @@
             this.btnF12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnF12.Location = new System.Drawing.Point(967, 1);
             this.btnF12.Name = "btnF12";
-            this.btnF12.Size = new System.Drawing.Size(157, 42);
+            this.btnF12.Size = new System.Drawing.Size(157, 34);
             this.btnF12.TabIndex = 14;
             this.btnF12.Text = "(F12) Ping Interest";
             this.btnF12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -133,7 +133,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(1, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(1, 36);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
