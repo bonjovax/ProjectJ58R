@@ -140,7 +140,7 @@
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1218, 439);
+            this.dataGridView1.Size = new System.Drawing.Size(1218, 462);
             this.dataGridView1.TabIndex = 20;
             // 
             // customer
