@@ -51,6 +51,13 @@
             this.sixties = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nineties = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.overninty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl30 = new System.Windows.Forms.Label();
+            this.lbl60 = new System.Windows.Forms.Label();
+            this.lbl90 = new System.Windows.Forms.Label();
+            this.lblOver = new System.Windows.Forms.Label();
+            this.lblCurrent = new System.Windows.Forms.Label();
+            this.lblOutstanding = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,7 +147,7 @@
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1218, 462);
+            this.dataGridView1.Size = new System.Drawing.Size(1218, 445);
             this.dataGridView1.TabIndex = 20;
             // 
             // customer
@@ -218,6 +225,83 @@
             this.overninty.ReadOnly = true;
             this.overninty.Width = 120;
             // 
+            // lbl30
+            // 
+            this.lbl30.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl30.ForeColor = System.Drawing.Color.White;
+            this.lbl30.Location = new System.Drawing.Point(740, 485);
+            this.lbl30.Name = "lbl30";
+            this.lbl30.Size = new System.Drawing.Size(114, 18);
+            this.lbl30.TabIndex = 21;
+            this.lbl30.Text = "0.00";
+            this.lbl30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl60
+            // 
+            this.lbl60.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl60.ForeColor = System.Drawing.Color.White;
+            this.lbl60.Location = new System.Drawing.Point(860, 485);
+            this.lbl60.Name = "lbl60";
+            this.lbl60.Size = new System.Drawing.Size(114, 18);
+            this.lbl60.TabIndex = 22;
+            this.lbl60.Text = "0.00";
+            this.lbl60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl90
+            // 
+            this.lbl90.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl90.ForeColor = System.Drawing.Color.White;
+            this.lbl90.Location = new System.Drawing.Point(978, 485);
+            this.lbl90.Name = "lbl90";
+            this.lbl90.Size = new System.Drawing.Size(114, 18);
+            this.lbl90.TabIndex = 23;
+            this.lbl90.Text = "0.00";
+            this.lbl90.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblOver
+            // 
+            this.lblOver.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOver.ForeColor = System.Drawing.Color.White;
+            this.lblOver.Location = new System.Drawing.Point(1099, 485);
+            this.lblOver.Name = "lblOver";
+            this.lblOver.Size = new System.Drawing.Size(114, 18);
+            this.lblOver.TabIndex = 24;
+            this.lblOver.Text = "0.00";
+            this.lblOver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCurrent
+            // 
+            this.lblCurrent.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrent.ForeColor = System.Drawing.Color.White;
+            this.lblCurrent.Location = new System.Drawing.Point(620, 485);
+            this.lblCurrent.Name = "lblCurrent";
+            this.lblCurrent.Size = new System.Drawing.Size(114, 18);
+            this.lblCurrent.TabIndex = 25;
+            this.lblCurrent.Text = "0.00";
+            this.lblCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblOutstanding
+            // 
+            this.lblOutstanding.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOutstanding.ForeColor = System.Drawing.Color.White;
+            this.lblOutstanding.Location = new System.Drawing.Point(468, 485);
+            this.lblOutstanding.Name = "lblOutstanding";
+            this.lblOutstanding.Size = new System.Drawing.Size(146, 18);
+            this.lblOutstanding.TabIndex = 26;
+            this.lblOutstanding.Text = "0.00";
+            this.lblOutstanding.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(263, 484);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(204, 17);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Total Accounts Receivable Aging";
+            // 
             // mdiSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -225,6 +309,13 @@
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(1216, 505);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblOutstanding);
+            this.Controls.Add(this.lblCurrent);
+            this.Controls.Add(this.lblOver);
+            this.Controls.Add(this.lbl90);
+            this.Controls.Add(this.lbl60);
+            this.Controls.Add(this.lbl30);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnF12);
             this.Controls.Add(this.btnEsc);
@@ -242,6 +333,7 @@
             this.Load += new System.EventHandler(this.mdiSummary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -260,5 +352,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sixties;
         private System.Windows.Forms.DataGridViewTextBoxColumn nineties;
         private System.Windows.Forms.DataGridViewTextBoxColumn overninty;
+        private System.Windows.Forms.Label lbl30;
+        private System.Windows.Forms.Label lbl60;
+        private System.Windows.Forms.Label lbl90;
+        private System.Windows.Forms.Label lblOver;
+        private System.Windows.Forms.Label lblCurrent;
+        private System.Windows.Forms.Label lblOutstanding;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -27,6 +27,7 @@ namespace nPOSProj
                 {
                     dataGridView1.Rows.Add(grabData[0, otin], grabData[1, otin], Convert.ToDateTime(grabData[2, otin]).ToString("MM/dd/yyyy"), Convert.ToDouble(grabData[3, otin]).ToString("#,###,##0.00"));
                 }
+                lblOutstanding.Text = CellSumOutstanding().ToString("#,###,##0.00");
             }
             catch (Exception)
             {
