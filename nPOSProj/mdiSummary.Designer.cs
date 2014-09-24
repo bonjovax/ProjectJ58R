@@ -97,11 +97,11 @@
             this.btnF12.ForeColor = System.Drawing.Color.White;
             this.btnF12.Image = ((System.Drawing.Image)(resources.GetObject("btnF12.Image")));
             this.btnF12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnF12.Location = new System.Drawing.Point(967, 1);
+            this.btnF12.Location = new System.Drawing.Point(956, 1);
             this.btnF12.Name = "btnF12";
-            this.btnF12.Size = new System.Drawing.Size(157, 34);
+            this.btnF12.Size = new System.Drawing.Size(168, 34);
             this.btnF12.TabIndex = 14;
-            this.btnF12.Text = "(F12) Ping Interest";
+            this.btnF12.Text = "(F12) Print Summary";
             this.btnF12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnF12.UseVisualStyleBackColor = false;
             // 
@@ -132,7 +132,6 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(1, 36);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -221,7 +220,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(1220, 509);
+            this.ClientSize = new System.Drawing.Size(1216, 505);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnF12);
