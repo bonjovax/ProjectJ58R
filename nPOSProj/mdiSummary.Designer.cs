@@ -50,6 +50,7 @@
             this.lblOver = new System.Windows.Forms.Label();
             this.customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.terms = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duedate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outstandingbalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.current = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thirties = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,7 +82,7 @@
             this.btnEsc.ForeColor = System.Drawing.Color.White;
             this.btnEsc.Image = ((System.Drawing.Image)(resources.GetObject("btnEsc.Image")));
             this.btnEsc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEsc.Location = new System.Drawing.Point(1197, 1);
+            this.btnEsc.Location = new System.Drawing.Point(1272, 1);
             this.btnEsc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEsc.Name = "btnEsc";
             this.btnEsc.Size = new System.Drawing.Size(95, 42);
@@ -104,7 +105,7 @@
             this.btnF12.ForeColor = System.Drawing.Color.White;
             this.btnF12.Image = ((System.Drawing.Image)(resources.GetObject("btnF12.Image")));
             this.btnF12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnF12.Location = new System.Drawing.Point(1040, 1);
+            this.btnF12.Location = new System.Drawing.Point(1115, 1);
             this.btnF12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnF12.Name = "btnF12";
             this.btnF12.Size = new System.Drawing.Size(157, 42);
@@ -125,6 +126,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customer,
             this.terms,
+            this.duedate,
             this.outstandingbalance,
             this.current,
             this.thirties,
@@ -148,7 +150,7 @@
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1294, 438);
+            this.dataGridView1.Size = new System.Drawing.Size(1368, 438);
             this.dataGridView1.TabIndex = 20;
             // 
             // label1
@@ -156,7 +158,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(173, 486);
+            this.label1.Location = new System.Drawing.Point(258, 486);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 17);
             this.label1.TabIndex = 21;
@@ -164,9 +166,9 @@
             // 
             // lblOut
             // 
-            this.lblOut.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOut.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOut.ForeColor = System.Drawing.Color.White;
-            this.lblOut.Location = new System.Drawing.Point(396, 488);
+            this.lblOut.Location = new System.Drawing.Point(481, 488);
             this.lblOut.Name = "lblOut";
             this.lblOut.Size = new System.Drawing.Size(140, 17);
             this.lblOut.TabIndex = 22;
@@ -175,9 +177,9 @@
             // 
             // lblCurrent
             // 
-            this.lblCurrent.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrent.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrent.ForeColor = System.Drawing.Color.White;
-            this.lblCurrent.Location = new System.Drawing.Point(545, 488);
+            this.lblCurrent.Location = new System.Drawing.Point(630, 488);
             this.lblCurrent.Name = "lblCurrent";
             this.lblCurrent.Size = new System.Drawing.Size(140, 17);
             this.lblCurrent.TabIndex = 23;
@@ -186,9 +188,9 @@
             // 
             // lblthirty
             // 
-            this.lblthirty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblthirty.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblthirty.ForeColor = System.Drawing.Color.White;
-            this.lblthirty.Location = new System.Drawing.Point(696, 488);
+            this.lblthirty.Location = new System.Drawing.Point(781, 488);
             this.lblthirty.Name = "lblthirty";
             this.lblthirty.Size = new System.Drawing.Size(140, 17);
             this.lblthirty.TabIndex = 24;
@@ -197,9 +199,9 @@
             // 
             // lblsixty
             // 
-            this.lblsixty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsixty.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblsixty.ForeColor = System.Drawing.Color.White;
-            this.lblsixty.Location = new System.Drawing.Point(842, 488);
+            this.lblsixty.Location = new System.Drawing.Point(927, 488);
             this.lblsixty.Name = "lblsixty";
             this.lblsixty.Size = new System.Drawing.Size(140, 17);
             this.lblsixty.TabIndex = 25;
@@ -208,9 +210,9 @@
             // 
             // lblninty
             // 
-            this.lblninty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblninty.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblninty.ForeColor = System.Drawing.Color.White;
-            this.lblninty.Location = new System.Drawing.Point(1000, 488);
+            this.lblninty.Location = new System.Drawing.Point(1085, 488);
             this.lblninty.Name = "lblninty";
             this.lblninty.Size = new System.Drawing.Size(140, 17);
             this.lblninty.TabIndex = 26;
@@ -219,9 +221,9 @@
             // 
             // lblOver
             // 
-            this.lblOver.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOver.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOver.ForeColor = System.Drawing.Color.White;
-            this.lblOver.Location = new System.Drawing.Point(1143, 488);
+            this.lblOver.Location = new System.Drawing.Point(1228, 488);
             this.lblOver.Name = "lblOver";
             this.lblOver.Size = new System.Drawing.Size(140, 17);
             this.lblOver.TabIndex = 27;
@@ -233,7 +235,7 @@
             this.customer.HeaderText = "Customer";
             this.customer.Name = "customer";
             this.customer.ReadOnly = true;
-            this.customer.Width = 300;
+            this.customer.Width = 260;
             // 
             // terms
             // 
@@ -241,6 +243,13 @@
             this.terms.Name = "terms";
             this.terms.ReadOnly = true;
             this.terms.Width = 50;
+            // 
+            // duedate
+            // 
+            this.duedate.HeaderText = "Due Date";
+            this.duedate.Name = "duedate";
+            this.duedate.ReadOnly = true;
+            this.duedate.Width = 115;
             // 
             // outstandingbalance
             // 
@@ -299,7 +308,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(1297, 509);
+            this.ClientSize = new System.Drawing.Size(1370, 509);
             this.ControlBox = false;
             this.Controls.Add(this.lblOver);
             this.Controls.Add(this.lblninty);
@@ -344,6 +353,7 @@
         private System.Windows.Forms.Label lblOver;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn terms;
+        private System.Windows.Forms.DataGridViewTextBoxColumn duedate;
         private System.Windows.Forms.DataGridViewTextBoxColumn outstandingbalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn current;
         private System.Windows.Forms.DataGridViewTextBoxColumn thirties;
