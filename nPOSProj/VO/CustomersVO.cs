@@ -229,6 +229,14 @@ namespace nPOSProj.VO
             jefreak = customers.ReadEdit(Custcode);
             return jefreak;
         }
+        public String[,] ReadAged() //New
+        {
+            customers = new DAO.CustomersDAO();
+            Int32 yyy = customers.countSummary();
+            String[,] xxx = new String[4, yyy];
+            xxx = customers.ReadSummary();
+            return xxx;
+        }
         public String[] ReadCheckoutInfo()
         {
             customers = new DAO.CustomersDAO();

@@ -11,9 +11,27 @@ namespace nPOSProj
 {
     public partial class mdiSummary : Form
     {
+        private VO.CustomersVO custvo;
         public mdiSummary()
         {
             InitializeComponent();
+        }
+        private void LoadSummary()
+        {
+            custvo = new VO.CustomersVO();
+            String[,] grabData = custvo.ReadAged();
+            try
+            {
+                dataGridView1.Rows.Clear();
+                for (int otin = 0; otin < grabData.GetLength(1); otin++)
+                {
+                    dataGridView1.Rows.Add(grabData[0, otin], grabData[1, otin], Convert.ToDateTime(grabData[2, otin]).ToString("MM/dd/yyyy"), Convert.ToDouble(grabData[3, otin]).ToString("#,###,##0.00"));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -36,7 +54,7 @@ namespace nPOSProj
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[2].Value.ToString(), out d);
+                Double.TryParse(dataGridView1.Rows[i].Cells[3].Value.ToString(), out d);
                 sum += d;
             }
             return sum;
@@ -47,7 +65,7 @@ namespace nPOSProj
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[3].Value.ToString(), out d);
+                Double.TryParse(dataGridView1.Rows[i].Cells[4].Value.ToString(), out d);
                 sum += d;
             }
             return sum;
@@ -58,7 +76,7 @@ namespace nPOSProj
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[4].Value.ToString(), out d);
+                Double.TryParse(dataGridView1.Rows[i].Cells[5].Value.ToString(), out d);
                 sum += d;
             }
             return sum;
@@ -69,7 +87,7 @@ namespace nPOSProj
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[5].Value.ToString(), out d);
+                Double.TryParse(dataGridView1.Rows[i].Cells[6].Value.ToString(), out d);
                 sum += d;
             }
             return sum;
@@ -80,7 +98,7 @@ namespace nPOSProj
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[6].Value.ToString(), out d);
+                Double.TryParse(dataGridView1.Rows[i].Cells[7].Value.ToString(), out d);
                 sum += d;
             }
             return sum;
@@ -91,7 +109,7 @@ namespace nPOSProj
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[7].Value.ToString(), out d);
+                Double.TryParse(dataGridView1.Rows[i].Cells[8].Value.ToString(), out d);
                 sum += d;
             }
             return sum;
@@ -100,6 +118,11 @@ namespace nPOSProj
         private void btnEsc_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void mdiSummary_Load(object sender, EventArgs e)
+        {
+            LoadSummary();
         }
     }
 }

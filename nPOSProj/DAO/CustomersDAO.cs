@@ -363,6 +363,67 @@ namespace nPOSProj.DAO
             return cabilat;
         }
         //
+        public Int32 countSummary()
+        {
+            Int32 ihap = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT COUNT(*) AS a FROM crm_customer ";
+            query += "WHERE has_summary = 1 ORDER BY crm_companyname";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    ihap = Convert.ToInt32(rdr["a"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ihap;
+        }
+        public String[,] ReadSummary()
+        {
+            Int32 count = this.countSummary();
+            String[,] ret = new String[4, count];
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT crm_companyname AS customer, crm_netdays AS terms, crm_duedate AS duedate, crm_balance AS outstanding ";
+            query += "FROM crm_customer WHERE has_summary = 1 ORDER BY crm_companyname";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                Int32 counts = 0;
+                while (rdr.Read())
+                {
+                    ret[0, counts] = rdr["customer"].ToString();
+                    ret[1, counts] = rdr["terms"].ToString();
+                    ret[2, counts] = rdr["duedate"].ToString();
+                    ret[3, counts] = rdr["outstanding"].ToString();
+                    counts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+        //
         public String[] ReadData(String crm_custcode, String crm_companyname)
         {
             String[] cabilat = new String[2];
