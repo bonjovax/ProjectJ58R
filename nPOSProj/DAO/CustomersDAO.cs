@@ -848,11 +848,89 @@ namespace nPOSProj.DAO
                 cmd1.ExecuteNonQuery();
                 cmd.Dispose();
                 cmd1.Dispose();
+                this.triggerAddDD(crm_custcode);
                 if (this.checkZeroAmt(crm_custcode) == true)
                 {
                     cmd2.ExecuteNonQuery();
                     cmd2.Dispose();
                 }
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        private Int32 getTerms(String crm_custcode)
+        {
+            Int32 days = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT crm_netdays AS x FROM crm_customer ";
+            query += "WHERE crm_custcode = ?crm_custcode";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?crm_custcode", crm_custcode);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    days = Convert.ToInt32(rdr["x"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return days;
+        }
+        private String getDD(String crm_custcode)
+        {
+            String duedate = "";
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT crm_duedate AS a FROM crm_customer ";
+            query += "WHERE crm_custcode = ?crm_custcode";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?crm_custcode", crm_custcode);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    duedate = rdr["a"].ToString();
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return duedate;
+        }
+        private void triggerAddDD(String crm_custcode)
+        {
+            Int32 terms = this.getTerms(crm_custcode);
+            String DueDate = this.getDD(crm_custcode);
+            String finale = "";
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "UPDATE crm_customer SET crm_duedate = ?duedate ";
+            query += "WHERE crm_custcode = ?crm_custcode";
+            finale = Convert.ToDateTime(DueDate).AddDays(terms).ToString("yyyy-MM-dd");
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?duedate", finale);
+                cmd.Parameters.AddWithValue("?crm_custcode", crm_custcode);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
             }
             finally
             {
