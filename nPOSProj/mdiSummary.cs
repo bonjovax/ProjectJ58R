@@ -63,55 +63,90 @@ namespace nPOSProj
         private Double CellSumCurrent()
         {
             Double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            try
             {
-                Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[4].Value.ToString(), out d);
-                sum += d;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    Double d = 0;
+                    Double.TryParse(dataGridView1.Rows[i].Cells[4].Value.ToString(), out d);
+                    sum += d;
+                }
+            }
+            catch (Exception)
+            {
+                sum = 0;
             }
             return sum;
         }
         private Double CellSumThirty()
         {
             Double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            try
             {
-                Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[5].Value.ToString(), out d);
-                sum += d;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    Double d = 0;
+                    Double.TryParse(dataGridView1.Rows[i].Cells[5].Value.ToString(), out d);
+                    sum += d;
+                }
+            }
+            catch (Exception)
+            {
+                sum = 0;
             }
             return sum;
         }
         private Double CellSumSixty()
         {
             Double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            try
             {
-                Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[6].Value.ToString(), out d);
-                sum += d;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    Double d = 0;
+                    Double.TryParse(dataGridView1.Rows[i].Cells[6].Value.ToString(), out d);
+                    sum += d;
+                }
+            }
+            catch (Exception)
+            {
+                sum = 0;
             }
             return sum;
         }
         private Double CellSumNinty()
         {
             Double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            try
             {
-                Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[7].Value.ToString(), out d);
-                sum += d;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    Double d = 0;
+                    Double.TryParse(dataGridView1.Rows[i].Cells[7].Value.ToString(), out d);
+                    sum += d;
+                }
+            }
+            catch (Exception)
+            {
+                sum = 0;
             }
             return sum;
         }
         private Double CellSumOver()
         {
             Double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            try
             {
-                Double d = 0;
-                Double.TryParse(dataGridView1.Rows[i].Cells[8].Value.ToString(), out d);
-                sum += d;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    Double d = 0;
+                    Double.TryParse(dataGridView1.Rows[i].Cells[8].Value.ToString(), out d);
+                    sum += d;
+                }
+            }
+            catch (Exception)
+            {
+                sum = 0;
             }
             return sum;
         }
