@@ -20,14 +20,50 @@ namespace nPOSProj
         {
             custvo = new VO.CustomersVO();
             String[,] grabData = custvo.ReadAged();
+            Double current = 0;
+            Double thirty = 0;
+            Double sixty = 0;
+            Double ninty = 0;
+            Double over = 0;
             try
             {
                 dataGridView1.Rows.Clear();
                 for (int otin = 0; otin < grabData.GetLength(1); otin++)
                 {
-                    dataGridView1.Rows.Add(grabData[0, otin], grabData[1, otin], Convert.ToDateTime(grabData[2, otin]).ToString("MM/dd/yyyy"), Convert.ToDouble(grabData[3, otin]).ToString("#,###,##0.00"));
+                    TimeSpan ts = Convert.ToDateTime(dtSelect.Value) - Convert.ToDateTime(grabData[2, otin]);
+                    if (ts.TotalDays <= 30 && ts.TotalDays >= 1)
+                    {
+                        thirty = Convert.ToDouble(grabData[3, otin]);
+                    }
+                    else if (ts.TotalDays >= 31 && ts.TotalDays <= 60)
+                    {
+                        sixty = Convert.ToDouble(grabData[3, otin]);
+                    }
+                    else if (ts.TotalDays >= 61 && ts.TotalDays <= 90)
+                    {
+                        ninty = Convert.ToDouble(grabData[3, otin]);
+                    }
+                    else if (ts.TotalDays > 90)
+                    {
+                        over = Convert.ToDouble(grabData[3, otin]);
+                    }
+                    else
+                    {
+                        current = Convert.ToDouble(grabData[3, otin]);
+                    }
+                    dataGridView1.Rows.Add(grabData[0, otin], grabData[1, otin], Convert.ToDateTime(grabData[2, otin]).ToString("MM/dd/yyyy"), Convert.ToDouble(grabData[3, otin]).ToString("#,###,##0.00"), current.ToString("#,###,##0.00"), thirty.ToString("#,###,##0.00"), sixty.ToString("#,###,##0.00"), ninty.ToString("#,###,##0.00"), over.ToString("#,###,##0.00"));
+                    current = 0;
+                    thirty = 0;
+                    sixty = 0;
+                    ninty = 0;
+                    over = 0;
                 }
                 lblOutstanding.Text = CellSumOutstanding().ToString("#,###,##0.00");
+                lblCurrent.Text = CellSumCurrent().ToString("#,###,##0.00");
+                lbl30.Text = CellSumThirty().ToString("#,###,##0.00");
+                lbl60.Text = CellSumSixty().ToString("#,###,##0.00");
+                lbl90.Text = CellSumNinty().ToString("#,###,##0.00");
+                lblOver.Text = CellSumOver().ToString("#,###,##0.00");
             }
             catch (Exception)
             {
@@ -157,6 +193,17 @@ namespace nPOSProj
         }
 
         private void mdiSummary_Load(object sender, EventArgs e)
+        {
+            LoadSummary();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TimeSpan ts = Convert.ToDateTime(dtSelect.Value) - Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells[2].Value);
+            MessageBox.Show(ts.TotalDays.ToString("###"));
+        }
+
+        private void dtSelect_ValueChanged(object sender, EventArgs e)
         {
             LoadSummary();
         }

@@ -29,19 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiSummary));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtSelect = new System.Windows.Forms.DateTimePicker();
             this.btnEsc = new System.Windows.Forms.Button();
             this.btnF12 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbl30 = new System.Windows.Forms.Label();
+            this.lbl60 = new System.Windows.Forms.Label();
+            this.lbl90 = new System.Windows.Forms.Label();
+            this.lblOver = new System.Windows.Forms.Label();
+            this.lblCurrent = new System.Windows.Forms.Label();
+            this.lblOutstanding = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.terms = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.duedate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,13 +59,6 @@
             this.sixties = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nineties = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.overninty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbl30 = new System.Windows.Forms.Label();
-            this.lbl60 = new System.Windows.Forms.Label();
-            this.lbl90 = new System.Windows.Forms.Label();
-            this.lblOver = new System.Windows.Forms.Label();
-            this.lblCurrent = new System.Windows.Forms.Label();
-            this.lblOutstanding = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +70,7 @@
             this.dtSelect.Name = "dtSelect";
             this.dtSelect.Size = new System.Drawing.Size(124, 25);
             this.dtSelect.TabIndex = 0;
+            this.dtSelect.ValueChanged += new System.EventHandler(this.dtSelect_ValueChanged);
             // 
             // btnEsc
             // 
@@ -117,8 +119,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Khaki;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Khaki;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SeaGreen;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -132,98 +134,24 @@
             this.sixties,
             this.nineties,
             this.overninty});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridView1.Location = new System.Drawing.Point(1, 36);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Gainsboro;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1218, 445);
             this.dataGridView1.TabIndex = 20;
-            // 
-            // customer
-            // 
-            this.customer.HeaderText = "Customer";
-            this.customer.Name = "customer";
-            this.customer.ReadOnly = true;
-            this.customer.Width = 260;
-            // 
-            // terms
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.terms.DefaultCellStyle = dataGridViewCellStyle2;
-            this.terms.HeaderText = "Terms";
-            this.terms.Name = "terms";
-            this.terms.ReadOnly = true;
-            this.terms.Width = 50;
-            // 
-            // duedate
-            // 
-            this.duedate.HeaderText = "Due Date";
-            this.duedate.Name = "duedate";
-            this.duedate.ReadOnly = true;
-            this.duedate.Width = 115;
-            // 
-            // outstandingbalance
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.outstandingbalance.DefaultCellStyle = dataGridViewCellStyle3;
-            this.outstandingbalance.HeaderText = "Outstanding Balance";
-            this.outstandingbalance.Name = "outstandingbalance";
-            this.outstandingbalance.ReadOnly = true;
-            this.outstandingbalance.Width = 150;
-            // 
-            // current
-            // 
-            this.current.HeaderText = "Current";
-            this.current.Name = "current";
-            this.current.ReadOnly = true;
-            this.current.Width = 120;
-            // 
-            // thirties
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.thirties.DefaultCellStyle = dataGridViewCellStyle4;
-            this.thirties.HeaderText = "1-30";
-            this.thirties.Name = "thirties";
-            this.thirties.ReadOnly = true;
-            this.thirties.Width = 120;
-            // 
-            // sixties
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.sixties.DefaultCellStyle = dataGridViewCellStyle5;
-            this.sixties.HeaderText = "31-60";
-            this.sixties.Name = "sixties";
-            this.sixties.ReadOnly = true;
-            this.sixties.Width = 120;
-            // 
-            // nineties
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.nineties.DefaultCellStyle = dataGridViewCellStyle6;
-            this.nineties.HeaderText = "61-90";
-            this.nineties.Name = "nineties";
-            this.nineties.ReadOnly = true;
-            this.nineties.Width = 120;
-            // 
-            // overninty
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.overninty.DefaultCellStyle = dataGridViewCellStyle7;
-            this.overninty.HeaderText = "91+";
-            this.overninty.Name = "overninty";
-            this.overninty.ReadOnly = true;
-            this.overninty.Width = 120;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // lbl30
             // 
@@ -302,6 +230,83 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Total Accounts Receivable Aging";
             // 
+            // customer
+            // 
+            this.customer.HeaderText = "Customer";
+            this.customer.Name = "customer";
+            this.customer.ReadOnly = true;
+            this.customer.Width = 260;
+            // 
+            // terms
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.terms.DefaultCellStyle = dataGridViewCellStyle12;
+            this.terms.HeaderText = "Terms";
+            this.terms.Name = "terms";
+            this.terms.ReadOnly = true;
+            this.terms.Width = 50;
+            // 
+            // duedate
+            // 
+            this.duedate.HeaderText = "Due Date";
+            this.duedate.Name = "duedate";
+            this.duedate.ReadOnly = true;
+            this.duedate.Width = 115;
+            // 
+            // outstandingbalance
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.outstandingbalance.DefaultCellStyle = dataGridViewCellStyle13;
+            this.outstandingbalance.HeaderText = "Outstanding Balance";
+            this.outstandingbalance.Name = "outstandingbalance";
+            this.outstandingbalance.ReadOnly = true;
+            this.outstandingbalance.Width = 150;
+            // 
+            // current
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.current.DefaultCellStyle = dataGridViewCellStyle14;
+            this.current.HeaderText = "Current";
+            this.current.Name = "current";
+            this.current.ReadOnly = true;
+            this.current.Width = 120;
+            // 
+            // thirties
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.thirties.DefaultCellStyle = dataGridViewCellStyle15;
+            this.thirties.HeaderText = "1-30";
+            this.thirties.Name = "thirties";
+            this.thirties.ReadOnly = true;
+            this.thirties.Width = 120;
+            // 
+            // sixties
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.sixties.DefaultCellStyle = dataGridViewCellStyle16;
+            this.sixties.HeaderText = "31-60";
+            this.sixties.Name = "sixties";
+            this.sixties.ReadOnly = true;
+            this.sixties.Width = 120;
+            // 
+            // nineties
+            // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.nineties.DefaultCellStyle = dataGridViewCellStyle17;
+            this.nineties.HeaderText = "61-90";
+            this.nineties.Name = "nineties";
+            this.nineties.ReadOnly = true;
+            this.nineties.Width = 120;
+            // 
+            // overninty
+            // 
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.overninty.DefaultCellStyle = dataGridViewCellStyle18;
+            this.overninty.HeaderText = "91+";
+            this.overninty.Name = "overninty";
+            this.overninty.ReadOnly = true;
+            this.overninty.Width = 120;
+            // 
             // mdiSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -343,6 +348,13 @@
         private System.Windows.Forms.Button btnEsc;
         private System.Windows.Forms.Button btnF12;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lbl30;
+        private System.Windows.Forms.Label lbl60;
+        private System.Windows.Forms.Label lbl90;
+        private System.Windows.Forms.Label lblOver;
+        private System.Windows.Forms.Label lblCurrent;
+        private System.Windows.Forms.Label lblOutstanding;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn terms;
         private System.Windows.Forms.DataGridViewTextBoxColumn duedate;
@@ -352,12 +364,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sixties;
         private System.Windows.Forms.DataGridViewTextBoxColumn nineties;
         private System.Windows.Forms.DataGridViewTextBoxColumn overninty;
-        private System.Windows.Forms.Label lbl30;
-        private System.Windows.Forms.Label lbl60;
-        private System.Windows.Forms.Label lbl90;
-        private System.Windows.Forms.Label lblOver;
-        private System.Windows.Forms.Label lblCurrent;
-        private System.Windows.Forms.Label lblOutstanding;
-        private System.Windows.Forms.Label label1;
     }
 }
