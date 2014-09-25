@@ -31,22 +31,22 @@ namespace nPOSProj
                 for (int otin = 0; otin < grabData.GetLength(1); otin++)
                 {
                     TimeSpan ts = Convert.ToDateTime(dtSelect.Value) - Convert.ToDateTime(grabData[2, otin]);
-                    if (ts.TotalDays <= 30 && ts.TotalDays >= 1)
+                    if (ts.TotalDays >= 1 && ts.TotalDays < 31)
                     {
                         thirty = Convert.ToDouble(grabData[3, otin]);
                     }
-                    else if (ts.TotalDays >= 31 && ts.TotalDays <= 60)
+                    else if (ts.TotalDays >= 31 && ts.TotalDays < 61)
                     {
                         sixty = Convert.ToDouble(grabData[3, otin]);
                     }
-                    else if (ts.TotalDays >= 61 && ts.TotalDays <= 90)
+                    else if (ts.TotalDays >= 61 && ts.TotalDays < 91)
                     {
                         ninty = Convert.ToDouble(grabData[3, otin]);
                     }
-                    else if (ts.TotalDays > 90)
+                    else if (ts.TotalDays >= 91)
                     {
                         over = Convert.ToDouble(grabData[3, otin]);
-                    }
+                    } 
                     else
                     {
                         current = Convert.ToDouble(grabData[3, otin]);
