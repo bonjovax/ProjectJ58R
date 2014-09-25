@@ -71,6 +71,48 @@ namespace nPOSProj
             }
         }
 
+        private void PrintAge()
+        {
+            label1.Visible = false;
+            lblOutstanding.Visible = false;
+            lblCurrent.Visible = false;
+            lbl30.Visible = false;
+            lbl60.Visible = false;
+            lbl90.Visible = false;
+            lblOver.Visible = false;
+            try
+            {
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("customer", typeof(String));
+                dt.Columns.Add("terms", typeof(Int32));
+                dt.Columns.Add("duedate", typeof(String));
+                dt.Columns.Add("outstanding", typeof(Double));
+                dt.Columns.Add("current", typeof(Double));
+                dt.Columns.Add("thirty", typeof(Double));
+                dt.Columns.Add("sixty", typeof(Double));
+                dt.Columns.Add("ninty", typeof(Double));
+                dt.Columns.Add("over", typeof(Double));
+                //
+                foreach (DataGridViewRow dcoe in dataGridView1.Rows)
+                {
+                    dt.Rows.Add(dcoe.Cells[0].Value, dcoe.Cells[1].Value, dcoe.Cells[2].Value, dcoe.Cells[3].Value, dcoe.Cells[4].Value, dcoe.Cells[5].Value, dcoe.Cells[6].Value, dcoe.Cells[7].Value, dcoe.Cells[8].Value);
+                }
+                ds.Tables.Add(dt);
+                ds.WriteXmlSchema("aging.xml");
+                crystalReportViewer1.Visible = true;
+                btnReturn.Visible = true;
+                //Execute To CReports
+                rptAging aging = new rptAging();
+                aging.SetDataSource(ds);
+                crystalReportViewer1.ReportSource = aging;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
@@ -206,6 +248,24 @@ namespace nPOSProj
         private void dtSelect_ValueChanged(object sender, EventArgs e)
         {
             LoadSummary();
+        }
+
+        private void btnF12_Click(object sender, EventArgs e)
+        {
+            PrintAge();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            crystalReportViewer1.Visible = false;
+            label1.Visible = true;
+            lblOutstanding.Visible = true;
+            lblCurrent.Visible = true;
+            lbl30.Visible = true;
+            lbl60.Visible = true;
+            lbl90.Visible = true;
+            lblOver.Visible = true;
+            btnReturn.Visible = false;
         }
     }
 }

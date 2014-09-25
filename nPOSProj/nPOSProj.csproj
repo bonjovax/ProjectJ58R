@@ -479,6 +479,12 @@
       <DependentUpon>Quotation.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptAging.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAging.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptCDrawer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -739,6 +745,10 @@
     <EmbeddedResource Include="Quotation.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Quotation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptAging.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAging.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptCDrawer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
