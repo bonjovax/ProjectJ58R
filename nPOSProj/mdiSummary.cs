@@ -73,6 +73,7 @@ namespace nPOSProj
 
         private void PrintAge()
         {
+            custvo = new VO.CustomersVO();
             label1.Visible = false;
             lblOutstanding.Visible = false;
             lblCurrent.Visible = false;
@@ -105,6 +106,8 @@ namespace nPOSProj
                 //Execute To CReports
                 rptAging aging = new rptAging();
                 aging.SetDataSource(ds);
+                aging.SetParameterValue("DataParam", dtSelect.Text);
+                aging.SetParameterValue("prepareParam", custvo.first() + " " + custvo.middle() + " " + custvo.last());
                 crystalReportViewer1.ReportSource = aging;
             }
             catch (Exception)
@@ -120,9 +123,9 @@ namespace nPOSProj
                 this.Close();
                 return true;
             }
-            if (keyData == Keys.F12)
+            if (keyData == Keys.F12 && crystalReportViewer1.Visible == false)
             {
-                /* Reserve for Reporting */
+                PrintAge();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);

@@ -346,5 +346,23 @@ namespace nPOSProj.VO
             customers.DebitAccount(Balance, AmountPaid, Custcode);
         }
         #endregion
+        #region Etc
+        public String first()
+        {
+            customers = new DAO.CustomersDAO();
+            return customers.fname();
+        }
+        public String middle()
+        {
+            customers = new DAO.CustomersDAO();
+            String axe = customers.mname();
+            return customers.middleName(axe);
+        }
+        public String last()
+        {
+            customers = new DAO.CustomersDAO();
+            return customers.lname();
+        }
+        #endregion
     }
 }

@@ -884,5 +884,120 @@ namespace nPOSProj.DAO
             return foundZero;
         }
         #endregion
+        #region Info Section DAO
+        public Int32 getUserIdFromDB()
+        {
+            String user = frmLogin.User.user_name;
+            Int32 no = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT user_id AS a FROM user_account ";
+            query += "WHERE user_name = ?user_name";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?user_name", user);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    no = Convert.ToInt32(rdr["a"]);
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return no;
+        }
+        public String fname()
+        {
+            String a = "";
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT first_name AS a FROM user_information ";
+            query += "WHERE user_id = ?user_id";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?user_id", this.getUserIdFromDB());
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    a = rdr["a"].ToString();
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return a;
+        }
+        public String mname()
+        {
+            String a = "";
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT middle_name AS a FROM user_information ";
+            query += "WHERE user_id = ?user_id";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?user_id", this.getUserIdFromDB());
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    a = rdr["a"].ToString();
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            this.middleName(a);
+            return a;
+        }
+        public string middleName(string mN)
+        {
+            int firstSpace = mN.IndexOf(""); //first "space"
+            string middleNameModified = mN.Substring(0, 1); //takes the first letter of the middle name
+            string newName = middleNameModified + "."; //puts all the names together
+            return newName; //retuns the new name
+        }
+        public String lname()
+        {
+            String a = "";
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT last_name AS a FROM user_information ";
+            query += "WHERE user_id = ?user_id";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?user_id", this.getUserIdFromDB());
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    a = rdr["a"].ToString();
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return a;
+        }
+        #endregion
     }
 }
