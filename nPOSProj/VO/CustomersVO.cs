@@ -203,6 +203,15 @@ namespace nPOSProj.VO
             xxx = customers.ReadCustomer();
             return xxx;
         }
+        public String[,] SearchReadCustomers()
+        {
+            customers = new DAO.CustomersDAO();
+            Int32 count = customers.PositionCountSearch(Companyname);
+            String[,] xxx = new String[7, count];
+            customers.ReadCustomerSearch(Companyname);
+            xxx = customers.ReadCustomerSearch(Companyname);
+            return xxx;
+        }
         public String[,] ReadCustomersPayment()
         {
             customers = new DAO.CustomersDAO();

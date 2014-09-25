@@ -52,6 +52,37 @@ namespace nPOSProj.DAO
             }
             return count;
         }
+        public Int32 PositionCountSearch(String customer)
+        {
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String sql = "SELECT COUNT(*) AS a ";
+            sql += "FROM crm_customer ";
+            sql += "WHERE crm_companyname LIKE ?customer ORDER BY crm_companyname";
+            Int32 count = 0;
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("?customer", customer + "%");
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    count = Convert.ToInt32(rdr["a"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Error :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return count;
+        }
         public Int32 PositionCountFilter(Double crm_balance)
         {
             con = new MySqlConnection();
@@ -89,11 +120,52 @@ namespace nPOSProj.DAO
             con.ConnectionString = dbcon.getConnectionString();
             String query = "SELECT crm_custcode AS a, crm_companyname AS b, crm_firstname AS c, ";
             query += "crm_middlename AS d, crm_lastname AS e, crm_balance AS f, crm_duedate AS g ";
-            query += "FROM crm_customer";
+            query += "FROM crm_customer ORDER BY crm_companyname";
             try
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                int counts = 0;
+                while (rdr.Read())
+                {
+                    xxx[0, counts] = rdr["a"].ToString();
+                    xxx[1, counts] = rdr["b"].ToString();
+                    xxx[2, counts] = rdr["c"].ToString();
+                    xxx[3, counts] = rdr["d"].ToString();
+                    xxx[4, counts] = rdr["e"].ToString();
+                    xxx[5, counts] = rdr["f"].ToString();
+                    xxx[6, counts] = rdr["g"].ToString();
+                    counts++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(" Err :: ERROR " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return xxx;
+        }
+        public String[,] ReadCustomerSearch(String company)
+        {
+            Int32 count = this.PositionCountSearch(company);
+            String[,] xxx = new String[7, count];
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT crm_custcode AS a, crm_companyname AS b, crm_firstname AS c, ";
+            query += "crm_middlename AS d, crm_lastname AS e, crm_balance AS f, crm_duedate AS g ";
+            query += "FROM crm_customer ";
+            query += "WHERE crm_companyname LIKE ?company ORDER BY crm_companyname";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?company", company + "%");
+                cmd.ExecuteScalar();
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 int counts = 0;
                 while (rdr.Read())

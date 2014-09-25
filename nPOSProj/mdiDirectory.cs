@@ -35,6 +35,24 @@ namespace nPOSProj
                 MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LoadDataSearch()
+        {
+            customer = new VO.CustomersVO();
+            customer.Companyname = txtBoxCompany.Text;
+            String[,] grabData = customer.SearchReadCustomers();
+            try
+            {
+                dataGridView1.Rows.Clear();
+                for (int x = 0; x < grabData.GetLength(1); x++)
+                {
+                    dataGridView1.Rows.Add(grabData[0, x].ToString(), grabData[1, x].ToString(), grabData[2, x].ToString(), grabData[3, x].ToString(), grabData[4, x].ToString(), Convert.ToDouble(grabData[5, x].ToString()), Convert.ToDateTime(grabData[6, x]).ToString("MM/dd/yyyy"));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void mdiDirectory_Load(object sender, EventArgs e)
         {
@@ -172,6 +190,16 @@ namespace nPOSProj
             {
                 MessageBox.Show("Ping Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtBoxCompany_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBoxCompany.Text != "")
+            {
+                LoadDataSearch();
+            }
+            else
+                LoadData();
         }
     }
 }
