@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiFrmCustomers));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsDirectory = new System.Windows.Forms.ToolStripButton();
+            this.tsSummary = new System.Windows.Forms.ToolStripButton();
             this.tsPayment = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.tsExit = new System.Windows.Forms.ToolStripButton();
@@ -42,7 +43,6 @@
             this.tsToday = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tsSummary = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +78,19 @@
             this.tsDirectory.Text = "&Directory";
             this.tsDirectory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsDirectory.Click += new System.EventHandler(this.tsDirectory_Click);
+            // 
+            // tsSummary
+            // 
+            this.tsSummary.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsSummary.ForeColor = System.Drawing.Color.White;
+            this.tsSummary.Image = ((System.Drawing.Image)(resources.GetObject("tsSummary.Image")));
+            this.tsSummary.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsSummary.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSummary.Name = "tsSummary";
+            this.tsSummary.Size = new System.Drawing.Size(71, 69);
+            this.tsSummary.Text = "&Summary";
+            this.tsSummary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsSummary.Click += new System.EventHandler(this.tsSummary_Click);
             // 
             // tsPayment
             // 
@@ -187,19 +200,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // tsSummary
-            // 
-            this.tsSummary.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsSummary.ForeColor = System.Drawing.Color.White;
-            this.tsSummary.Image = ((System.Drawing.Image)(resources.GetObject("tsSummary.Image")));
-            this.tsSummary.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsSummary.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSummary.Name = "tsSummary";
-            this.tsSummary.Size = new System.Drawing.Size(71, 69);
-            this.tsSummary.Text = "&Summary";
-            this.tsSummary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsSummary.Click += new System.EventHandler(this.tsSummary_Click);
             // 
             // mdiFrmCustomers
             // 
