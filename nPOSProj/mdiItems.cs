@@ -23,6 +23,15 @@ namespace nPOSProj
         {
             InitializeComponent();
         }
+        private void trapDGV()
+        {
+            if (dataGridView1.RowCount == 0)
+            {
+                dataGridView1.Enabled = false;
+            }
+            else
+                dataGridView1.Enabled = true;
+        }
 
         private void mdiItems_Load(object sender, EventArgs e)
         {
@@ -42,6 +51,7 @@ namespace nPOSProj
             catch (Exception)
             {
             }
+            trapDGV();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

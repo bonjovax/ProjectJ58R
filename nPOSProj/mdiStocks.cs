@@ -19,6 +19,25 @@ namespace nPOSProj
             InitializeComponent();
         }
 
+        private void trapDGV1()
+        {
+            if (dataGridView1.RowCount == 0)
+            {
+                dataGridView1.Enabled = false;
+            }
+            else
+                dataGridView1.Enabled = true;
+        }
+        private void trapDGV2()
+        {
+            if (dataGridView2.RowCount == 0)
+            {
+                dataGridView2.Enabled = false;
+            }
+            else
+                dataGridView2.Enabled = true;
+        }
+
         private void mdiStocks_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'npos_dbDataSet1.inventory_warehouse' table. You can move, or remove it, as needed.
@@ -31,6 +50,8 @@ namespace nPOSProj
             this.inventory_stocksTableAdapter.Fill(this.npos_dbDataSet1.inventory_stocks);
             // TODO: This line of code loads data into the 'npos_dbDataSet.inventory_warehouse' table. You can move, or remove it, as needed.
             this.inventory_warehouseTableAdapter.Fill(this.npos_dbDataSet.inventory_warehouse);
+            trapDGV1();
+            trapDGV2();
         }
 
         private void clear()
@@ -79,6 +100,7 @@ namespace nPOSProj
                 {
                     MessageBox.Show("Warehouse Code Existed! or Check Database Server!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                trapDGV1();
             }
         }
 
@@ -96,6 +118,7 @@ namespace nPOSProj
                 MessageBox.Show("Please Check your Database Server Connection", "Database Server Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.ExitThread();
             }
+            trapDGV1();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -114,6 +137,7 @@ namespace nPOSProj
                             btnDelete.Enabled = false;
                         }
                     }
+                    trapDGV1();
                 }
                 catch (Exception)
                 {
@@ -166,6 +190,7 @@ namespace nPOSProj
                 {
                     MessageBox.Show("Stock Code Existed! or Check Database Server!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                trapDGV2();
             }
         }
 
@@ -323,6 +348,7 @@ namespace nPOSProj
                 {
                     MessageBox.Show("Please Check Your Encoded Data or Check Database Server is Active!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                trapDGV2();
             }
             else
                 MessageBox.Show("Negative Value is not allowed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -405,6 +431,7 @@ namespace nPOSProj
                             btnSDelete.Enabled = false;
                         }
                     }
+                    trapDGV2();
                 }
                 catch (Exception)
                 {

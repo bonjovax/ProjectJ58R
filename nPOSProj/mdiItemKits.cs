@@ -17,6 +17,15 @@ namespace nPOSProj
         {
             InitializeComponent();
         }
+        private void trapDGV()
+        {
+            if (dataGridView1.RowCount == 0)
+            {
+                dataGridView1.Enabled = false;
+            }
+            else
+                dataGridView1.Enabled = true;
+        }
 
         private void mditemKits_Load(object sender, EventArgs e)
         {
@@ -36,6 +45,7 @@ namespace nPOSProj
             {
                 MessageBox.Show("Check Server!", "Database Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            trapDGV();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -65,6 +75,7 @@ namespace nPOSProj
             {
                 MessageBox.Show("Check Server or Check Input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            trapDGV();
         }
 
         private void txtBoxQty_TextChanged(object sender, EventArgs e)
@@ -226,6 +237,7 @@ namespace nPOSProj
             {
                 MessageBox.Show("Check Server or Check Input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            trapDGV();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
