@@ -44,6 +44,20 @@ namespace nPOSProj
                 txtBoxSearch.Focus();
                 return true;
             }
+            if (keyData == Keys.F3)
+            {
+                if (chKIKits.Checked == false)
+                {
+                    chKIKits.Checked = true;
+                    getDataTable();
+                }
+                else
+                {
+                    chKIKits.Checked = false;
+                    getDataTable();
+                }
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
