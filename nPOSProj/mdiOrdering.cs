@@ -134,6 +134,10 @@ namespace nPOSProj
             {
                 gotoDone();
             }
+            if (keyData == Keys.F12)
+            {
+                txtBoxDescription.Focus();
+            }
             if (keyData == Keys.Escape)
             {
                 this.Close();
@@ -222,6 +226,7 @@ namespace nPOSProj
                 checkRowCount();
                 dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
                 clearboxes();
+                txtBoxEAN.Focus();
             }
             catch (Exception)
             {
@@ -294,6 +299,7 @@ namespace nPOSProj
                     checkRowCount();
                     start = true;
                     btnDone.Enabled = true;
+                    txtBoxEAN.Focus();
                 }
             }
             catch (Exception)
@@ -625,6 +631,7 @@ namespace nPOSProj
                     autoCompleteItem();
                     checkRowCount();
                     btnDone.Enabled = true;
+                    txtBoxEAN.Focus();
                 }
             }
         }
