@@ -191,6 +191,36 @@ namespace nPOSProj.VO
             set { due_date = value; }
         }
         #endregion
+        #region POSValues
+        private Int32 pos_orno;
+
+        public Int32 Pos_orno
+        {
+            get { return pos_orno; }
+            set { pos_orno = value; }
+        }
+        private String pos_terminal;
+
+        public String Pos_terminal
+        {
+            get { return pos_terminal; }
+            set { pos_terminal = value; }
+        }
+        private String pos_user;
+
+        public String Pos_user
+        {
+            get { return pos_user; }
+            set { pos_user = value; }
+        }
+        private String customer;
+
+        public String Customer
+        {
+            get { return customer; }
+            set { customer = value; }
+        }
+        #endregion
         public CustomersVO() { }
 
         #region Core
@@ -353,6 +383,15 @@ namespace nPOSProj.VO
         {
             customers = new DAO.CustomersDAO();
             customers.DebitAccount(Balance, AmountPaid, Custcode);
+        }
+        public void PayToSale()
+        {
+            Double init_amount = 0;
+            Double fin_amount = 0;
+            customers = new DAO.CustomersDAO();
+            init_amount = AmountPaid / 1.12;
+            fin_amount = init_amount * 0.12;
+            customers.PaymentToSales(Pos_orno, Pos_terminal, Custcode, Customer, Pos_user, fin_amount, AmountPaid, AmountPaid);
         }
         #endregion
         #region Etc

@@ -932,6 +932,37 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
+        public void PaymentToSales(Int32 pos_orno, String pos_terminal, String cust_code, String customer, String pos_user, Double tax, Double pos_total_amt, Double pos_tender)
+        {
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "INSERT INTO pos_store (pos_orno, pos_terminal, pos_date, pos_time, crm_custcode, pos_customer, pos_user, pos_vatable, pos_tax_amt, pos_total_amt, pos_paymethod, pos_tender, pos_park) VALUES";
+            query += "(?a, ?b, ?pdate, ?ptime, ?pcust, ?pcore, ?c, ?vatable, ?tax, ?d, ?pm, ?e, 0)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", pos_orno);
+                cmd.Parameters.AddWithValue("?b", pos_terminal);
+                cmd.Parameters.AddWithValue("?pdate", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("?ptime", DateTime.Now.ToString("HH:mm:ss"));
+                cmd.Parameters.AddWithValue("?pcust", cust_code);
+                cmd.Parameters.AddWithValue("?pcore", customer);
+                cmd.Parameters.AddWithValue("?c", pos_user);
+                cmd.Parameters.AddWithValue("?tax", tax);
+                cmd.Parameters.AddWithValue("?vatable", pos_total_amt);
+                cmd.Parameters.AddWithValue("?d", pos_total_amt);
+                cmd.Parameters.AddWithValue("?pm", "Payment");
+                cmd.Parameters.AddWithValue("?e", pos_tender);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         private Int32 getTerms(String crm_custcode)
         {
             Int32 days = 0;

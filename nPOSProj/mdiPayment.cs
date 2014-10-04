@@ -180,6 +180,8 @@ namespace nPOSProj
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            VO.PosVO pos = new VO.PosVO();
+            frmLogin fl = new frmLogin();
             try
             {
                 DialogResult dlg = MessageBox.Show("Do you wish to Proceed the Payment", "Payment", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -188,10 +190,17 @@ namespace nPOSProj
                     Double prePayable = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[2].Value);
                     Double preBalance = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[4].Value);
                     customer = new VO.CustomersVO();
+                    pos.Pos_terminal = fl.tN;
+                    customer.Pos_terminal = fl.tN;
+                    customer.Pos_orno = pos.GetOrNo();
+                    customer.Custcode = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                    customer.Customer = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                    customer.Pos_user = frmLogin.User.user_name;
                     customer.Balance = Convert.ToDouble(txtBoxAmount.Text);
                     customer.AmountPaid = Convert.ToDouble(txtBoxAmount.Text);
                     customer.Custcode = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                     customer.DebitToAccount();
+                    customer.PayToSale(); //NEW
                     dataGridView1.SelectedRows[0].Cells[3].Value = Convert.ToDouble(txtBoxAmount.Text);
                     dataGridView1.SelectedRows[0].Cells[4].Value = preBalance - Convert.ToDouble(txtBoxAmount.Text);
                     if (Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[4].Value) == 0)
