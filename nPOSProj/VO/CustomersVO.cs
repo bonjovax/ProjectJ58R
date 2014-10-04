@@ -220,6 +220,13 @@ namespace nPOSProj.VO
             get { return customer; }
             set { customer = value; }
         }
+        private Double vatable;
+
+        public Double Vatable
+        {
+            get { return vatable; }
+            set { vatable = value; }
+        }
         #endregion
         public CustomersVO() { }
 
@@ -390,8 +397,15 @@ namespace nPOSProj.VO
             Double fin_amount = 0;
             customers = new DAO.CustomersDAO();
             init_amount = AmountPaid / 1.12;
-            fin_amount = init_amount * 0.12;
-            customers.PaymentToSales(Pos_orno, Pos_terminal, Custcode, Customer, Pos_user, fin_amount, AmountPaid, AmountPaid);
+            fin_amount = init_amount * customers.askTax();
+            customers.PaymentToSales(Pos_orno, Pos_terminal, Custcode, Customer, Pos_user, fin_amount, Vatable, AmountPaid, AmountPaid);
+        }
+        public Boolean JustCheckVat()
+        {
+            Boolean check = false;
+            customers = new DAO.CustomersDAO();
+            check = customers.checkVat();
+            return check;
         }
         #endregion
         #region Etc

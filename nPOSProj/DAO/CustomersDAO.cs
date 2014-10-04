@@ -932,13 +932,13 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
-        public void PaymentToSales(Int32 pos_orno, String pos_terminal, String cust_code, String customer, String pos_user, Double tax, Double pos_total_amt, Double pos_tender)
+        public void PaymentToSales(Int32 pos_orno, String pos_terminal, String cust_code, String customer, String pos_user, Double tax, Double vatable, Double pos_total_amt, Double pos_tender)
         {
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
-            String query = "INSERT INTO pos_store (pos_orno, pos_terminal, pos_date, pos_time, crm_custcode, pos_customer, pos_user, pos_vatable, pos_tax_amt, pos_total_amt, pos_paymethod, pos_tender, pos_park) VALUES";
-            query += "(?a, ?b, ?pdate, ?ptime, ?pcust, ?pcore, ?c, ?vatable, ?tax, ?d, ?pm, ?e, 0)";
+            String query = "INSERT INTO pos_store (pos_orno, pos_terminal, pos_date, pos_time, crm_custcode, pos_customer, pos_user, pos_vatable, pos_tax_amt, pos_total_amt, pos_tax_perc, pos_paymethod, pos_tender, pos_park) VALUES";
+            query += "(?a, ?b, ?pdate, ?ptime, ?pcust, ?pcore, ?c, ?vatable, ?tax, ?d, ?taxp, ?pm, ?e, 0)";
             try
             {
                 con.Open();
@@ -951,17 +951,48 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?pcore", customer);
                 cmd.Parameters.AddWithValue("?c", pos_user);
                 cmd.Parameters.AddWithValue("?tax", tax);
-                cmd.Parameters.AddWithValue("?vatable", pos_total_amt);
+                cmd.Parameters.AddWithValue("?vatable", vatable);
                 cmd.Parameters.AddWithValue("?d", pos_total_amt);
+                cmd.Parameters.AddWithValue("?taxp", this.askTax() / 100);
                 cmd.Parameters.AddWithValue("?pm", "Payment");
                 cmd.Parameters.AddWithValue("?e", pos_tender);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
             finally
             {
                 con.Close();
             }
+        }
+        public Double askTax()
+        {
+            Double comp = 0;
+            Double tax = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT vat_rate FROM system_config";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    comp = Convert.ToDouble(rdr["vat_rate"]);
+                    tax = comp / 100;
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return tax;
         }
         private Int32 getTerms(String crm_custcode)
         {
@@ -1063,6 +1094,35 @@ namespace nPOSProj.DAO
                 con.Close();
             }
             return foundZero;
+        }
+        public Boolean checkVat()
+        {
+            Boolean vat = false;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT tax_type FROM system_config";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["tax_type"].ToString() == "V")
+                    {
+                        vat = true;
+                    }
+                    else
+                        vat = false;
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return vat;
         }
         #endregion
         #region Info Section DAO

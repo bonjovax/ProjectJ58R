@@ -197,6 +197,12 @@ namespace nPOSProj
                     customer.Customer = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                     customer.Pos_user = frmLogin.User.user_name;
                     customer.Balance = Convert.ToDouble(txtBoxAmount.Text);
+                    if (customer.JustCheckVat() == true)
+                    {
+                        customer.Vatable = Convert.ToDouble(txtBoxAmount.Text);
+                    }
+                    else
+                        customer.Vatable = 0;
                     customer.AmountPaid = Convert.ToDouble(txtBoxAmount.Text);
                     customer.Custcode = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                     customer.DebitToAccount();
