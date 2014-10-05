@@ -221,7 +221,7 @@ namespace nPOSProj
             graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
             graphic.DrawString(DateTime.Now.ToString("MMM dd, yyyy") + " " + "(" + DateTime.Now.ToString("ddd") + ")", font, new SolidBrush(Color.Black), 5, 150);
             graphic.DrawString(DateTime.Now.ToString("hh:mm tt"), font, new SolidBrush(Color.Black), 180, 150);
-            graphic.DrawString("OR# " + OrNo, font, new SolidBrush(Color.Black), 5, 165);
+            graphic.DrawString("SI# " + OrNo, font, new SolidBrush(Color.Black), 5, 165);
             #endregion
 
             using (MySqlConnection con = new MySqlConnection(dbcon.getConnectionString()))
@@ -286,7 +286,7 @@ namespace nPOSProj
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 375 + offset);
                             graphic.DrawString(fl.tN, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
                             graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 405 + offset);
-                            graphic.DrawString("THIS IS NOT AN OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 21, 415 + offset);
+                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 415 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 430 + offset);
                         }
                         if (selector == 1)
@@ -305,7 +305,7 @@ namespace nPOSProj
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
                             graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT AN OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 21, 430 + offset);
+                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                         if (selector == 2)
@@ -324,7 +324,7 @@ namespace nPOSProj
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
                             graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT AN OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 21, 430 + offset);
+                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                         if (selector == 3)
@@ -343,7 +343,7 @@ namespace nPOSProj
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
                             graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT AN OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 21, 430 + offset);
+                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                         if (selector == 4)
@@ -363,7 +363,7 @@ namespace nPOSProj
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
                             graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT AN OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 21, 430 + offset);
+                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                     }
