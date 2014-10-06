@@ -740,7 +740,7 @@
             this.label2.Size = new System.Drawing.Size(955, 15);
             this.label2.TabIndex = 40;
             this.label2.Text = "Q - Go to Quantity | A - Go to EAN  | S - Go To List | W - Cash Controller | [O] " +
-    "- Open Cash Drawer | N - No Sale | P - Park";
+    "- Open Cash Drawer | N - No Sale | P - Park | (F11) - Reproduce Invoice";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnRetail
