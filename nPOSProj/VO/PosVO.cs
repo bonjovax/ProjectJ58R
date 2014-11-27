@@ -149,6 +149,14 @@ namespace nPOSProj.VO
             set { pos_ean = value; }
         }
 
+        private Double pos_item_amount;
+
+        public Double Pos_item_amount
+        {
+            get { return pos_item_amount; }
+            set { pos_item_amount = value; }
+        }
+
         private Double pos_amt;
 
         public Double Pos_amt
@@ -396,24 +404,24 @@ namespace nPOSProj.VO
         public void ParkItem()
         {
             POSDAO = new DAO.PosDAO();
-            POSDAO.Park_I(Pos_orno, Pos_terminal, Pos_ean, Pos_quantity, Pos_amt);
+            POSDAO.Park_I(Pos_orno, Pos_terminal, Pos_ean, Pos_quantity, Pos_item_amount, Pos_amt);
         }
         public void ParkItemSameUpdate()
         {
             POSDAO = new DAO.PosDAO();
-            POSDAO.Park_I_Update(Pos_orno, Pos_terminal, Pos_ean, Pos_quantity, Pos_amt);
+            POSDAO.Park_I_Update(Pos_orno, Pos_terminal, Pos_ean, Pos_quantity, Pos_item_amount, Pos_amt);
         }
 
         public void ParkItemUpdate()
         {
             POSDAO = new DAO.PosDAO();
-            POSDAO.ParkU_I(Pos_orno, Pos_terminal, Pos_ean, Pos_discount, Pos_discount_amt, Pos_quantity, Pos_amt);
+            POSDAO.ParkU_I(Pos_orno, Pos_terminal, Pos_ean, Pos_discount, Pos_discount_amt, Pos_quantity, Pos_item_amount, Pos_amt);
         }
 
         public void ParkDiscountItemUpdate()
         {
             POSDAO = new DAO.PosDAO();
-            POSDAO.ParkUwD_I(Pos_orno, Pos_terminal, Pos_ean, Pos_discount, Pos_discount_amt, Pos_amt);
+            POSDAO.ParkUwD_I(Pos_orno, Pos_terminal, Pos_ean, Pos_discount, Pos_discount_amt, Pos_item_amount, Pos_amt);
         }
 
         public void ParkVoidItem()

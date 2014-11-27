@@ -565,8 +565,8 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "INSERT INTO pos_park (pos_orderno, pos_ean, pos_quantity, order_item_amount, pos_amt, pos_parked_date) VALUES";
-            query += "(?a, ?b, ?c, ?d, ?e, ?f)";
+            String query = "INSERT INTO pos_park (pos_orderno, pos_ean, pos_quantity, order_item_amount, pos_item_amount, pos_amt, pos_parked_date) VALUES";
+            query += "(?a, ?b, ?c, ?d, ?dd, ?e, ?f)";
             String query1 = "UPDATE inventory_items SET item_quantity = item_quantity - ?a ";
             query1 += "WHERE item_ean = ?item_ean";
             try
@@ -578,6 +578,7 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?b", pos_ean);
                 cmd.Parameters.AddWithValue("?c", pos_quantity);
                 cmd.Parameters.AddWithValue("?d", order_item_amount);
+                cmd.Parameters.AddWithValue("?dd", order_item_amount);
                 cmd.Parameters.AddWithValue("?e", pos_amt);
                 cmd.Parameters.AddWithValue("?f", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd1.Parameters.AddWithValue("?a", pos_quantity);
@@ -597,7 +598,7 @@ namespace nPOSProj.DAO
             con = new MySqlConnection();
             db = new Conf.dbs();
             con.ConnectionString = db.getConnectionString();
-            String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?a, order_item_amount = ?b, pos_amt = pos_amt + ?c, pos_parked_date = ?d ";
+            String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?a, order_item_amount = ?b, pos_item_amount = ?bb, pos_amt = pos_amt + ?c, pos_parked_date = ?d ";
             query += "WHERE pos_orderno = ?pos_orderno AND pos_ean = ?pos_ean";
             String query1 = "UPDATE inventory_items SET item_quantity = item_quantity - ?a ";
             query1 += "WHERE item_ean = ?item_ean";
@@ -608,6 +609,7 @@ namespace nPOSProj.DAO
                 MySqlCommand cmd1 = new MySqlCommand(query1, con);
                 cmd.Parameters.AddWithValue("?a", pos_quantity);
                 cmd.Parameters.AddWithValue("?b", order_item_amount);
+                cmd.Parameters.AddWithValue("?bb", order_item_amount);
                 cmd.Parameters.AddWithValue("?c", pos_amt);
                 cmd.Parameters.AddWithValue("?d", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("?pos_orderno", pos_orderno);
@@ -1624,8 +1626,8 @@ namespace nPOSProj.DAO
             con.ConnectionString = db.getConnectionString();
             String query = "UPDATE inventory_items SET item_quantity = item_quantity - ?a ";
             query += "WHERE item_ean = ?item_ean";
-            String query1 = "INSERT INTO pos_park (pos_orderno, pos_parked_date, pos_ean, pos_quantity, order_item_amount, pos_amt) VALUES";
-            query1 += "(?a, ?b, ?c, ?d, ?e, ?f)";
+            String query1 = "INSERT INTO pos_park (pos_orderno, pos_parked_date, pos_ean, pos_quantity, order_item_amount, pos_item_amount, pos_amt) VALUES";
+            query1 += "(?a, ?b, ?c, ?d, ?e, ?ee, ?f)";
             String query3 = "UPDATE quotation_park SET is_send = 1 ";
             query3 += "WHERE quote_no = ?quote_no AND quote_ean = ?quote_ean";
             try
@@ -1641,6 +1643,7 @@ namespace nPOSProj.DAO
                 cmd1.Parameters.AddWithValue("?c", ean);
                 cmd1.Parameters.AddWithValue("?d", qty);
                 cmd1.Parameters.AddWithValue("?e", order_item_amount);
+                cmd1.Parameters.AddWithValue("?ee", order_item_amount);
                 cmd1.Parameters.AddWithValue("?f", pos_amt);
                 cmd3.Parameters.AddWithValue("?quote_no", quote_no);
                 cmd3.Parameters.AddWithValue("?quote_ean", ean);

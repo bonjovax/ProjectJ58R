@@ -188,10 +188,10 @@ namespace nPOSProj
             graphic.DrawString("Accreditation No: " + bir.AccreditationNo(), new Font("FontA11", 7.8f), new SolidBrush(Color.Black), 4, 92);
             graphic.DrawString("Serial No: " + bir.SerialNo(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 81, 105);
             graphic.DrawString("Machine Code: " + machine_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 120);
-            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
+            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
             graphic.DrawString(DateTime.Now.ToString("MMM dd, yyyy") + " " + "(" + DateTime.Now.ToString("ddd") + ")", font, new SolidBrush(Color.Black), 5, 150);
             graphic.DrawString(DateTime.Now.ToString("hh:mm tt"), font, new SolidBrush(Color.Black), 180, 150);
-            graphic.DrawString("OR# " + OrNo, font, new SolidBrush(Color.Black), 5, 165);
+            graphic.DrawString("SI# " + OrNo, font, new SolidBrush(Color.Black), 5, 165);
             #endregion
             graphic.DrawString("N O   S A L E", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 90, 210);
         }
@@ -210,7 +210,7 @@ namespace nPOSProj
             #region Header
             graphic.DrawString(compName, new Font("FontA11", 9.0f, FontStyle.Bold), Brushes.Black, startX, startY);
             graphic.DrawString(address1, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 45, 30);
-            graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 38, 45);
+            graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 24, 45);
             //graphic.DrawString(contact, new Font("Tahoma", 11), new SolidBrush(Color.Black), 53, 60);
             //graphic.DrawString("Owned & Operated By: " + store_op, new Font("Tahoma", 11), new SolidBrush(Color.Black), 5, 75);
             graphic.DrawString("Permit No: " + permit_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 60);
@@ -218,7 +218,7 @@ namespace nPOSProj
             graphic.DrawString("Accreditation No: " + bir.AccreditationNo(), new Font("FontA11", 7.8f), new SolidBrush(Color.Black), 4, 92);
             graphic.DrawString("Serial No: " + bir.SerialNo(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 81, 105);
             graphic.DrawString("Machine Code: " + machine_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 120);
-            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
+            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
             graphic.DrawString(DateTime.Now.ToString("MMM dd, yyyy") + " " + "(" + DateTime.Now.ToString("ddd") + ")", font, new SolidBrush(Color.Black), 5, 150);
             graphic.DrawString(DateTime.Now.ToString("hh:mm tt"), font, new SolidBrush(Color.Black), 180, 150);
             graphic.DrawString("SI# " + OrNo, font, new SolidBrush(Color.Black), 5, 165);
@@ -226,12 +226,12 @@ namespace nPOSProj
 
             using (MySqlConnection con = new MySqlConnection(dbcon.getConnectionString()))
             {
-                String query = "SELECT a, b, c, d, e, f FROM (SELECT pos_park.trn AS aaa, inventory_stocks.stock_name AS a, pos_park.pos_amt AS b, pos_park.pos_quantity AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, inventory_items.item_tax_type AS f FROM inventory_items ";
+                String query = "SELECT a, b, c, d, e, f FROM (SELECT pos_park.trn AS aaa, inventory_stocks.stock_name AS a, pos_park.pos_amt AS b, pos_park.pos_quantity AS c, pos_park.pos_item_amount AS d, inventory_items.item_whole_price AS e, inventory_items.item_tax_type AS f FROM inventory_items ";
                 query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
                 query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
                 query += "WHERE (pos_park.pos_orno = ?pos_orno) AND (pos_park.pos_terminal = ?pos_terminal) ";
                 query += "UNION ALL ";
-                query += "SELECT pos_park.trn AS aaa, inventory_items.kit_name AS a, pos_park.pos_amt AS b, pos_park.pos_quantity AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, inventory_items.item_tax_type  AS f FROM inventory_items ";
+                query += "SELECT pos_park.trn AS aaa, inventory_items.kit_name AS a, pos_park.pos_amt AS b, pos_park.pos_quantity AS c, pos_park.pos_item_amount AS d, inventory_items.item_whole_price AS e, inventory_items.item_tax_type  AS f FROM inventory_items ";
                 query += "INNER JOIN pos_park ON inventory_items.item_ean = pos_park.pos_ean ";
                 query += "WHERE (pos_park.pos_orno = ?pos_orno) AND (pos_park.pos_terminal = ?pos_terminal) AND (inventory_items.is_kit = 1)) receipt ";
                 query += "ORDER BY aaa";
@@ -252,7 +252,7 @@ namespace nPOSProj
                             offset = offset + (int)fontHeight + 25;
                         }
                         offset = offset + 30;
-                        graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 140 + offset);
+                        graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 140 + offset);
                         //
                         counted = 0;
                         foreach (ListViewItem lv in lviewPOS.Items)
@@ -286,7 +286,7 @@ namespace nPOSProj
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 375 + offset);
                             graphic.DrawString(fl.tN, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
                             graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 405 + offset);
-                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 415 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 415 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 430 + offset);
                         }
                         if (selector == 1)
@@ -304,8 +304,8 @@ namespace nPOSProj
                             graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                         if (selector == 2)
@@ -323,8 +323,8 @@ namespace nPOSProj
                             graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECIEPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                         if (selector == 3)
@@ -342,8 +342,8 @@ namespace nPOSProj
                             graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                         if (selector == 4)
@@ -362,8 +362,8 @@ namespace nPOSProj
                             graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
                             graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
                             graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS SERVE AS YOUR SALES INVOICE", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 11, 430 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
                             graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
                         }
                     }
@@ -1139,6 +1139,7 @@ namespace nPOSProj
                                     pos.Pos_terminal = fl.tN;
                                     pos.Pos_ean = txtBoxEAN.Text;
                                     pos.Pos_quantity = Convert.ToInt32(txtBoxQty.Text);
+                                    pos.Pos_item_amount = price;
                                     pos.Pos_amt = computerItemQty;
                                     pos.ParkItem();
                                     //
@@ -1358,6 +1359,7 @@ namespace nPOSProj
                         pos.Pos_terminal = fl.tN;
                         pos.Pos_ean = txtBoxEAN.Text;
                         pos.Pos_quantity = Convert.ToInt32(txtBoxQty.Text);
+                        pos.Pos_item_amount = price;
                         pos.Pos_amt = uTotal;
                         pos.ParkItemSameUpdate();
                         //
@@ -1546,6 +1548,7 @@ namespace nPOSProj
                         pos.Pos_ean = catchEan;
                         pos.Pos_discount = disc.Percentage;
                         pos.Pos_discount_amt = x;
+                        pos.Pos_item_amount = price;
                         pos.Pos_amt = y;
                         pos.ParkDiscountItemUpdate();
                         //
@@ -1721,6 +1724,7 @@ namespace nPOSProj
                         pos.Pos_terminal = fl.tN;
                         pos.Pos_ean = uEan;
                         pos.Pos_quantity = qty;
+                        pos.Pos_item_amount = Convert.ToDouble(item.SubItems[3].Text);
                         pos.Pos_amt = x;
                         pos.ParkItemUpdate();
                         //
@@ -1956,8 +1960,20 @@ namespace nPOSProj
                     //
                     newFlash();
                     selector = 0; //CASH
-                    DrawerPing(); //Changes in Movement
-                    PrintReceipt();
+                    using (cstYesNo yesno = new cstYesNo())
+                    {
+                        yesno.Message = "Do You Wish Print an Receipt?";
+                        yesno.ShowDialog();
+                        if (yesno.Selected == true)
+                        {
+                            //DrawerPing();
+                            PrintReceipt();
+                        }
+                        else
+                        {
+                            //DrawerPing();
+                        }
+                    }
                     reprint = true;
                 }
                 if (checkout.IsDCTX == true) //Debit Credit Card
@@ -1993,7 +2009,20 @@ namespace nPOSProj
                     //
                     newFlash();
                     selector = 1; //Debit Credit Card
-                    PrintReceipt();
+                    using (cstYesNo yesno = new cstYesNo())
+                    {
+                        yesno.Message = "Do You Wish Print a Receipt?";
+                        yesno.ShowDialog();
+                        if (yesno.Selected == true)
+                        {
+                            DrawerPing();
+                            PrintReceipt();
+                        }
+                        else
+                        {
+                            DrawerPing();
+                        }
+                    }
                     reprint = true;
                 }
                 if (checkout.IsBCTX == true) //Bank Cheque
@@ -2028,7 +2057,20 @@ namespace nPOSProj
                     //
                     newFlash();
                     selector = 2; //Check
-                    PrintReceipt();
+                    using (cstYesNo yesno = new cstYesNo())
+                    {
+                        yesno.Message = "Do You Wish Print a Receipt?";
+                        yesno.ShowDialog();
+                        if (yesno.Selected == true)
+                        {
+                            DrawerPing();
+                            PrintReceipt();
+                        }
+                        else
+                        {
+                            DrawerPing();
+                        }
+                    }
                     reprint = true;
                 }
                 if (checkout.IsGCTX == true)
@@ -2064,7 +2106,20 @@ namespace nPOSProj
                     //
                     newFlash();
                     selector = 4; //Gift Card
-                    PrintReceipt();
+                    using (cstYesNo yesno = new cstYesNo())
+                    {
+                        yesno.Message = "Do You Wish Print a Receipt?";
+                        yesno.ShowDialog();
+                        if (yesno.Selected == true)
+                        {
+                            DrawerPing();
+                            PrintReceipt();
+                        }
+                        else
+                        {
+                            DrawerPing();
+                        }
+                    }
                     reprint = true;
                 }
                 if (checkout.IsARTX == true) //CRM A/R Basic Codes
@@ -2103,7 +2158,20 @@ namespace nPOSProj
                     //
                     newFlash();
                     selector = 3; //AR
-                    PrintReceipt();
+                    using (cstYesNo yesno = new cstYesNo())
+                    {
+                        yesno.Message = "Do You Wish Print a Receipt?";
+                        yesno.ShowDialog();
+                        if (yesno.Selected == true)
+                        {
+                            DrawerPing();
+                            PrintReceipt();
+                        }
+                        else
+                        {
+                            DrawerPing();
+                        }
+                    }
                     reprint = true;
                 }
             }
@@ -2577,13 +2645,13 @@ namespace nPOSProj
                 con.ConnectionString = dbcon.getConnectionString();
                 con.Open();
                 String query = "SELECT a, b, c, d, e, f, g, h FROM ";
-                query += "(SELECT pos_park_2.trn AS aaa, pos_park_2.pos_ean AS a, pos_park_2.pos_quantity AS b, inventory_stocks.stock_name AS c, inventory_items.item_retail_price AS d, inventory_items.item_whole_price AS e, pos_park_2.pos_discount_amt AS f, pos_park_2.pos_amt AS g, inventory_items.item_tax_type AS h ";
+                query += "(SELECT pos_park_2.trn AS aaa, pos_park_2.pos_ean AS a, pos_park_2.pos_quantity AS b, inventory_stocks.stock_name AS c, pos_park_2.pos_item_amount AS d, inventory_items.item_whole_price AS e, pos_park_2.pos_discount_amt AS f, pos_park_2.pos_amt AS g, inventory_items.item_tax_type AS h ";
                 query += "FROM pos_park pos_park_2 ";
                 query += "INNER JOIN inventory_items ON pos_park_2.pos_ean = inventory_items.item_ean ";
                 query += "INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code ";
                 query += "WHERE (pos_park_2.pos_orno = ?pos_orno) AND (pos_park_2.pos_terminal = ?pos_terminal) ";
                 query += "UNION ALL ";
-                query += "SELECT pos_park_1.trn AS aaa, pos_park_1.pos_ean AS a, pos_park_1.pos_quantity AS b, inventory_items_1.kit_name AS c, inventory_items_1.item_retail_price AS d, inventory_items_1.item_whole_price AS e, pos_park_1.pos_discount_amt AS f, pos_park_1.pos_amt AS g, inventory_items_1.item_tax_type AS h ";
+                query += "SELECT pos_park_1.trn AS aaa, pos_park_1.pos_ean AS a, pos_park_1.pos_quantity AS b, inventory_items_1.kit_name AS c, pos_park_1.pos_item_amount AS d, inventory_items_1.item_whole_price AS e, pos_park_1.pos_discount_amt AS f, pos_park_1.pos_amt AS g, inventory_items_1.item_tax_type AS h ";
                 query += "FROM pos_park pos_park_1 ";
                 query += "INNER JOIN inventory_items inventory_items_1 ON pos_park_1.pos_ean = inventory_items_1.item_ean ";
                 query += "WHERE (pos_park_1.pos_orno = ?pos_orno) AND (inventory_items_1.is_kit = 1) AND (pos_park_1.pos_terminal = ?pos_terminal)) pos_park ";

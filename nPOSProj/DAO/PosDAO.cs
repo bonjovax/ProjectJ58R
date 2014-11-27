@@ -105,13 +105,13 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
-        public void Park_I(Int32 pos_orno, String pos_terminal, String pos_ean, Int32 pos_quantity, Double pos_amt)
+        public void Park_I(Int32 pos_orno, String pos_terminal, String pos_ean, Int32 pos_quantity, Double pos_item_amount, Double pos_amt)
         {
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
-            String query = "INSERT INTO pos_park (pos_orno, pos_terminal, pos_parked_date, pos_ean, pos_quantity, pos_amt) VALUES";
-            query += "(?pos_orno, ?pos_terminal, ?pos_parked_date, ?pos_ean, ?pos_quantity, ?pos_amt)";
+            String query = "INSERT INTO pos_park (pos_orno, pos_terminal, pos_parked_date, pos_ean, pos_quantity, pos_item_amount, pos_amt) VALUES";
+            query += "(?pos_orno, ?pos_terminal, ?pos_parked_date, ?pos_ean, ?pos_quantity, ?pos_item_amount, ?pos_amt)";
             try
             {
                 con.Open();
@@ -121,6 +121,7 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?pos_parked_date", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
                 cmd.Parameters.AddWithValue("?pos_quantity", pos_quantity);
+                cmd.Parameters.AddWithValue("?pos_item_amount", pos_item_amount);
                 cmd.Parameters.AddWithValue("?pos_amt", pos_amt);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -130,18 +131,19 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
-        public void Park_I_Update(Int32 pos_orno, String pos_terminal, String pos_ean, Int32 pos_quantity, Double pos_amt)
+        public void Park_I_Update(Int32 pos_orno, String pos_terminal, String pos_ean, Int32 pos_quantity, Double pos_item_amount, Double pos_amt)
         {
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
-            String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?pos_quantity, pos_discount = 0, pos_discount_amt = 0, pos_amt = ?pos_amt, pos_parked_date = ?pos_parked_date ";
+            String query = "UPDATE pos_park SET pos_quantity = pos_quantity + ?pos_quantity, pos_discount = 0, pos_discount_amt = 0, pos_item_amount = ?pos_item_amount, pos_amt = ?pos_amt, pos_parked_date = ?pos_parked_date ";
             query += "WHERE (pos_orno = ?pos_orno) AND (pos_terminal = ?pos_terminal) AND (pos_ean = ?pos_ean)";
             try
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 cmd.Parameters.AddWithValue("?pos_quantity", pos_quantity);
+                cmd.Parameters.AddWithValue("?pos_item_amount", pos_item_amount);
                 cmd.Parameters.AddWithValue("?pos_amt", pos_amt);
                 cmd.Parameters.AddWithValue("?pos_parked_date", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("?pos_orno", pos_orno);
@@ -155,39 +157,12 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
-        public void ParkU_I(Int32 pos_orno, String pos_terminal, String pos_ean, Double pos_discount, Double pos_discount_amt, Int32 pos_quantity, Double pos_amt)
+        public void ParkU_I(Int32 pos_orno, String pos_terminal, String pos_ean, Double pos_discount, Double pos_discount_amt, Int32 pos_quantity, Double pos_item_amount, Double pos_amt)
         {
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
-            String query = "UPDATE pos_park SET pos_quantity = ?pos_quantity, pos_discount = ?pos_discount, pos_discount_amt = ?pos_discount_amt, pos_amt = ?pos_amt, pos_parked_date = ?pos_parked_date ";
-            query += "WHERE (pos_orno = ?pos_orno) AND (pos_terminal = ?pos_terminal) AND (pos_ean = ?pos_ean)";
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("?pos_orno", pos_orno);
-                cmd.Parameters.AddWithValue("?pos_terminal", pos_terminal);
-                cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
-                cmd.Parameters.AddWithValue("?pos_discount", pos_discount);
-                cmd.Parameters.AddWithValue("?pos_discount_amt", pos_discount_amt);
-                cmd.Parameters.AddWithValue("?pos_quantity", pos_quantity);
-                cmd.Parameters.AddWithValue("?pos_amt", pos_amt);
-                cmd.Parameters.AddWithValue("?pos_parked_date", DateTime.Now.ToString("yyyy-MM-dd"));
-                cmd.ExecuteNonQuery();
-                cmd.Dispose();
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
-        public void ParkUwD_I(Int32 pos_orno, String pos_terminal, String pos_ean, Double pos_discount, Double pos_discount_amt, Double pos_amt)
-        {
-            con = new MySqlConnection();
-            dbcon = new Conf.dbs();
-            con.ConnectionString = dbcon.getConnectionString();
-            String query = "UPDATE pos_park SET pos_discount = ?pos_discount, pos_discount_amt = ?pos_discount_amt, pos_amt = ?pos_amt, pos_parked_date = ?pos_parked_date ";
+            String query = "UPDATE pos_park SET pos_quantity = ?pos_quantity, pos_discount = ?pos_discount, pos_discount_amt = ?pos_discount_amt, pos_item_amount = ?pos_item_amount, pos_amt = ?pos_amt, pos_parked_date = ?pos_parked_date ";
             query += "WHERE (pos_orno = ?pos_orno) AND (pos_terminal = ?pos_terminal) AND (pos_ean = ?pos_ean)";
             try
             {
@@ -198,6 +173,35 @@ namespace nPOSProj.DAO
                 cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
                 cmd.Parameters.AddWithValue("?pos_discount", pos_discount);
                 cmd.Parameters.AddWithValue("?pos_discount_amt", pos_discount_amt);
+                cmd.Parameters.AddWithValue("?pos_quantity", pos_quantity);
+                cmd.Parameters.AddWithValue("?pos_item_amount", pos_item_amount);
+                cmd.Parameters.AddWithValue("?pos_amt", pos_amt);
+                cmd.Parameters.AddWithValue("?pos_parked_date", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void ParkUwD_I(Int32 pos_orno, String pos_terminal, String pos_ean, Double pos_discount, Double pos_discount_amt, Double pos_item_amount, Double pos_amt)
+        {
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "UPDATE pos_park SET pos_discount = ?pos_discount, pos_discount_amt = ?pos_discount_amt, pos_item_amount = ?pos_item_amount, pos_amt = ?pos_amt, pos_parked_date = ?pos_parked_date ";
+            query += "WHERE (pos_orno = ?pos_orno) AND (pos_terminal = ?pos_terminal) AND (pos_ean = ?pos_ean)";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?pos_orno", pos_orno);
+                cmd.Parameters.AddWithValue("?pos_terminal", pos_terminal);
+                cmd.Parameters.AddWithValue("?pos_ean", pos_ean);
+                cmd.Parameters.AddWithValue("?pos_discount", pos_discount);
+                cmd.Parameters.AddWithValue("?pos_discount_amt", pos_discount_amt);
+                cmd.Parameters.AddWithValue("?pos_item_amount", pos_item_amount);
                 cmd.Parameters.AddWithValue("?pos_amt", pos_amt);
                 cmd.Parameters.AddWithValue("?pos_parked_date", DateTime.Now.ToString("yyyy-MM-dd"));
                 cmd.ExecuteNonQuery();

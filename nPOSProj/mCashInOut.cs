@@ -241,7 +241,7 @@ namespace nPOSProj
             graphic.DrawString("Accreditation No: " + bir.AccreditationNo(), new Font("FontA11", 7.8f), new SolidBrush(Color.Black), 4, 92);
             graphic.DrawString("Serial No: " + bir.SerialNo(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 81, 105);
             graphic.DrawString("Machine Code: " + machine_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 120);
-            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
+            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
             graphic.DrawString(DateTime.Now.ToString("MMM dd, yyyy") + " " + "(" + DateTime.Now.ToString("ddd") + ")", font, new SolidBrush(Color.Black), 5, 150);
             graphic.DrawString(DateTime.Now.ToString("hh:mm tt"), font, new SolidBrush(Color.Black), 175, 150);
             graphic.DrawString("Cash Status: ", font, new SolidBrush(Color.Black), 5, 175);
@@ -256,7 +256,7 @@ namespace nPOSProj
             graphic.DrawString("Drawer Bal.", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 5, 230);
             graphic.DrawString(Convert.ToDouble(lblCID.Text).ToString("#,###,##0.00"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 230);
             //
-            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 245);
+            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 245);
             graphic.DrawString("CASHIER: ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 260);
             graphic.DrawString(frmLogin.User.user_name, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 60, 260);
             graphic.DrawString("___________________", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 50, 290);
