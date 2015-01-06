@@ -134,6 +134,11 @@ namespace nPOSProj
             {
                 gotoDone();
             }
+            if (keyData == Keys.F7 && btnPrint.Enabled == true)
+            {
+                gotoPrintOrder();
+                return true;
+            }
             if (keyData == Keys.F12)
             {
                 txtBoxDescription.Focus();
@@ -149,6 +154,22 @@ namespace nPOSProj
         private void mdiOrdering_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void gotoPrintOrder()
+        {
+            using (frmRptSalesOrder so = new frmRptSalesOrder())
+            {
+                try
+                {
+                    so.Order_no = Convert.ToInt32(lblON.Text);
+                    so.ShowDialog();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("error", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnF6_Click(object sender, EventArgs e)
@@ -189,6 +210,18 @@ namespace nPOSProj
             txtBoxDescription.Focus();
         }
 
+        private void unlockcustomerinfo()
+        {
+            txtBoxName.ReadOnly = false;
+            txtBoxAdd.ReadOnly = false;
+        }
+
+        private void lockcustomerinfo()
+        {
+            txtBoxName.ReadOnly = true;
+            txtBoxAdd.ReadOnly = true;
+        }
+
         private void btnAddToOrder_Click(object sender, EventArgs e)
         {
             try
@@ -223,7 +256,6 @@ namespace nPOSProj
                 ordervo.Order_total_amt = Convert.ToDouble(lblTotal.Text);
                 ordervo.Pos_orderno = Convert.ToInt32(lblON.Text);
                 ordervo.UpdateTotal();
-                checkRowCount();
                 dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
                 clearboxes();
                 txtBoxEAN.Focus();
@@ -292,6 +324,7 @@ namespace nPOSProj
             {
                 if (dlg == System.Windows.Forms.DialogResult.Yes)
                 {
+                    unlockcustomerinfo();
                     unlockcontrols();
                     autoCompleteItem();
                     ordervo.NewOrder();
@@ -299,7 +332,7 @@ namespace nPOSProj
                     checkRowCount();
                     start = true;
                     btnDone.Enabled = true;
-                    txtBoxEAN.Focus();
+                    txtBoxName.Focus();
                 }
             }
             catch (Exception)
@@ -490,11 +523,13 @@ namespace nPOSProj
             {
                 btnF5.Enabled = false;
                 btnF4.Enabled = true;
+                //btnPrint.Enabled = true;
             }
             else
             {
                 btnF5.Enabled = true;
                 btnF4.Enabled = false;
+                //btnPrint.Enabled = false;
             }
         }
 
@@ -676,5 +711,36 @@ namespace nPOSProj
         {
             gotoDone();
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            gotoPrintOrder();
+        }
+
+        private void btnProceed_Click(object sender, EventArgs e)
+        {
+            Convert.ToInt32(lblON.Text);
+            String name = txtBoxName.Text;
+            String address = txtBoxAdd.Text;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "UPDATE order_store SET order_customer = ?customer_name, order_address = ?customer_address ";
+            query += "WHERE order_no ='"+ lblON.Text +"'";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?customer_name", name);
+                cmd.Parameters.AddWithValue("?customer_address", address);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
     }
 }

@@ -2,7 +2,7 @@
 <xs:schema id="npos_dbDataSet" targetNamespace="http://tempuri.org/npos_dbDataSet.xsd" xmlns:mstns="http://tempuri.org/npos_dbDataSet.xsd" xmlns="http://tempuri.org/npos_dbDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="6" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="7" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString1" Provider="MySql.Data.MySqlClient" />
@@ -11,6 +11,7 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="npos_dbConnectionString4" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="npos_dbConnectionString4 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.npos_dbConnectionString4" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="nposr_dbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="nposr_dbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.nposr_dbConnectionString" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="nposr_dbConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="nposr_dbConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.nposr_dbConnectionString1" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="nposr_dbConnectionString6" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="nposr_dbConnectionString6 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.nPOSProj.Properties.Settings.GlobalReference.Default.nposr_dbConnectionString6" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="inventory_supplierTableAdapter" GeneratorDataComponentClassName="inventory_supplierTableAdapter" Name="inventory_supplier" UserDataComponentName="inventory_supplierTableAdapter">
@@ -1031,11 +1032,11 @@ FROM            inventory_items INNER JOIN
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="pos_parkTableAdapter" GeneratorDataComponentClassName="pos_parkTableAdapter" Name="pos_park" UserDataComponentName="pos_parkTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="npos_dbConnectionString3 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="npos_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        pos_park.pos_orno, pos_park.pos_terminal, pos_park.pos_parked_date, pos_park.pos_ean, pos_park.pos_quantity, pos_park.pos_discount, pos_park.pos_discount_amt, pos_park.pos_amt, 
-                         inventory_stocks.stock_name, inventory_items.item_retail_price, inventory_items.item_whole_price, pos_store.pos_customer
+                         inventory_stocks.stock_name, inventory_items.item_retail_price, inventory_items.item_whole_price, pos_store.pos_customer, pos_park.order_item_amount
 FROM            pos_park INNER JOIN
                          inventory_items ON pos_park.pos_ean = inventory_items.item_ean INNER JOIN
                          inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code INNER JOIN
@@ -1058,6 +1059,7 @@ FROM            pos_park INNER JOIN
               <Mapping SourceColumn="item_retail_price" DataSetColumn="item_retail_price" />
               <Mapping SourceColumn="item_whole_price" DataSetColumn="item_whole_price" />
               <Mapping SourceColumn="pos_customer" DataSetColumn="pos_customer" />
+              <Mapping SourceColumn="order_item_amount" DataSetColumn="order_item_amount" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1453,6 +1455,133 @@ FROM            (SELECT        quotation_park.quote_park_trn AS aaa, quotation_p
                           FROM            quotation_park quotation_park_1 INNER JOIN
                                                    inventory_items inventory_items_1 ON quotation_park_1.quote_ean = inventory_items_1.item_ean
                           WHERE        (inventory_items_1.is_kit = 1)) quotation
+ORDER BY aaa</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="a" DataSetColumn="a" />
+              <Mapping SourceColumn="b" DataSetColumn="b" />
+              <Mapping SourceColumn="c" DataSetColumn="c" />
+              <Mapping SourceColumn="d" DataSetColumn="d" />
+              <Mapping SourceColumn="e" DataSetColumn="e" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="order_storeTableAdapter" GeneratorDataComponentClassName="order_storeTableAdapter" Name="order_store" UserDataComponentName="order_storeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="nposr_dbConnectionString1 (Settings)" DbObjectName="nposr_db.order_store" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `order_store` WHERE (((@p1 = 1 AND `order_no` IS NULL) OR (`order_no` = @p2)) AND ((@p3 = 1 AND `quote_no` IS NULL) OR (`quote_no` = @p4)) AND ((@p5 = 1 AND `order_date` IS NULL) OR (`order_date` = @p6)) AND ((@p7 = 1 AND `order_time` IS NULL) OR (`order_time` = @p8)) AND ((@p9 = 1 AND `order_user` IS NULL) OR (`order_user` = @p10)) AND ((@p11 = 1 AND `order_total_amt` IS NULL) OR (`order_total_amt` = @p12)) AND (`order_trn` = @p13) AND ((@p14 = 1 AND `order_customer` IS NULL) OR (`order_customer` = @p15)) AND ((@p16 = 1 AND `order_address` IS NULL) OR (`order_address` = @p17)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_no" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_no" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="quote_no" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="quote_no" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_date" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="order_date" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_time" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Time" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Time" Scale="0" Size="0" SourceColumn="order_time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_user" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_user" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_total_amt" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="order_total_amt" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_trn" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_customer" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_customer" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_address" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_address" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `order_store` (`order_no`, `quote_no`, `order_date`, `order_time`, `order_user`, `order_total_amt`, `order_customer`, `order_address`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_no" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="quote_no" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="order_date" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Time" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Time" Scale="0" Size="0" SourceColumn="order_time" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_user" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="order_total_amt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_customer" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_address" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        order_no, quote_no, order_date, order_time, order_user, order_total_amt, order_trn, order_customer, order_address
+FROM            order_store</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `order_store` SET `order_no` = @p1, `quote_no` = @p2, `order_date` = @p3, `order_time` = @p4, `order_user` = @p5, `order_total_amt` = @p6, `order_customer` = @p7, `order_address` = @p8 WHERE (((@p9 = 1 AND `order_no` IS NULL) OR (`order_no` = @p10)) AND ((@p11 = 1 AND `quote_no` IS NULL) OR (`quote_no` = @p12)) AND ((@p13 = 1 AND `order_date` IS NULL) OR (`order_date` = @p14)) AND ((@p15 = 1 AND `order_time` IS NULL) OR (`order_time` = @p16)) AND ((@p17 = 1 AND `order_user` IS NULL) OR (`order_user` = @p18)) AND ((@p19 = 1 AND `order_total_amt` IS NULL) OR (`order_total_amt` = @p20)) AND (`order_trn` = @p21) AND ((@p22 = 1 AND `order_customer` IS NULL) OR (`order_customer` = @p23)) AND ((@p24 = 1 AND `order_address` IS NULL) OR (`order_address` = @p25)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_no" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="quote_no" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="order_date" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Time" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Time" Scale="0" Size="0" SourceColumn="order_time" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_user" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="order_total_amt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_customer" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_address" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_no" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_no" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="quote_no" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="quote_no" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_date" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="order_date" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_time" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Time" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Time" Scale="0" Size="0" SourceColumn="order_time" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_user" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_user" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_total_amt" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="order_total_amt" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_trn" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_customer" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_customer" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="order_address" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="order_address" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="order_no" DataSetColumn="order_no" />
+              <Mapping SourceColumn="quote_no" DataSetColumn="quote_no" />
+              <Mapping SourceColumn="order_date" DataSetColumn="order_date" />
+              <Mapping SourceColumn="order_time" DataSetColumn="order_time" />
+              <Mapping SourceColumn="order_user" DataSetColumn="order_user" />
+              <Mapping SourceColumn="order_total_amt" DataSetColumn="order_total_amt" />
+              <Mapping SourceColumn="order_trn" DataSetColumn="order_trn" />
+              <Mapping SourceColumn="order_customer" DataSetColumn="order_customer" />
+              <Mapping SourceColumn="order_address" DataSetColumn="order_address" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="print_orderTableAdapter" GeneratorDataComponentClassName="print_orderTableAdapter" Name="print_order" UserDataComponentName="print_orderTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="nposr_dbConnectionString1 (Settings)" DbObjectName="SELECT pos_park.trn AS aaa, pos_park.pos_quantity AS a, inventory_stocks.stock_name AS b, pos_park.order_item_amount AS c, pos_park.pos_amt AS d, pos_park.pos_orderno AS e FROM pos_park INNER JOIN inventory_items ON pos_park.pos_ean = inventory_items.item_ean INNER JOIN inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code WHERE (pos_park.pos_orno = 0) UNION ALL SELECT pos_park_1.trn AS aaa, pos_park_1.pos_quantity AS a, inventory_items_1.kit_name AS b, pos_park_1.order_item_amount AS c, pos_park_1.pos_amt AS d, pos_park_1.pos_orderno AS e FROM pos_park pos_park_1 INNER JOIN inventory_items inventory_items_1 ON pos_park_1.pos_ean = inventory_items_1.item_ean WHERE (inventory_items_1.is_kit = 1)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        a, b, c, d, e
+FROM            (SELECT        pos_park.trn AS aaa, pos_park.pos_quantity AS a, inventory_stocks.stock_name AS b, pos_park.order_item_amount AS c, pos_park.pos_amt AS d, pos_park.pos_orderno AS e
+                          FROM            pos_park INNER JOIN
+                                                    inventory_items ON pos_park.pos_ean = inventory_items.item_ean INNER JOIN
+                                                    inventory_stocks ON inventory_items.stock_code = inventory_stocks.stock_code
+                          WHERE        (pos_park.pos_orno = 0)
+                          UNION ALL
+                          SELECT        pos_park_1.trn AS aaa, pos_park_1.pos_quantity AS a, inventory_items_1.kit_name AS b, pos_park_1.order_item_amount AS c, pos_park_1.pos_amt AS d, pos_park_1.pos_orderno AS e
+                          FROM            pos_park pos_park_1 INNER JOIN
+                                                   inventory_items inventory_items_1 ON pos_park_1.pos_ean = inventory_items_1.item_ean
+                          WHERE        (inventory_items_1.is_kit = 1)) ordering
 ORDER BY aaa</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -1964,7 +2093,7 @@ ORDER BY aaa</CommandText>
         <xs:element name="pos_park" msprop:Generator_TableClassName="pos_parkDataTable" msprop:Generator_TableVarName="tablepos_park" msprop:Generator_RowChangedName="pos_parkRowChanged" msprop:Generator_TablePropName="pos_park" msprop:Generator_RowDeletingName="pos_parkRowDeleting" msprop:Generator_RowChangingName="pos_parkRowChanging" msprop:Generator_RowEvHandlerName="pos_parkRowChangeEventHandler" msprop:Generator_RowDeletedName="pos_parkRowDeleted" msprop:Generator_RowClassName="pos_parkRow" msprop:Generator_UserTableName="pos_park" msprop:Generator_RowEvArgName="pos_parkRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="pos_orno" msprop:Generator_ColumnVarNameInTable="columnpos_orno" msprop:Generator_ColumnPropNameInRow="pos_orno" msprop:Generator_ColumnPropNameInTable="pos_ornoColumn" msprop:Generator_UserColumnName="pos_orno" type="xs:int" />
+              <xs:element name="pos_orno" msprop:Generator_ColumnVarNameInTable="columnpos_orno" msprop:Generator_ColumnPropNameInRow="pos_orno" msprop:Generator_ColumnPropNameInTable="pos_ornoColumn" msprop:Generator_UserColumnName="pos_orno" type="xs:int" minOccurs="0" />
               <xs:element name="pos_terminal" msprop:Generator_ColumnVarNameInTable="columnpos_terminal" msprop:Generator_ColumnPropNameInRow="pos_terminal" msprop:Generator_ColumnPropNameInTable="pos_terminalColumn" msprop:Generator_UserColumnName="pos_terminal" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -2000,6 +2129,7 @@ ORDER BY aaa</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="order_item_amount" msprop:Generator_ColumnVarNameInTable="columnorder_item_amount" msprop:Generator_ColumnPropNameInRow="order_item_amount" msprop:Generator_ColumnPropNameInTable="order_item_amountColumn" msprop:Generator_UserColumnName="order_item_amount" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2382,6 +2512,56 @@ ORDER BY aaa</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="order_store" msprop:Generator_TableClassName="order_storeDataTable" msprop:Generator_TableVarName="tableorder_store" msprop:Generator_RowChangedName="order_storeRowChanged" msprop:Generator_TablePropName="order_store" msprop:Generator_RowDeletingName="order_storeRowDeleting" msprop:Generator_RowChangingName="order_storeRowChanging" msprop:Generator_RowEvHandlerName="order_storeRowChangeEventHandler" msprop:Generator_RowDeletedName="order_storeRowDeleted" msprop:Generator_RowClassName="order_storeRow" msprop:Generator_UserTableName="order_store" msprop:Generator_RowEvArgName="order_storeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="order_no" msprop:Generator_ColumnVarNameInTable="columnorder_no" msprop:Generator_ColumnPropNameInRow="order_no" msprop:Generator_ColumnPropNameInTable="order_noColumn" msprop:Generator_UserColumnName="order_no" type="xs:int" minOccurs="0" />
+              <xs:element name="quote_no" msprop:Generator_ColumnVarNameInTable="columnquote_no" msprop:Generator_ColumnPropNameInRow="quote_no" msprop:Generator_ColumnPropNameInTable="quote_noColumn" msprop:Generator_UserColumnName="quote_no" type="xs:int" minOccurs="0" />
+              <xs:element name="order_date" msprop:Generator_ColumnVarNameInTable="columnorder_date" msprop:Generator_ColumnPropNameInRow="order_date" msprop:Generator_ColumnPropNameInTable="order_dateColumn" msprop:Generator_UserColumnName="order_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="order_time" msprop:Generator_ColumnVarNameInTable="columnorder_time" msprop:Generator_ColumnPropNameInRow="order_time" msprop:Generator_ColumnPropNameInTable="order_timeColumn" msprop:Generator_UserColumnName="order_time" type="xs:duration" minOccurs="0" />
+              <xs:element name="order_user" msprop:Generator_ColumnVarNameInTable="columnorder_user" msprop:Generator_ColumnPropNameInRow="order_user" msprop:Generator_ColumnPropNameInTable="order_userColumn" msprop:Generator_UserColumnName="order_user" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="order_total_amt" msprop:Generator_ColumnVarNameInTable="columnorder_total_amt" msprop:Generator_ColumnPropNameInRow="order_total_amt" msprop:Generator_ColumnPropNameInTable="order_total_amtColumn" msprop:Generator_UserColumnName="order_total_amt" type="xs:double" minOccurs="0" />
+              <xs:element name="order_trn" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnorder_trn" msprop:Generator_ColumnPropNameInRow="order_trn" msprop:Generator_ColumnPropNameInTable="order_trnColumn" msprop:Generator_UserColumnName="order_trn" type="xs:int" />
+              <xs:element name="order_customer" msprop:Generator_ColumnVarNameInTable="columnorder_customer" msprop:Generator_ColumnPropNameInRow="order_customer" msprop:Generator_ColumnPropNameInTable="order_customerColumn" msprop:Generator_UserColumnName="order_customer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="order_address" msprop:Generator_ColumnVarNameInTable="columnorder_address" msprop:Generator_ColumnPropNameInRow="order_address" msprop:Generator_ColumnPropNameInTable="order_addressColumn" msprop:Generator_UserColumnName="order_address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="print_order" msprop:Generator_TableClassName="print_orderDataTable" msprop:Generator_TableVarName="tableprint_order" msprop:Generator_TablePropName="print_order" msprop:Generator_RowDeletingName="print_orderRowDeleting" msprop:Generator_RowChangingName="print_orderRowChanging" msprop:Generator_RowEvHandlerName="print_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="print_orderRowDeleted" msprop:Generator_UserTableName="print_order" msprop:Generator_RowChangedName="print_orderRowChanged" msprop:Generator_RowEvArgName="print_orderRowChangeEvent" msprop:Generator_RowClassName="print_orderRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="a" msprop:Generator_ColumnVarNameInTable="columna" msprop:Generator_ColumnPropNameInRow="a" msprop:Generator_ColumnPropNameInTable="aColumn" msprop:Generator_UserColumnName="a" type="xs:int" />
+              <xs:element name="b" msprop:Generator_ColumnVarNameInTable="columnb" msprop:Generator_ColumnPropNameInRow="b" msprop:Generator_ColumnPropNameInTable="bColumn" msprop:Generator_UserColumnName="b" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c" msprop:Generator_ColumnVarNameInTable="columnc" msprop:Generator_ColumnPropNameInRow="c" msprop:Generator_ColumnPropNameInTable="cColumn" msprop:Generator_UserColumnName="c" type="xs:double" minOccurs="0" />
+              <xs:element name="d" msprop:Generator_ColumnVarNameInTable="columnd" msprop:Generator_ColumnPropNameInRow="d" msprop:Generator_ColumnPropNameInTable="dColumn" msprop:Generator_UserColumnName="d" type="xs:double" minOccurs="0" />
+              <xs:element name="e" msprop:Generator_ColumnVarNameInTable="columne" msprop:Generator_ColumnPropNameInRow="e" msprop:Generator_ColumnPropNameInTable="eColumn" msprop:Generator_UserColumnName="e" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -2439,6 +2619,10 @@ ORDER BY aaa</CommandText>
     <xs:unique name="quotation_store_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:quotation_store" />
       <xs:field xpath="mstns:quote_trn" />
+    </xs:unique>
+    <xs:unique name="order_store_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:order_store" />
+      <xs:field xpath="mstns:order_trn" />
     </xs:unique>
   </xs:element>
 </xs:schema>

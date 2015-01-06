@@ -198,6 +198,12 @@
     <Compile Include="frmRptQuotation.Designer.cs">
       <DependentUpon>frmRptQuotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRptSalesOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptSalesOrder.Designer.cs">
+      <DependentUpon>frmRptSalesOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRptSDR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -533,6 +539,12 @@
       <DependentUpon>rptStocksReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SalesOrder1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VO\ChangePasswordVO.cs" />
     <Compile Include="VO\ConfigVO.cs" />
     <Compile Include="VO\CustomersVO.cs" />
@@ -598,6 +610,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRptQuotation.resx">
       <DependentUpon>frmRptQuotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptSalesOrder.resx">
+      <DependentUpon>frmRptSalesOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRptSDR.resx">
       <DependentUpon>frmRptSDR.cs</DependentUpon>
@@ -781,6 +796,10 @@
     <EmbeddedResource Include="rptStocksReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStocksReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesOrder1.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
