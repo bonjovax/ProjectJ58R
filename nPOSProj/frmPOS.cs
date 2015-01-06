@@ -179,8 +179,8 @@ namespace nPOSProj
 
             #region Header
             graphic.DrawString(compName, new Font("FontA11", 9.0f, FontStyle.Bold), Brushes.Black, startX, startY);
-            graphic.DrawString(address1, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 45, 30);
-            graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 38, 45);
+            graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 45, 30);
+            //graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 38, 45);
             //graphic.DrawString(contact, new Font("Tahoma", 11), new SolidBrush(Color.Black), 53, 60);
             //graphic.DrawString("Owned & Operated By: " + store_op, new Font("Tahoma", 11), new SolidBrush(Color.Black), 5, 75);
             graphic.DrawString("Permit No: " + permit_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 60);
@@ -209,19 +209,19 @@ namespace nPOSProj
 
             #region Header
             graphic.DrawString(compName, new Font("FontA11", 9.0f, FontStyle.Bold), Brushes.Black, startX, startY);
-            graphic.DrawString(address1, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 45, 30);
-            graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 24, 45);
+            graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 45, 30);
+            //graphic.DrawString(address2, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 24, 45);
             //graphic.DrawString(contact, new Font("Tahoma", 11), new SolidBrush(Color.Black), 53, 60);
             //graphic.DrawString("Owned & Operated By: " + store_op, new Font("Tahoma", 11), new SolidBrush(Color.Black), 5, 75);
-            graphic.DrawString("Permit No: " + permit_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 60);
-            graphic.DrawString("TIN: " + TIN + "" + TaxT, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 75);
-            graphic.DrawString("Accreditation No: " + bir.AccreditationNo(), new Font("FontA11", 7.8f), new SolidBrush(Color.Black), 4, 92);
-            graphic.DrawString("Serial No: " + bir.SerialNo(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 81, 105);
-            graphic.DrawString("Machine Code: " + machine_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 120);
-            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 135);
-            graphic.DrawString(DateTime.Now.ToString("MMM dd, yyyy") + " " + "(" + DateTime.Now.ToString("ddd") + ")", font, new SolidBrush(Color.Black), 5, 150);
-            graphic.DrawString(DateTime.Now.ToString("hh:mm tt"), font, new SolidBrush(Color.Black), 180, 150);
-            graphic.DrawString("SI# " + OrNo, font, new SolidBrush(Color.Black), 5, 165);
+            //graphic.DrawString("Permit No: " + permit_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 60);
+            graphic.DrawString("TIN: " + TIN + "" + TaxT, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 45);
+            //graphic.DrawString("Accreditation No: " + bir.AccreditationNo(), new Font("FontA11", 7.8f), new SolidBrush(Color.Black), 4, 92);
+            //graphic.DrawString("Serial No: " + bir.SerialNo(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 81, 105);
+            graphic.DrawString("Machine Code: " + machine_no, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 63, 60);
+            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 75);
+            graphic.DrawString(DateTime.Now.ToString("MMM dd, yyyy") + " " + "(" + DateTime.Now.ToString("ddd") + ")", font, new SolidBrush(Color.Black), 5, 90);
+            graphic.DrawString(DateTime.Now.ToString("hh:mm tt"), font, new SolidBrush(Color.Black), 180, 90);
+            graphic.DrawString("SI# " + OrNo, font, new SolidBrush(Color.Black), 5, 105);
             #endregion
 
             using (MySqlConnection con = new MySqlConnection(dbcon.getConnectionString()))
@@ -247,124 +247,124 @@ namespace nPOSProj
                         {
                             String description = Truncate(dataTable.Rows[i][0].ToString(), 27);
                             Double priceR = Convert.ToDouble(dataTable.Rows[i][3]);
-                            graphic.DrawString(description + "  " + "\n" + dataTable.Rows[i][2].ToString() + " @ " + priceR.ToString("#,###,##0.00"), font, new SolidBrush(Color.Black), 10, 165 + offset);
-                            graphic.DrawString(Convert.ToDouble(dataTable.Rows[i][1]).ToString("#,###,##0.00").PadLeft(10) + dataTable.Rows[i][5].ToString(), font, new SolidBrush(Color.Black), 165, 165 + offset);
+                            graphic.DrawString(description + "  " + "\n" + dataTable.Rows[i][2].ToString() + " @ " + priceR.ToString("#,###,##0.00"), font, new SolidBrush(Color.Black), 10, 115 + offset);
+                            graphic.DrawString(Convert.ToDouble(dataTable.Rows[i][1]).ToString("#,###,##0.00").PadLeft(10) + dataTable.Rows[i][5].ToString(), font, new SolidBrush(Color.Black), 165, 115 + offset);
                             offset = offset + (int)fontHeight + 25;
                         }
                         offset = offset + 30;
-                        graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 140 + offset);
+                        graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 100 + offset);
                         //
                         counted = 0;
                         foreach (ListViewItem lv in lviewPOS.Items)
                         {
                             counted += Int32.Parse(lv.SubItems[1].Text);
                         }
-                        graphic.DrawString("Item Count: ", new Font("FontA11", 13.0f), new SolidBrush(Color.Black), 40, 155 + offset);
-                        graphic.DrawString(counted.ToString(), new Font("FontA11", 13.0f), new SolidBrush(Color.Black), 160, 155 + offset);
+                        graphic.DrawString("Item Count: ", new Font("FontA11", 13.0f), new SolidBrush(Color.Black), 40, 115 + offset);
+                        graphic.DrawString(counted.ToString(), new Font("FontA11", 13.0f), new SolidBrush(Color.Black), 160, 115 + offset);
                         //
-                        graphic.DrawString("VATable ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 185 + offset);
-                        graphic.DrawString(lblVatable.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 185 + offset);
-                        graphic.DrawString("VAT-Exempt ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 200 + offset);
-                        graphic.DrawString(lblVATe.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 200 + offset);
-                        graphic.DrawString("Zero-Rated ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 215 + offset);
-                        graphic.DrawString(lblVATz.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 215 + offset);
-                        graphic.DrawString("VAT (" + lblTax.Text + ")", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 230 + offset);
-                        graphic.DrawString(lblTAXamt.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 230 + offset);
-                        graphic.DrawString("TOTAL ", new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 83, 255 + offset);
-                        graphic.DrawString(getDTotalAmt.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 158, 255 + offset);
+                        graphic.DrawString("VATable ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 145 + offset);
+                        graphic.DrawString(lblVatable.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 145 + offset);
+                        graphic.DrawString("VAT-Exempt ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 160 + offset);
+                        graphic.DrawString(lblVATe.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 160 + offset);
+                        graphic.DrawString("Zero-Rated ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 175 + offset);
+                        graphic.DrawString(lblVATz.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 175 + offset);
+                        graphic.DrawString("VAT (" + lblTax.Text + ")", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 190 + offset);
+                        graphic.DrawString(lblTAXamt.Text.PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 175, 190 + offset);
+                        graphic.DrawString("TOTAL ", new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 83, 205 + offset);
+                        graphic.DrawString(getDTotalAmt.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 158, 205 + offset);
                         if (selector == 0)
                         {
-                            graphic.DrawString("Amount Tender  ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 300 + offset);
-                            graphic.DrawString(Tender.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 115, 300 + offset);
-                            graphic.DrawString("Change ", new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 8, 315 + offset);
-                            graphic.DrawString(Change.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 98, 315 + offset);
+                            graphic.DrawString("Amount Tender  ", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 235 + offset);
+                            graphic.DrawString(Tender.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 115, 235 + offset);
+                            graphic.DrawString("Change ", new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 8, 250 + offset);
+                            graphic.DrawString(Change.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 12.0f), new SolidBrush(Color.Black), 98, 250 + offset);
                             //
-                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 345 + offset);
-                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 345 + offset);
-                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 360 + offset);
-                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 360 + offset);
-                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 375 + offset);
-                            graphic.DrawString(fl.tN, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
-                            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 405 + offset);
-                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 415 + offset);
-                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 430 + offset);
+                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 280 + offset);
+                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 280 + offset);
+                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 295 + offset);
+                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 295 + offset);
+                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 310 + offset);
+                            graphic.DrawString(fl.tN, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 310 + offset);
+                            graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 325 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 340 + offset);
+                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 355 + offset);
                         }
                         if (selector == 1)
                         {
-                            graphic.DrawString("Card No:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 300 + offset);
-                            graphic.DrawString("XXXX-XXXX-XXXX-" + cardNo, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 300 + offset);
-                            graphic.DrawString("Card Type:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 315 + offset);
-                            graphic.DrawString(cardType, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 315 + offset);
-                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 330 + offset);
-                            graphic.DrawString(cardAmount.ToString("#,###,##0.00"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 330 + offset);
+                            graphic.DrawString("Card No:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 235 + offset);
+                            graphic.DrawString("XXXX-XXXX-XXXX-" + cardNo, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 235 + offset);
+                            graphic.DrawString("Card Type:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 250 + offset);
+                            graphic.DrawString(cardType, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 250 + offset);
+                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 265 + offset);
+                            graphic.DrawString(cardAmount.ToString("#,###,##0.00"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 265 + offset);
 
-                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 360 + offset);
-                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 360 + offset);
-                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 375 + offset);
-                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
-                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
-                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
-                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
+                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 295 + offset);
+                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 295 + offset);
+                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 310 + offset);
+                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 310 + offset);
+                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 325 + offset);
+                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 325 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 340 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 355 + offset);
+                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 370 + offset);
                         }
                         if (selector == 2)
                         {
-                            graphic.DrawString("Check No:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 300 + offset);
-                            graphic.DrawString(checkNo, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 105, 300 + offset);
-                            graphic.DrawString("Bank & Branch:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 315 + offset);
-                            graphic.DrawString(Truncate(BankNBranch, 18), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 105, 315 + offset);
-                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 330 + offset);
-                            graphic.DrawString(checkAmount.ToString("#,###,##0.00"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 105, 330 + offset);
+                            graphic.DrawString("Check No:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 235 + offset);
+                            graphic.DrawString(checkNo, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 105, 235 + offset);
+                            graphic.DrawString("Bank & Branch:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 250 + offset);
+                            graphic.DrawString(Truncate(BankNBranch, 18), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 105, 250 + offset);
+                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 265 + offset);
+                            graphic.DrawString(checkAmount.ToString("#,###,##0.00"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 105, 265 + offset);
 
-                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 360 + offset);
-                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 360 + offset);
-                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 375 + offset);
-                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
-                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
-                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECIEPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
-                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
+                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 295 + offset);
+                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 295 + offset);
+                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 310 + offset);
+                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 310 + offset);
+                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 325 + offset);
+                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 325 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 340 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECIEPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 355 + offset);
+                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 370 + offset);
                         }
                         if (selector == 3)
                         {
-                            graphic.DrawString("Code:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 300 + offset);
-                            graphic.DrawString(CustCode, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 300 + offset);
-                            graphic.DrawString("Company:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 315 + offset);
-                            graphic.DrawString(Truncate(Company, 22), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 315 + offset);
-                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 330 + offset);
-                            graphic.DrawString(arAmount.ToString("#,###,##0.00") + " Cr", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 330 + offset);
+                            graphic.DrawString("Code:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 235 + offset);
+                            graphic.DrawString(CustCode, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 235 + offset);
+                            graphic.DrawString("Company:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 250 + offset);
+                            graphic.DrawString(Truncate(Company, 22), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 250 + offset);
+                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 265 + offset);
+                            graphic.DrawString(arAmount.ToString("#,###,##0.00") + " Cr", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 265 + offset);
 
-                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 360 + offset);
-                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 360 + offset);
-                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 375 + offset);
-                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
-                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
-                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
-                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
+                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 295 + offset);
+                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 295 + offset);
+                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 310 + offset);
+                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 310 + offset);
+                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 325 + offset);
+                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 325 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 340 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 355 + offset);
+                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 370 + offset);
                         }
                         if (selector == 4)
                         {
                             this.getValidUntil(gCardno);
-                            graphic.DrawString("Gift Card #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 300 + offset);
-                            graphic.DrawString(gCardno, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 300 + offset);
-                            graphic.DrawString("Valid Until:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 315 + offset);
-                            graphic.DrawString(Convert.ToDateTime(validU).ToString("MM/dd/yy"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 315 + offset);
-                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 330 + offset);
-                            graphic.DrawString(gAmount.ToString("#,###,##0.00") + " Dr", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 330 + offset);
+                            graphic.DrawString("Gift Card #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 235 + offset);
+                            graphic.DrawString(gCardno, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 235 + offset);
+                            graphic.DrawString("Valid Until:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 250 + offset);
+                            graphic.DrawString(Convert.ToDateTime(validU).ToString("MM/dd/yy"), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 250 + offset);
+                            graphic.DrawString("Amount:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 265 + offset);
+                            graphic.DrawString(gAmount.ToString("#,###,##0.00") + " Dr", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 85, 265 + offset);
 
-                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 360 + offset);
-                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 360 + offset);
-                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 375 + offset);
-                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 375 + offset);
-                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 390 + offset);
-                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 390 + offset);
-                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 420 + offset);
-                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 430 + offset);
-                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 445 + offset);
+                            graphic.DrawString("Transaction #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 295 + offset);
+                            graphic.DrawString(OrNo.ToString(), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 110, 295 + offset);
+                            graphic.DrawString("CASHIER:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 310 + offset);
+                            graphic.DrawString(lblUserAccount.Text, new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 310, 375 + offset);
+                            graphic.DrawString("Terminal #:", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 10, 325 + offset);
+                            graphic.DrawString(fl.tN, new Font("Tahoma", 10), new SolidBrush(Color.Black), 110, 325 + offset);
+                            graphic.DrawString("---------------------------------------------------", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 340 + offset);
+                            graphic.DrawString("THIS IS NOT YOUR OFFICIAL RECEIPT", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 7, 355 + offset);
+                            graphic.DrawString("Thank you for Shopping and Come Again ", new Font("FontA11", 8.0f), new SolidBrush(Color.Black), 25, 370 + offset);
                         }
                     }
                     catch (MySqlException)
@@ -1966,12 +1966,12 @@ namespace nPOSProj
                         yesno.ShowDialog();
                         if (yesno.Selected == true)
                         {
-                            //DrawerPing();
+                            DrawerPing();
                             PrintReceipt();
                         }
                         else
                         {
-                            //DrawerPing();
+                            DrawerPing();
                         }
                     }
                     reprint = true;
@@ -2015,12 +2015,12 @@ namespace nPOSProj
                         yesno.ShowDialog();
                         if (yesno.Selected == true)
                         {
-                            DrawerPing();
+                            //DrawerPing();
                             PrintReceipt();
                         }
                         else
                         {
-                            DrawerPing();
+                            //DrawerPing();
                         }
                     }
                     reprint = true;
@@ -2063,12 +2063,12 @@ namespace nPOSProj
                         yesno.ShowDialog();
                         if (yesno.Selected == true)
                         {
-                            DrawerPing();
+                            //DrawerPing();
                             PrintReceipt();
                         }
                         else
                         {
-                            DrawerPing();
+                            //DrawerPing();
                         }
                     }
                     reprint = true;
@@ -2112,12 +2112,12 @@ namespace nPOSProj
                         yesno.ShowDialog();
                         if (yesno.Selected == true)
                         {
-                            DrawerPing();
+                            //DrawerPing();
                             PrintReceipt();
                         }
                         else
                         {
-                            DrawerPing();
+                            //DrawerPing();
                         }
                     }
                     reprint = true;
