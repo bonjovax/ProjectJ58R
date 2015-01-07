@@ -10,6 +10,14 @@ namespace nPOSProj.VO
         private DAO.ReportingDAO reportdao;
         private String pos_date;
 
+        private Double begbal;
+
+        public Double Begbal
+        {
+            get { return begbal; }
+            set { begbal = value; }
+        }
+
         public String Pos_date
         {
             get { return pos_date; }
@@ -107,6 +115,20 @@ namespace nPOSProj.VO
             reportdao.PreviousNET(minusdate, Pos_terminal);
             Amount = reportdao.PreviousNET(minusdate, Pos_terminal);
             return Amount;
+        }
+
+        public void UpdateBeg()
+        {
+            reportdao = new DAO.ReportingDAO();
+            reportdao.UpdateBeginningBal(Begbal);
+        }
+
+        public Double ReadBeg()
+        {
+            Double Bal = 0;
+            reportdao = new DAO.ReportingDAO();
+            Bal = reportdao.ReadBeginningBal();
+            return Bal;
         }
     }
 }

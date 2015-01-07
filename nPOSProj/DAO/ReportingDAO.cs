@@ -18,6 +18,62 @@ namespace nPOSProj.DAO
 
         }
 
+        #region Beginning Balance Data Access Entry
+        public Double ReadBeginningBal()
+        {
+            Double BeginningBalance = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT balance AS baltairepig FROM beg_bal";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["baltairepig"] == DBNull.Value)
+                    {
+                        BeginningBalance = 0;
+                    }
+                    else
+                    {
+                        BeginningBalance = Convert.ToDouble(rdr["baltairepig"]);
+                    }
+                }
+
+            }
+            finally
+            {
+                con.Close();
+            }
+            return BeginningBalance;
+        }
+
+        public void UpdateBeginningBal(Double amount)
+        {
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "UPDATE beg_bal SET balance = ?a";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?a", amount);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+        #endregion
+
         public Double ReadGrossAmount(String pos_date, String pos_terminal)
         {
             Double GrossAmount = 0;

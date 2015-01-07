@@ -485,6 +485,7 @@ namespace nPOSProj
         private void mdiSalesReport_Load(object sender, EventArgs e)
         {
             frmLogin fl = new frmLogin();
+            VO.ReportingVO rep = new VO.ReportingVO();
             ConfigCheck();
             getTerminal();
             checkRes();
@@ -495,6 +496,8 @@ namespace nPOSProj
             terminalSelectCBR = fl.tN;
             terminalSelectCC = fl.tN; //New
             vo.Pos_terminal = fl.tN; //New
+            //New Added Feature
+            txtBoxSetBalance.Text = rep.ReadBeg().ToString("#,###,##0.00");
         }
 
         private void btnPrintZ_Click(object sender, EventArgs e)
@@ -510,7 +513,7 @@ namespace nPOSProj
                 vo.Pos_user = userName;
                 vo.DebitD();
                 //
-                DrawerPing();
+                //DrawerPing();
                 PrintZTicket();
             }
         }
@@ -985,6 +988,39 @@ namespace nPOSProj
                 vo.Pos_user = frmLogin.User.user_name;
                 vo.LogCashCount();
                 PrintCashCount();
+            }
+        }
+
+        private void txtBoxSetBalance_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBoxSetBalance_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    if (txtBoxSetBalance.Text == "" || txtBoxSetBalance.Text == null)
+                    {
+                        txtBoxSetBalance.Text = "0.00";
+                    }
+                    else
+                    {
+                        VO.ReportingVO rep = new VO.ReportingVO();
+                        rep.Begbal = Convert.ToDouble(txtBoxSetBalance.Text);
+                        rep.UpdateBeg();
+                        txtBoxSetBalance.Text = rep.ReadBeg().ToString("#,###,##0.00");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error: Please Check Database Server!", "Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
