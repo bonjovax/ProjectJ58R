@@ -274,8 +274,12 @@ namespace nPOSProj
                 Int32 NOTrans = reports.NumberOfTrans();
                 Int32 NoOfEAN = reports.NumberOfEan();
                 Int32 OverallQ = reports.OverallQty();
+                Double Beginning = reports.ReadBeg();
                 Double PreviousNET = reports.PreviousNETAmt();
                 Double Running = PreviousNET + Net;
+                //
+
+                //
 
                 frmLogin fl = new frmLogin();
                 Graphics graphic = e.Graphics;
@@ -302,6 +306,8 @@ namespace nPOSProj
                 graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 180);
                 #endregion
                 #region Content Reading
+                graphic.DrawString("Beginning Balance:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 200);
+                graphic.DrawString(Beginning.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 200);
                 graphic.DrawString("Gross Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 200);
                 graphic.DrawString(Gross.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 200);
                 graphic.DrawString("Discounts:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 220);

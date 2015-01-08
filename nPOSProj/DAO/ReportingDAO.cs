@@ -74,6 +74,140 @@ namespace nPOSProj.DAO
         }
         #endregion
 
+        public Double ReadCashOut(String cd_date, String cd_terminal)
+        {
+            Double CashOutTotal = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT SUM(cd_debit) AS anq FROM pos_cdlog";
+            query += " WHERE cd_date = ?cd_date AND cd_terminal = ?cd_terminal";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?cd_date", cd_date);
+                cmd.Parameters.AddWithValue("?cd_terminal", cd_terminal);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["anq"] == DBNull.Value)
+                    {
+                        CashOutTotal = 0;
+                    }
+                    else
+                    {
+                        CashOutTotal = Convert.ToDouble(rdr["anq"]);
+                    }
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return CashOutTotal;
+        }
+        public Double ReadCashTotal(String pos_date, String pos_terminal)
+        {
+            Double CASH = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT SUM(pos_total_amt) AS x FROM pos_store WHERE pos_paymethod = 'Cash' AND pos_date = ?pos_date AND pos_terminal = ?pos_terminal AND pos_park = 0 AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?pos_date", pos_date);
+                cmd.Parameters.AddWithValue("?pos_terminal", pos_terminal);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["x"] == DBNull.Value)
+                    {
+                        CASH = 0;
+                    }
+                    else
+                    {
+                        CASH = Convert.ToDouble(rdr["x"]);
+                    }
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return CASH;
+        }
+        public Double ReadChequeTotal(String pos_date, String pos_terminal)
+        {
+            Double CHEKE = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT SUM(pos_total_amt) AS x FROM pos_store WHERE pos_paymethod = 'Bank Cheque' AND pos_date = ?pos_date AND pos_terminal = ?pos_terminal AND pos_park = 0 AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?pos_date", pos_date);
+                cmd.Parameters.AddWithValue("?pos_terminal", pos_terminal);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["x"] == DBNull.Value)
+                    {
+                        CHEKE = 0;
+                    }
+                    else
+                    {
+                        CHEKE = Convert.ToDouble(rdr["x"]);
+                    }
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return CHEKE;
+        }
+        //
+        public Double ReadChargeTotal(String pos_date, String pos_terminal)
+        {
+            Double UTANG = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT SUM(pos_total_amt) AS x FROM pos_store WHERE pos_paymethod = 'Charge to Accounts' AND pos_date = ?pos_date AND pos_terminal = ?pos_terminal AND pos_park = 0 AND is_cancel = 0";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?pos_date", pos_date);
+                cmd.Parameters.AddWithValue("?pos_terminal", pos_terminal);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["x"] == DBNull.Value)
+                    {
+                        UTANG = 0;
+                    }
+                    else
+                    {
+                        UTANG = Convert.ToDouble(rdr["x"]);
+                    }
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return UTANG;
+        }
         public Double ReadGrossAmount(String pos_date, String pos_terminal)
         {
             Double GrossAmount = 0;
