@@ -848,6 +848,30 @@ namespace nPOSProj.DAO
                 con.Close();
             }
         }
+        // New
+        public void UpdateTotalAmountGlobal(Double amount, Int32 orno, String terminal)
+        {
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "UPDATE pos_store SET pos_total_amt = ?pos_total_amt ";
+            query += "WHERE pos_orno = ?pos_orno AND pos_terminal = ?terminal";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?pos_total_amt", amount);
+                cmd.Parameters.AddWithValue("?pos_orno", orno);
+                cmd.Parameters.AddWithValue("?terminal", terminal);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        //
         #endregion
         #region Cash Count Module
         public void LogCC(Double thousand, Double fiveh, Double twoh, Double oneh, Double fifty, Double twenty, Double ten, Double five, Double one, Double ctwentyfive, String terminal, String cashier)

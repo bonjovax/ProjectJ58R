@@ -25,6 +25,14 @@ namespace nPOSProj
             get { return terminalNo; }
         }
 
+        private Double getTotalAmt;
+
+        public Double GetTotalAmt
+        {
+            get { return getTotalAmt; }
+            set { getTotalAmt = value; }
+        }
+
         public bool Selected
         {
             get { return selected; }
@@ -242,6 +250,7 @@ namespace nPOSProj
                 //
                 OrderNo = orno;
                 Order_Selected = true;
+                GetTotalAmt = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells[4].Value);
                 this.Close();
             }
         }

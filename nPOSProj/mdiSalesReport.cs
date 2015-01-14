@@ -262,10 +262,15 @@ namespace nPOSProj
             {
                 reports.Pos_date = Convert.ToDateTime(dtZ.Text).ToString("yyyy-MM-dd");
                 reports.Pos_terminal = terminalSelectZ;
+
                 Double Gross = reports.GrossAmount();
+                Double CDrawerBal = reports.CashDrawBal();
+                Double Charges = reports.ReadChargeT();
+                Double COut = reports.ReadCOut();
                 Double Discounts = reports.Discounts();
+                Double FinGross = Gross + Charges;
                 Double VATAMT = reports.TaxAmount();
-                Double Net = Gross - Discounts;
+                Double Net = FinGross - Charges - COut - Discounts;
                 Double V = 0;
                 Double NV = 0;
                 Int32 CtrStart = reports.SeriesStart();
@@ -278,9 +283,9 @@ namespace nPOSProj
                 Double PreviousNET = reports.PreviousNETAmt();
                 Double Running = PreviousNET + Net;
                 //
-
+                Double Difference = CDrawerBal - Net;
                 //
-
+                
                 frmLogin fl = new frmLogin();
                 Graphics graphic = e.Graphics;
                 Font font = new Font("FontA11", 9.0f);
@@ -308,12 +313,21 @@ namespace nPOSProj
                 #region Content Reading
                 graphic.DrawString("Beginning Balance:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 200);
                 graphic.DrawString(Beginning.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 200);
-                graphic.DrawString("Gross Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 200);
-                graphic.DrawString(Gross.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 200);
-                graphic.DrawString("Discounts:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 220);
-                graphic.DrawString(Discounts.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 220);
-                graphic.DrawString("Net Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 240);
-                graphic.DrawString(Net.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 240);
+                graphic.DrawString("Gross Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 220);
+                graphic.DrawString(FinGross.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 220);
+                graphic.DrawString("Charges Amount:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 240);
+                graphic.DrawString(Charges.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 240);
+                graphic.DrawString("Cash Out Amount:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 260);
+                graphic.DrawString(COut.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 260);
+                graphic.DrawString("Discounts:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 280);
+                graphic.DrawString(Discounts.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 280);
+                graphic.DrawString("Net Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 300);
+                graphic.DrawString(Net.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 300);
+                //
+                //Space
+                //
+                graphic.DrawString("Difference: ".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 330);
+                graphic.DrawString(Difference.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 330);
                 //
                 //Space
                 //
@@ -325,46 +339,46 @@ namespace nPOSProj
                 {
                     NV = Net;
                 }
-                graphic.DrawString("Non-VAT Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 270);
-                graphic.DrawString(NV.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 270);
-                graphic.DrawString("VAT Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 290);
-                graphic.DrawString(V.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 290);
-                graphic.DrawString("VAT:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 310);
-                graphic.DrawString(VATAMT.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 310);
+                graphic.DrawString("Non-VAT Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 360);
+                graphic.DrawString(NV.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 360);
+                graphic.DrawString("VAT Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 380);
+                graphic.DrawString(V.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 380);
+                graphic.DrawString("VAT:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 400);
+                graphic.DrawString(VATAMT.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 400);
                 //
                 //Space
                 //
-                graphic.DrawString("Counter # Start:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 340);
-                graphic.DrawString(CtrStart.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 340);
-                graphic.DrawString("Counter # End:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 360);
-                graphic.DrawString(CtrEnd.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 360);
+                graphic.DrawString("Counter # Start:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 430);
+                graphic.DrawString(CtrStart.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 430);
+                graphic.DrawString("Counter # End:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 450);
+                graphic.DrawString(CtrEnd.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 450);
                 //
                 //Space
                 //
-                graphic.DrawString("Cancelled Txn:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 390);
-                graphic.DrawString(CancelledTxn.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 390);
+                graphic.DrawString("Cancelled Txn:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 480);
+                graphic.DrawString(CancelledTxn.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 480);
                 //
                 //Space
                 //
-                graphic.DrawString("No of Transactions:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 420);
-                graphic.DrawString(NOTrans.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 420);
-                graphic.DrawString("No of EAN:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 440);
-                graphic.DrawString(NoOfEAN.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 440);
-                graphic.DrawString("Total Quantity:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 460);
-                graphic.DrawString(OverallQ.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 460);
+                graphic.DrawString("No of Transactions:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 510);
+                graphic.DrawString(NOTrans.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 510);
+                graphic.DrawString("No of EAN:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 530);
+                graphic.DrawString(NoOfEAN.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 530);
+                graphic.DrawString("Total Quantity:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 550);
+                graphic.DrawString(OverallQ.ToString().PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 550);
                 //
                 //Space
                 //
-                graphic.DrawString("Previous Reading:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 490);
-                graphic.DrawString(PreviousNET.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 490);
-                graphic.DrawString("Net Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 510);
-                graphic.DrawString(Net.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 510);
-                graphic.DrawString("Running Total:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 530);
-                graphic.DrawString(Running.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 530);
+                graphic.DrawString("Previous Reading:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 580);
+                graphic.DrawString(PreviousNET.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 580);
+                graphic.DrawString("Net Sales:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 600);
+                graphic.DrawString(Net.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 600);
+                graphic.DrawString("Running Total:".PadRight(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 25, 620);
+                graphic.DrawString(Running.ToString("#,###,##0.00").PadLeft(10), new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 166, 620);
                 #endregion
                 #region Footer
-                graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 550);
-                graphic.DrawString("End of Z Reports", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 80, 560);
+                graphic.DrawString("***************************************************", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 3, 650);
+                graphic.DrawString("End of Z Reports", new Font("FontA11", 9.0f), new SolidBrush(Color.Black), 80, 660);
                 #endregion
             }
             catch (Exception)
@@ -508,16 +522,11 @@ namespace nPOSProj
 
         private void btnPrintZ_Click(object sender, EventArgs e)
         {
-            DialogResult dlg = MessageBox.Show("Do You Wish Proceed?\nCash Drawer Amount will be reset!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dlg = MessageBox.Show("Do You Wish Proceed?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if (dlg == System.Windows.Forms.DialogResult.Yes)
             {
                 vo.Pos_terminal = terminalSelectZ;
-                vo.ResetD();
-                //
-                vo.CashAmount = 0;
-                vo.DrawerPurpose = "Z Reading";
-                vo.Pos_user = userName;
-                vo.DebitD();
                 //
                 //DrawerPing();
                 PrintZTicket();
@@ -1021,12 +1030,34 @@ namespace nPOSProj
                         rep.Begbal = Convert.ToDouble(txtBoxSetBalance.Text);
                         rep.UpdateBeg();
                         txtBoxSetBalance.Text = rep.ReadBeg().ToString("#,###,##0.00");
+                        DialogResult dr = MessageBox.Show("Do you wish to Update this on your Drawer Balance?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dr == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            vo.CashAmount = Convert.ToDouble(txtBoxSetBalance.Text);
+                            vo.DrawerPurpose = "Set Beginning Balance";
+                            vo.Pos_terminal = terminalSelect;
+                            vo.Pos_user = userName;
+                            vo.CreditD();
+                        }
                     }
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Error: Please Check Database Server!", "Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            DialogResult dkg = MessageBox.Show("Do you Want to Reset the Drawer Balance?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dkg == System.Windows.Forms.DialogResult.Yes)
+            {
+                vo.ResetD();
+                vo.CashAmount = 0;
+                vo.DrawerPurpose = "Z Reading";
+                vo.Pos_user = userName;
+                vo.DebitD();
             }
         }
     }

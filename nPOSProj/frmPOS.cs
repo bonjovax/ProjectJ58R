@@ -576,6 +576,11 @@ namespace nPOSProj
                 txtBoxEAN.Focus();
                 return true;
             }
+            if (keyData == Keys.Z)
+            {
+                gotoGlobal();
+                return true;
+            }
             if (keyData == Keys.S)
             {
                 lviewPOS.Focus();
@@ -1918,6 +1923,35 @@ namespace nPOSProj
                         rdDescription.Text = "Error 10: Network Connection";
                     }
                 }
+            }
+        }
+
+        private void gotoGlobal()
+        {
+            try
+            {
+                frmLogin lg = new frmLogin(); //we'll use that ^_^
+                using (frmDlgGlobalDisc global = new frmDlgGlobalDisc())
+                {
+                    global.GetAmount = Convert.ToDouble(lblTotalAmount.Text);
+                    global.ShowDialog();
+                    if (global.Amount == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        pos = new VO.PosVO();
+                        pos.Pos_total_amt = global.Amount;
+                        pos.Pos_orno = Convert.ToInt32(lblSeriesNo.Text);
+                        pos.Pos_terminal = lg.tN;
+                        pos.UpdateGlobalTotal();
+                        lblTotalAmount.Text = global.Amount.ToString("#,###,##0.00");
+                    }
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 

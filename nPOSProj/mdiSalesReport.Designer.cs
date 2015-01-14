@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdiSalesReport));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBoxSetBalance = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnCDR = new System.Windows.Forms.Button();
             this.cBTerminalCDR = new System.Windows.Forms.ComboBox();
@@ -113,18 +117,15 @@
             this.printX = new System.Drawing.Printing.PrintDocument();
             this.printZ = new System.Drawing.Printing.PrintDocument();
             this.printCashCount = new System.Drawing.Printing.PrintDocument();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtBoxSetBalance = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -144,6 +145,55 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(747, 457);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(162)))), ((int)(((byte)(26)))));
+            this.tabPage7.Controls.Add(this.label9);
+            this.tabPage7.Controls.Add(this.txtBoxSetBalance);
+            this.tabPage7.Controls.Add(this.label8);
+            this.tabPage7.Location = new System.Drawing.Point(4, 33);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(739, 420);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Set Beginning Balance";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(210, 183);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(315, 21);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Press Enter Key (←) to Set Beginning Balance";
+            // 
+            // txtBoxSetBalance
+            // 
+            this.txtBoxSetBalance.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxSetBalance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxSetBalance.Location = new System.Drawing.Point(195, 144);
+            this.txtBoxSetBalance.MaxLength = 12;
+            this.txtBoxSetBalance.Name = "txtBoxSetBalance";
+            this.txtBoxSetBalance.Size = new System.Drawing.Size(343, 36);
+            this.txtBoxSetBalance.TabIndex = 13;
+            this.txtBoxSetBalance.Text = "0.00";
+            this.txtBoxSetBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxSetBalance.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxSetBalance_KeyDown);
+            this.txtBoxSetBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSetBalance_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(296, 109);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(142, 32);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Set Balance";
             // 
             // tabPage5
             // 
@@ -319,6 +369,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(113)))), ((int)(((byte)(69)))));
+            this.tabPage2.Controls.Add(this.btnReset);
             this.tabPage2.Controls.Add(this.btnPrintZ);
             this.tabPage2.Controls.Add(this.cBTerminalZ);
             this.tabPage2.Controls.Add(this.lblZ);
@@ -1267,54 +1318,24 @@
             this.dtSDR.Size = new System.Drawing.Size(251, 33);
             this.dtSDR.TabIndex = 13;
             // 
-            // tabPage7
+            // btnReset
             // 
-            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(162)))), ((int)(((byte)(26)))));
-            this.tabPage7.Controls.Add(this.label9);
-            this.tabPage7.Controls.Add(this.txtBoxSetBalance);
-            this.tabPage7.Controls.Add(this.label8);
-            this.tabPage7.Location = new System.Drawing.Point(4, 33);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(739, 420);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Set Beginning Balance";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(296, 109);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 32);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Set Balance";
-            // 
-            // txtBoxSetBalance
-            // 
-            this.txtBoxSetBalance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBoxSetBalance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxSetBalance.Location = new System.Drawing.Point(195, 144);
-            this.txtBoxSetBalance.MaxLength = 12;
-            this.txtBoxSetBalance.Name = "txtBoxSetBalance";
-            this.txtBoxSetBalance.Size = new System.Drawing.Size(343, 36);
-            this.txtBoxSetBalance.TabIndex = 13;
-            this.txtBoxSetBalance.Text = "0.00";
-            this.txtBoxSetBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBoxSetBalance.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxSetBalance_KeyDown);
-            this.txtBoxSetBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSetBalance_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(210, 183);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(315, 21);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Press Enter Key (←) to Set Beginning Balance";
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(113)))), ((int)(((byte)(69)))));
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(113)))), ((int)(((byte)(69)))));
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.Color.White;
+            this.btnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReset.Location = new System.Drawing.Point(624, 364);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(113, 52);
+            this.btnReset.TabIndex = 10;
+            this.btnReset.Text = "Reset Drawer Balance";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // mdiSalesReport
             // 
@@ -1333,6 +1354,8 @@
             this.Text = "Sales Report";
             this.Load += new System.EventHandler(this.mdiSalesReport_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -1345,8 +1368,6 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1441,5 +1462,6 @@
         private System.Windows.Forms.TextBox txtBoxSetBalance;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnReset;
     }
 }

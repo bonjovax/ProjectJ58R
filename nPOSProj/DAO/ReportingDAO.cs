@@ -174,14 +174,13 @@ namespace nPOSProj.DAO
             }
             return CHEKE;
         }
-        //
         public Double ReadChargeTotal(String pos_date, String pos_terminal)
         {
             Double UTANG = 0;
             con = new MySqlConnection();
             dbcon = new Conf.dbs();
             con.ConnectionString = dbcon.getConnectionString();
-            String query = "SELECT SUM(pos_total_amt) AS x FROM pos_store WHERE pos_paymethod = 'Charge to Accounts' AND pos_date = ?pos_date AND pos_terminal = ?pos_terminal AND pos_park = 0 AND is_cancel = 0";
+            String query = "SELECT SUM(pos_tender) AS x FROM pos_store WHERE pos_paymethod = 'Charge to Accounts' AND pos_date = ?pos_date AND pos_terminal = ?pos_terminal AND pos_park = 0 AND is_cancel = 0";
             try
             {
                 con.Open();
@@ -208,6 +207,41 @@ namespace nPOSProj.DAO
             }
             return UTANG;
         }
+        //
+        public Double ReadCashDrawerBal(String pos_terminal)
+        {
+            Double Bal = 0;
+            con = new MySqlConnection();
+            dbcon = new Conf.dbs();
+            con.ConnectionString = dbcon.getConnectionString();
+            String query = "SELECT cash_drawer_amt AS x FROM system_terminal ";
+            query += "WHERE identify = ?identify";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("?identify", pos_terminal);
+                cmd.ExecuteScalar();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    if (rdr["x"] == DBNull.Value)
+                    {
+                        Bal = 0;
+                    }
+                    else
+                    {
+                        Bal = Convert.ToDouble(rdr["x"]);
+                    }
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return Bal;
+        }
+        //
         public Double ReadGrossAmount(String pos_date, String pos_terminal)
         {
             Double GrossAmount = 0;

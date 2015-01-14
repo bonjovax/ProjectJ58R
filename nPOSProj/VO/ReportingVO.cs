@@ -130,5 +130,45 @@ namespace nPOSProj.VO
             Bal = reportdao.ReadBeginningBal();
             return Bal;
         }
+
+        public Double ReadCashT()
+        {
+            Double Cash = 0;
+            reportdao = new DAO.ReportingDAO();
+            Cash = reportdao.ReadCashTotal(Pos_date, Pos_terminal);
+            return Cash;
+        }
+
+        public Double ReadChequeT()
+        {
+            Double Cheque = 0;
+            reportdao = new DAO.ReportingDAO();
+            Cheque = reportdao.ReadChequeTotal(Pos_date, Pos_terminal);
+            return Cheque;
+        }
+
+        public Double ReadChargeT()
+        {
+            Double Utang = 0;
+            reportdao = new DAO.ReportingDAO();
+            Utang = reportdao.ReadChargeTotal(Pos_date, Pos_terminal);
+            return Utang;
+        }
+
+        public Double ReadCOut()
+        {
+            Double CashOut = 0;
+            reportdao = new DAO.ReportingDAO();
+            CashOut = reportdao.ReadCashOut(Pos_terminal, Pos_terminal);
+            return CashOut;
+        }
+
+        public Double CashDrawBal()
+        {
+            Double Bal = 0;
+            reportdao = new DAO.ReportingDAO();
+            Bal = reportdao.ReadCashDrawerBal(Pos_terminal);
+            return Bal;
+        }
     }
 }

@@ -552,6 +552,13 @@ namespace nPOSProj.VO
             yes = POSDAO.canPass(Pos_user, hashed);
             return yes;
         }
+        // New
+        public void UpdateGlobalTotal()
+        {
+            POSDAO = new DAO.PosDAO();
+            POSDAO.UpdateTotalAmountGlobal(Pos_total_amt, Pos_orno, Pos_terminal);
+        }
+        //
         #endregion
     }
 }

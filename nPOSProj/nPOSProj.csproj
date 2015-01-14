@@ -138,6 +138,12 @@
     <Compile Include="frmDlgEditQty.Designer.cs">
       <DependentUpon>frmDlgEditQty.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDlgGlobalDisc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDlgGlobalDisc.Designer.cs">
+      <DependentUpon>frmDlgGlobalDisc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDlgPark.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -580,6 +586,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDlgEditQty.resx">
       <DependentUpon>frmDlgEditQty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDlgGlobalDisc.resx">
+      <DependentUpon>frmDlgGlobalDisc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDlgPark.resx">
       <DependentUpon>frmDlgPark.cs</DependentUpon>
